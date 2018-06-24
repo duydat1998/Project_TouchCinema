@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminLayout.master.cs" Inherits="Project_TouchCinema.AdminLayout" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link type="text/css" href="Css_File/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+     <div id="header">
+         <div id="header_logo">
+             <img src="Image/logo.png" style="height: 147px; width: 226px" />
+         </div>
+         <div id="header_title"><a href="#">Touch Cinema</a></div>
+         
+         <div id="user_info">
+
+             <asp:Label ID="lblUser" runat="server" Text="Hello"></asp:Label><br />
+             <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
+         </div>
+         </div>
+    <div id="left_side">
+            <asp:Menu ID="menuAdmin" runat="server" CssClass="menu">
+                <Items>
+                    <asp:MenuItem Text="Manage Cinema Staff" Value="Manage Cinema Staff"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Movie" Value="Manage Movie"></asp:MenuItem>
+                    <asp:MenuItem Target="a.aspx" Text="Manage Schedule" Value="Manage Schedule"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Room" Value="Manage Room"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Member" Value="Manage Member"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Promotion" Value="Manage Promotion"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Transaction" Value="Manage Transaction"></asp:MenuItem>
+                </Items>
+            </asp:Menu>
+    </div>
+    <div id="content">
+            <asp:ContentPlaceHolder ID="ContentPage" runat="server">
+            </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    <div id="right_side"></div>
+    
+    <div id="footer">
+        <div id="information">
+            Touch Cinema is a imaged cinema by: 
+            <ul>
+                <li>Nguyen Duy Dat</li>
+                <li>Le Minh Huy</li>
+                <li>Bui Trung Hieu</li>
+            </ul>
+            <br />
+            Hope that this cinema will be in reality soon.
+        </div>
+        <div id="contact">
+            Find Us By:
+            <ul>
+                <li>Phone: <a href="#">01627962333</a></li>
+                <li>Email: <a href="#">touchcinemasupport@gmail.com</a></li>
+                <li>
+                    <a href="#"><img src="Image/facebookLogo.png" /></a>
+                    <a href="#"><img src="Image/googlePlusLogo.png" /></a>
+                </li>
+            </ul>
+        </div>
+        <div id="footer_left">
+            ©2018 Touch Cinema All Rights Reserved.
+        </div>
+        <div id="footer_right">
+
+            Created with
+            <img src="Image/aspDotNetLogo.png" />
+            <img src="Image/CSharpLogo.png" />
+        </div>
+    </div>
+</body>
+</html>
