@@ -198,4 +198,6 @@ table {
         width: 100px;
         height: 100px;
     }
-
+.error_message{
+    color:red;
+}

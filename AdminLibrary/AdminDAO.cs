@@ -14,12 +14,12 @@ namespace AdminLibrary
 
         public AdminDTO CheckLogin(string username, string password)
         {
-            AdminDTO result = new AdminDTO();
+            AdminDTO result = null;
             SqlConnection con = new SqlConnection(strConnection);
             con.Open();
             try
             {
-                string sql = "SELECT * FROM Admin WHERE username = @username, password=@password";
+                string sql = "SELECT * FROM Admin WHERE username = @username and password=@password";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
@@ -35,10 +35,6 @@ namespace AdminLibrary
                         string phone = dr.GetString(4);
                         string email = dr.GetString(5);
                         result = new AdminDTO(userid, pw, firstName, lastName, phone, email);
-                    }
-                    else
-                    {
-                        result = null;
                     }
                 }
             }
