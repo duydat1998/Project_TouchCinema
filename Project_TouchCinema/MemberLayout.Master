@@ -25,7 +25,7 @@
              <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="button" OnClick="btnLogin_Click"/>
              <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" OnClick="btnRegister_Click"/>
          </div>
-         </div>
+    </div>
     <div id="left_side">
         <asp:Menu ID="menuMember" runat="server" CssClass="menu">
                 <Items>

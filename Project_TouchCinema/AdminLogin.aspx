@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
+    <h2>Please log in to continue your work:</h2>
     <table style="width: 479px">
         <tr>
             <td>Admin ID</td>
