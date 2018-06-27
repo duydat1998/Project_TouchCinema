@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using AdminLibrary;
 namespace Project_TouchCinema
 {
     public partial class AdminLayout : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["USER"] == null)
+            if (Session["ADMIN_USER"] == null)
             {
                 this.lblUser.Visible = false;
                 this.btnLogout.Visible = false;
@@ -21,6 +21,8 @@ namespace Project_TouchCinema
             else
             {
                 this.lblUser.Visible = true;
+                AdminDTO admin = (AdminDTO) Session["ADMIN_USER"];
+                this.lblUser.Text = admin.Firstname + " " + admin.Lastname;
                 this.btnLogout.Visible = true;
                 this.menuAdmin.Visible = true;
             }

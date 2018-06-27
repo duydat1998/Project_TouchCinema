@@ -117,5 +117,48 @@ namespace MovieLibrary
             return check;
         }
 
+        public List<MovieDTO> SearchListMoiveMemberGuest(string movieName)
+        {
+            List<MovieDTO> listMovive = null;
+            SqlConnection con = new SqlConnection(strConnection);
+            con.Open();
+            try
+            {
+                string sql="Select movieTitle, length, rating, startDate, poster, linkTrailer, producer, year " +
+                            "From Movie " +
+                            "Where movieTitle Like  @MovieName ";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@MovieName", "'%'" + movieName + "'%'");
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listMovive = new List<MovieDTO>();
+                    while (reader.Read())
+                    {
+                        MovieDTO dto = new MovieDTO
+                        {
+                            MovieTitle = reader.GetString(0),
+                            Length = reader.GetInt32(1),
+                            Rating = reader.GetInt32(2),
+                            StartDate = reader.GetDateTime(3),
+                            Poster = reader.GetString(4),
+                            LinkTrailer = reader.GetString(5),
+                            Producer = reader.GetString(6),
+                            Year = reader.GetInt32(7),
+                        };
+                        listMovive.Add(dto);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                listMovive = null;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return listMovive;
+        }
     }
 }

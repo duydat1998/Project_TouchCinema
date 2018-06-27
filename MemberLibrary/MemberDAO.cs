@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using MovieLibrary;
-using ScheduleLibrary;
-
 namespace MemberLibrary
 {
-    class MemberDAO
+    public class MemberDAO
     {
+
+
+
+
+
         private SqlConnection conn;
         private SqlDataAdapter dAdapter;
         private SqlDataReader dReader;
@@ -29,7 +31,7 @@ namespace MemberLibrary
         {
             try
             {
-                if(conn!= null || conn.State != ConnectionState.Closed)
+                if (conn != null || conn.State != ConnectionState.Closed)
                 {
                     conn.Close();
                 }
@@ -50,7 +52,7 @@ namespace MemberLibrary
         {
             conn = new SqlConnection(GetConnection());
             cmdLine = commandLine;
-            if(conn.State == ConnectionState.Closed)
+            if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
             }
@@ -80,7 +82,7 @@ namespace MemberLibrary
                         Email = dReader.GetString(5),
                         Birthdate = dReader.GetDateTime(6),
                         ImageLink = dReader.GetString(7),
-                        isActive = dReader.GetBoolean(8),
+                        IsActive = dReader.GetBoolean(8),
                     };
                 }
             }
@@ -91,7 +93,7 @@ namespace MemberLibrary
             finally
             {
                 CloseConnect();
-            }            
+            }
             return member;
         }
 
@@ -163,10 +165,10 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@Email", dto.Email);
                 cmd.Parameters.AddWithValue("@Birth", dto.Birthdate);
                 cmd.Parameters.AddWithValue("@Avatar", dto.ImageLink);
-                cmd.Parameters.AddWithValue("@IsActive", dto.isActive);
+                cmd.Parameters.AddWithValue("@IsActive", dto.IsActive);
                 cmd.Parameters.AddWithValue("@Username", dto.Username);
                 checker = cmd.ExecuteNonQuery() > 0;
-                
+
             }
             catch (Exception)
             {
@@ -179,48 +181,8 @@ namespace MemberLibrary
             return checker;
         }
 
-        public List<MovieDTO> SearchListMoiveMemberGuest(string movieName)
-        {
-            List<MovieDTO> listMovive = null;
-            try
-            {
-                SetUpConnect("Select movieTitle, length, rating, startDate, poster, linkTrailer, producer, year " +
-                            "From Movie " +
-                            "Where movieTitle Like  @MovieName ");
-                cmd = new SqlCommand(cmdLine, conn);
-                cmd.Parameters.AddWithValue("@MovieName", "'%'" + movieName + "'%'");
-                dReader = cmd.ExecuteReader();
-                if (dReader.HasRows)
-                {
-                    listMovive = new List<MovieDTO>();
-                    while (dReader.Read())
-                    {
-                        MovieDTO dto = new MovieDTO
-                        {
-                            MovieTitle = dReader.GetString(0),
-                            Length = dReader.GetInt32(1),
-                            Rating = dReader.GetInt32(2),
-                            StartDate = dReader.GetDateTime(3),
-                            Poster = dReader.GetString(4),
-                            LinkTrailer = dReader.GetString(5),
-                            Producer = dReader.GetString(6),
-                            Year = dReader.GetInt32(7),
-                        };
-                        listMovive.Add(dto);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                listMovive = null;                
-            }
-            finally
-            {
-                CloseConnect();
-            }
-            return listMovive;
-        }
-       
+        
+
         public List<MemberDTO> SearchMemberByUsername(string username)
         {
             List<MemberDTO> listMember = null;
@@ -245,7 +207,7 @@ namespace MemberLibrary
                             PhoneNum = dReader.GetString(3),
                             Email = dReader.GetString(4),
                             Birthdate = dReader.GetDateTime(5),
-                            isActive= dReader.GetBoolean(6)
+                            IsActive = dReader.GetBoolean(6)
                         };
                         listMember.Add(dto);
                     }
@@ -253,7 +215,7 @@ namespace MemberLibrary
             }
             catch (Exception)
             {
-                listMember = null;                
+                listMember = null;
             }
             return listMember;
         }
@@ -274,7 +236,7 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@Email", dto.Email);
                 cmd.Parameters.AddWithValue("@BirthDate", dto.Birthdate);
                 cmd.Parameters.AddWithValue("@Avatar", dto.ImageLink);
-                cmd.Parameters.AddWithValue("@isActive", dto.isActive);
+                cmd.Parameters.AddWithValue("@isActive", dto.IsActive);
                 checker = cmd.ExecuteNonQuery() > 0;
             }
             catch (Exception)

@@ -36,7 +36,7 @@ a {
 #footer {
     padding: 10px 20px 10px 20px;
     box-sizing: border-box;
-    background-color: black;
+    background-color: darkslategrey;
     color: white;
     float: left;
     width: 100%;
@@ -186,8 +186,8 @@ table {
         }
 
 .menu{ color: white; background-color: black; padding: 10px 10px 10px 10px; font-family:Arial; font-size:16px;}
-.menu ul li{padding: 10px 10px 10px 10px; opacity: 0.5;}
-.menu ul li:hover{ background-color: gainsboro; color: black; border:1px solid white; opacity:1; transition:1s;}
+.menu ul li{padding: 10px 10px 10px 10px;}
+.menu ul li:hover{ background-color: gainsboro; color: black; border:1px solid white; transition:1s;}
 .menu ul li a:hover{color: black; opacity:1;}
 .menu ul li img{width: 30px; height:30px; margin-right: 20px;}
 .menu ul li img:hover {

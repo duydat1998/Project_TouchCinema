@@ -68,10 +68,11 @@
   <ItemGroup>
     <Content Include="AdminLayout.Master" />
     <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminWorkspace.aspx" />
     <Content Include="MemberLayout.Master" />
     <None Include="packages.config" />
     <Content Include="Css_File\StyleSheet.css" />
-    <Content Include="MemberWorkspace.aspx" />
+    <Content Include="TouchCinema.aspx" />
     <Content Include="StaffLayout.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -101,6 +102,13 @@
     <Compile Include="AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminWorkspace.aspx.cs">
+      <DependentUpon>AdminWorkspace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminWorkspace.aspx.designer.cs">
+      <DependentUpon>AdminWorkspace.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -111,12 +119,12 @@
     <Compile Include="MemberLayout.Master.designer.cs">
       <DependentUpon>MemberLayout.Master</DependentUpon>
     </Compile>
-    <Compile Include="MemberWorkspace.aspx.cs">
-      <DependentUpon>MemberWorkspace.aspx</DependentUpon>
+    <Compile Include="TouchCinema.aspx.cs">
+      <DependentUpon>TouchCinema.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MemberWorkspace.aspx.designer.cs">
-      <DependentUpon>MemberWorkspace.aspx</DependentUpon>
+    <Compile Include="TouchCinema.aspx.designer.cs">
+      <DependentUpon>TouchCinema.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaffLayout.Master.cs">
@@ -149,6 +157,10 @@
     <ProjectReference Include="..\AdminLibrary\AdminLibrary.csproj">
       <Project>{38dccc9b-bcfc-4470-8c52-98a346b21f81}</Project>
       <Name>AdminLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MemberLibrary\MemberLibrary.csproj">
+      <Project>{cdafd483-a317-4c46-b654-f2f0b94fd747}</Project>
+      <Name>MemberLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\MovieLibrary\MovieLibrary.csproj">
       <Project>{ae8e4890-2e5a-4a70-b483-0aa2fabf3e04}</Project>

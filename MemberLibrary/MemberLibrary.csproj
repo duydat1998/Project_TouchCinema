@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51E562E7-D443-4D44-A873-3BA99A705C58}</ProjectGuid>
+    <ProjectGuid>{CDAFD483-A317-4C46-B654-F2F0B94FD747}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MemberLibrary</RootNamespace>
@@ -41,18 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MemberDTO.cs" />
     <Compile Include="MemberDAO.cs" />
+    <Compile Include="MemberDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieLibrary\MovieLibrary.csproj">
       <Project>{ae8e4890-2e5a-4a70-b483-0aa2fabf3e04}</Project>
       <Name>MovieLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ScheduleLibrary\ScheduleLibrary.csproj">
-      <Project>{45553fd2-443d-4578-ab78-85312a40afef}</Project>
-      <Name>ScheduleLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
