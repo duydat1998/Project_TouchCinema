@@ -67,13 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout\AdminLayout.Master" />
-    <Content Include="AdminLogin.aspx" />
-    <Content Include="AdminWorkspace.aspx" />
+    <Content Include="Admin\AdminLogin.aspx" />
+    <Content Include="Admin\AdminWorkspace.aspx" />
     <Content Include="Javascript_File\JavaScript.js" />
     <Content Include="Layout\MemberLayout.Master" />
     <None Include="packages.config" />
     <Content Include="Css_File\StyleSheet.css" />
-    <Content Include="TouchCinema.aspx" />
+    <Content Include="GuestAndMember\MemberRegister.aspx" />
+    <Content Include="GuestAndMember\TouchCinema.aspx" />
     <Content Include="Layout\StaffLayout.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -84,8 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="StaffLogin.aspx" />
-    <Content Include="StaffWorkspace.aspx" />
+    <Content Include="Staff\StaffLogin.aspx" />
+    <Content Include="Staff\StaffWorkspace.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -96,18 +97,18 @@
     <Compile Include="Layout\AdminLayout.Master.designer.cs">
       <DependentUpon>AdminLayout.Master</DependentUpon>
     </Compile>
-    <Compile Include="AdminLogin.aspx.cs">
+    <Compile Include="Admin\AdminLogin.aspx.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminLogin.aspx.designer.cs">
+    <Compile Include="Admin\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminWorkspace.aspx.cs">
+    <Compile Include="Admin\AdminWorkspace.aspx.cs">
       <DependentUpon>AdminWorkspace.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminWorkspace.aspx.designer.cs">
+    <Compile Include="Admin\AdminWorkspace.aspx.designer.cs">
       <DependentUpon>AdminWorkspace.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -120,11 +121,18 @@
     <Compile Include="Layout\MemberLayout.Master.designer.cs">
       <DependentUpon>MemberLayout.Master</DependentUpon>
     </Compile>
-    <Compile Include="TouchCinema.aspx.cs">
+    <Compile Include="GuestAndMember\MemberRegister.aspx.cs">
+      <DependentUpon>MemberRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\MemberRegister.aspx.designer.cs">
+      <DependentUpon>MemberRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\TouchCinema.aspx.cs">
       <DependentUpon>TouchCinema.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TouchCinema.aspx.designer.cs">
+    <Compile Include="GuestAndMember\TouchCinema.aspx.designer.cs">
       <DependentUpon>TouchCinema.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,18 +143,18 @@
     <Compile Include="Layout\StaffLayout.Master.designer.cs">
       <DependentUpon>StaffLayout.Master</DependentUpon>
     </Compile>
-    <Compile Include="StaffLogin.aspx.cs">
+    <Compile Include="Staff\StaffLogin.aspx.cs">
       <DependentUpon>StaffLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StaffLogin.aspx.designer.cs">
+    <Compile Include="Staff\StaffLogin.aspx.designer.cs">
       <DependentUpon>StaffLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="StaffWorkspace.aspx.cs">
+    <Compile Include="Staff\StaffWorkspace.aspx.cs">
       <DependentUpon>StaffWorkspace.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StaffWorkspace.aspx.designer.cs">
+    <Compile Include="Staff\StaffWorkspace.aspx.designer.cs">
       <DependentUpon>StaffWorkspace.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -186,18 +186,15 @@ table {
             width: 100px;
         }
 
-.menu{ color: white; background-color: black; padding: 10px 10px 10px 10px; font-family:Arial; font-size:16px;}
-.menu ul li{padding: 10px 10px 10px 10px;}
+.menu{ color: white; background-color: black; padding: 10px 0px 10px 10px; font-family:Arial; font-size:16px; width:100%;}
+.menu ul{width:100%;}
+.menu ul li{padding: 10px 0px 10px 10px; width:100%;}
 .menu ul li:hover{ background-color: gainsboro; color: black; border:1px solid white; transition:1s;}
 .menu ul li a:hover{color: black; opacity:1;}
 .menu ul li img{width: 30px; height:30px; margin-right: 20px;}
-.menu ul li img:hover {
-    opacity:1;
-
-    }
 .avatar {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
     }
 .error_message{
     color:red;

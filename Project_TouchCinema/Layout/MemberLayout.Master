@@ -65,18 +65,19 @@
              <asp:HyperLink ID="myAccount" runat="server" CssClass="profile" />
              <br />
              <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
-             <input type="button" value="Login" onclick="LoadLoginForm()" class="button"/>
+             <input type="button" value="Login" onclick="LoadLoginForm()" class="button" id="btnLoadLogin" runat="server"/>
+
              <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" OnClick="btnRegister_Click"/>
          </div>
     </div>
     <div id="left_side">
         <asp:Menu ID="menuMember" runat="server" CssClass="menu">
                 <Items>
-                    <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="Image/movie-icon.ico"></asp:MenuItem>
-                    <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="Image/calendar-icon.png"></asp:MenuItem>
-                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="Image/ticket-icon.png"></asp:MenuItem>
-                    <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="Image/promotion-icon.png"></asp:MenuItem>
-                    <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="Image/feedback-icon.png"></asp:MenuItem>
+                    <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="../Image/movie-icon.ico"></asp:MenuItem>
+                    <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="../Image/calendar-icon.png"></asp:MenuItem>
+                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png"></asp:MenuItem>
+                    <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="../Image/promotion-icon.png"></asp:MenuItem>
+                    <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="../Image/feedback-icon.png"></asp:MenuItem>
                 </Items>
         </asp:Menu>
     </div>
