@@ -66,14 +66,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdminLayout.Master" />
+    <Content Include="Layout\AdminLayout.Master" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminWorkspace.aspx" />
-    <Content Include="MemberLayout.Master" />
+    <Content Include="Javascript_File\JavaScript.js" />
+    <Content Include="Layout\MemberLayout.Master" />
     <None Include="packages.config" />
     <Content Include="Css_File\StyleSheet.css" />
     <Content Include="TouchCinema.aspx" />
-    <Content Include="StaffLayout.Master" />
+    <Content Include="Layout\StaffLayout.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -88,11 +89,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminLayout.Master.cs">
+    <Compile Include="Layout\AdminLayout.Master.cs">
       <DependentUpon>AdminLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminLayout.Master.designer.cs">
+    <Compile Include="Layout\AdminLayout.Master.designer.cs">
       <DependentUpon>AdminLayout.Master</DependentUpon>
     </Compile>
     <Compile Include="AdminLogin.aspx.cs">
@@ -112,11 +113,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MemberLayout.Master.cs">
+    <Compile Include="Layout\MemberLayout.Master.cs">
       <DependentUpon>MemberLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MemberLayout.Master.designer.cs">
+    <Compile Include="Layout\MemberLayout.Master.designer.cs">
       <DependentUpon>MemberLayout.Master</DependentUpon>
     </Compile>
     <Compile Include="TouchCinema.aspx.cs">
@@ -127,11 +128,11 @@
       <DependentUpon>TouchCinema.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaffLayout.Master.cs">
+    <Compile Include="Layout\StaffLayout.Master.cs">
       <DependentUpon>StaffLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StaffLayout.Master.designer.cs">
+    <Compile Include="Layout\StaffLayout.Master.designer.cs">
       <DependentUpon>StaffLayout.Master</DependentUpon>
     </Compile>
     <Compile Include="StaffLogin.aspx.cs">
@@ -150,6 +151,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>

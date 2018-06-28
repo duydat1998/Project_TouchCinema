@@ -7,13 +7,13 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link type="text/css" href="Css_File/StyleSheet.css" rel="stylesheet" />
+    <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
      <div id="header">
          <div id="header_logo">
-             <img src="Image/logo.png" style="height: 147px; width: 226px" />
+             <img src="../Image/logo.png" style="height: 147px; width: 226px" />
          </div>
          <div id="header_title"><a href="#">Touch Cinema</a></div>
          
@@ -60,8 +60,8 @@
                 <li>Phone: <a href="#">01627962333</a></li>
                 <li>Email: <a href="#">touchcinemasupport@gmail.com</a></li>
                 <li>
-                    <a href="#"><img src="Image/facebookLogo.png" /></a>
-                    <a href="#"><img src="Image/googlePlusLogo.png" /></a>
+                    <a href="#"><img src="../Image/facebookLogo.png" /></a>
+                    <a href="#"><img src="../Image/googlePlusLogo.png" /></a>
                 </li>
             </ul>
         </div>
@@ -71,8 +71,8 @@
         <div id="footer_right">
 
             Created with
-            <img src="Image/aspDotNetLogo.png" />
-            <img src="Image/CSharpLogo.png" />
+            <img src="../Image/aspDotNetLogo.png" />
+            <img src="../Image/CSharpLogo.png" />
         </div>
     </div>
 </body>

@@ -7,13 +7,56 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link type="text/css" href="Css_File/StyleSheet.css" rel="stylesheet" />
+    <script src="../Javascript_File/JavaScript.js"></script>
+    <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
+        <div id="login_form">
+            <div id="close"><input type="button" value="X" class="button" onclick="CloseLoginForm()" style="background-color:red;"/></div>
+        <h2>Login to get daily attractive promotions:</h2>
+        <table style="width: 479px">
+        <tr>
+            <td>Member ID</td>
+            <td colspan="2">
+                <asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px"></asp:TextBox>
+
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td colspan="2">
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="textbox" Width="273px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" Width="96px" CssClass="button" /></td>
+            <td>
+                <input id="Reset1" type="reset" value="Reset" class="button"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2">
+                <asp:Label ID="invalidLogin" runat="server" Text="Invalid username or password!" CssClass="error_message"></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2">
+                <asp:Label ID="Label1" runat="server" Text="If you don't have an member account, register now !"></asp:Label><br />
+            </td>
+        </tr>
+            <tr>
+                <td></td>
+                <td colspan="2"> <asp:Button ID="Button2" runat="server" Text="Register" CssClass="button" OnClick="btnRegister_Click"/></td>
+            </tr>
+    </table>
+    </div>
      <div id="header">
          <div id="header_logo">
-             <img src="Image/logo.png" style="height: 147px; width: 226px" />
+             <img src="../Image/logo.png" style="height: 147px; width: 226px" />
          </div>
          <div id="header_title"><a href="#">Touch Cinema</a></div>
          
@@ -22,7 +65,7 @@
              <asp:HyperLink ID="myAccount" runat="server" CssClass="profile" />
              <br />
              <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
-             <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="button" OnClick="btnLogin_Click"/>
+             <input type="button" value="Login" onclick="LoadLoginForm()" class="button"/>
              <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" OnClick="btnRegister_Click"/>
          </div>
     </div>
@@ -61,8 +104,8 @@
                 <li>Phone: <a href="#">01627962333</a></li>
                 <li>Email: <a href="#">touchcinemasupport@gmail.com</a></li>
                 <li>
-                    <a href="#"><img src="Image/facebookLogo.png" /></a>
-                    <a href="#"><img src="Image/googlePlusLogo.png" /></a>
+                    <a href="#"><img src="../Image/facebookLogo.png" /></a>
+                    <a href="#"><img src="../Image/googlePlusLogo.png" /></a>
                 </li>
             </ul>
         </div>
@@ -72,8 +115,8 @@
         <div id="footer_right">
 
             Created with
-            <img src="Image/aspDotNetLogo.png" />
-            <img src="Image/CSharpLogo.png" />
+            <img src="../Image/aspDotNetLogo.png" />
+            <img src="../Image/CSharpLogo.png" />
         </div>
     </div>
 </body>

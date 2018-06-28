@@ -18,6 +18,7 @@ namespace Project_TouchCinema
                 this.btnLogout.Visible = false;
                 this.btnLogin.Visible = true;
                 this.btnRegister.Visible = true;
+                this.invalidLogin.Visible = false;
             }
             else
             {
@@ -45,7 +46,7 @@ namespace Project_TouchCinema
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("MemberWorkspace.aspx");
         }
     }
 }

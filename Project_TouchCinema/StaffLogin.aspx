@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StaffLayout.Master" AutoEventWireup="true" CodeBehind="StaffLogin.aspx.cs" Inherits="Project_TouchCinema.StaffLogin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/StaffLayout.Master" AutoEventWireup="true" CodeBehind="StaffLogin.aspx.cs" Inherits="Project_TouchCinema.StaffLogin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
