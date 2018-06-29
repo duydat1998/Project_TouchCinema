@@ -15,11 +15,14 @@
             <td><asp:Button ID="btnCheck" runat="server" Text="Check"  Width="96px" CssClass="button" OnClick="btnCheck_Click" /></td>
         </tr>
     </table>
-    <asp:Label ID="invalidCode" runat="server" Text="The Booking code is invalid! Please enter another one."></asp:Label>
+    <asp:Label ID="invalidCode" runat="server" Text="The Booking code is invalid! Please enter another one!" CssClass="error_message"></asp:Label>
     <div runat="server" id="orderDetail"> 
         <h2>Order <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>
         <table>
-
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
         </table>
     </div>
 </asp:Content>

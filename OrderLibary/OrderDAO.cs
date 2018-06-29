@@ -15,7 +15,6 @@ namespace OrderLibary
         public OrderDAO()
         {
             strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-
         }
 
         public OrderDTO CheckOrder(string orderID)
@@ -52,6 +51,7 @@ namespace OrderLibary
             }
             return output;
         }
+
 
         public bool CheckOutOrder(string orderID)
         {

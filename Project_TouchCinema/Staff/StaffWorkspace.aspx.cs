@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using StaffLibrary;
 using OrderLibary;
+using ScheduleLibrary;
+using MovieLibrary;
 namespace Project_TouchCinema
 {
     public partial class StaffWorkspace : System.Web.UI.Page
@@ -29,7 +30,26 @@ namespace Project_TouchCinema
             }
             else
             {
+                GetOrderDetail(orderID);
+                
+            }
+        }
+
+        public void GetOrderDetail(string orderID)
+        {
+            OrderDAO orderDao = new OrderDAO();
+            ScheduleDAO scheduleDAO = new ScheduleDAO();
+            MovieDAO movieDAO = new MovieDAO();
+            OrderDTO order = orderDao.CheckOrder(orderID);
+            if (order != null)
+            {
+                ScheduleDTO schedule = scheduleDAO.GetScheduleByID(order.ScheduleID);
+                string movieTitle = movieDAO.GetMovieTitle(schedule.MovieID);
                 this.invalidCode.Visible = false;
+            }
+            else
+            {
+                this.invalidCode.Visible = true;
             }
         }
 
