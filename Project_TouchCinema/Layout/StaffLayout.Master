@@ -24,7 +24,14 @@
              <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
          </div>
          </div>
-    <div id="left_side"></div>
+    <div id="left_side">
+        <asp:Menu ID="menuStaff" runat="server" CssClass="menu">
+                <Items>
+                    <asp:MenuItem Text="Check Ticket" Value="Check Ticket"></asp:MenuItem>
+                    <asp:MenuItem Text="Check Member Point" Value="Check Member"></asp:MenuItem>
+                </Items>
+        </asp:Menu>
+    </div>
     <div id="content">
             <asp:ContentPlaceHolder ID="ContentPage" runat="server">
             </asp:ContentPlaceHolder>
