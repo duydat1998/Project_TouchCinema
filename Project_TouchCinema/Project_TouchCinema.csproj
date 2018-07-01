@@ -66,8 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FileNotFound.html" />
-    <Content Include="GenericError.html" />
+    <Content Include="ErrorPages\ErrorPage.aspx" />
     <Content Include="Layout\AdminLayout.Master" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AdminWorkspace.aspx" />
@@ -92,6 +91,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ErrorPages\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Layout\AdminLayout.Master.cs">
       <DependentUpon>AdminLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
