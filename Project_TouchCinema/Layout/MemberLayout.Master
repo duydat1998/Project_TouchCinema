@@ -73,11 +73,11 @@
     <div id="left_side">
         <asp:Menu ID="menuMember" runat="server" CssClass="menu">
                 <Items>
-                    <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="../Image/movie-icon.ico"></asp:MenuItem>
-                    <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="../Image/calendar-icon.png"></asp:MenuItem>
-                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png"></asp:MenuItem>
-                    <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="../Image/promotion-icon.png"></asp:MenuItem>
-                    <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="../Image/feedback-icon.png"></asp:MenuItem>
+                    <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="../Image/movie-icon.ico" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="../Image/calendar-icon.png" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="../Image/promotion-icon.png" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="../Image/feedback-icon.png" NavigateUrl="a"></asp:MenuItem>
                 </Items>
         </asp:Menu>
     </div>

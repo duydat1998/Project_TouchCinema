@@ -26,13 +26,13 @@
     <div id="left_side">
             <asp:Menu ID="menuAdmin" runat="server" CssClass="menu">
                 <Items>
-                    <asp:MenuItem Text="Manage Cinema Staff" Value="Manage Cinema Staff"></asp:MenuItem>
-                    <asp:MenuItem Text="Manage Movie" Value="Manage Movie"></asp:MenuItem>
-                    <asp:MenuItem Target="a.aspx" Text="Manage Schedule" Value="Manage Schedule"></asp:MenuItem>
-                    <asp:MenuItem Text="Manage Room" Value="Manage Room"></asp:MenuItem>
-                    <asp:MenuItem Text="Manage Member" Value="Manage Member"></asp:MenuItem>
-                    <asp:MenuItem Text="Manage Promotion" Value="Manage Promotion"></asp:MenuItem>
-                    <asp:MenuItem Text="Manage Transaction" Value="Manage Transaction"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Cinema Staff" Value="Manage Cinema Staff" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Movie" Value="Manage Movie" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Schedule" Value="Manage Schedule" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Room" Value="Manage Room" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Member" Value="Manage Member" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Promotion" Value="Manage Promotion" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Transaction" Value="Manage Transaction" NavigateUrl="a"></asp:MenuItem>
                 </Items>
             </asp:Menu>
     </div>
