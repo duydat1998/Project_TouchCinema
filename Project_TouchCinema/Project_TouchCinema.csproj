@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FileNotFound.html" />
+    <Content Include="GenericError.html" />
     <Content Include="Layout\AdminLayout.Master" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AdminWorkspace.aspx" />

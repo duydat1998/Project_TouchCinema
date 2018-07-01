@@ -12,7 +12,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="login_form">
+        <div id="login_form" runat="server">
             <div id="close"><input type="button" value="X" class="button" onclick="CloseLoginForm()" style="background-color:red;"/></div>
         <h2>Login to get daily attractive promotions:</h2>
         <table style="width: 479px">

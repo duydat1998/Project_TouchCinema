@@ -13,3 +13,10 @@ function CloseLoginForm() {
     var form = document.getElementById("form1");
     form.style.opacity = "1";
 }
+function HideInvalidMessage() {
+    var t = document.getElementsByClassName("error_message");
+    for (i = 0; i < t.length; i++) {
+        t[i].style.opacity = "0";
+    }
+    
+}

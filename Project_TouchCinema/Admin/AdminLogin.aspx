@@ -7,7 +7,7 @@
         <tr>
             <td>Admin ID</td>
             <td colspan="2">
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px" OnTextChanged="txtUsername_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox>
 
             </td>
         </tr>

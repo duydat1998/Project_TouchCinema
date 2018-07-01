@@ -2,11 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
+    <script src="../Javascript_File/JavaScript.js"></script>
     <h2>Please log in to continue your work:</h2>
     <table style="width: 479px">
         <tr>
             <td>Staff ID</td>
-            <td colspan="2"><asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px" OnTextChanged="txtUsername_TextChanged"></asp:TextBox></td>
+            <td colspan="2"><asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox></td>
         </tr>
         <tr>
             <td>Password</td>
