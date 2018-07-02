@@ -11,7 +11,7 @@ namespace Project_TouchCinema
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -20,6 +20,11 @@ namespace Project_TouchCinema
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSeacrh_Click(object sender, EventArgs e)
         {
 
         }

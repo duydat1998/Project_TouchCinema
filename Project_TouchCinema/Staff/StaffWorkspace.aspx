@@ -20,8 +20,39 @@
         <h2>Order <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>
         <table>
             <tr>
+                <td>Movie:</td>
+                <td>
+                <asp:Label ID="lbMovieName" runat="server" Text=""></asp:Label></td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td>
+                <asp:Label ID="lbDate" runat="server" Text=""></asp:Label></td>
+            </tr>
+            <tr>
+                <td>Time:</td>
+                <td>
+                <asp:Label ID="lbTime" runat="server" Text=""></asp:Label></td>
+            </tr>
+            <tr>
+                <td>Room:</td>
+                <td>
+                <asp:Label ID="lbRoom" runat="server" Text=""></asp:Label></td>
+            </tr>
+            <tr>
+                <td>Seats:</td>
+                <td>
+                <asp:Label ID="lbSeat" runat="server" Text=""></asp:Label></td>
+            </tr>
+            <tr>
+                
+                <td>Total Price:</td>
+                <td>
+                <asp:Label ID="lbPrice" runat="server" Text=""></asp:Label></td>
+            </tr>
+            <tr>
                 <td></td>
-                <td></td>
+                <td><asp:Button ID="btnCheckOut" runat="server" Text="Check out" OnClick="btnCheckOut_Click" /></td>
             </tr>
         </table>
     </div>

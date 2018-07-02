@@ -1,4 +1,8 @@
-﻿body{ background-color: black; color:white;}
+﻿body{ 
+    background-color: black; 
+    color:white;
+
+}
 a {
     color: white;
     text-decoration: none;
@@ -169,7 +173,7 @@ a {
         background-color: gainsboro;
         transition-duration: 0.3s;
         color: black;
-    }
+    }    
 
 table {
     margin: 10px 20px 10px 20px;
@@ -212,4 +216,37 @@ table {
 }
 #close{
     text-align: right;
+}
+
+/*TouchCinema.aspx*/
+#search_mess{
+    float: left;
+    width: 40%;    
+    margin-top: 25px;
+    margin-left: 20px;
+    
+}
+#search_form {
+    float: right;
+    width: 50%;    
+    text-align: right;
+    margin-right: 20px;
+}
+
+.movie_info {
+    float: left;
+    margin-left: 10px; margin-right: 10px;
+    width: 100%;
+
+}
+
+.movie_info img{
+    float: left;
+    width: 20%;
+}
+
+.description{
+    float: left;
+    padding-left: 20px;
+    width: 75%;
 }
