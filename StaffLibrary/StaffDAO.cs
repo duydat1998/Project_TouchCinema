@@ -122,5 +122,44 @@ namespace StaffLibrary
             }
             return result;
         }
+
+        public List<StaffDTO> GetStaffList()
+        {
+            List<StaffDTO> listStaff = null;
+            SqlConnection con = new SqlConnection(strConnection);
+            con.Open();
+            try
+            {
+                string sql = "Select username, firstName, lastName, phone, email, isActive FROM Staff";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listStaff = new List<StaffDTO>();
+                    while (reader.Read())
+                    {
+                        StaffDTO dto = new StaffDTO
+                        {
+                            Username = reader.GetString(0),
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            Phone = reader.GetString(3),
+                            Email = reader.GetString(4),
+                            IsActive = reader.GetBoolean(5)
+                        };
+                        listStaff.Add(dto);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                listStaff = null;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return listStaff;
+        }
     }
 }

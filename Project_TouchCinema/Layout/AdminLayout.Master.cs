@@ -36,5 +36,14 @@ namespace Project_TouchCinema
             Session.RemoveAll();
             Response.Redirect("AdminLogin.aspx");
         }
+
+        protected void menuAdmin_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            string name = "";
+            if(name.Trim().Equals("Manage Cinema Staff"))
+            {
+                Response.Redirect("ManageStaff.aspx");
+            }
+        }
     }
 }
