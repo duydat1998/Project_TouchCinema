@@ -29,7 +29,7 @@ namespace OrderLibary
                 }
                 try
                 {
-                    string sql = "Select scheduleID, phone, email, isCheckOut from Order where orderID=@orderID";
+                    string sql = "Select scheduleID, phone, email, isCheckOut from Orders where orderID=@orderID";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@orderID", orderID);
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -65,7 +65,7 @@ namespace OrderLibary
                 }
                 try
                 {
-                    string sql = "Update Order set isCheckOut= @check";
+                    string sql = "Update Orders set isCheckOut= @check";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@check", true);
                     int count = cmd.ExecuteNonQuery();

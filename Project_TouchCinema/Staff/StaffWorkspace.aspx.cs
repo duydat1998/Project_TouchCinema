@@ -49,14 +49,14 @@ namespace Project_TouchCinema
                 this.lblOrderID.Text = order.OrderID;
                 this.invalidCode.Visible = false;
                 this.lbMovieName.Text = movieTitle;
-                this.lbDate.Text = schedule.ScheduleDate.ToLongDateString();
-                this.lbTime.Text = schedule.ScheduleDate.ToLongTimeString();
+                this.lbDate.Text = schedule.ScheduleDate.ToShortDateString();
+                this.lbTime.Text = schedule.ScheduleDate.ToShortTimeString();
                 this.lbRoom.Text = schedule.RoomID.ToString();
                 this.lbPrice.Text = (schedule.PriceOfTicket * (order.ListOfSeat).Count) +"";
                 string seat = "";
                 foreach(string s in order.ListOfSeat)
                 {
-                    seat += (s + " ;");
+                    seat += (s + "  ");
                 }
                 this.lbSeat.Text = seat;
 

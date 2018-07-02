@@ -39,7 +39,7 @@ namespace ScheduleLibrary
                         DateTime date = (DateTime) reader["date"];
                         string movieID = reader["movieID"].ToString();
                         int roomID = (int) reader["roomID"];
-                        float price = (float)reader["priceOfTicket"];
+                        float price = float.Parse(reader["priceOfTicket"].ToString());
                         output = new ScheduleDTO { ScheduleID = scheduleID, ScheduleDate = date, MovieID = movieID, RoomID = roomID, PriceOfTicket = price };
                     }
                 }
