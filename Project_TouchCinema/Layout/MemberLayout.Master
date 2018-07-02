@@ -10,17 +10,16 @@
     <script src="../Javascript_File/JavaScript.js"></script>
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
 </head>
-<body>
-    <form id="form1" runat="server">
+<body>    
+    <form id="form1" runat="server">        
         <div id="login_form" runat="server">
             <div id="close"><input type="button" value="X" class="button" onclick="CloseLoginForm()" style="background-color:red;"/></div>
-        <h2>Login to get daily attractive promotions:</h2>
+        <h2>Remember to login to get daily attractive promotions:</h2>
         <table style="width: 479px">
         <tr>
             <td>Member ID</td>
             <td colspan="2">
                 <asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px"></asp:TextBox>
-
             </td>
         </tr>
         <tr>
