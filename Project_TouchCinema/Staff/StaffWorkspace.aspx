@@ -4,6 +4,9 @@
         .auto-style1 {
             width: 168px;
         }
+        .auto-style2 {
+            width: 406px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
@@ -21,38 +24,38 @@
         <table>
             <tr>
                 <td>Movie:</td>
-                <td>
+                <td class="auto-style2">
                 <asp:Label ID="lbMovieName" runat="server" Text=""></asp:Label></td>
             </tr>
             <tr>
                 <td>Date:</td>
-                <td>
+                <td class="auto-style2">
                 <asp:Label ID="lbDate" runat="server" Text=""></asp:Label></td>
             </tr>
             <tr>
                 <td>Time:</td>
-                <td>
+                <td class="auto-style2">
                 <asp:Label ID="lbTime" runat="server" Text=""></asp:Label></td>
             </tr>
             <tr>
                 <td>Room:</td>
-                <td>
+                <td class="auto-style2">
                 <asp:Label ID="lbRoom" runat="server" Text=""></asp:Label></td>
             </tr>
             <tr>
                 <td>Seats:</td>
-                <td>
+                <td class="auto-style2">
                 <asp:Label ID="lbSeat" runat="server" Text=""></asp:Label></td>
             </tr>
             <tr>
                 
                 <td>Total Price:</td>
-                <td>
+                <td class="auto-style2">
                 <asp:Label ID="lbPrice" runat="server" Text=""></asp:Label></td>
             </tr>
             <tr>
                 <td></td>
-                <td><asp:Button ID="btnCheckOut" runat="server" Text="Check out" OnClick="btnCheckOut_Click" /></td>
+                <td class="auto-style2"><asp:Button ID="btnCheckOut" runat="server" Text="Check out" OnClick="btnCheckOut_Click" CssClass="button" /></td>
             </tr>
         </table>
     </div>
