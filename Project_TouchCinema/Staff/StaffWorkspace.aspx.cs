@@ -75,6 +75,17 @@ namespace Project_TouchCinema
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
+            OrderDAO orderDao = new OrderDAO();
+            string orderID = txtBookingCode.Text.Trim();
+            bool result = orderDao.CheckOutOrder(orderID);
+            if (result)
+            {
+                Response.Redirect("StaffWorkspace.aspx");
+            }
+            else
+            {
+                Response.Redirect("../ErrorPages/ErrorPage.aspx");
+            }
 
         }
     }

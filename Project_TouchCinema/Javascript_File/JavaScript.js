@@ -18,5 +18,4 @@ function HideInvalidMessage() {
     for (i = 0; i < t.length; i++) {
         t[i].style.opacity = "0";
     }
-    
 }

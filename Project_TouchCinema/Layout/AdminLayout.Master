@@ -8,6 +8,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
+    <script src="../Javascript_File/JavaScript.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,6 +24,7 @@
              <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
          </div>
          </div>
+        <div id="middle">
     <div id="left_side">
             <asp:Menu ID="menuAdmin" runat="server" CssClass="menu" OnMenuItemClick="menuAdmin_MenuItemClick">
                 <Items>
@@ -40,9 +42,9 @@
             <asp:ContentPlaceHolder ID="ContentPage" runat="server">
             </asp:ContentPlaceHolder>
     </div>
-    </form>
     <div id="right_side"></div>
-    
+    </div>
+        </form>
     <div id="footer">
         <div id="information">
             Touch Cinema is a imaged cinema by: 

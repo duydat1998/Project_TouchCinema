@@ -69,6 +69,7 @@
              <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" OnClick="btnRegister_Click"/>
          </div>
     </div>
+        <div id="middle">
     <div id="left_side">
         <asp:Menu ID="menuMember" runat="server" CssClass="menu">
                 <Items>
@@ -84,9 +85,10 @@
             <asp:ContentPlaceHolder ID="ContentPage" runat="server">
             </asp:ContentPlaceHolder>
     </div>
-    </form>
-    <div id="right_side"></div>
     
+    <div id="right_side"></div>
+    </div>
+        </form>
     <div id="footer">
         <div id="information">
             Touch Cinema is a imaged cinema by: 

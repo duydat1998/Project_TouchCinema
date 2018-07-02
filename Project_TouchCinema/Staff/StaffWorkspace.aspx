@@ -20,7 +20,7 @@
     </table>
     <asp:Label ID="invalidCode" runat="server" Text="The Booking code is invalid! Please enter another one!" CssClass="error_message"></asp:Label>
     <div runat="server" id="orderDetail"> 
-        <h2>Order <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>
+        <h2>Order: <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>
         <table>
             <tr>
                 <td>Movie:</td>
@@ -55,7 +55,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td class="auto-style2"><asp:Button ID="btnCheckOut" runat="server" Text="Check out" OnClick="btnCheckOut_Click" CssClass="button" /></td>
+                <td class="auto-style2"><asp:Button ID="btnCheckOut" runat="server" Text="Check out" OnClick="btnCheckOut_Click" OnClientClick="return confirm('Do you really want to checkout?')"  CssClass="button" /></td>
             </tr>
         </table>
     </div>

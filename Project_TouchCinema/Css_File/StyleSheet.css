@@ -78,6 +78,7 @@ a {
     width: 15%;
     height: 500px;
     box-sizing:border-box;
+    background-color:black;
 
 }
 
@@ -86,9 +87,12 @@ a {
     width: 15%;
     height: 500px;
     box-sizing:border-box;
-
+    background-color:black;
 }
 
+#middle{
+    float:left; width:100%; box-sizing:border-box; background-color:white;
+}
 #content {
     float: left;
     width: 70%;
@@ -190,7 +194,7 @@ table {
         }
 
 .menu{ color: white; background-color: black; padding: 10px 0px 10px 10px; font-family:Arial; font-size:16px; width:100%;}
-.menu ul{width:100%;}
+.menu ul{width:100%; box-sizing:border-box;}
 .menu ul li{padding: 10px 0px 10px 10px; width:100%;}
 .menu ul li:hover{ background-color: gainsboro; color: black; border:1px solid white; transition:1s;}
 .menu ul li a:hover{color: black; opacity:1;}
