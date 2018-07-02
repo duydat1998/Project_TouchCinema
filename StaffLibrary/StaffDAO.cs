@@ -58,7 +58,7 @@ namespace StaffLibrary
             return result;
         }
         
-        public bool RemoveStaff(string username)
+        public bool UpdateStaffStatus(string username, int status)
         {
             bool result = false;
             SqlConnection conn = new SqlConnection(strConnection);
@@ -73,7 +73,7 @@ namespace StaffLibrary
                     string sql = "Update Staff set isActive=@isActive WHERE username=@username";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@isActive", false);
+                    cmd.Parameters.AddWithValue("@isActive", status);
                     int count = cmd.ExecuteNonQuery();
                     if(count > 0)
                     {

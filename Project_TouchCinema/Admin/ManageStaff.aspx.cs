@@ -18,7 +18,6 @@ namespace Project_TouchCinema
         {
             if (!IsPostBack)
             {
-                btnDelete.Enabled = false;
                 AdminStaffList = dao.GetStaffList();
                 Session.Add("AdminStaffList", AdminStaffList);
                 gvStaffList.DataSource = AdminStaffList;
@@ -26,7 +25,7 @@ namespace Project_TouchCinema
                 
             }
         }
-
+        
         public void Clear()
         {
             txtEmail.Text = "";
@@ -36,44 +35,22 @@ namespace Project_TouchCinema
             txtUsername.Text = "";
             btnNew.Enabled = true;
             txtUsername.Enabled = true;
-            btnDelete.Enabled = false;
         }
         protected void btnClear_Click(object sender, EventArgs e)
         {
 
             Clear();
         }
-
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-            string username = txtUsername.Text.Trim();
-            
-            if (dao.RemoveStaff(username))
-            {
-                List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
-                for (int i = 0; i <= list.Count - 1; i++)
-                {
-                    if (list[i].Username == username)
-                    {
-                        list.RemoveAt(i);
-                    }
-                }
-                gvStaffList.DataSource = list;
-                gvStaffList.DataBind();
-                Session.Add("AdminStaffList", list);
-                lblMessage.Text = "Successfully deleted";
-                lblMessage.ForeColor = Color.Green;
-            }
-            else
-            {
-                lblMessage.Text = "Failed to delete";
-                lblMessage.ForeColor = Color.Red;
-            }
-        }
-
+        
         protected void btnNew_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
+            if (username.Equals(""))
+            {
+                lblMessage.Text = "Username cannot be null!";
+                lblMessage.ForeColor = Color.Red;
+                return;
+            }
             string password = txtPassword.Text.Trim();
             string firstname = txtFirstname.Text.Trim();
             string lastname = txtLastname.Text.Trim();
@@ -83,38 +60,84 @@ namespace Project_TouchCinema
 
             StaffDTO dto = new StaffDTO {
                 Username = username,
-                Password = username,
-                FirstName = username,
-                LastName = username,
-                Phone = username,
-                Email = username,
+                Password = password,
+                FirstName = firstname,
+                LastName = lastname,
+                Phone = phone,
+                Email = email,
                 IsActive = isActive
             };
-            if (dao.AddNewStaff(username, password, firstname, lastname, phone, email, isActive))
+            try
             {
-                List<StaffDTO> list = (List<StaffDTO>) Session["AdminStaffList"];
-                list.Add(dto);
-                gvStaffList.DataSource = list;
-                gvStaffList.DataBind();
-                Session.Add("AdminStaffList", list);
-                lblMessage.Text = "Successfully added";
-                lblMessage.ForeColor = Color.Green;
-            }
-            else
+                if (dao.AddNewStaff(username, password, firstname, lastname, phone, email, isActive))
+                {
+                    List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
+                    list.Add(dto);
+                    gvStaffList.DataSource = list;
+                    gvStaffList.DataBind();
+                    Session.Add("AdminStaffList", list);
+                    lblMessage.Text = "Successfully added";
+                    lblMessage.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblMessage.Text = "Failed to add";
+                    lblMessage.ForeColor = Color.Red;
+                }
+            }catch
             {
-                lblMessage.Text = "Failed to add";
+                lblMessage.Text = "Username is already existed, please choose another one";
                 lblMessage.ForeColor = Color.Red;
             }
+            
 
         }
 
         protected void btnUpdateActive_Click(object sender, EventArgs e)
         {
-            
+            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
+            foreach (GridViewRow row in gvStaffList.Rows)
+            {
+                CheckBox status = (row.Cells[5].FindControl("isActive") as CheckBox);
+                string username = row.Cells[0].Text;
+                if (status.Checked)
+                {
+                    if (dao.UpdateStaffStatus(username, 1))
+                    {
+                        for (int i = 0; i <= list.Count - 1; i++)
+                        {
+                            if (list[i].Username == username)
+                            {
+                                list[i].IsActive=true;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (dao.UpdateStaffStatus(username, 0))
+                    {
+                        for (int i = 0; i <= list.Count - 1; i++)
+                        {
+                            if (list[i].Username == username)
+                            {
+                                list[i].IsActive = false;
+                            }
+                        }
+                    }
+                }
+            }
+            gvStaffList.DataSource = list;
+            gvStaffList.DataBind();
+            lblMessage.Text = "Successfully updated";
+            lblMessage.ForeColor = Color.Green;
         }
+
+        
 
         protected void lnkView_Click(object sender, EventArgs e)
         {
+            txtPassword.Text = "";
             string username = (sender as LinkButton).CommandArgument;
             List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
             for (int i = 0; i <= list.Count - 1; i++)
@@ -128,7 +151,7 @@ namespace Project_TouchCinema
                     txtEmail.Text = list[i].Email;
                 }
             }
-            btnDelete.Enabled = true;
+            txtUsername.Enabled = false;
             btnNew.Enabled = false;
         }
     }
