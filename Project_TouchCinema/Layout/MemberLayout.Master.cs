@@ -56,8 +56,15 @@ namespace Project_TouchCinema
                 member = dao.CheckLoginMember(username, password);
                 if (member != null)
                 {
-                    Session["MEMBER_USER"] = member;
-                    Response.Redirect("TouchCinema.aspx");
+                    if (member.IsActive)
+                    {
+                        Session["MEMBER_USER"] = member;
+                        Response.Redirect("TouchCinema.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("ErrorPage.aspx");
+                    }
                 }
                 else
                 {

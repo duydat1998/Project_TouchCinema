@@ -31,12 +31,12 @@ namespace Project_TouchCinema {
         protected global::System.Web.UI.WebControls.Button btnSeacrh;
         
         /// <summary>
-        /// for_each_movie_list control.
+        /// MovieList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater for_each_movie_list;
+        protected global::System.Web.UI.WebControls.Repeater MovieList;
     }
 }

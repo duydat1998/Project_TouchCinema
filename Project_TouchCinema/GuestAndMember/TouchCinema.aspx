@@ -8,31 +8,39 @@
         <div>
             <div id="search_mess">Do you want to find a movie?</div>            
             <div id="search_form">
-                <asp:TextBox runat="server" ID="txtSearchValue" Width="300px"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtSearchValue" Width="300px" placeholder="Type the movie you want to search"></asp:TextBox>
                 <asp:Button runat="server" ID="btnSeacrh" Text="Search" CssClass="button" OnClick="btnSeacrh_Click"/>                
             </div>
         </div>
         
        
         <%-- Phần show một chút thông tin phim mới ra --%>
-        <div class="movie_info" runat="server">
-           <%-- 
-               
-            --%>
-            <asp:Repeater runat="server" ID="for_each_movie_list" >
-
-            </asp:Repeater>
+        <div class="movie_info" runat="server">        
             <hr />
-            <h2>AAA</h2>
-            <img src="../Image/Poster/jurassicPark2.jpg"/>
-            <div class="description">
-                AAAAAA                
-            </div>            
+            <asp:Repeater runat="server" ID="MovieList" >
+                <HeaderTemplate>
+                    <b>Newest Movies</b>                      
+                    <table >                        
+                        <tr>                        
+                </HeaderTemplate>
+                <ItemTemplate>                    
+                            <td>
+                                <a href="MemberRegister.aspx"><img src="<%# Eval("poster")%>" style="width: 100%;"/></a>
+                                <asp:Label runat="server" Text='<%# Eval("movieTitle") %>' CssClass="movie_label"/>
+                            </td>
+                </ItemTemplate>
+                <FooterTemplate>
+                        </tr>
+                    </table>                    
+                </FooterTemplate>
+            </asp:Repeater>            
+            <hr />
         </div>        
 
         <%-- Phần show promotions --%>
         <div>
-            <div class="banner"></div>
+            <div class="banner">
+            </div>
         </div>
     </div>
 </asp:Content>
