@@ -297,7 +297,6 @@ namespace MemberLibrary
             return result;
         }
 
-<<<<<<< HEAD
         public MemberDTO SearchMember(string search)
         {
             MemberDTO output = null;
@@ -336,7 +335,8 @@ namespace MemberLibrary
                 }
             }
             return output;
-=======
+        }
+
         public List<MemberDTO> GetMemberList()
         {
             List<MemberDTO> listMember = null;
@@ -378,7 +378,6 @@ namespace MemberLibrary
                 conn.Close();
             }
             return listMember;
->>>>>>> 2ee8804bd8c5df435c353c22a7093bf9be06269d
         }
     }
 }
