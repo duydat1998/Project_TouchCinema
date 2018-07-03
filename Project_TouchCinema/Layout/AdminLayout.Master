@@ -10,7 +10,7 @@
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
     <script src="../Javascript_File/JavaScript.js"></script>
 </head>
-<body>
+<body onload="ModifyBesideDiv();">
     <form id="form1" runat="server">
      <div id="header">
          <div id="header_logo">

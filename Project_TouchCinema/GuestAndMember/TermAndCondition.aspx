@@ -16,9 +16,9 @@ Refunds are allowed in the rare case when your account is billed but there is no
         For any related matters, all you need to do is contact the cinema of your ticket purchase click here or you can email us at 
         cs@Touch.vn.<br />
 The standard refund processing times are as follows:<br />
-1. ATM Card (Vietnam Domestic) transactions will be refunded within 1 working week.<br />
-2. VISA/ MasterCard will be refunded within 1 working month.<br />
-3. ATM Vietcombank cardholders will be refunded within 48 working hours.<br />
+<span style="font-size: 13px; margin-left:30px;">1. ATM Card (Vietnam Domestic) transactions will be refunded within 1 working week.<br /></span>
+<span style="font-size: 13px; margin-left:30px;">2. VISA/ MasterCard will be refunded within 1 working month.<br /></span>
+<span style="font-size: 13px; margin-left:30px;">3. ATM Vietcombank cardholders will be refunded within 48 working hours.<br /></span>
 Please review your tickets and personal information carefully before your payment is processed.<br />
 After completing online booking and payment, you will be received free 
         SMS to your registered mobile phone number, to confirm your booking, 

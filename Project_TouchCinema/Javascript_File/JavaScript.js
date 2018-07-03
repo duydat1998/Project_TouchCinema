@@ -31,7 +31,11 @@ function ValidateBookingCode() {
 }
 
 function ModifyBesideDiv() {
-    alert("hehe");
-    //var h = document.getElementById("content").style.height;
-    //alert(h);
+    var h = document.getElementById("content").offsetHeight;
+    if (h > 500) {
+        document.getElementById("left_side").style.height = h + "px";
+        document.getElementById("right_side").style.height = h + "px";
+    }
+    
+
 }
