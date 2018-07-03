@@ -17,7 +17,7 @@ namespace MovieLibrary
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
 
         }
 
