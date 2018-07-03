@@ -162,12 +162,14 @@ namespace Project_TouchCinema
             txtUsername.Enabled = false;
             btnNew.Enabled = false;
         }
+
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string searchValue = txtSearch.Text;
             if (!searchValue.Equals(""))
             {
-                List<MemberDTO> searchResult = dao.SearchMemberByUsername(searchValue);
+                List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberList"];
+                List<MemberDTO> searchResult = SearchInListByUsername(list,searchValue);
                 if (searchResult.Count() > 0)
                 {
                     lblMessage.Text = "";
@@ -193,6 +195,21 @@ namespace Project_TouchCinema
             List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberList"];
             gvStaffList.DataSource = list;
             gvStaffList.DataBind();
+        }
+
+        public List<MemberDTO> SearchInListByUsername(List<MemberDTO> list, string username)
+        {
+            List<MemberDTO> result = new List<MemberDTO>();
+            foreach (MemberDTO item in list)
+            {
+                if (item.Username.IndexOf(username) >= 0)
+                {
+                    result.Add(item);
+                }
+
+            }
+
+            return result;
         }
     }
 }

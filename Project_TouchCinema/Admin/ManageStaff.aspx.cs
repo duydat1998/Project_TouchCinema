@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using StaffLibrary;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace Project_TouchCinema
 {
@@ -167,10 +168,11 @@ namespace Project_TouchCinema
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
             string searchValue = txtSearch.Text;
             if (!searchValue.Equals(""))
             {
-                List<StaffDTO> searchResult = dao.SearchByStaffUsername(searchValue);
+                List<StaffDTO> searchResult = SearchInListByUsername(list, searchValue);
                 if (searchResult.Count() > 0)
                 {
                     lblMessage.Text = "";
@@ -187,6 +189,21 @@ namespace Project_TouchCinema
                     lblMessage.ForeColor = Color.Red;
                 }
             }
+        }
+
+        public List<StaffDTO> SearchInListByUsername(List<StaffDTO> list,string username)
+        {
+            List<StaffDTO> result = new List<StaffDTO>();
+            foreach (StaffDTO item in list)
+            {
+                if (item.Username.IndexOf(username) >= 0)
+                {
+                    result.Add(item);
+                }
+                
+            }
+
+            return result;
         }
     }
 }
