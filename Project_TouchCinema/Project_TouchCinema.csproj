@@ -88,6 +88,7 @@
     <Content Include="Global.asax" />
     <Content Include="Admin\ManageStaff.aspx" />
     <Content Include="Admin\ManageRoom.aspx" />
+    <Content Include="Admin\ManageMovie.aspx" />
     <Content Include="Staff\CheckPoint.aspx" />
     <Content Include="Admin\ManageMember.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="Admin\ManageRoom.aspx.designer.cs">
       <DependentUpon>ManageRoom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageMovie.aspx.cs">
+      <DependentUpon>ManageMovie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageMovie.aspx.designer.cs">
+      <DependentUpon>ManageMovie.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Layout\StaffLayout.Master.cs">
