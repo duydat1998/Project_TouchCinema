@@ -176,14 +176,14 @@ namespace MemberLibrary
 
         public List<MemberDTO> SearchMemberByUsername(string username)
         {
-            List<MemberDTO> listMember = null;
+            List<MemberDTO> listMember = new List<MemberDTO>();
             try
             {
                 SetUpConnect("Select username, firstName, lastName, phone, email, birthDate, isActive " +
                     "From Member " +
                     "Where username Like @Username");
                 cmd = new SqlCommand(cmdLine, conn);
-                cmd.Parameters.AddWithValue("@Username", "'%'" + username + "'%'");
+                cmd.Parameters.AddWithValue("@Username", "%" + username + "%");
                 dReader = cmd.ExecuteReader();
                 if (dReader.HasRows)
                 {
@@ -207,6 +207,10 @@ namespace MemberLibrary
             catch (Exception)
             {
                 listMember = null;
+            }
+            finally
+            {
+                conn.Close();
             }
             return listMember;
         }
@@ -237,7 +241,33 @@ namespace MemberLibrary
             return checker;
         }
 
-        public bool RemoveMember(string username)
+        public bool AddNewMemberAdmin(MemberDTO dto)
+        {
+            bool checker = false;
+            try
+            {
+                SetUpConnect("Insert Into Member " +
+                    "Values(@Username, @Password, @FirstName, @LastName, @Phone, @Email, @BirthDate, @Avatar, @isActive)");
+                cmd = new SqlCommand(cmdLine, conn);
+                cmd.Parameters.AddWithValue("@Username", dto.Username);
+                cmd.Parameters.AddWithValue("@Password", dto.Password);
+                cmd.Parameters.AddWithValue("@FirstName", dto.FirstName);
+                cmd.Parameters.AddWithValue("@LastName", dto.LastName);
+                cmd.Parameters.AddWithValue("@Phone", dto.PhoneNum);
+                cmd.Parameters.AddWithValue("@Email", dto.Email);
+                cmd.Parameters.AddWithValue("@BirthDate", dto.Birthdate);
+                cmd.Parameters.AddWithValue("@Avatar", dto.ImageLink);
+                cmd.Parameters.AddWithValue("@isActive", dto.IsActive);
+                checker = cmd.ExecuteNonQuery() > 0;
+            }
+            catch 
+            {
+                throw new Exception();
+            }
+            return checker;
+        }
+
+        public bool UpdateMemberStatus(string username,int status)
         {
             bool result = false;
             SqlConnection conn = new SqlConnection(GetConnection());
@@ -252,7 +282,7 @@ namespace MemberLibrary
                     string sql = "Update Member set isActive=@isActive WHERE username=@username";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@isActive", false);
+                    cmd.Parameters.AddWithValue("@isActive", status);
                     int count = cmd.ExecuteNonQuery();
                     if (count > 0)
                     {
@@ -267,6 +297,7 @@ namespace MemberLibrary
             return result;
         }
 
+<<<<<<< HEAD
         public MemberDTO SearchMember(string search)
         {
             MemberDTO output = null;
@@ -305,6 +336,49 @@ namespace MemberLibrary
                 }
             }
             return output;
+=======
+        public List<MemberDTO> GetMemberList()
+        {
+            List<MemberDTO> listMember = null;
+            SqlConnection conn = new SqlConnection(GetConnection());
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "Select username, firstName, lastName, phone, email,birthDate, isActive FROM Member";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listMember = new List<MemberDTO>();
+                    while (reader.Read())
+                    {
+                        MemberDTO dto = new MemberDTO
+                        {
+                            Username = reader.GetString(0),
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            PhoneNum = reader.GetString(3),
+                            Email = reader.GetString(4),
+                            Birthdate = reader.GetDateTime(5),
+                            IsActive = reader.GetBoolean(6)
+                        };
+                        listMember.Add(dto);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                listMember = null;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return listMember;
+>>>>>>> 2ee8804bd8c5df435c353c22a7093bf9be06269d
         }
     }
 }

@@ -10,7 +10,7 @@
 namespace Project_TouchCinema {
     
     
-    public partial class ManageStaff {
+    public partial class ManageMember {
         
         /// <summary>
         /// txtUsername control.
@@ -65,6 +65,15 @@ namespace Project_TouchCinema {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        
+        /// <summary>
+        /// txtBirth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBirth;
         
         /// <summary>
         /// Label1 control.

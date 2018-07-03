@@ -137,6 +137,7 @@ namespace Project_TouchCinema
 
         protected void lnkView_Click(object sender, EventArgs e)
         {
+            lblMessage.Text = "";
             txtPassword.Text = "";
             string username = (sender as LinkButton).CommandArgument;
             List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
@@ -153,6 +154,39 @@ namespace Project_TouchCinema
             }
             txtUsername.Enabled = false;
             btnNew.Enabled = false;
+        }
+
+        protected void btnShowAll_Click(object sender, EventArgs e)
+        {
+            lblMessage.Text = "";
+            gvStaffList.Visible = true;
+            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
+            gvStaffList.DataSource = list;
+            gvStaffList.DataBind();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+            if (!searchValue.Equals(""))
+            {
+                List<StaffDTO> searchResult = dao.SearchByStaffUsername(searchValue);
+                if (searchResult.Count() > 0)
+                {
+                    lblMessage.Text = "";
+                    gvStaffList.Visible = true;
+                    gvStaffList.DataSource = null;
+                    gvStaffList.DataSource = searchResult;
+                    gvStaffList.DataBind();
+                }
+                else
+                {
+                    gvStaffList.DataSource = null;
+                    gvStaffList.Visible = false;
+                    lblMessage.Text = "No record found!";
+                    lblMessage.ForeColor = Color.Red;
+                }
+            }
         }
     }
 }

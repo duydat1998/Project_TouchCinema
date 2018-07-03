@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/AdminLayout.Master" AutoEventWireup="true" CodeBehind="ManageStaff.aspx.cs" Inherits="Project_TouchCinema.ManageStaff" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/AdminLayout.Master" AutoEventWireup="true" CodeBehind="ManageMember.aspx.cs" Inherits="Project_TouchCinema.ManageMember" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1>Cinema Staff Management</h1>
+    <h1>Cinema Member Management</h1>
             <table style="width: 48%;" border="0">
                 <tr>
                     <td class="auto-style1">Username:</td>
@@ -49,8 +49,16 @@
                     <td>
                         &nbsp;</td>
                 </tr>
+                <tr>
+                    <td class="auto-style1">Date of Birth:</td>
+                    <td>
+                        <asp:TextBox ID="txtBirth" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
             </table>
-        &nbsp;<asp:Label ID="Label1" runat="server" Text="Search by Staff Username:"></asp:Label>
+        &nbsp;<asp:Label ID="Label1" runat="server" Text="Search by Member Username:"></asp:Label>
     <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;
     <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="button" OnClick="btnSearch_Click"/>
@@ -78,10 +86,13 @@
                 <asp:BoundField DataField="LastName" HeaderText="LastName" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="Phone" HeaderText="Phone" >
+                <asp:BoundField DataField="PhoneNum" HeaderText="Phone" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
                 <asp:BoundField DataField="Email" HeaderText="Email" >
+                <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Birthdate" HeaderText="Date of Birth" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="IsActivate">
@@ -106,5 +117,5 @@
             <SortedDescendingCellStyle BackColor="#D8D8F0" />
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
-        
+         
 </asp:Content>
