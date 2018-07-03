@@ -14,12 +14,12 @@
     <table style="width: 586px">
         <tr>
             <td class="auto-style1">Booking Code</td>
-            <td colspan="2"><asp:TextBox ID="txtBookingCode" runat="server" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox></td>
-            <td><asp:Button ID="btnCheck" runat="server" Text="Check"  Width="96px" CssClass="button" OnClick="btnCheck_Click" /></td>
+            <td colspan="2"><asp:TextBox ID="txtBookingCode" runat="server" ClientIDMode="Static" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox></td>
+            <td><asp:Button OnClientClick="return ValidateBookingCode()" ID="btnCheck" runat="server" Text="Check"  Width="96px" CssClass="button" OnClick="btnCheck_Click" /></td>
         </tr>
     </table>
+    <p id="incorrectCode" class="error_message">The Booking code is invalid! Please enter another one!</p>
     <asp:Label ID="invalidCode" runat="server" Text="The Booking code is invalid! Please enter another one!" CssClass="error_message"></asp:Label><br />
-    <asp:RegularExpressionValidator CssClass="error_message" ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBookingCode" ErrorMessage="Booking code is 10-character length!" ForeColor="Red" ValidationExpression="^\w{10}$" Display="Dynamic"></asp:RegularExpressionValidator>
     <div runat="server" id="orderDetail"> 
         <h2 class="title">Order: <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>
         <table>

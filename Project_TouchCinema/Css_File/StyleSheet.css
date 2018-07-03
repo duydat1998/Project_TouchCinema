@@ -270,3 +270,7 @@ table {
     font-family: 'Poiret One';
     text-decoration-line:underline;
 }
+
+#incorrectCode{
+    visibility:hidden;
+}

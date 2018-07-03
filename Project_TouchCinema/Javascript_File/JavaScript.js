@@ -19,3 +19,12 @@ function HideInvalidMessage() {
         t[i].style.visibility = "hidden";
     }
 }
+    function ValidateBookingCode() {
+        var t = document.getElementById("txtBookingCode").value;
+        if (t.length === 10) {
+            return true;
+        } else {
+            document.getElementById("incorrectCode").style.visibility = "visible";
+            return false;
+        }
+    }

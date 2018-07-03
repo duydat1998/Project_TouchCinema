@@ -42,9 +42,5 @@ namespace Project_TouchCinema
             }
         }
 
-        protected void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-            this.invalidLogin.Visible = false;
-        }
     }
 }

@@ -13,10 +13,10 @@ namespace Project_TouchCinema
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["STAFF_USER"] == null)
-            //{
-            //    Response.Redirect("StaffLogin.aspx");
-            //}
+            if (Session["STAFF_USER"] == null)
+            {
+                Response.Redirect("StaffLogin.aspx");
+            }
             this.orderDetail.Visible = false;
             this.invalidCode.Visible = false;
 
