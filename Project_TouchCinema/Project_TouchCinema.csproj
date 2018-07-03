@@ -87,11 +87,8 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Admin\ManageStaff.aspx" />
-<<<<<<< HEAD
     <Content Include="Staff\CheckPoint.aspx" />
-=======
     <Content Include="Admin\ManageMember.aspx" />
->>>>>>> 2ee8804bd8c5df435c353c22a7093bf9be06269d
     <Content Include="Staff\StaffLogin.aspx" />
     <Content Include="Staff\StaffWorkspace.aspx" />
     <Content Include="Web.config" />
