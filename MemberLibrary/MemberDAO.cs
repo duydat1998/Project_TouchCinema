@@ -15,8 +15,7 @@ namespace MemberLibrary
 
 
 
-        private SqlConnection conn;
-        private SqlDataAdapter dAdapter;
+        private SqlConnection conn;        
         private SqlDataReader dReader;
         private SqlCommand cmd;
         private string cmdLine;
@@ -58,31 +57,31 @@ namespace MemberLibrary
             }
         }
 
-        public MemberDTO CheckLoginMember(string Username, string Password)
+        public MemberDTO CheckLoginMember(string username, string password)
         {
             MemberDTO member = null;
             try
             {
-                SetUpConnect("Select username, password, firstName, lastName, phone, email, birthDate, avatar, isActive " +
+                SetUpConnect("Select firstName, lastName, phone, email, birthDate, avatar, isActive " +
                                 "From Member " +
                                 "Where username = @Username AND password = @Password;");
                 cmd = new SqlCommand(cmdLine, conn);
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Password", password);
                 dReader = cmd.ExecuteReader();
                 if (dReader.Read())
                 {
                     member = new MemberDTO
                     {
-                        Username = dReader.GetString(0),
-                        Password = dReader.GetString(1),
-                        FirstName = dReader.GetString(2),
-                        LastName = dReader.GetString(3),
-                        PhoneNum = dReader.GetString(4),
-                        Email = dReader.GetString(5),
-                        Birthdate = dReader.GetDateTime(6),
-                        ImageLink = dReader.GetString(7),
-                        IsActive = dReader.GetBoolean(8),
+                        Username = username,
+                        Password = password,
+                        FirstName = dReader.GetString(0),
+                        LastName = dReader.GetString(1),
+                        PhoneNum = dReader.GetString(2),
+                        Email = dReader.GetString(3),
+                        Birthdate = dReader.GetDateTime(4),
+                        ImageLink = dReader.GetString(5),
+                        IsActive = dReader.GetBoolean(6),
                     };
                 }
             }

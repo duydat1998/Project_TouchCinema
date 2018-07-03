@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace MovieLibrary
 {
@@ -12,9 +13,11 @@ namespace MovieLibrary
     {
         private string strConnection;
 
+        //Nhớ xóa MayHieuBT để về lại ConnectionString cũ
+        //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
 
         }
 
@@ -159,6 +162,32 @@ namespace MovieLibrary
                 con.Close();
             }
             return listMovive;
+        }
+
+        public DataSet getTopFiveMovie()
+        {
+            DataSet ds = null;
+            SqlConnection con = new SqlConnection(strConnection);
+            con.Open();
+            try
+            {
+                string sql = "Select top(5) movieTitle, length, rating, startDate, poster, linkTrailer, producer, year " +
+                            "From Movie " +
+                            "Order by startDate desc ";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                da.Fill(ds);                
+            }
+            catch (Exception)
+            {
+                ds = null;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ds;
         }
     }
 }
