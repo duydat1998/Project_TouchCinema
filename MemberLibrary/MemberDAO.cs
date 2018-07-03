@@ -10,17 +10,8 @@ namespace MemberLibrary
 {
     public class MemberDAO
     {
-<<<<<<< HEAD
-
-
-
-
-
         private SqlConnection conn;        
-=======
-        private SqlConnection conn;
         private SqlDataAdapter dAdapter;
->>>>>>> 7db324696d628d4e349418922a1f21ab536ad038
         private SqlDataReader dReader;
         private SqlCommand cmd;
         private string cmdLine;
@@ -67,28 +58,18 @@ namespace MemberLibrary
             MemberDTO member = null;
             try
             {
-<<<<<<< HEAD
-                SetUpConnect("Select firstName, lastName, phone, email, birthDate, avatar, isActive " +
-=======
-                SetUpConnect("Select username, firstName, lastName, phone, email, birthDate, avatar " +
->>>>>>> 7db324696d628d4e349418922a1f21ab536ad038
+                SetUpConnect("Select firstName, lastName, phone, email, birthDate, avatar " +
                                 "From Member " +
                                 "Where username = @Username AND password = @Password AND isActive=@isActive");
                 cmd = new SqlCommand(cmdLine, conn);
-<<<<<<< HEAD
                 cmd.Parameters.AddWithValue("@Username", username);
                 cmd.Parameters.AddWithValue("@Password", password);
-=======
-                cmd.Parameters.AddWithValue("@Username", Username);
-                cmd.Parameters.AddWithValue("@Password", Password);
                 cmd.Parameters.AddWithValue("@isActive", true);
->>>>>>> 7db324696d628d4e349418922a1f21ab536ad038
                 dReader = cmd.ExecuteReader();
                 if (dReader.Read())
                 {
                     member = new MemberDTO
                     {
-<<<<<<< HEAD
                         Username = username,
                         Password = password,
                         FirstName = dReader.GetString(0),
@@ -97,17 +78,7 @@ namespace MemberLibrary
                         Email = dReader.GetString(3),
                         Birthdate = dReader.GetDateTime(4),
                         ImageLink = dReader.GetString(5),
-                        IsActive = dReader.GetBoolean(6),
-=======
-                        Username = dReader.GetString(0),
-                        FirstName = dReader.GetString(1),
-                        LastName = dReader.GetString(2),
-                        PhoneNum = dReader.GetString(3),
-                        Email = dReader.GetString(4),
-                        Birthdate = dReader.GetDateTime(5),
-                        ImageLink = dReader.GetString(6),
                         IsActive = true,
->>>>>>> 7db324696d628d4e349418922a1f21ab536ad038
                     };
                 }
             }
