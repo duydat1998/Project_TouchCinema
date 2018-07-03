@@ -87,6 +87,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Admin\ManageStaff.aspx" />
+    <Content Include="Admin\ManageRoom.aspx" />
     <Content Include="Staff\CheckPoint.aspx" />
     <Content Include="Admin\ManageMember.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="Admin\ManageMember.aspx.designer.cs">
       <DependentUpon>ManageMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageRoom.aspx.cs">
+      <DependentUpon>ManageRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageRoom.aspx.designer.cs">
+      <DependentUpon>ManageRoom.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Layout\StaffLayout.Master.cs">
