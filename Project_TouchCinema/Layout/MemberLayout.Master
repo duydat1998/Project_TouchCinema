@@ -10,7 +10,7 @@
     <script src="../Javascript_File/JavaScript.js"></script>
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
 </head>
-<body>    
+<body onload="ModifyBesideDiv()">    
     <form id="form1" runat="server">        
         <div id="login_form" runat="server">
             <div id="close"><input type="button" value="X" class="button" onclick="CloseLoginForm()" style="background-color:red;"/></div>
@@ -78,6 +78,7 @@
                     <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png" NavigateUrl="a"></asp:MenuItem>
                     <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="../Image/promotion-icon.png" NavigateUrl="a"></asp:MenuItem>
                     <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="../Image/feedback-icon.png" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Term & Condition" Value="Term" ImageUrl="../Image/term-condition.png" NavigateUrl="../GuestAndMember/TermAndCondition.aspx"></asp:MenuItem>
                 </Items>
         </asp:Menu>
     </div>

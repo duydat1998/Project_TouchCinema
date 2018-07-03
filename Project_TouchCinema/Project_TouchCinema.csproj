@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ErrorPages\ErrorPage.aspx" />
+    <Content Include="GuestAndMember\TermAndCondition.aspx" />
     <Content Include="Layout\AdminLayout.Master" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AdminWorkspace.aspx" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="ErrorPages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\TermAndCondition.aspx.cs">
+      <DependentUpon>TermAndCondition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\TermAndCondition.aspx.designer.cs">
+      <DependentUpon>TermAndCondition.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\AdminLayout.Master.cs">
       <DependentUpon>AdminLayout.Master</DependentUpon>

@@ -19,7 +19,8 @@ function HideInvalidMessage() {
         t[i].style.visibility = "hidden";
     }
 }
-    function ValidateBookingCode() {
+
+function ValidateBookingCode() {
         var t = document.getElementById("txtBookingCode").value;
         if (t.length === 10) {
             return true;
@@ -27,4 +28,10 @@ function HideInvalidMessage() {
             document.getElementById("incorrectCode").style.visibility = "visible";
             return false;
         }
-    }
+}
+
+function ModifyBesideDiv() {
+    alert("hehe");
+    //var h = document.getElementById("content").style.height;
+    //alert(h);
+}

@@ -11,7 +11,28 @@ namespace Project_TouchCinema
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            dlDay.Items.Insert(0, new ListItem("Day", ""));
+            for(int i=1; i<=31; i++)
+            {
+                ListItem day = new ListItem(i+"",i+"");
+                this.dlDay.Items.Insert(i, day);
+            }
+
+            dlMonth.Items.Insert(0, new ListItem("Month", ""));
+            for (int i = 1; i <= 12; i++)
+            {
+                ListItem month = new ListItem(i + "", i + "");
+                this.dlMonth.Items.Insert(i, month);
+            }
+
+            dlYear.Items.Insert(0, new ListItem("Year", ""));
+            for (int i = (DateTime.Today.Year-10); i >= 1950; i--)
+            {
+                ListItem year = new ListItem(i + "", i + "");
+                this.dlYear.Items.Add(year);
+            }
 
         }
+
     }
 }
