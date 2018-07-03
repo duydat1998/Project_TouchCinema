@@ -87,6 +87,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Admin\ManageStaff.aspx" />
+    <Content Include="Admin\ManageMember.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
     <Content Include="Staff\StaffWorkspace.aspx" />
     <Content Include="Web.config" />
@@ -150,6 +151,13 @@
     </Compile>
     <Compile Include="Admin\ManageStaff.aspx.designer.cs">
       <DependentUpon>ManageStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageMember.aspx.cs">
+      <DependentUpon>ManageMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageMember.aspx.designer.cs">
+      <DependentUpon>ManageMember.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Layout\StaffLayout.Master.cs">
