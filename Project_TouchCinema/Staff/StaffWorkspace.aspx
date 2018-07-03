@@ -10,7 +10,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1>Check Ticket code:</h1>
+    <h1 class="title">Check Ticket code:</h1>
     <table style="width: 586px">
         <tr>
             <td class="auto-style1">Booking Code</td>
@@ -18,9 +18,10 @@
             <td><asp:Button ID="btnCheck" runat="server" Text="Check"  Width="96px" CssClass="button" OnClick="btnCheck_Click" /></td>
         </tr>
     </table>
-    <asp:Label ID="invalidCode" runat="server" Text="The Booking code is invalid! Please enter another one!" CssClass="error_message"></asp:Label>
+    <asp:Label ID="invalidCode" runat="server" Text="The Booking code is invalid! Please enter another one!" CssClass="error_message"></asp:Label><br />
+    <asp:RegularExpressionValidator CssClass="error_message" ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBookingCode" ErrorMessage="Booking code is 10-character length!" ForeColor="Red" ValidationExpression="^\w{10}$" Display="Dynamic"></asp:RegularExpressionValidator>
     <div runat="server" id="orderDetail"> 
-        <h2>Order: <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>
+        <h2 class="title">Order: <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>
         <table>
             <tr>
                 <td>Movie:</td>

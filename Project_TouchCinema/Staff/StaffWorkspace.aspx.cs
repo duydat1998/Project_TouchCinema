@@ -13,10 +13,10 @@ namespace Project_TouchCinema
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["STAFF_USER"] == null)
-            {
-                Response.Redirect("StaffLogin.aspx");
-            }
+            //if (Session["STAFF_USER"] == null)
+            //{
+            //    Response.Redirect("StaffLogin.aspx");
+            //}
             this.orderDetail.Visible = false;
             this.invalidCode.Visible = false;
 
@@ -25,14 +25,7 @@ namespace Project_TouchCinema
         protected void btnCheck_Click(object sender, EventArgs e)
         {
             string orderID = txtBookingCode.Text.Trim();
-            if (orderID.Equals("") || orderID.Length != 10)
-            {
-                this.invalidCode.Visible = true;
-            }
-            else
-            {
-                GetOrderDetail(orderID);
-            }
+            GetOrderDetail(orderID);
         }
 
         public void GetOrderDetail(string orderID)

@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
     <script src="../Javascript_File/JavaScript.js"></script>
-    <h2>Please log in to continue your work:</h2>
+    <h2 class="title">Please log in to continue your work:</h2>
     <table style="width: 479px">
         <tr>
             <td>Staff ID</td>
