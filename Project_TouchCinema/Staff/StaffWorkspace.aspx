@@ -14,7 +14,7 @@
     <table style="width: 586px">
         <tr>
             <td class="auto-style1">Booking Code</td>
-            <td colspan="2"><asp:TextBox ID="txtBookingCode" runat="server" CssClass="textbox" Width="273px" OnTextChanged="txtBookingCode_TextChanged"></asp:TextBox></td>
+            <td colspan="2"><asp:TextBox ID="txtBookingCode" runat="server" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox></td>
             <td><asp:Button ID="btnCheck" runat="server" Text="Check"  Width="96px" CssClass="button" OnClick="btnCheck_Click" /></td>
         </tr>
     </table>

@@ -10,11 +10,6 @@ namespace MemberLibrary
 {
     public class MemberDAO
     {
-
-
-
-
-
         private SqlConnection conn;
         private SqlDataAdapter dAdapter;
         private SqlDataReader dReader;
@@ -63,26 +58,26 @@ namespace MemberLibrary
             MemberDTO member = null;
             try
             {
-                SetUpConnect("Select username, password, firstName, lastName, phone, email, birthDate, avatar, isActive " +
+                SetUpConnect("Select username, firstName, lastName, phone, email, birthDate, avatar " +
                                 "From Member " +
-                                "Where username = @Username AND password = @Password;");
+                                "Where username = @Username AND password = @Password AND isActive=@isActive");
                 cmd = new SqlCommand(cmdLine, conn);
                 cmd.Parameters.AddWithValue("@Username", Username);
                 cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@isActive", true);
                 dReader = cmd.ExecuteReader();
                 if (dReader.Read())
                 {
                     member = new MemberDTO
                     {
                         Username = dReader.GetString(0),
-                        Password = dReader.GetString(1),
-                        FirstName = dReader.GetString(2),
-                        LastName = dReader.GetString(3),
-                        PhoneNum = dReader.GetString(4),
-                        Email = dReader.GetString(5),
-                        Birthdate = dReader.GetDateTime(6),
-                        ImageLink = dReader.GetString(7),
-                        IsActive = dReader.GetBoolean(8),
+                        FirstName = dReader.GetString(1),
+                        LastName = dReader.GetString(2),
+                        PhoneNum = dReader.GetString(3),
+                        Email = dReader.GetString(4),
+                        Birthdate = dReader.GetDateTime(5),
+                        ImageLink = dReader.GetString(6),
+                        IsActive = true,
                     };
                 }
             }
@@ -112,10 +107,6 @@ namespace MemberLibrary
                 {
                     point = dReader.GetInt32(0);
                 }
-            }
-            catch (Exception)
-            {
-                point = 0;
             }
             finally
             {
@@ -304,6 +295,46 @@ namespace MemberLibrary
                 }
             }
             return result;
+        }
+
+        public MemberDTO SearchMember(string search)
+        {
+            MemberDTO output = null;
+            SqlConnection conn = new SqlConnection(GetConnection());
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    string sql = "Select username, firstName, lastName, phone, email from Member where (username=@search or email=@search or phone=@search) and isActive=@isActive";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@search", search);
+                    cmd.Parameters.AddWithValue("@isActive", true);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        if (reader.Read())
+                        {
+                            output = new MemberDTO
+                            {
+                                Username = reader.GetString(0),
+                                FirstName = reader.GetString(1),
+                                LastName = reader.GetString(2),
+                                PhoneNum = reader.GetString(3),
+                                Email = reader.GetString(4),
+                            };
+                        }
+                    }
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return output;
         }
 
         public List<MemberDTO> GetMemberList()

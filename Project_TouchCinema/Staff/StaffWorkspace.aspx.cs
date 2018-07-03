@@ -68,10 +68,6 @@ namespace Project_TouchCinema
             }
         }
 
-        protected void txtBookingCode_TextChanged(object sender, EventArgs e)
-        {
-            this.invalidCode.Visible = false;
-        }
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
