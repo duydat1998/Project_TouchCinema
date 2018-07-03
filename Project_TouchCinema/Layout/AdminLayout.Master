@@ -29,7 +29,7 @@
             <asp:Menu ID="menuAdmin" runat="server" CssClass="menu" OnMenuItemClick="menuAdmin_MenuItemClick">
                 <Items>
                     <asp:MenuItem Text="Manage Cinema Staff" Value="Manage Cinema Staff" NavigateUrl="~/Admin/ManageStaff.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Manage Movie" Value="Manage Movie"></asp:MenuItem>
+                    <asp:MenuItem Text="Manage Movie" Value="Manage Movie" NavigateUrl="~/Admin/ManageMovie.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Manage Schedule" Value="Manage Schedule"></asp:MenuItem>
                     <asp:MenuItem Text="Manage Room" Value="Manage Room" NavigateUrl="~/Admin/ManageRoom.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Manage Member" Value="Manage Member" NavigateUrl="~/Admin/ManageMember.aspx"></asp:MenuItem>
