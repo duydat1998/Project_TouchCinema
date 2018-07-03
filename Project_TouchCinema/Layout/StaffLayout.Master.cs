@@ -15,7 +15,7 @@ namespace WebApplicationDemo
             {
                 this.lblUser.Visible = false;
                 this.btnLogout.Visible = false;
-               
+                this.menuStaff.Visible = false;
             }
             else
             {

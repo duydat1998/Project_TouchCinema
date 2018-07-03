@@ -87,6 +87,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Admin\ManageStaff.aspx" />
+    <Content Include="Staff\CheckPoint.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
     <Content Include="Staff\StaffWorkspace.aspx" />
     <Content Include="Web.config" />
@@ -159,6 +160,13 @@
     <Compile Include="Layout\StaffLayout.Master.designer.cs">
       <DependentUpon>StaffLayout.Master</DependentUpon>
     </Compile>
+    <Compile Include="Staff\CheckPoint.aspx.cs">
+      <DependentUpon>CheckPoint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\CheckPoint.aspx.designer.cs">
+      <DependentUpon>CheckPoint.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Staff\StaffLogin.aspx.cs">
       <DependentUpon>StaffLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -177,6 +185,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Fonts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

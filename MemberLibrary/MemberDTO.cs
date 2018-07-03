@@ -22,17 +22,6 @@ namespace MemberLibrary
         {
         }
 
-        public MemberDTO(string username, string password, string firstName, string lastName, string phoneNum, string email, DateTime birthdate, string imageLink, bool isActive)
-        {
-            Username = username;
-            Password = password;
-            FirstName = firstName;
-            LastName = lastName;
-            PhoneNum = phoneNum;
-            Email = email;
-            Birthdate = birthdate;
-            ImageLink = imageLink;
-            IsActive = isActive;
-        }
+
     }
 }

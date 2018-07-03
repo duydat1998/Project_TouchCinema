@@ -40,11 +40,11 @@ a {
 #footer {
     padding: 10px 20px 10px 20px;
     box-sizing: border-box;
-    background-color: darkslategrey;
     color: white;
     float: left;
     width: 100%;
     margin-top: 10px;
+    background-color:dimgray;
 }
 
 #footer_left {
@@ -253,4 +253,8 @@ table {
     float: left;
     padding-left: 20px;
     width: 75%;
+}
+.title {
+    font-family: Langdon;
+    text-decoration-line:underline;
 }
