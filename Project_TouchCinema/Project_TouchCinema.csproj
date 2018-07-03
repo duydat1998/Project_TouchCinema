@@ -86,6 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Admin\ManageStaff.aspx" />
+    <Content Include="Admin\ManageRoom.aspx" />
+    <Content Include="Staff\CheckPoint.aspx" />
+    <Content Include="Admin\ManageMember.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
     <Content Include="Staff\StaffWorkspace.aspx" />
     <Content Include="Web.config" />
@@ -143,6 +147,27 @@
     <Compile Include="GuestAndMember\TouchCinema.aspx.designer.cs">
       <DependentUpon>TouchCinema.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ManageStaff.aspx.cs">
+      <DependentUpon>ManageStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageStaff.aspx.designer.cs">
+      <DependentUpon>ManageStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageMember.aspx.cs">
+      <DependentUpon>ManageMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageMember.aspx.designer.cs">
+      <DependentUpon>ManageMember.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageRoom.aspx.cs">
+      <DependentUpon>ManageRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageRoom.aspx.designer.cs">
+      <DependentUpon>ManageRoom.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Layout\StaffLayout.Master.cs">
       <DependentUpon>StaffLayout.Master</DependentUpon>
@@ -150,6 +175,13 @@
     </Compile>
     <Compile Include="Layout\StaffLayout.Master.designer.cs">
       <DependentUpon>StaffLayout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\CheckPoint.aspx.cs">
+      <DependentUpon>CheckPoint.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\CheckPoint.aspx.designer.cs">
+      <DependentUpon>CheckPoint.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff\StaffLogin.aspx.cs">
       <DependentUpon>StaffLogin.aspx</DependentUpon>
@@ -169,6 +201,7 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Fonts\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

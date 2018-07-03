@@ -29,19 +29,19 @@ namespace OrderLibary
                 }
                 try
                 {
-                    string sql = "Select scheduleID, phone, email, isCheckOut from Order where orderID=@orderID";
+                    string sql = "Select scheduleID, phone, email from Orders where orderID=@orderID and isCheckOut=@isCheckOut";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@orderID", orderID);
+                    cmd.Parameters.AddWithValue("@isCheckOut", false);
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
                         string scheduleID = reader["scheduleID"].ToString();
                         string phone = reader["phone"].ToString();
                         string email = reader["email"].ToString();
-                        bool isCheckOut = (bool) reader["isCheckOut"];
                         OrderDetailDAO dao = new OrderDetailDAO();
                         List<string> listSeat = dao.GetAllSeats(orderID);
-                        output = new OrderDTO { OrderID = orderID, Email = email, IsCheckOut = isCheckOut, ListOfSeat = listSeat, Phone = phone, ScheduleID = scheduleID };
+                        output = new OrderDTO { OrderID = orderID, Email = email, IsCheckOut = false, ListOfSeat = listSeat, Phone = phone, ScheduleID = scheduleID };
                     }
                 }
                 finally
@@ -65,7 +65,7 @@ namespace OrderLibary
                 }
                 try
                 {
-                    string sql = "Update Order set isCheckOut= @check";
+                    string sql = "Update Orders set isCheckOut= @check";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@check", true);
                     int count = cmd.ExecuteNonQuery();

@@ -9,6 +9,7 @@
         
     </asp:ContentPlaceHolder>
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
+    <script src="../Javascript_File/JavaScript.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,21 +25,23 @@
              <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
          </div>
          </div>
-    <div id="left_side">
-        <asp:Menu ID="menuStaff" runat="server" CssClass="menu">
-                <Items>
-                    <asp:MenuItem Text="Check Ticket" Value="Check Ticket"></asp:MenuItem>
-                    <asp:MenuItem Text="Check Member Point" Value="Check Member"></asp:MenuItem>
-                </Items>
-        </asp:Menu>
+      <div id="middle">
+        <div id="left_side">
+            <asp:Menu ID="menuStaff" runat="server" CssClass="menu">
+                    <Items>
+                        <asp:MenuItem Text="Check Ticket" Value="Check Ticket" NavigateUrl="../Staff/StaffWorkspace.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Check Member Point" Value="Check Member" NavigateUrl="../Staff/CheckPoint.aspx"></asp:MenuItem>
+                    </Items>
+            </asp:Menu>
+        </div>
+        <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPage" runat="server">
+                </asp:ContentPlaceHolder>
+        </div>
+       
+        <div id="right_side"></div>
     </div>
-    <div id="content">
-            <asp:ContentPlaceHolder ID="ContentPage" runat="server">
-            </asp:ContentPlaceHolder>
-    </div>
-    </form>
-    <div id="right_side"></div>
-    
+        </form>
     <div id="footer">
         <div id="information">
             Touch Cinema is a imaged cinema by: 

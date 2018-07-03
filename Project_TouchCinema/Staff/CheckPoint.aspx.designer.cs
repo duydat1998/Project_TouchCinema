@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_TouchCinema {
+namespace Project_TouchCinema.Staff {
     
     
-    public partial class StaffWorkspace {
+    public partial class CheckPoint {
         
         /// <summary>
-        /// txtBookingCode control.
+        /// txtSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBookingCode;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
         /// btnCheck control.
@@ -31,93 +31,57 @@ namespace Project_TouchCinema {
         protected global::System.Web.UI.WebControls.Button btnCheck;
         
         /// <summary>
-        /// invalidCode control.
+        /// invalidMember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label invalidCode;
+        protected global::System.Web.UI.WebControls.Label invalidMember;
         
         /// <summary>
-        /// orderDetail control.
+        /// memberInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl orderDetail;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl memberInfo;
         
         /// <summary>
-        /// lblOrderID control.
+        /// lbMemberName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOrderID;
+        protected global::System.Web.UI.WebControls.Label lbMemberName;
         
         /// <summary>
-        /// lbMovieName control.
+        /// lbPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbMovieName;
+        protected global::System.Web.UI.WebControls.Label lbPhone;
         
         /// <summary>
-        /// lbDate control.
+        /// lbEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbDate;
+        protected global::System.Web.UI.WebControls.Label lbEmail;
         
         /// <summary>
-        /// lbTime control.
+        /// lbPoint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTime;
-        
-        /// <summary>
-        /// lbRoom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbRoom;
-        
-        /// <summary>
-        /// lbSeat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbSeat;
-        
-        /// <summary>
-        /// lbPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbPrice;
-        
-        /// <summary>
-        /// btnCheckOut control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckOut;
+        protected global::System.Web.UI.WebControls.Label lbPoint;
     }
 }

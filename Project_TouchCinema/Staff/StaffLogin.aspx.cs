@@ -22,6 +22,7 @@ namespace Project_TouchCinema
             {
                 this.invalidLogin.Visible = true;
                 this.txtPassword.Text = "";
+                
             }
             else
             {

@@ -16,7 +16,6 @@ function CloseLoginForm() {
 function HideInvalidMessage() {
     var t = document.getElementsByClassName("error_message");
     for (i = 0; i < t.length; i++) {
-        t[i].style.opacity = "0";
+        t[i].style.visibility = "hidden";
     }
-    
 }

@@ -19,6 +19,7 @@ namespace Project_TouchCinema
             }
             this.orderDetail.Visible = false;
             this.invalidCode.Visible = false;
+
         }
 
         protected void btnCheck_Click(object sender, EventArgs e)
@@ -31,7 +32,6 @@ namespace Project_TouchCinema
             else
             {
                 GetOrderDetail(orderID);
-                
             }
         }
 
@@ -45,17 +45,44 @@ namespace Project_TouchCinema
             {
                 ScheduleDTO schedule = scheduleDAO.GetScheduleByID(order.ScheduleID);
                 string movieTitle = movieDAO.GetMovieTitle(schedule.MovieID);
+                this.orderDetail.Visible = true;
+                this.lblOrderID.Text = order.OrderID;
                 this.invalidCode.Visible = false;
+                this.lbMovieName.Text = movieTitle;
+                this.lbDate.Text = schedule.ScheduleDate.ToShortDateString();
+                this.lbTime.Text = schedule.ScheduleDate.ToShortTimeString();
+                this.lbRoom.Text = schedule.RoomID.ToString();
+                this.lbPrice.Text = (schedule.PriceOfTicket * (order.ListOfSeat).Count) +"";
+                string seat = "";
+                foreach(string s in order.ListOfSeat)
+                {
+                    seat += (s + "  ");
+                }
+                this.lbSeat.Text = seat;
+
             }
             else
             {
                 this.invalidCode.Visible = true;
+                this.orderDetail.Visible = false;
             }
         }
 
-        protected void txtBookingCode_TextChanged(object sender, EventArgs e)
+
+        protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-            this.invalidCode.Visible = false;
+            OrderDAO orderDao = new OrderDAO();
+            string orderID = txtBookingCode.Text.Trim();
+            bool result = orderDao.CheckOutOrder(orderID);
+            if (result)
+            {
+                Response.Redirect("StaffWorkspace.aspx");
+            }
+            else
+            {
+                Response.Redirect("../ErrorPages/ErrorPage.aspx");
+            }
+
         }
     }
 }

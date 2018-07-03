@@ -10,6 +10,7 @@
             <td colspan="2"><asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox></td>
         </tr>
         <tr>
+            
             <td>Password</td>
             <td colspan="2"><asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="textbox" Width="273px"></asp:TextBox></td>
         </tr>
