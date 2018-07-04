@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td class="auto-style1" colspan="3">
-                <asp:TextBox ID="txtUsername" runat="server" Width="533px" BackColor="White" 
+                <asp:TextBox ID="txtUsername" runat="server" Width="533px" BackColor="White" ClientIDMode="Static"
                 placeholder="Username is no than 20 characters" onkeypress="HideErrorMessage('usernameRequire','usernameLength')">
                                                 </asp:TextBox></td>
             <td class="auto-style4">
@@ -42,7 +42,7 @@
         </tr>   
         <tr>
             <td class="auto-style1" colspan="3">
-                <asp:TextBox ID="txtPass" runat="server" Width="533px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('passRequire','passLength')" placeholder="Password is no more than 10 characters"></asp:TextBox>
+                <asp:TextBox ID="txtPass" runat="server" ClientIDMode="Static" Width="533px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('passRequire','passLength')" placeholder="Password is no more than 10 characters"></asp:TextBox>
 
             </td>
             <td class="auto-style4">

@@ -22,6 +22,7 @@ function HideInvalidMessage() {
 
 function ValidateBookingCode() {
     var t = document.getElementById("txtBookingCode").value;
+    alert(t);
     if (t.length === 10) {
         return true;
     } else {
@@ -47,17 +48,27 @@ function HideErrorMessage() {
 }
 
 function ValidateMemberRegisterInfo() {
-    var username = document.getElementById("txtUsername").value;
-    if (username == '') {
-        document.getElementById("usernameRequire").visibility = "visible";
+    var t = document.getElementById("txtUsername").value;
+    if (t == '') {
+        document.getElementById("usernameRequire").style.visibility = "visible";
         return false;
     } else {
-        if (username.length > 20) {
-            document.getElementById("usernameLength").visibility = "visible";
+        if (t.length > 20) {
+            document.getElementById("usernameLength").style.visibility = "visible";
             return false;
         }
     }
-    //txtPass
+    t = document.getElementById("txtPass");
+    if (t == '') {
+        document.getElementById("passRequire").style.visibility = "visible";
+        return false;
+    } else {
+        if (t.length > 10) {
+            document.getElementById("passLength").style.visibility = "visible";
+            return false;
+        }
+    }
+
     //txtConfirmPass
     //txtFirstName
     //txtLastName

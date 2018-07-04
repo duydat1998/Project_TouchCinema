@@ -42,12 +42,12 @@ namespace Project_TouchCinema
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim();
+            string username = txtUsernameLogin.Text.Trim();
+            string password = txtPasswordLogin.Text.Trim();
             if (username.Equals("") || password.Equals(""))
             {
                 this.invalidLogin.Visible = true;
-                this.txtPassword.Text = "";
+                this.txtPasswordLogin.Text = "";
             }
             else
             {
@@ -69,7 +69,7 @@ namespace Project_TouchCinema
                 else
                 {
                     this.invalidLogin.Visible = true;
-                    this.txtPassword.Text = "";
+                    this.txtPasswordLogin.Text = "";
                 }
             }
         }
