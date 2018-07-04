@@ -276,3 +276,9 @@ table {
 #incorrectCode{
     visibility:hidden;
 }
+
+/*CCS for Term and Condition*/
+#term_and_condition {
+    background-color: black;
+    color: white;
+}

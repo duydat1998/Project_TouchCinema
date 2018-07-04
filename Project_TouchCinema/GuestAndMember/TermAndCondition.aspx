@@ -2,7 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1 class="title">Term and Condition of Touch Cinema</h1>
+    <div id="term_and_condition">
+        <h1 class="title">Term and Condition of Touch Cinema</h1>
    <h2 class="title">Please read these terms carefully.</h2> <br />
          <p>By using or visiting this section of the website, you are accepting the terms of use. These terms may change from time to time and you are bound to the terms of use as displayed at this point in time. Touch Cinema works hard to create an enriching customer experience that is best-of-breed in Vietnam. Below are our guidelines for online ticket purchasing.<br />
 1. Overview<br />
@@ -60,4 +61,5 @@ Touch Cinema will endeavor to take all reasonable steps to keep secure any infor
 (*) Notice: We are permitted to provide your information upon the request from the Government or authority.<br />
 CONTACT US<br />
 For problems with your booking, please do not hesitate to contact us via email address: cs@Touch.vn<br /></p>
+    </div>    
 </asp:Content>
