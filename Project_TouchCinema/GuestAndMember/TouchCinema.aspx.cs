@@ -29,12 +29,17 @@ namespace Project_TouchCinema
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-
+            Session["SearchValue"] = "";
+            Response.Redirect("MemberRegister.aspx");
         }
 
         protected void btnSeacrh_Click(object sender, EventArgs e)
         {
-
+            string searchValue = txtSearchValue.Text;
+            List<MovieDTO> resultList = mDAO.SearchListMoiveMemberGuest(searchValue);
+            Session["SearchResult"] = resultList;
+            Session["SearchValue"] = searchValue;
+            Response.Redirect("SearchResultPage.aspx");
         }
     }
 }

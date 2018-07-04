@@ -76,6 +76,7 @@ namespace Project_TouchCinema
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
+            Session["SearchValue"] = "";            
             Response.Redirect("MemberRegister.aspx");
         }
     }
