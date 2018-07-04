@@ -2,55 +2,88 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1>Cinema Movie Management</h1>
+    <h1>&nbsp;Cinema Movie Management</h1>
             <table style="width: 48%;" border="0">
                 <tr>
-                    <td class="auto-style1">Username:</td>
+                    <td class="auto-style1">Movie ID:</td>
                     <td>
-                        <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtMovieID" runat="server"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">Password:</td>
+                    <td class="auto-style1">Movie Title:</td>
                     <td>
-                        <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtMovieTitle" runat="server"></asp:TextBox>
                     </td>
                     <td>
                         &nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">First Name:</td>
+                    <td class="auto-style1">Length:</td>
                     <td>
-                        <asp:TextBox ID="txtFirstname" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtLength" runat="server"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">Last Name:</td>
+                    <td class="auto-style1">Rating:</td>
                     <td>
-                        <asp:TextBox ID="txtLastname" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtRating" runat="server"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">Phone:</td>
+                    <td class="auto-style1">Start Date:</td>
                     <td>
-                        <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtStartDate" runat="server"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style1">Email:</td>
+                    <td class="auto-style1">Poster:</td>
                     <td>
-                        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtPoster" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">Link Trailer:</td>
+                    <td>
+                        <asp:TextBox ID="txtTrailer" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">Producer:</td>
+                    <td>
+                        <asp:TextBox ID="txtProducer" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">Year:</td>
+                    <td>
+                        <asp:TextBox ID="txtYear" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style1">Genre:</td>
+                    <td>
+                        <asp:DropDownList ID="dlGenre" runat="server">
+                        </asp:DropDownList>
                     </td>
                     <td>
                         &nbsp;</td>
                 </tr>
             </table>
-        &nbsp;<asp:Label ID="Label1" runat="server" Text="Search by Staff Username:"></asp:Label>
+        &nbsp;<asp:Label ID="Label1" runat="server" Text="Search by Movie Tile:"></asp:Label>
     <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;
     <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="button" OnClick="btnSearch_Click"/>
@@ -60,39 +93,39 @@
     <asp:Button ID="btnNew" runat="server" Text="Add" CssClass="button" OnClick="btnNew_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" CssClass="button" />
+        &nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="button" OnClick="btnDelete_Click"/>
+        &nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="button" OnClick="btnUpdate_Click"/>
         <br />
     <asp:Label ID="lblMessage" runat="server" Text=" "></asp:Label>
         <br />
-    <asp:Button ID="btnUpdateActive" runat="server" Text="Update Activation" CssClass="button" Width="200px" OnClick="btnUpdateActive_Click" />
         <br />
         
         <asp:GridView ID="gvStaffList" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
             <AlternatingRowStyle BackColor="#F7F7F7" />
             <Columns>
-                <asp:BoundField DataField="Username" HeaderText="Username" >
+                <asp:BoundField DataField="MovieID" HeaderText="ID" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="FirstName" HeaderText="FirstName" >
+                <asp:BoundField DataField="MovieTitle" HeaderText="Title" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="LastName" HeaderText="LastName" >
+                <asp:BoundField DataField="Length" HeaderText="Length" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="Phone" HeaderText="Phone" >
+                <asp:BoundField DataField="Rating" HeaderText="Rating" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="Email" HeaderText="Email" >
+                <asp:BoundField DataField="Producer" HeaderText="Producer" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:TemplateField HeaderText="IsActivate">
-                    <ItemTemplate>
-                        <asp:CheckBox ID="isActive" runat="server" Checked='<%# Eval("IsActive").ToString().Equals("True")  %>'/>
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center" />
-                </asp:TemplateField>
+                <asp:BoundField DataField="Year" HeaderText="Year" >
+                <ItemStyle HorizontalAlign="Center" />
+                </asp:BoundField>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:LinkButton ID="lnkView" runat="server" CommandArgument='<%# Eval("Username") %>' OnClick="lnkView_Click" ForeColor="Blue"> View</asp:LinkButton>
+                        <asp:LinkButton ID="lnkView" runat="server" CommandArgument='<%# Eval("MovieID") %>' OnClick="lnkView_Click" ForeColor="Blue"> View Detail</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

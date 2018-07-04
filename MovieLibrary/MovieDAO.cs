@@ -189,5 +189,43 @@ namespace MovieLibrary
             }
             return ds;
         }
+
+        public List<MovieDTO> GetMovieList()
+        {
+            List<MovieDTO> listMovie = new List<MovieDTO>();
+            SqlConnection con = new SqlConnection(strConnection);
+            con.Open();
+            try
+            {
+                string sql = "SELECT movieID,movieTitle,[length],rating,startDate,poster,linkTrailer,producer,[year] FROM Movie";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listMovie = new List<MovieDTO>();
+                    while (reader.Read())
+                    {
+                        MovieDTO dto = new MovieDTO
+                        {
+                            MovieID = reader.GetString(0),
+                            MovieTitle = reader.GetString(1),
+                            Length = reader.GetInt32(2),
+                            Rating = reader.GetFloat(3),
+                            StartDate = reader.GetDateTime(4),
+                            Poster = reader.GetString(5),
+                            LinkTrailer = reader.GetString(6),
+                            Producer = reader.GetString(7),
+                            Year = reader.GetInt32(8)
+                        };
+                        listMovie.Add(dto);
+                    }
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return listMovie;
+        }
     }
 }

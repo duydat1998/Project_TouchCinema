@@ -225,6 +225,10 @@
       <Project>{38dccc9b-bcfc-4470-8c52-98a346b21f81}</Project>
       <Name>AdminLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenreLibrary\GenreLibrary.csproj">
+      <Project>{78b1ab91-d259-4535-9b1d-6d21173e8474}</Project>
+      <Name>GenreLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MemberLibrary\MemberLibrary.csproj">
       <Project>{cdafd483-a317-4c46-b654-f2f0b94fd747}</Project>
       <Name>MemberLibrary</Name>
