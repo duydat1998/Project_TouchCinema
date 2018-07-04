@@ -159,7 +159,7 @@ namespace Project_TouchCinema
 
         protected void btnShowAll_Click(object sender, EventArgs e)
         {
-            lblMessage.Text = "";
+            Clear();
             gvStaffList.Visible = true;
             List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
             gvStaffList.DataSource = list;

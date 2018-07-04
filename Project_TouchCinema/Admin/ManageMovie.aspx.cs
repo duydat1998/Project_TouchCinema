@@ -46,12 +46,27 @@ namespace Project_TouchCinema
             lblMessage.ForeColor = color;
         }
 
+        public int ReturnGenreID(string genreName)
+        {
+            int id = 0;
+            List<GenreDTO> list = (List<GenreDTO>)Session["AdminGenreList"];
+            foreach(GenreDTO item in list)
+            {
+                if (item.GenreName.Equals(genreName))
+                {
+                    id = item.GenreID;
+                }
+            }
+            return id;
+        }
+
         protected void btnNew_Click(object sender, EventArgs e)
         {
             string id = txtMovieID.Text.Trim();
             string title = txtMovieTitle.Text.Trim();
             int year = 0, length = 0;
             float rating = 0;
+            
             try
             {
                 length = Convert.ToInt32(txtLength.Text);
@@ -86,6 +101,7 @@ namespace Project_TouchCinema
             {
                 SetMessageTextAndColor("Start Date is wrong format , format must be MM/dd/yyyy", Color.Red);
             }
+            int genre = ReturnGenreID(dlGenre.SelectedValue);
 
             MovieDTO dto = new MovieDTO
             {
@@ -98,6 +114,7 @@ namespace Project_TouchCinema
                 LinkTrailer = trailer,
                 Producer = producer,
                 Year = year,
+                Genre = genre
             };
             try
             {
@@ -149,8 +166,10 @@ namespace Project_TouchCinema
         protected void lnkView_Click(object sender, EventArgs e)
         {
             lblMessage.Text = "";
+            btnUpdate.Enabled = true;
             string id = (sender as LinkButton).CommandArgument;
             List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+            List<GenreDTO> listgenre = (List<GenreDTO>)Session["AdminGenreList"];
             for (int i = 0; i <= list.Count - 1; i++)
             {
                 if (list[i].MovieID == id)
@@ -164,6 +183,13 @@ namespace Project_TouchCinema
                     txtStartDate.Text = list[i].StartDate.ToShortDateString();
                     txtProducer.Text = list[i].Producer;
                     txtYear.Text = list[i].Year.ToString();
+                    foreach(GenreDTO item in listgenre)
+                    {
+                        if (item.GenreID==list[i].Genre)
+                        {
+                            dlGenre.Text = item.GenreName;
+                        }
+                    }
                 }
             }
             txtMovieID.Enabled = false;
@@ -173,23 +199,127 @@ namespace Project_TouchCinema
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             string movieID = txtMovieID.Text;
-            MovieDAO dao = new MovieDAO();
-
-
-            Clear();
+            if (MovieDao.DeleteMovie(movieID))
+            {
+                List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+                foreach(MovieDTO item in list)
+                {
+                    if (item.MovieID.Equals(movieID))
+                    {
+                        list.Remove(item);
+                    }
+                }
+                gvStaffList.DataSource = list;
+                gvStaffList.DataBind();
+                SetMessageTextAndColor("Successfully deleted", Color.Green);
+                Clear();
+            }
+            else
+            {
+                SetMessageTextAndColor("Failed to delete", Color.Red);
+            }
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            
+            string id = txtMovieID.Text.Trim();
+            string title = txtMovieTitle.Text.Trim();
+            int year = 0, length = 0;
+            float rating = 0;
+
+            try
+            {
+                length = Convert.ToInt32(txtLength.Text);
+            }
+            catch
+            {
+                SetMessageTextAndColor("Length must be a number", Color.Red);
+            }
+            try
+            {
+                year = Convert.ToInt32(txtYear.Text);
+            }
+            catch
+            {
+                SetMessageTextAndColor("Year must be a number", Color.Red);
+            }
+            try
+            {
+                rating = float.Parse(txtRating.Text);
+            }
+            catch
+            {
+                SetMessageTextAndColor("Rating must be a number", Color.Red);
+            }
+            string producer = txtProducer.Text.Trim();
+            string poster = txtPoster.Text.Trim();
+            string trailer = txtTrailer.Text.Trim();
+            DateTime startDate = new DateTime();
+            try
+            {
+                startDate = DateTime.Parse(txtStartDate.Text);
+            }
+            catch
+            {
+                SetMessageTextAndColor("Start Date is wrong format , format must be MM/dd/yyyy", Color.Red);
+            }
+            int genre = ReturnGenreID(dlGenre.SelectedValue);
+
+            MovieDTO dto = new MovieDTO
+            {
+                MovieID = id,
+                MovieTitle = title,
+                Length = length,
+                Rating = rating,
+                StartDate = startDate,
+                Poster = poster,
+                LinkTrailer = trailer,
+                Producer = producer,
+                Year = year,
+                Genre = genre
+            };
+
+            try
+            {
+                if (MovieDao.UpdateMovie(dto))
+                {
+                    List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+                    foreach(MovieDTO item in list)
+                    {
+                        if (item.MovieID.Equals(id))
+                        {
+                            item.MovieTitle = dto.MovieTitle;
+                            item.Year = dto.Year;
+                            item.Length = dto.Length;
+                            item.Rating = dto.Rating;
+                            item.Producer = dto.Producer;
+                            item.Poster = dto.Poster;
+                            item.LinkTrailer = dto.LinkTrailer;
+                            item.StartDate = dto.StartDate;
+                            item.Genre = dto.Genre;
+                        }
+                    }
+                    gvStaffList.DataSource = list;
+                    gvStaffList.DataBind();
+                    SetMessageTextAndColor("Successfully updated", Color.Green);
+                }
+                else
+                {
+                    SetMessageTextAndColor("Failed to update", Color.Red);
+                }
+            }
+            catch
+            {
+                SetMessageTextAndColor("Server encounter a fatal error please try again later.", Color.Red);
+            }
         }
 
-        public List<MovieDTO> SearchInListByUsername(List<MovieDTO> list, string searchValue)
+        public List<MovieDTO> SearchInListByMovieName(List<MovieDTO> list, string searchValue)
         {
             List<MovieDTO> result = new List<MovieDTO>();
             foreach (MovieDTO item in list)
             {
-                if (item.MovieTitle.IndexOf(searchValue) >= 0)
+                if (item.MovieTitle.ToUpper().IndexOf(searchValue.ToUpper()) >= 0)
                 {
                     result.Add(item);
                 }
@@ -200,12 +330,39 @@ namespace Project_TouchCinema
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            Clear();
+            string searchValue = txtSearch.Text;
+            List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+            if (!searchValue.Equals(""))
+            {
+                List<MovieDTO> result = SearchInListByMovieName(list, searchValue);
+                if (result.Count > 0)
+                {
+                    lblMessage.Text = "";
+                    gvStaffList.Visible = true;
+                    gvStaffList.DataSource = null;
+                    gvStaffList.DataSource = result;
+                    gvStaffList.DataBind();
+                }
+                else
+                {
+                    gvStaffList.Visible = false;
+                    gvStaffList.DataSource = null;
+                    SetMessageTextAndColor("No record found", Color.Red);
+                }
 
+            }
+            
+            
         }
 
         protected void btnShowAll_Click(object sender, EventArgs e)
         {
-
+            Clear();
+            List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+            gvStaffList.Visible = true;
+            gvStaffList.DataSource = list;
+            gvStaffList.DataBind();
         }
     }
 }

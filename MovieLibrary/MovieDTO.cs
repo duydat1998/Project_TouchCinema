@@ -17,5 +17,6 @@ namespace MovieLibrary
         public string LinkTrailer { get; set; }
         public string Producer { get; set; }
         public int Year { get; set; }
+        public int Genre { get; set; }
     }
 }

@@ -198,7 +198,7 @@ namespace MovieLibrary
             con.Open();
             try
             {
-                string sql = "SELECT movieID,movieTitle,[length],rating,startDate,poster,linkTrailer,producer,[year] FROM Movie";
+                string sql = "SELECT movieID,movieTitle,[length],rating,startDate,poster,linkTrailer,producer,[year],genreID FROM Movie";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -211,7 +211,11 @@ namespace MovieLibrary
                         int length = reader.GetInt32(2);
                         float rating = (float)reader.GetDouble(3);
                         DateTime dateTime = reader.GetDateTime(4);
-                        string poster = reader.GetString(5);
+                        string poster = "";
+                        if (!reader.IsDBNull(5))
+                        {
+                            poster = reader.GetString(5);
+                        }
                         string trailer="";
                         if (!reader.IsDBNull(6))
                         {
@@ -219,6 +223,7 @@ namespace MovieLibrary
                         }
                         string producer = reader.GetString(7);
                         int year = reader.GetInt32(8);
+                        int genre = reader.GetInt32(9);
                         MovieDTO dto = new MovieDTO
                         {
                             MovieID = id,
@@ -229,7 +234,8 @@ namespace MovieLibrary
                             Poster = poster,
                             LinkTrailer = trailer,
                             Producer = producer,
-                            Year = year
+                            Year = year,
+                            Genre = genre
                         };
                         listMovie.Add(dto);
                     }
@@ -255,6 +261,11 @@ namespace MovieLibrary
                 string sql = "DELETE FROM Movie WHERE movieID=@movieID";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@movieID", movieID);
+                int i = cmd.ExecuteNonQuery();
+                if (i > 0)
+                {
+                    check = true;
+                }
             }
             finally
             {
