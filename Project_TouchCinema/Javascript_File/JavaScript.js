@@ -122,10 +122,29 @@ function ValidateMemberRegisterInfo() {
         }
     }
 
+    t = document.getElementById("dlDay").value;
+    if (t == 'Day') {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        return false;
+    }
 
-    //dlDay
-    //dlMonth
-    //dlYear
-    //chkAgree
+    t = document.getElementById("dlMonth").value;
+    if (t == 'Month') {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        return false;
+    }
+
+    t = document.getElementById("dlYear").value;
+    if (t == 'Year') {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        return false;
+    }
+
+    t = document.getElementById("chkAgree");
+    if (t.check == false) {
+        document.getElementById("termCheck").style.visibility = "visible";
+        return false;
+    }
+   
     return true;
 }

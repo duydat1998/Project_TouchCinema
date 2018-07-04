@@ -11,7 +11,7 @@
             width: 94px;
         }
         .auto-style4 {
-            width: 346px;
+            width: 406px;
         }
     </style>
 </asp:Content>
@@ -30,7 +30,7 @@
                 placeholder="Username is no than 20 characters" onkeypress="HideErrorMessage('usernameRequire','usernameLength')">
                                                 </asp:TextBox></td>
             <td class="auto-style4">
-                <span id="usernameRequire" class="error_message">Username is required. </span>
+                <span id="usernameRequire" class="error_message">Username is required. </span><br />
                 <span id="usernameLength" class="error_message">Username must be no more than 20 characters.</span>
             </td>
             
@@ -46,7 +46,7 @@
 
             </td>
             <td class="auto-style4">
-                <span id="passRequire" class="error_message">Password is required. </span>
+                <span id="passRequire" class="error_message">Password is required. </span><br />
                 <span id="passLength" class="error_message">Password must be no more than 10 characters. </span>
             </td>
         </tr>
@@ -57,9 +57,9 @@
             </td>
         </tr>        
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox onkeypress="HideErrorMessage('confirmPassRequire','confirmPassMatch')" ID="txtConfirmPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('confirmPassRequire','confirmPassMatch')" ID="txtConfirmPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
-                <span id="confirmPassRequire" class="error_message">Confirm Password is required. </span>
+                <span id="confirmPassRequire" class="error_message">Confirm Password is required. </span><br />
                 <span id="confirmPassMatch" class="error_message">Confirm Password is not matched.   </span>
             </td>
         </tr>
@@ -69,7 +69,7 @@
             <td></td>
         </tr>      
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox onkeypress="HideErrorMessage('firtnameRequire')" ID="txtFirstName" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('firtnameRequire')" ID="txtFirstName" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
                 <span id="firtnameRequire" class="error_message">First name is required. </span>
             </td>
@@ -80,7 +80,7 @@
             <td></td>
         </tr>  
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox onkeypress="HideErrorMessage('latnameRequire')" ID="txtLastName" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('latnameRequire')" ID="txtLastName" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
                 <span id="latnameRequire" class="error_message">Last name is required. </span>
             </td>
@@ -93,9 +93,9 @@
             </td>
         </tr>    
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox onkeypress="HideErrorMessage('phoneRequire','phoneFormat')" ID="txtPhone" runat="server" Width="533px" TextMode="Phone" BackColor="White"></asp:TextBox></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('phoneRequire','phoneFormat')" ID="txtPhone" runat="server" Width="533px" TextMode="Phone" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
-                <span id="phoneRequire" class="error_message">Phone number is required. </span>
+                <span id="phoneRequire" class="error_message">Phone number is required. </span><br />
                 <span id="phoneFormat" class="error_message">Phone number is NOT in corect format. </span>
             </td>
         </tr>
@@ -105,9 +105,9 @@
             <td></td>
         </tr>      
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox onkeypress="HideErrorMessage('emailRequire','emailFormat')" ID="txtEmail" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('emailRequire','emailFormat')" ID="txtEmail" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
-                <span id="emailRequire" class="error_message">Email is required. </span>
+                <span id="emailRequire" class="error_message">Email is required. </span><br />
                 <span id="emailFormat" class="error_message">Email is NOT in corect format. </span>
             </td>
         </tr>
@@ -117,10 +117,10 @@
             <td></td>
         </tr>     
         <tr>
-            <td class="auto-style2"><asp:DropDownList ID="dlDay" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
-            <td class="auto-style3"><asp:DropDownList ID="dlMonth" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
-            <td><asp:DropDownList ID="dlYear" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
-            <td><span id="dateInvalid" class="error_message">Date is not valid. </span></td>
+            <td class="auto-style2"><asp:DropDownList ID="dlDay" ClientIDMode="Static" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
+            <td class="auto-style3"><asp:DropDownList ID="dlMonth" ClientIDMode="Static" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
+            <td><asp:DropDownList ID="dlYear" runat="server" ClientIDMode="Static" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
+            <td class="auto-style4"><span id="dateInvalid" class="error_message">Date is not valid. </span></td>
         </tr>
         <tr>
             <td class="auto-style2">Avatar:</td>
@@ -133,8 +133,8 @@
             <td colspan="3"><asp:CheckBox ID="chkGetNotify" runat="server" Text="Get notifications by email from Touch Cinema"/></td>
         </tr>
         <tr>
-            <td colspan="3"><asp:CheckBox ID="chkAgree" runat="server" Text="I have read and agree to Touch Cinema's Term and Condition" onclick="HideErrorMessage('termCheck')" /></td>
-            <td>
+            <td colspan="3"><asp:CheckBox ID="chkAgree" ClientIDMode="Static" runat="server" Text="I have read and agree to Touch Cinema's Term and Condition" onclick="HideErrorMessage('termCheck')" /></td>
+            <td class="auto-style4">
                 <span id="termCheck" class="error_message">You must agree with term and condition to cotinue. </span>
             </td>
         </tr>
