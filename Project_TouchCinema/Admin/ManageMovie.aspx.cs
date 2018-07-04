@@ -22,9 +22,7 @@ namespace Project_TouchCinema
             {
                 listGenre = GenreDao.GetGenreList();
                 Session.Add("AdminGenreList", listGenre);
-                
-                    listMovie = MovieDao.GetMovieList();
-                
+                listMovie = MovieDao.GetMovieList();
                 Session.Add("AdminMovieList", listMovie);
                 gvStaffList.DataSource = listMovie;
                 gvStaffList.DataBind();
@@ -42,9 +40,87 @@ namespace Project_TouchCinema
             }
         }
 
+        public void SetMessageTextAndColor(string msg, Color color)
+        {
+            lblMessage.Text = msg;
+            lblMessage.ForeColor = color;
+        }
+
         protected void btnNew_Click(object sender, EventArgs e)
         {
+            string id = txtMovieID.Text.Trim();
+            string title = txtMovieTitle.Text.Trim();
+            int year = 0, length = 0;
+            float rating = 0;
+            try
+            {
+                length = Convert.ToInt32(txtLength.Text);
+            }
+            catch
+            {
+                SetMessageTextAndColor("Length must be a number", Color.Red);
+            }
+            try
+            {
+                year = Convert.ToInt32(txtYear.Text);
+            }catch{
+                SetMessageTextAndColor("Year must be a number", Color.Red);
+            }
+            try
+            {
+                rating = float.Parse(txtRating.Text);
+            }
+            catch
+            {
+                SetMessageTextAndColor("Rating must be a number", Color.Red);
+            }
+            string producer = txtProducer.Text.Trim();
+            string poster = txtPoster.Text.Trim();
+            string trailer = txtTrailer.Text.Trim();
+            DateTime startDate = new DateTime();
+            try
+            {
+                startDate = DateTime.Parse(txtStartDate.Text);
+            }
+            catch
+            {
+                SetMessageTextAndColor("Start Date is wrong format , format must be MM/dd/yyyy", Color.Red);
+            }
 
+            MovieDTO dto = new MovieDTO
+            {
+                MovieID = id,
+                MovieTitle = title,
+                Length = length,
+                Rating = rating,
+                StartDate = startDate,
+                Poster = poster,
+                LinkTrailer = trailer,
+                Producer = producer,
+                Year = year,
+            };
+            try
+            {
+                if (MovieDao.AddNewMovie(dto))
+                {
+                    List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+                    list.Add(dto);
+                    gvStaffList.DataSource = list;
+                    gvStaffList.DataBind();
+                    SetMessageTextAndColor("Successfully added", Color.Green);
+                }
+                else
+                {
+                    SetMessageTextAndColor("Failed to add", Color.Red);
+                }
+            }
+            catch
+            {
+                SetMessageTextAndColor("Movie ID is already existed", Color.Red);
+            }
+
+            
+            
         }
 
         public void Clear()

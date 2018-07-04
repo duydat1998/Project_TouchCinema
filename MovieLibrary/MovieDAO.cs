@@ -17,7 +17,7 @@ namespace MovieLibrary
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
 
         }
 
@@ -138,6 +138,7 @@ namespace MovieLibrary
                     listMovive = new List<MovieDTO>();
                     while (reader.Read())
                     {
+                        
                         MovieDTO dto = new MovieDTO
                         {
                             MovieTitle = reader.GetString(0),
@@ -205,17 +206,30 @@ namespace MovieLibrary
                     listMovie = new List<MovieDTO>();
                     while (reader.Read())
                     {
+                        string id = reader.GetString(0);
+                        string title = reader.GetString(1);
+                        int length = reader.GetInt32(2);
+                        float rating = (float)reader.GetDouble(3);
+                        DateTime dateTime = reader.GetDateTime(4);
+                        string poster = reader.GetString(5);
+                        string trailer="";
+                        if (!reader.IsDBNull(6))
+                        {
+                            trailer =(string) reader.GetString(6);
+                        }
+                        string producer = reader.GetString(7);
+                        int year = reader.GetInt32(8);
                         MovieDTO dto = new MovieDTO
                         {
-                            MovieID = reader.GetString(0),
-                            MovieTitle = reader.GetString(1),
-                            Length = reader.GetInt32(2),
-                            Rating = reader.GetFloat(3),
-                            StartDate = reader.GetDateTime(4),
-                            Poster = reader.GetString(5),
-                            LinkTrailer = reader.GetString(6),
-                            Producer = reader.GetString(7),
-                            Year = reader.GetInt32(8)
+                            MovieID = id,
+                            MovieTitle = title,
+                            Length = length,
+                            Rating = rating,
+                            StartDate = dateTime,
+                            Poster = poster,
+                            LinkTrailer = trailer,
+                            Producer = producer,
+                            Year = year
                         };
                         listMovie.Add(dto);
                     }
