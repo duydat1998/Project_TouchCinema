@@ -148,6 +148,24 @@ namespace Project_TouchCinema
 
         protected void lnkView_Click(object sender, EventArgs e)
         {
+            lblMessage.Text = "";
+            string id = (sender as LinkButton).CommandArgument;
+            List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+            for (int i = 0; i <= list.Count - 1; i++)
+            {
+                if (list[i].MovieID == id)
+                {
+                    txtMovieID.Text = list[i].MovieID;
+                    txtMovieTitle.Text = list[i].MovieTitle;
+                    txtLength.Text = list[i].Length.ToString();
+                    txtRating.Text = list[i].Rating.ToString();
+                    txtPoster.Text = list[i].Poster;
+                    txtTrailer.Text = list[i].LinkTrailer;
+                    txtStartDate.Text = list[i].StartDate.ToShortDateString();
+                    txtProducer.Text = list[i].Producer;
+                    txtYear.Text = list[i].Year.ToString();
+                }
+            }
             txtMovieID.Enabled = false;
             btnNew.Enabled = false;
         }
@@ -163,7 +181,7 @@ namespace Project_TouchCinema
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         public List<MovieDTO> SearchInListByUsername(List<MovieDTO> list, string searchValue)

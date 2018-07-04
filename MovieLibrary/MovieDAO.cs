@@ -241,5 +241,27 @@ namespace MovieLibrary
             }
             return listMovie;
         }
+
+        public bool DeleteMovie(string movieID)
+        {
+            bool check = false;
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "DELETE FROM Movie WHERE movieID=@movieID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@movieID", movieID);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return check;
+        }
     }
 }

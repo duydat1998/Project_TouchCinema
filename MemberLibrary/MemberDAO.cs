@@ -381,5 +381,24 @@ namespace MemberLibrary
             return listMember;
         }
         
+        public bool DeleteMovie(string movieID)
+        {
+            bool check = false;
+            SqlConnection conn = new SqlConnection(GetConnection());
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return check;
+        }
     }
 }
