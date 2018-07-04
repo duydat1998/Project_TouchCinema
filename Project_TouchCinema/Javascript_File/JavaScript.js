@@ -58,7 +58,9 @@ function ValidateMemberRegisterInfo() {
             return false;
         }
     }
-    t = document.getElementById("txtPass");
+    t = document.getElementById("txtPass").value;
+    var password = t;
+
     if (t == '') {
         document.getElementById("passRequire").style.visibility = "visible";
         return false;
@@ -69,11 +71,58 @@ function ValidateMemberRegisterInfo() {
         }
     }
 
-    //txtConfirmPass
-    //txtFirstName
-    //txtLastName
-    //txtPhone
-    //txtEmail
+    t = document.getElementById("txtConfirmPass").value;
+    if (t == '') {
+        document.getElementById("confirmPassRequire").style.visibility = "visible";
+        return false;
+    } else {
+        if (t != password) {
+            document.getElementById("confirmPassMatch").style.visibility = "visible";
+            return false;
+        }
+    }
+
+    t = document.getElementById("txtFirstName").value;
+    if (t == '') {
+        document.getElementById("firtnameRequire").style.visibility = "visible";
+        return false;
+    }
+
+    t = document.getElementById("txtLastName").value;
+    if (t == '') {
+        document.getElementById("latnameRequire").style.visibility = "visible";
+        return false;
+    }
+
+    t = document.getElementById("txtPhone").value;
+    var phoneFormat = /^0[1-9][0-9]+$/;
+    if (t == '') {
+        document.getElementById("phoneRequire").style.visibility = "visible";
+        return false;
+    } else {
+        if (t.length < 10 || t.length > 11) {
+            document.getElementById("phoneFormat").style.visibility = "visible";
+            return false;
+        } else 
+        if (!phoneFormat.test(t)) {
+            document.getElementById("phoneFormat").style.visibility = "visible";
+            return false;
+        }
+    }
+
+    t = document.getElementById("txtEmail").value.toLowerCase();
+    var emailFormat = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (t == '') {
+        document.getElementById("emailRequire").style.visibility = "visible";
+        return false;
+    } else {
+        if (!emailFormat.test(t)) {
+            document.getElementById("emailFormat").style.visibility = "visible";
+            return false;
+        }
+    }
+
+
     //dlDay
     //dlMonth
     //dlYear
