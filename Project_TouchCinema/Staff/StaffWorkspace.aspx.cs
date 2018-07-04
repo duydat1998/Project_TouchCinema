@@ -24,6 +24,7 @@ namespace Project_TouchCinema
 
         protected void btnCheck_Click(object sender, EventArgs e)
         {
+            Trace.Write("send to server");
             string orderID = txtBookingCode.Text.Trim();
             GetOrderDetail(orderID);
         }

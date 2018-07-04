@@ -21,13 +21,13 @@ function HideInvalidMessage() {
 }
 
 function ValidateBookingCode() {
-        var t = document.getElementById("txtBookingCode").value;
-        if (t.length === 10) {
-            return true;
-        } else {
-            document.getElementById("incorrectCode").style.visibility = "visible";
-            return false;
-        }
+    var t = document.getElementById("txtBookingCode").value;
+    if (t.length === 10) {
+        return true;
+    } else {
+        document.getElementById("incorrectCode").style.visibility = "visible";
+        return false;
+    }
 }
 
 function ModifyBesideDiv() {
@@ -36,6 +36,8 @@ function ModifyBesideDiv() {
         document.getElementById("left_side").style.height = h + "px";
         document.getElementById("right_side").style.height = h + "px";
     }
-    
+}
+
+function ValidateMemberRegisterInfo() {
 
 }

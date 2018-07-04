@@ -10,6 +10,9 @@
         .auto-style3 {
             width: 94px;
         }
+        .auto-style4 {
+            width: 346px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">        
@@ -19,11 +22,14 @@
             <td class="auto-style2">Username:</td>
             <td class="auto-style3"></td>
             <td></td>
-            <td></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox ID="txtUsername" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
-            <td></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ID="txtUsername" runat="server" Width="533px" BackColor="White" placeholder="Username is no than 20 characters"></asp:TextBox></td>
+            <td class="auto-style4"><asp:Label ID="usernameError" runat="server" Text="Username must not be null" CssClass="error_message"></asp:Label>
+                <asp:Label ID="usernameLegthError" runat="server" Text="Username must be no more than 20 characters"></asp:Label>
+            </td>
+            
         </tr>
         <tr>
             <td class="auto-style2">Password:</td>
@@ -31,8 +37,8 @@
             <td></td>
         </tr>   
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox ID="txtPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
-            <td></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ID="txtPass" runat="server" Width="533px" TextMode="Password" BackColor="White" placeholder="Password is no more than 10 characters"></asp:TextBox></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td class="auto-style2">Confirm password:</td>
@@ -41,7 +47,7 @@
         </tr>        
         <tr>
             <td class="auto-style1" colspan="3"><asp:TextBox ID="txtConfirmPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
-            <td></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td class="auto-style2">First name:</td>
@@ -50,7 +56,7 @@
         </tr>      
         <tr>
             <td class="auto-style1" colspan="3"><asp:TextBox ID="txtFirstName" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
-            <td></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td class="auto-style2">Last name:</td>
@@ -59,7 +65,7 @@
         </tr>  
         <tr>
             <td class="auto-style1" colspan="3"><asp:TextBox ID="txtLastName" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
-            <td></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td class="auto-style2">Phone number:</td>
@@ -68,7 +74,7 @@
         </tr>    
         <tr>
             <td class="auto-style1" colspan="3"><asp:TextBox ID="txtPhone" runat="server" Width="533px" TextMode="Phone" BackColor="White"></asp:TextBox></td>
-            <td></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td class="auto-style2">Email:</td>
@@ -77,7 +83,7 @@
         </tr>      
         <tr>
             <td class="auto-style1" colspan="3"><asp:TextBox ID="txtEmail" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
-            <td></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td class="auto-style2">Day of Birth:</td>
@@ -106,7 +112,7 @@
             <td colspan="3" style="color:green;">If you haven't read the Term and Condition, <b><a href="TermAndCondition.aspx" style="color:green;text-decoration:underline">read here</a></b>.</td>
         </tr>
         <tr>
-            <td class="auto-style3" colspan="3"><asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" Width="538px" /></td>
+            <td class="auto-style3" colspan="3"><asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" Width="538px" OnClick="btnRegister_Click" /></td>
         </tr>
     </table>
 </asp:Content>

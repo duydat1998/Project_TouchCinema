@@ -22,6 +22,24 @@ namespace Project_TouchCinema {
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
         
         /// <summary>
+        /// usernameError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label usernameError;
+        
+        /// <summary>
+        /// usernameLegthError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label usernameLegthError;
+        
+        /// <summary>
         /// txtPass control.
         /// </summary>
         /// <remarks>
