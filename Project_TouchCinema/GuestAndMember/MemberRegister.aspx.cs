@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using MemberLibrary;
 namespace Project_TouchCinema
 {
     public partial class MemberRegister : System.Web.UI.Page
@@ -34,5 +34,9 @@ namespace Project_TouchCinema
 
         }
 
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

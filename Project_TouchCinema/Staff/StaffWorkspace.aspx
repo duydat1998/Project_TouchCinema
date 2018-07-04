@@ -18,7 +18,7 @@
             <td><asp:Button OnClientClick="return ValidateBookingCode()" ID="btnCheck" runat="server" Text="Check"  Width="96px" CssClass="button" OnClick="btnCheck_Click" /></td>
         </tr>
     </table>
-    <p id="incorrectCode" class="error_message">The Booking code is invalid! Please enter another one!</p>
+    <p id="incorrectCode" class="error_message">A correct Booking code must be 10-character long! Please enter another one!</p>
     <asp:Label ID="invalidCode" runat="server" Text="The Booking code is invalid! Please enter another one!" CssClass="error_message"></asp:Label><br />
     <div runat="server" id="orderDetail"> 
         <h2 class="title">Order: <asp:Label ID="lblOrderID" runat="server" Text=""></asp:Label></h2>

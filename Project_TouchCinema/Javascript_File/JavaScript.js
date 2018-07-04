@@ -15,19 +15,20 @@ function CloseLoginForm() {
 }
 function HideInvalidMessage() {
     var t = document.getElementsByClassName("error_message");
-    for (i = 0; i < t.length; i++) {
+    for ( var i = 0; i < t.length; i++) {
         t[i].style.visibility = "hidden";
     }
 }
 
 function ValidateBookingCode() {
-        var t = document.getElementById("txtBookingCode").value;
-        if (t.length === 10) {
-            return true;
-        } else {
-            document.getElementById("incorrectCode").style.visibility = "visible";
-            return false;
-        }
+    var t = document.getElementById("txtBookingCode").value;
+    alert(t);
+    if (t.length === 10) {
+        return true;
+    } else {
+        document.getElementById("incorrectCode").style.visibility = "visible";
+        return false;
+    }
 }
 
 function ModifyBesideDiv() {
@@ -36,6 +37,46 @@ function ModifyBesideDiv() {
         document.getElementById("left_side").style.height = h + "px";
         document.getElementById("right_side").style.height = h + "px";
     }
-    
+}
 
+function HideErrorMessage() {
+    for (var i = 0; i < arguments.length; i++) {
+        var t = document.getElementById(arguments[i]);
+        t.style.visibility = "hidden";
+    }
+    
+}
+
+function ValidateMemberRegisterInfo() {
+    var t = document.getElementById("txtUsername").value;
+    if (t == '') {
+        document.getElementById("usernameRequire").style.visibility = "visible";
+        return false;
+    } else {
+        if (t.length > 20) {
+            document.getElementById("usernameLength").style.visibility = "visible";
+            return false;
+        }
+    }
+    t = document.getElementById("txtPass");
+    if (t == '') {
+        document.getElementById("passRequire").style.visibility = "visible";
+        return false;
+    } else {
+        if (t.length > 10) {
+            document.getElementById("passLength").style.visibility = "visible";
+            return false;
+        }
+    }
+
+    //txtConfirmPass
+    //txtFirstName
+    //txtLastName
+    //txtPhone
+    //txtEmail
+    //dlDay
+    //dlMonth
+    //dlYear
+    //chkAgree
+    return true;
 }

@@ -40,22 +40,22 @@ namespace Project_TouchCinema {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl login_form;
         
         /// <summary>
-        /// txtUsername control.
+        /// txtUsernameLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.TextBox txtUsernameLogin;
         
         /// <summary>
-        /// txtPassword control.
+        /// txtPasswordLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtPasswordLogin;
         
         /// <summary>
         /// btnLogin control.

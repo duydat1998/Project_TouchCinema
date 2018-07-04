@@ -17,7 +17,7 @@ namespace MovieLibrary
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
 
         }
 
@@ -131,7 +131,7 @@ namespace MovieLibrary
                             "From Movie " +
                             "Where movieTitle Like  @MovieName ";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@MovieName", "'%'" + movieName + "'%'");
+                cmd.Parameters.AddWithValue("@MovieName", "'%" + movieName + "%'");
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {

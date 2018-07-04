@@ -203,8 +203,10 @@ table {
         width: 80px;
         height: 80px;
     }
+
 .error_message{
     color:red;
+    visibility:hidden;
 }
 #login_form{
     background-color:white;
@@ -273,4 +275,10 @@ table {
 
 #incorrectCode{
     visibility:hidden;
+}
+
+/*CCS for Term and Condition*/
+#term_and_condition {
+    background-color: black;
+    color: white;
 }
