@@ -117,9 +117,10 @@
             <td></td>
         </tr>     
         <tr>
-            <td class="auto-style2"><asp:DropDownList ID="dlDay" runat="server" Width="130px" BackColor="White"></asp:DropDownList></td>
-            <td class="auto-style3"><asp:DropDownList ID="dlMonth" runat="server" Width="130px" BackColor="White"></asp:DropDownList></td>
-            <td><asp:DropDownList ID="dlYear" runat="server" Width="130px" BackColor="White"></asp:DropDownList></td>
+            <td class="auto-style2"><asp:DropDownList ID="dlDay" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
+            <td class="auto-style3"><asp:DropDownList ID="dlMonth" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
+            <td><asp:DropDownList ID="dlYear" runat="server" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid')"></asp:DropDownList></td>
+            <td><span id="dateInvalid" class="error_message">Date is not valid. </span></td>
         </tr>
         <tr>
             <td class="auto-style2">Avatar:</td>
@@ -132,7 +133,10 @@
             <td colspan="3"><asp:CheckBox ID="chkGetNotify" runat="server" Text="Get notifications by email from Touch Cinema"/></td>
         </tr>
         <tr>
-            <td colspan="3"><asp:CheckBox ID="chkAgree" runat="server" Text="I have read and agree to Touch Cinema's Term and Condition" /></td>
+            <td colspan="3"><asp:CheckBox ID="chkAgree" runat="server" Text="I have read and agree to Touch Cinema's Term and Condition" onclick="HideErrorMessage('termCheck')" /></td>
+            <td>
+                <span id="termCheck" class="error_message">You must agree with term and condition to cotinue. </span>
+            </td>
         </tr>
         <tr>
             <td colspan="3" style="color:green;">If you haven't read the Term and Condition, <b><a href="TermAndCondition.aspx" style="color:green;text-decoration:underline">read here</a></b>.</td>

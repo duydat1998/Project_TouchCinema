@@ -47,5 +47,25 @@ function HideErrorMessage() {
 }
 
 function ValidateMemberRegisterInfo() {
-
+    var username = document.getElementById("txtUsername").value;
+    if (username == '') {
+        document.getElementById("usernameRequire").visibility = "visible";
+        return false;
+    } else {
+        if (username.length > 20) {
+            document.getElementById("usernameLength").visibility = "visible";
+            return false;
+        }
+    }
+    //txtPass
+    //txtConfirmPass
+    //txtFirstName
+    //txtLastName
+    //txtPhone
+    //txtEmail
+    //dlDay
+    //dlMonth
+    //dlYear
+    //chkAgree
+    return true;
 }
