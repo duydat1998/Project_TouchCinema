@@ -15,7 +15,7 @@ function CloseLoginForm() {
 }
 function HideInvalidMessage() {
     var t = document.getElementsByClassName("error_message");
-    for (i = 0; i < t.length; i++) {
+    for ( var i = 0; i < t.length; i++) {
         t[i].style.visibility = "hidden";
     }
 }
@@ -36,6 +36,14 @@ function ModifyBesideDiv() {
         document.getElementById("left_side").style.height = h + "px";
         document.getElementById("right_side").style.height = h + "px";
     }
+}
+
+function HideErrorMessage() {
+    for (var i = 0; i < arguments.length; i++) {
+        var t = document.getElementById(arguments[i]);
+        t.style.visibility = "hidden";
+    }
+    
 }
 
 function ValidateMemberRegisterInfo() {
