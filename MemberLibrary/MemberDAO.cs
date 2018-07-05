@@ -10,7 +10,7 @@ namespace MemberLibrary
 {
     public class MemberDAO
     {
-        private SqlConnection conn;        
+        private SqlConnection conn;
         private SqlDataAdapter dAdapter;
         private SqlDataReader dReader;
         private SqlCommand cmd;
@@ -173,7 +173,7 @@ namespace MemberLibrary
             return checker;
         }
 
-        
+
 
         public List<MemberDTO> SearchMemberByUsername(string username)
         {
@@ -235,9 +235,13 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@isActive", dto.IsActive);
                 checker = cmd.ExecuteNonQuery() > 0;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                checker = false;
+                throw e;
+            }
+            finally
+            {
+                CloseConnect();
             }
             return checker;
         }
@@ -261,14 +265,14 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@isActive", dto.IsActive);
                 checker = cmd.ExecuteNonQuery() > 0;
             }
-            catch 
+            catch
             {
                 throw new Exception();
             }
             return checker;
         }
 
-        public bool UpdateMemberStatus(string username,int status)
+        public bool UpdateMemberStatus(string username, int status)
         {
             bool result = false;
             SqlConnection conn = new SqlConnection(GetConnection());
@@ -408,7 +412,7 @@ namespace MemberLibrary
             }
             return listMember;
         }
-        
-        
+
+
     }
 }

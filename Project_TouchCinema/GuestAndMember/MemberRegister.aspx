@@ -11,7 +11,7 @@
             width: 94px;
         }
         .auto-style4 {
-            width: 406px;
+            width: 474px;
         }
     </style>
 </asp:Content>
@@ -27,12 +27,12 @@
         <tr>
             <td class="auto-style1" colspan="3">
                 <asp:TextBox ID="txtUsername" runat="server" Width="533px" BackColor="White" ClientIDMode="Static"
-                placeholder="Username is no than 20 characters" onkeypress="HideErrorMessage('usernameRequire','usernameLength','usernameExist')">
+                placeholder="Username is no than 20 characters" onkeypress="HideErrorMessage('usernameRequire','usernameLength','usernameExist')" >
                                                 </asp:TextBox></td>
             <td class="auto-style4">
                 <span id="usernameRequire" class="error_message">Username is required. </span><br />
-                <span id="usernameLength" class="error_message">Username must be no more than 20 characters.</span>
-                <span id="usernameExist" class="error_message" runat="server" ClientIDMode="Static">This username has existed, Please enter another one!</span>
+                <span id="usernameLength" class="error_message">Username must be no more than 20 characters.</span><br />
+                <asp:Label ID="usernameExist" ClientIDMode="Static" runat="server" Text="This username has existed, Please enter another one!" CssClass="error_message"></asp:Label><br />
             </td>
             
         </tr>

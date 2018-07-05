@@ -11,76 +11,77 @@ namespace Project_TouchCinema
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            dlDay.Items.Insert(0, new ListItem("Day", "Day"));
-            for(int i=1; i<=31; i++)
+            if (!IsPostBack)
             {
-                ListItem day = new ListItem(i+"",i+"");
-                this.dlDay.Items.Insert(i, day);
-            }
+                dlDay.Items.Insert(0, new ListItem("Day", "Day"));
+                for (int i = 1; i <= 31; i++)
+                {
+                    ListItem day = new ListItem(i + "", i + "");
+                    this.dlDay.Items.Insert(i, day);
+                }
 
-            dlMonth.Items.Insert(0, new ListItem("Month", "Month"));
-            for (int i = 1; i <= 12; i++)
-            {
-                ListItem month = new ListItem(i + "", i + "");
-                this.dlMonth.Items.Insert(i, month);
-            }
+                dlMonth.Items.Insert(0, new ListItem("Month", "Month"));
+                for (int i = 1; i <= 12; i++)
+                {
+                    ListItem month = new ListItem(i + "", i + "");
+                    this.dlMonth.Items.Insert(i, month);
+                }
 
-            dlYear.Items.Insert(0, new ListItem("Year", "Year"));
-            for (int i = (DateTime.Today.Year-10); i >= 1950; i--)
-            {
-                ListItem year = new ListItem(i + "", i + "");
-                this.dlYear.Items.Add(year);
+                dlYear.Items.Insert(0, new ListItem("Year", "Year"));
+                for (int i = (DateTime.Today.Year - 10); i >= 1950; i--)
+                {
+                    ListItem year = new ListItem(i + "", i + "");
+                    this.dlYear.Items.Add(year);
+                }
             }
-
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             MemberDAO dao = new MemberDAO();
             string username = txtUsername.Text.Trim();
-            bool checkUsername = dao.IsUsernameExist(username);
-            if (checkUsername)
+            string password = txtPass.Text.Trim();
+            string phone = txtPhone.Text.Trim();
+            string firstname = txtFirstName.Text.Trim();
+            string lastname = txtLastName.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            int day = int.Parse(dlDay.Text);
+            int month = int.Parse(dlMonth.Text);
+            int year = int.Parse(dlYear.Text);
+            DateTime birthday = new DateTime(year, month, day);
+            MemberDTO member = new MemberDTO
             {
-                this.usernameExist.Visible = true;
-            }
-            else
+                Username = username,
+                Password = password,
+                PhoneNum = phone,
+                FirstName = firstname,
+                LastName = lastname,
+                Email = email,
+                ImageLink = "a",
+                IsActive = true,
+                Birthdate = birthday,
+            };
+            try
             {
-                string password = txtPass.Text.Trim();
-                string phone = txtPhone.Text.Trim();
-                string firstname = txtFirstName.Text.Trim();
-                string lastname = txtLastName.Text.Trim();
-                string email = txtEmail.Text.Trim();
-                int day = int.Parse(dlDay.Text);
-                int month = int.Parse(dlMonth.Text);
-                int year = int.Parse(dlYear.Text);
-                DateTime birthday = new DateTime(year, month, day);
-                MemberDTO member = new MemberDTO
-                {
-                    Username = username,
-                    Password = password,
-                    PhoneNum = phone,
-                    FirstName = firstname,
-                    LastName = lastname,
-                    Email = email,
-                    ImageLink = "a",
-                    IsActive = true,
-                    Birthdate = birthday,
-                };
-
                 bool result = dao.RegisterAccountGuest(member);
                 if (result)
                 {
-                    string msg = "Register Successfully! Login to continue";
-                    Response.Write("<script>alert('" + msg + "')</script>");
-                    Response.Redirect("TouchCinema.aspx");
+
                 }
                 else
                 {
-                    Response.Redirect("../ErrorPages/ErrorPage.aspx");
+                    //Response.Redirect("../ErrorPages/ErrorPage.aspx");
                 }
             }
-            
+            catch(Exception exc)
+            {
+                if (exc.Message.Contains("primary"))
+                {
 
+                }
+            }
+                
+            
         }
     }
 }
