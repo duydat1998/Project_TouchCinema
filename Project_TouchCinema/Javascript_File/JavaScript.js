@@ -122,29 +122,45 @@ function ValidateMemberRegisterInfo() {
         }
     }
 
-    t = document.getElementById("dlDay").value;
-    if (t == 'Day') {
+    var day = document.getElementById("dlDay").value;
+    if (day == 'Day') {
         document.getElementById("dateInvalid").style.visibility = "visible";
         return false;
     }
 
-    t = document.getElementById("dlMonth").value;
-    if (t == 'Month') {
+    var month = document.getElementById("dlMonth").value;
+    if (month == 'Month') {
         document.getElementById("dateInvalid").style.visibility = "visible";
         return false;
     }
 
-    t = document.getElementById("dlYear").value;
-    if (t == 'Year') {
+    var year = document.getElementById("dlYear").value;
+    if (year == 'Year') {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        return false;
+    }
+
+    if (!isValidDate(day, month, year)) {
         document.getElementById("dateInvalid").style.visibility = "visible";
         return false;
     }
 
     t = document.getElementById("chkAgree");
-    if (t.check == false) {
+    if (t.checked == false) {
         document.getElementById("termCheck").style.visibility = "visible";
         return false;
     }
-   
     return true;
+}
+
+function isValidDate(day, month, year) {
+
+    var date = new Date();
+    date.setFullYear(year, month - 1, day);
+    // month - 1 since the month index is 0-based (0 = January)
+
+    if ((date.getFullYear() == year) && (date.getMonth() == month - 1) && (date.getDate() == day))
+        return true;
+
+    return false;
 }

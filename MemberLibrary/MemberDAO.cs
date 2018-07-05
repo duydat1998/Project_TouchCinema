@@ -338,6 +338,34 @@ namespace MemberLibrary
             return output;
         }
 
+        public bool IsUsernameExist(string username)
+        {
+            bool result = false;
+            SqlConnection conn = new SqlConnection(GetConnection());
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    string sql = "Select username from Member where username=@search";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@search", username);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        result = true;
+                    }
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
+        }
         public List<MemberDTO> GetMemberList()
         {
             List<MemberDTO> listMember = null;
