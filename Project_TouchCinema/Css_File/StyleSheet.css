@@ -282,6 +282,7 @@ table {
 #term_and_condition {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     background-color: black;
     color: white;
 }
@@ -305,6 +306,11 @@ table {
         box-sizing: border-box;
         text-align: center;
     }
+=======
+    background-color: white;
+    color: black;
+}
+>>>>>>> 33e9118ef1433aa8bc615e1110992a49c741da4e
 =======
     background-color: white;
     color: black;
