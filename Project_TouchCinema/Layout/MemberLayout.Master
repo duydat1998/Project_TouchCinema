@@ -73,7 +73,7 @@
     <div id="left_side">
         <asp:Menu ID="menuMember" runat="server" CssClass="menu">
                 <Items>
-                    <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="../Image/movie-icon.ico" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="../Image/movie-icon.ico" NavigateUrl="~/GuestAndMember/TouchCinema.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="../Image/calendar-icon.png" NavigateUrl="a"></asp:MenuItem>
                     <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png" NavigateUrl="a"></asp:MenuItem>
                     <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="../Image/promotion-icon.png" NavigateUrl="a"></asp:MenuItem>
@@ -82,6 +82,7 @@
                 </Items>
         </asp:Menu>
     </div>
+
     <div id="content">
             <asp:ContentPlaceHolder ID="ContentPage" runat="server">
             </asp:ContentPlaceHolder>

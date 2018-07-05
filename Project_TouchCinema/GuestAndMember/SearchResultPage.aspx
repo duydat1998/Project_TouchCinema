@@ -11,13 +11,13 @@
                 <asp:TextBox runat="server" ID="txtSearchValue" Width="300px" placeholder="Type the movie you want to search" CssClass="textbox"/>
                 <asp:Button runat="server" ID="btnSeacrh" Text="Search" CssClass="button" OnClick="btnSeacrh_Click"/>                
             </div>
-        </div>
-        <hr />
-        <div>
-            <asp:Label runat="server" ID="ResultFor" Text="" Visible="true"/>
+        </div>        
+        <div id="search_result">
+            <hr />
+            <asp:Label runat="server" ID="ResultFor" Text="" Visible="true" CssClass="search_result_mess"/>
             <asp:Repeater runat="server" ID="ResultDetail">
                 <HeaderTemplate>
-                    <table style="border: 1px double black; ">
+                    <table border="1">
                         <thead>
                             <tr>                                
                                 <th>Image</th>
@@ -34,14 +34,16 @@
                 </HeaderTemplate>
                 <ItemTemplate>
                             <tr>
-                                <td><img src=""/></td>
-                                <td><%# Eval("movieTitle") %></td>
-                                <td><%# Eval("length") %></td>
-                                <td><%# Eval("rating")%></td>
-                                <td><%# Eval("startDate")%></td>
-                                <td><%# Eval("producer")%></td>
-                                <td><%# Eval("year")%></td>
-                                <td><a href=""></a></td>
+                                <td>
+                                    <a href="MemberRegister.aspx"><img src="<%# Eval("poster")%>" style="width: 100%;"/></a>
+                                </td>
+                                <td><%# Eval("MovieTitle") %></td>
+                                <td><%# Eval("Length") + " phút" %></td>
+                                <td><%# Eval("Rating")%></td>
+                                <td><%# Eval("StartDate")%></td>
+                                <td><%# Eval("Producer")%></td>
+                                <td><%# Eval("Year")%></td>
+                                <td><a href="<%# Eval("LinkTrailer")%>"></a></td>
                             </tr>
                 </ItemTemplate>
                 <FooterTemplate>
@@ -49,10 +51,10 @@
                     </table>
                 </FooterTemplate>
             </asp:Repeater>
-            <asp:Label runat="server" ID="ResultEmpty" Visible="false">
+            <asp:Label runat="server" ID="ResultEmpty" Visible="false" CssClass="search_result_mess">
                 <h1>Sorry! No Movie is Matched!!!!!</h1>
             </asp:Label> 
-        </div>
-        <hr />
+            <hr />
+        </div>        
     </div>        
 </asp:Content>

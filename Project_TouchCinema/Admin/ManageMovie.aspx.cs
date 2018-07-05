@@ -23,7 +23,7 @@ namespace Project_TouchCinema
                 listGenre = GenreDao.GetGenreList();
                 Session.Add("AdminGenreList", listGenre);
                 listMovie = MovieDao.GetMovieList();
-                Session.Add("AdminMovieList", listMovie);
+                Session.Add("MovieList", listMovie);
                 gvStaffList.DataSource = listMovie;
                 gvStaffList.DataBind();
                 DropdownListAdd(listGenre);
@@ -120,7 +120,7 @@ namespace Project_TouchCinema
             {
                 if (MovieDao.AddNewMovie(dto))
                 {
-                    List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+                    List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
                     list.Add(dto);
                     gvStaffList.DataSource = list;
                     gvStaffList.DataBind();
@@ -168,7 +168,7 @@ namespace Project_TouchCinema
             lblMessage.Text = "";
             btnUpdate.Enabled = true;
             string id = (sender as LinkButton).CommandArgument;
-            List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+            List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
             List<GenreDTO> listgenre = (List<GenreDTO>)Session["AdminGenreList"];
             for (int i = 0; i <= list.Count - 1; i++)
             {
@@ -201,7 +201,7 @@ namespace Project_TouchCinema
             string movieID = txtMovieID.Text;
             if (MovieDao.DeleteMovie(movieID))
             {
-                List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+                List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
                 foreach(MovieDTO item in list)
                 {
                     if (item.MovieID.Equals(movieID))
@@ -283,7 +283,7 @@ namespace Project_TouchCinema
             {
                 if (MovieDao.UpdateMovie(dto))
                 {
-                    List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+                    List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
                     foreach(MovieDTO item in list)
                     {
                         if (item.MovieID.Equals(id))
@@ -332,7 +332,7 @@ namespace Project_TouchCinema
         {
             Clear();
             string searchValue = txtSearch.Text;
-            List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+            List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
             if (!searchValue.Equals(""))
             {
                 List<MovieDTO> result = SearchInListByMovieName(list, searchValue);
@@ -359,7 +359,7 @@ namespace Project_TouchCinema
         protected void btnShowAll_Click(object sender, EventArgs e)
         {
             Clear();
-            List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieList"];
+            List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
             gvStaffList.Visible = true;
             gvStaffList.DataSource = list;
             gvStaffList.DataBind();

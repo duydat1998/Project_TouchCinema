@@ -26,9 +26,11 @@
                 <ItemTemplate>                    
                             <td>
                                 <a href="MemberRegister.aspx"><img src="<%# Eval("poster")%>" style="width: 100%;"/></a>
-                                <asp:Label runat="server" Text='<%# Eval("movieTitle") %>' style="text-align:center;"/>
+                                <asp:Label runat="server" style="text-align:center;">
+                                    <b><%# Eval("movieTitle") %></b>
+                                </asp:Label>
                             </td>
-                </ItemTemplate>
+                </ItemTemplate>                
                 <FooterTemplate>
                         </tr>
                     </table>                    

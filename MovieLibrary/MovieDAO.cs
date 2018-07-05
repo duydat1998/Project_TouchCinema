@@ -17,7 +17,7 @@ namespace MovieLibrary
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
 
         }
 
@@ -119,52 +119,7 @@ namespace MovieLibrary
 
             return check;
         }
-
-        public List<MovieDTO> SearchListMoiveMemberGuest(string movieName)
-        {
-            List<MovieDTO> listMovive = null;
-            SqlConnection con = new SqlConnection(strConnection);
-            con.Open();
-            try
-            {
-                string sql="Select movieTitle, length, rating, startDate, poster, linkTrailer, producer, year " +
-                            "From Movie " +
-                            "Where movieTitle Like  @MovieName ";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@MovieName", "'%" + movieName + "%'");
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    listMovive = new List<MovieDTO>();
-                    while (reader.Read())
-                    {
-                        
-                        MovieDTO dto = new MovieDTO
-                        {
-                            MovieTitle = reader.GetString(0),
-                            Length = reader.GetInt32(1),
-                            Rating = reader.GetInt32(2),
-                            StartDate = reader.GetDateTime(3),
-                            Poster = reader.GetString(4),
-                            LinkTrailer = reader.GetString(5),
-                            Producer = reader.GetString(6),
-                            Year = reader.GetInt32(7),
-                        };
-                        listMovive.Add(dto);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                listMovive = null;
-            }
-            finally
-            {
-                con.Close();
-            }
-            return listMovive;
-        }
-
+        
         public DataSet getTopFiveMovie()
         {
             DataSet ds = null;
@@ -198,7 +153,8 @@ namespace MovieLibrary
             con.Open();
             try
             {
-                string sql = "SELECT movieID,movieTitle,[length],rating,startDate,poster,linkTrailer,producer,[year],genreID FROM Movie";
+                string sql = "SELECT movieID,movieTitle,[length],rating,startDate,poster,linkTrailer,producer,[year],genreID " +
+                            "FROM Movie";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -211,7 +167,7 @@ namespace MovieLibrary
                         int length = reader.GetInt32(2);
                         float rating = (float)reader.GetDouble(3);
                         DateTime dateTime = reader.GetDateTime(4);
-                        string poster = "";
+                        string poster = "../Image/Poster/PosterNotAvailable(Default).jpg";
                         if (!reader.IsDBNull(5))
                         {
                             poster = reader.GetString(5);
