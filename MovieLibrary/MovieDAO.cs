@@ -17,7 +17,16 @@ namespace MovieLibrary
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            SqlConnection conn = new SqlConnection(strConnection);
+            if(conn == null)
+            {
+                strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            }
+            else
+            {
+                conn.Close();
+            }
 
         }
 
@@ -124,7 +133,11 @@ namespace MovieLibrary
         {
             DataSet ds = null;
             SqlConnection con = new SqlConnection(strConnection);
-            con.Open();
+            if (con.State != ConnectionState.Open)
+            {
+                con.Open();
+
+            }
             try
             {
                 string sql = "Select top(5) movieTitle, length, rating, startDate, poster, linkTrailer, producer, year " +

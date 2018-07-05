@@ -216,35 +216,6 @@ namespace MemberLibrary
             return listMember;
         }
 
-        public bool RegisterAccountGuest(MemberDTO dto)
-        {
-            bool checker = false;
-            try
-            {
-                SetUpConnect("Insert Into Member " +
-                    "Values(@Username, @Password, @FirstName, @LastName, @Phone, @Email, @BirthDate, @Avatar, @isActive)");
-                cmd = new SqlCommand(cmdLine, conn);
-                cmd.Parameters.AddWithValue("@Username", dto.Username);
-                cmd.Parameters.AddWithValue("@Password", dto.Password);
-                cmd.Parameters.AddWithValue("@FirstName", dto.FirstName);
-                cmd.Parameters.AddWithValue("@LastName", dto.LastName);
-                cmd.Parameters.AddWithValue("@Phone", dto.PhoneNum);
-                cmd.Parameters.AddWithValue("@Email", dto.Email);
-                cmd.Parameters.AddWithValue("@BirthDate", dto.Birthdate);
-                cmd.Parameters.AddWithValue("@Avatar", dto.ImageLink);
-                cmd.Parameters.AddWithValue("@isActive", dto.IsActive);
-                checker = cmd.ExecuteNonQuery() > 0;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            finally
-            {
-                CloseConnect();
-            }
-            return checker;
-        }
 
         public bool AddNewMemberAdmin(MemberDTO dto)
         {
@@ -268,6 +239,10 @@ namespace MemberLibrary
             catch
             {
                 throw new Exception();
+            }
+            finally
+            {
+                CloseConnect();
             }
             return checker;
         }

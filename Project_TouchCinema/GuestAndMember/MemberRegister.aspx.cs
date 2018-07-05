@@ -40,6 +40,13 @@ namespace Project_TouchCinema
         {
             MemberDAO dao = new MemberDAO();
             string username = txtUsername.Text.Trim();
+            if (dao.IsUsernameExist(username))
+            {
+                string message = "Username already exists.\\nPlease choose a different username.";
+                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+                this.txtUsername.Focus();
+                return;
+            }
             string password = txtPass.Text.Trim();
             string phone = txtPhone.Text.Trim();
             string firstname = txtFirstName.Text.Trim();
@@ -61,27 +68,19 @@ namespace Project_TouchCinema
                 IsActive = true,
                 Birthdate = birthday,
             };
-            try
-            {
-                bool result = dao.RegisterAccountGuest(member);
-                if (result)
-                {
 
-                }
-                else
-                {
-                    //Response.Redirect("../ErrorPages/ErrorPage.aspx");
-                }
-            }
-            catch(Exception exc)
+            bool result = dao.AddNewMemberAdmin(member);
+            if (result)
             {
-                if (exc.Message.Contains("primary"))
-                {
-
-                }
+                string message = "Regiter SUCCESSFULLY.\\nPlease login to continue.";
+                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+                Response.Redirect("TouchCinema.aspx");
             }
-                
-            
+            else
+            {
+                Response.Redirect("../ErrorPages/ErrorPage.aspx");
+            }
         }
+
     }
 }
