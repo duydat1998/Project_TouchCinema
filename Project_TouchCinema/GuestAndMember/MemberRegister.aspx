@@ -27,12 +27,11 @@
         <tr>
             <td class="auto-style1" colspan="3">
                 <asp:TextBox ID="txtUsername" runat="server" Width="533px" BackColor="White" ClientIDMode="Static" 
-                placeholder="Username is no than 20 characters" onkeypress="HideErrorMessage('usernameRequire','usernameLength')" >
+                placeholder="Username is no than 20 characters" onkeypress="HideErrorMessage('usernameRequire','usernameLength');ChangeColor();" >
                                                 </asp:TextBox></td>
             <td class="auto-style4">
                 <span id="usernameRequire" class="error_message">Username is required. </span><br />
                 <span id="usernameLength" class="error_message">Username must be no more than 20 characters.</span><br />
-                <%--<asp:Label ID="usernameExist" ClientIDMode="Static" runat="server" Text="This username has existed, Please enter another one!"  CssClass="error_message"></asp:Label><br />--%>
             </td>
             
         </tr>
@@ -58,7 +57,7 @@
             </td>
         </tr>        
         <tr>
-            <td class="auto-style1" colspan="3"><asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('confirmPassRequire','confirmPassMatch')" ID="txtConfirmPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
+            <td class="auto-style1" colspan="3"><asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('confirmPassRequire','confirmPassMatch')"  ID="txtConfirmPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
                 <span id="confirmPassRequire" class="error_message">Confirm Password is required. </span><br />
                 <span id="confirmPassMatch" class="error_message">Confirm Password is not matched.   </span>

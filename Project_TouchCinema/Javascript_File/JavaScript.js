@@ -164,3 +164,7 @@ function isValidDate(day, month, year) {
 
     return false;
 }
+function ChangeColor() {
+    var t = document.getElementById("txtUsername");
+    t.style.color = "black";
+}

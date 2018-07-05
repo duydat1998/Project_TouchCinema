@@ -44,6 +44,7 @@ namespace Project_TouchCinema
             {
                 string message = "Username already exists.\\nPlease choose a different username.";
                 ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+                this.txtUsername.ForeColor = System.Drawing.Color.Red;
                 this.txtUsername.Focus();
                 return;
             }
@@ -74,7 +75,6 @@ namespace Project_TouchCinema
             {
                 string message = "Regiter SUCCESSFULLY.\\nPlease login to continue.";
                 ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
-                Response.Redirect("TouchCinema.aspx");
             }
             else
             {
