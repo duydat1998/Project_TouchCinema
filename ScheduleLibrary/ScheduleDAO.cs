@@ -51,6 +51,56 @@ namespace ScheduleLibrary
             return output;
         }
 
+        public List<ScheduleDTO> GetScheduleList()
+        {
+            List<ScheduleDTO> result = null;
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    string sql = "Select scheduleID, date, movieID, roomID, priceOfTicket from Schedule";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        result = new List<ScheduleDTO>();
+                        while (reader.Read())
+                        {
+                            string id = reader.GetString(0);
+                            DateTime date = reader.GetDateTime(1);
+                            string movieID = reader.GetString(2);
+                            int roomID = reader.GetInt32(3);
+                            float price = (float)reader.GetDouble(4);
+
+                            ScheduleDTO dto = new ScheduleDTO()
+                            {
+                                ScheduleID = id,
+                                ScheduleDate = date,
+                                MovieID = movieID,
+                                RoomID = roomID,
+                                PriceOfTicket = price
+                            };
+                            result.Add(dto);
+                        }
+                    }
+                    else
+                    {
+                        result = null;
+                    }
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
 
     }
 }
