@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +15,9 @@ namespace Project_TouchCinema
         {
             if (!IsPostBack)
             {
+                imageAvatar.ImageUrl = "~/Image/Avatar/default-avatar.jpg";
+                txtPicture.Value = "~/Image/Avatar/default-avatar.jpg";
+
                 dlDay.Items.Insert(0, new ListItem("Day", "Day"));
                 for (int i = 1; i <= 31; i++)
                 {
@@ -53,6 +58,7 @@ namespace Project_TouchCinema
             string firstname = txtFirstName.Text.Trim();
             string lastname = txtLastName.Text.Trim();
             string email = txtEmail.Text.Trim();
+            string picture = txtPicture.Value;
             int day = int.Parse(dlDay.Text);
             int month = int.Parse(dlMonth.Text);
             int year = int.Parse(dlYear.Text);
@@ -65,7 +71,7 @@ namespace Project_TouchCinema
                 FirstName = firstname,
                 LastName = lastname,
                 Email = email,
-                ImageLink = "a",
+                ImageLink = picture,
                 IsActive = true,
                 Birthdate = birthday,
             };
@@ -82,5 +88,16 @@ namespace Project_TouchCinema
             }
         }
 
+        protected void btnUploadPicture_Click(object sender, EventArgs e)
+        {
+            if (FileUpload.HasFile)
+            {
+                string fileName = Path.GetFileName(FileUpload.PostedFile.FileName);
+                //save avatar into image folder 
+                FileUpload.PostedFile.SaveAs(Server.MapPath("~/Image/Avatar/") + fileName);
+                imageAvatar.ImageUrl = "~/Image/Avatar/" + fileName;
+                txtPicture.Value= "~/Image/Avatar/" + fileName;
+            }
+        }
     }
 }

@@ -127,9 +127,16 @@
             <td class="auto-style3"></td>
         </tr>
         <tr>
-            <td>Got picture</td>
+            <td><asp:Image ID="imageAvatar" runat="server" CssClass="avatar"/></td>
+            <td colspan="2">
+                <asp:FileUpload ID="FileUpload" runat="server"/>
+                <asp:Button ID="btnUploadPicture" runat="server" Text="Upload Picture" OnClick="btnUploadPicture_Click" CssClass="button"/>
+                <asp:HiddenField ID="txtPicture" runat="server" />
+            </td>
+            
         </tr>
         <tr>
+            
             <td colspan="3"><asp:CheckBox ID="chkGetNotify" runat="server" Text="Get notifications by email from Touch Cinema"/></td>
         </tr>
         <tr>
@@ -143,6 +150,9 @@
         </tr>
         <tr>
             <td class="auto-style3" colspan="3"><asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" Width="538px" OnClick="btnRegister_Click" OnClientClick="return ValidateMemberRegisterInfo()" /></td>
+            <td>
+                <span id="invalidInput" class="error_message">You must fill in all fields in correct format before register.</span>
+            </td>
         </tr>
     </table>
 </asp:Content>

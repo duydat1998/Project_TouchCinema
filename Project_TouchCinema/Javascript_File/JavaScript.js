@@ -15,7 +15,7 @@ function CloseLoginForm() {
 }
 function HideInvalidMessage() {
     var t = document.getElementsByClassName("error_message");
-    for ( var i = 0; i < t.length; i++) {
+    for (var i = 0; i < t.length; i++) {
         t[i].style.visibility = "hidden";
     }
 }
@@ -40,107 +40,125 @@ function ModifyBesideDiv() {
 }
 
 function HideErrorMessage() {
+    var t = document.getElementById("invalidInput");
+    t.style.visibility = "hidden";
     for (var i = 0; i < arguments.length; i++) {
-        var t = document.getElementById(arguments[i]);
+        t = document.getElementById(arguments[i]);
         t.style.visibility = "hidden";
     }
-    
+
 }
 
 function ValidateMemberRegisterInfo() {
-    var t = document.getElementById("txtUsername").value;
-    if (t == '') {
+    var t = document.getElementById("txtUsername");
+    if (t.value == '') {
         document.getElementById("usernameRequire").style.visibility = "visible";
+        t.focus();
         return false;
     } else {
-        if (t.length > 20) {
+        if (t.value.length > 20) {
             document.getElementById("usernameLength").style.visibility = "visible";
+            t.focus();
             return false;
         }
     }
-    t = document.getElementById("txtPass").value;
+    t = document.getElementById("txtPass");
     var password = t;
 
-    if (t == '') {
+    if (t.value == '') {
         document.getElementById("passRequire").style.visibility = "visible";
+        t.focus();
         return false;
     } else {
-        if (t.length > 10) {
+        if (t.value.length > 10) {
             document.getElementById("passLength").style.visibility = "visible";
+            t.focus();
             return false;
         }
     }
 
-    t = document.getElementById("txtConfirmPass").value;
-    if (t == '') {
+    t = document.getElementById("txtConfirmPass");
+    if (t.value == '') {
         document.getElementById("confirmPassRequire").style.visibility = "visible";
+        t.focus();
         return false;
     } else {
-        if (t != password) {
+        if (t.value != password) {
             document.getElementById("confirmPassMatch").style.visibility = "visible";
+            t.focus();
             return false;
         }
     }
 
-    t = document.getElementById("txtFirstName").value;
-    if (t == '') {
+    t = document.getElementById("txtFirstName");
+    if (t.value == '') {
         document.getElementById("firtnameRequire").style.visibility = "visible";
+        t.focus();
         return false;
     }
 
-    t = document.getElementById("txtLastName").value;
-    if (t == '') {
+    t = document.getElementById("txtLastName");
+    if (t.value == '') {
         document.getElementById("latnameRequire").style.visibility = "visible";
+        t.focus();
         return false;
     }
 
-    t = document.getElementById("txtPhone").value;
+    t = document.getElementById("txtPhone");
     var phoneFormat = /^0[1-9][0-9]+$/;
-    if (t == '') {
+    if (t.value == '') {
         document.getElementById("phoneRequire").style.visibility = "visible";
+        t.focus();
         return false;
     } else {
-        if (t.length < 10 || t.length > 11) {
+        if (t.value.length < 10 || t.value.length > 11) {
             document.getElementById("phoneFormat").style.visibility = "visible";
+            t.focus();
             return false;
-        } else 
-        if (!phoneFormat.test(t)) {
-            document.getElementById("phoneFormat").style.visibility = "visible";
-            return false;
-        }
+        } else
+            if (!phoneFormat.test(t.value)) {
+                document.getElementById("phoneFormat").style.visibility = "visible";
+                t.focus();
+                return false;
+            }
     }
 
-    t = document.getElementById("txtEmail").value.toLowerCase();
+    t = document.getElementById("txtEmail");
     var emailFormat = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    if (t == '') {
+    if (t.value.toLowerCase() == '') {
         document.getElementById("emailRequire").style.visibility = "visible";
+        t.focus();
         return false;
     } else {
-        if (!emailFormat.test(t)) {
+        if (!emailFormat.test(t.value)) {
             document.getElementById("emailFormat").style.visibility = "visible";
+            t.focus();
             return false;
         }
     }
 
-    var day = document.getElementById("dlDay").value;
-    if (day == 'Day') {
+    var day = document.getElementById("dlDay");
+    if (day.value == 'Day') {
         document.getElementById("dateInvalid").style.visibility = "visible";
+        t.focus();
         return false;
     }
 
-    var month = document.getElementById("dlMonth").value;
-    if (month == 'Month') {
+    var month = document.getElementById("dlMonth");
+    if (month.value == 'Month') {
         document.getElementById("dateInvalid").style.visibility = "visible";
+        t.focus();
         return false;
     }
 
-    var year = document.getElementById("dlYear").value;
-    if (year == 'Year') {
+    var year = document.getElementById("dlYear");
+    if (year.value == 'Year') {
         document.getElementById("dateInvalid").style.visibility = "visible";
+        t.focus();
         return false;
     }
 
-    if (!isValidDate(day, month, year)) {
+    if (!isValidDate(day.value, month.value, year.value)) {
         document.getElementById("dateInvalid").style.visibility = "visible";
         return false;
     }
@@ -151,6 +169,14 @@ function ValidateMemberRegisterInfo() {
         return false;
     }
     return true;
+}
+
+function CheckBeforeRegister() {
+    var result = ValidateMemberRegisterInfo();
+    if (!result) {
+        document.getElementById("invalidInput").style.visibility = "visible";
+    }
+    return result;
 }
 
 function isValidDate(day, month, year) {
