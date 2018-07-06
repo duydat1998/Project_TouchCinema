@@ -323,7 +323,6 @@ namespace Project_TouchCinema
                 {
                     result.Add(item);
                 }
-
             }
             return result;
         }

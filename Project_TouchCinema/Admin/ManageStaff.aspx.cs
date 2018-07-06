@@ -196,7 +196,7 @@ namespace Project_TouchCinema
             List<StaffDTO> result = new List<StaffDTO>();
             foreach (StaffDTO item in list)
             {
-                if (item.Username.IndexOf(username) >= 0)
+                if (item.Username.ToUpper().IndexOf(username.ToUpper()) >= 0)
                 {
                     result.Add(item);
                 }
