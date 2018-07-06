@@ -288,8 +288,13 @@ table {
 }
 
 /*CCS for Search Result Page*/
+#search_bar{
+    float: left;
+    width: 100%;
+}
+
 .search_result_mess {
-    float: left;    
+    float: left;
     width: 100%;
     margin-left: 20px;
 }
@@ -306,9 +311,29 @@ table {
         box-sizing: border-box;
         text-align: center;
     }
+
+/*CCS for Movie Detail Page*/
+.movie_data_mess {
+    float: left;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.movie_data_form{
+    float: left;
+    width: 100%;
+}
+
+    .movie_data_form table {
+        float: left;
+        width: 100%;
+        border: 1px solid black;
+        box-sizing: border-box;
+        text-align: center;
+    }
 =======
-    background-color: white;
-    color: black;
+background-color: white;
+color: black;
 }
 >>>>>>> 33e9118ef1433aa8bc615e1110992a49c741da4e
 =======

@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ErrorPages\ErrorPage.aspx" />
+    <Content Include="GuestAndMember\MovieDetailPage.aspx" />
+    <Content Include="GuestAndMember\PromotionPage.aspx" />
     <Content Include="GuestAndMember\SearchResultPage.aspx" />
     <Content Include="GuestAndMember\TermAndCondition.aspx" />
     <Content Include="Layout\AdminLayout.Master" />
@@ -104,6 +106,20 @@
     </Compile>
     <Compile Include="ErrorPages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\MovieDetailPage.aspx.cs">
+      <DependentUpon>MovieDetailPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\MovieDetailPage.aspx.designer.cs">
+      <DependentUpon>MovieDetailPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\PromotionPage.aspx.cs">
+      <DependentUpon>PromotionPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\PromotionPage.aspx.designer.cs">
+      <DependentUpon>PromotionPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAndMember\SearchResultPage.aspx.cs">
       <DependentUpon>SearchResultPage.aspx</DependentUpon>

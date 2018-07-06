@@ -5,7 +5,7 @@
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
     <div>
         <%-- Phần search movie --%>
-        <div>
+        <div id="search_bar">
             <div id="search_mess">Do you want to find a movie?</div>            
             <div id="search_form">
                 <asp:TextBox runat="server" ID="txtSearchValue" Width="300px" placeholder="Type the movie you want to search" CssClass="textbox"/>
@@ -52,7 +52,7 @@
                 </FooterTemplate>
             </asp:Repeater>
             <asp:Label runat="server" ID="ResultEmpty" Visible="false" CssClass="search_result_mess">
-                <h1>Sorry! No Movie is Matched!!!!!</h1>
+                <h1 id="empty_label">Sorry! No Movie is Matched!!!!!</h1>
             </asp:Label> 
             <hr />
         </div>        

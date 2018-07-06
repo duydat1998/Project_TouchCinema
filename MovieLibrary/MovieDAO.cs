@@ -17,17 +17,31 @@ namespace MovieLibrary
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-            SqlConnection conn = new SqlConnection(strConnection);
-            if(conn == null)
-            {
-                strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
-            }
-            else
-            {
-                conn.Close();
-            }
-
+            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            //SqlConnection conn = null;
+            //bool process = true;
+            //do
+            //{
+            //    try
+            //    {
+            //        conn = new SqlConnection(strConnection);
+            //        if (conn.State == ConnectionState.Closed)
+            //        {
+            //            conn.Open();
+            //        }
+            //        if(conn != null)
+            //        {
+            //            process = true;
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+                    strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            //        process = false;
+            //    }
+            //} while (!process);
+            //if (conn.State != ConnectionState.Closed)
+            //    conn.Close();
         }
 
         public String GetMovieTitle(string movieID)
