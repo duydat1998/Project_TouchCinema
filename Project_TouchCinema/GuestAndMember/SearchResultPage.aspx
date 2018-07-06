@@ -35,7 +35,9 @@
                 <ItemTemplate>
                             <tr>
                                 <td>
-                                    <a href="MemberRegister.aspx"><img src="<%# Eval("poster")%>" style="width: 100%;"/></a>
+                                    <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("MovieTitle")%>">
+                                        <img src="<%# Eval("poster")%>" style="width: 100%;"/>
+                                    </a>
                                 </td>
                                 <td><%# Eval("MovieTitle") %></td>
                                 <td><%# Eval("Length") + " phút" %></td>

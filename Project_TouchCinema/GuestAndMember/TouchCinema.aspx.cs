@@ -38,24 +38,11 @@ namespace Project_TouchCinema
         protected void btnSeacrh_Click(object sender, EventArgs e)
         {
             string searchValue = txtSearchValue.Text;
-            List<MovieDTO> resultList = searchByName((List<MovieDTO>)Session["MovieList"], searchValue);
+            List<MovieDTO> resultList = mDAO.searchByName((List<MovieDTO>)Session["MovieList"], searchValue);
             Session["SearchResult"] = resultList;
             Session["SearchValue"] = searchValue;
             Response.Redirect("SearchResultPage.aspx");
         }
-
-        private List<MovieDTO> searchByName(List<MovieDTO> listMovie, string searchValue)
-        {
-            List<MovieDTO> resultList = new List<MovieDTO>();
-            foreach (MovieDTO item in listMovie)
-            {
-                if (item.MovieTitle.ToUpper().Contains(searchValue.ToUpper()))
-                {
-                    resultList.Add(item);
-                }
-
-            }
-            return resultList;
-        }
+        
     }
 }

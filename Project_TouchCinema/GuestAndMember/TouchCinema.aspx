@@ -24,7 +24,9 @@
                 </HeaderTemplate>
                 <ItemTemplate>                    
                             <td>
-                                <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("movieTitle")%>"><img src="<%# Eval("poster")%>" style="width: 100%;"/></a>
+                                <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("movieTitle")%>">
+                                    <img src="<%# Eval("poster")%>" style="width: 100%;"/>
+                                </a>
                                 <asp:Label runat="server" style="text-align:center;">
                                     <b><%# Eval("movieTitle") %></b>
                                 </asp:Label>

@@ -17,28 +17,39 @@ namespace Project_TouchCinema.GuestAndMember
             if (!IsPostBack)
             {
                 string movieTitle = Request.QueryString["movieTitle"];
-                List<MovieDTO> movieDetal = getMovieDTO((List<MovieDTO>)Session["MovieList"], movieTitle);
+                List<MovieDTO> movieDetal = mDAO.getMovieDTO((List<MovieDTO>)Session["MovieList"], movieTitle);                
+                if(movieDetal.Count == 0 || movieDetal == null)
+                {
+                    MovieDataEmpty.Visible = true;
+                }
+                else
+                {
+                    MovieDataEmpty.Visible = false;
+                }
+                int movieGenreID = movieDetal[0].Genre;
+                string movieGenreName = mDAO.getGenreName(movieGenreID);
+                string movieProducer = movieDetal[0].Producer;
                 MovieDataForm.DataSource = movieDetal;
                 MovieDataForm.DataBind();
+
+                MovieSameGenre.Text = "Movies also have " + movieGenreName + " genre";
+                MovieSameGenreList.DataSource = mDAO.getMovieListByGenre((List<MovieDTO>)Session["MovieList"], movieGenreID);
+                MovieSameGenreList.DataBind();
+
+                MovieSameProducer.Text = "Movies also have been made from " + movieProducer;
+                MovieSameProducerList.DataSource = mDAO.getMovieListByProducer((List<MovieDTO>)Session["MovieList"], movieProducer);
+                MovieSameProducerList.DataBind();
             }            
         }
-
-        private List<MovieDTO> getMovieDTO(List<MovieDTO> listMovie, string movieTitle)
-        {
-            List<MovieDTO> dto = new List<MovieDTO>();
-            foreach(var item in listMovie)
-            {
-                if (item.MovieTitle.ToUpper().Equals(movieTitle.ToUpper()))
-                {
-                    dto.Add(item);
-                }
-            }
-            return dto;
-        }
-
+        
         protected void btnSeacrh_Click(object sender, EventArgs e)
         {
-
+            string searchValue = txtSearchValue.Text;
+            List<MovieDTO> resultList = mDAO.searchByName((List<MovieDTO>)Session["MovieList"], searchValue);
+            Session["SearchResult"] = resultList;
+            Session["SearchValue"] = searchValue;
+            Response.Redirect("SearchResultPage.aspx");
         }
+        
     }
 }

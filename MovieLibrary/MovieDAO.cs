@@ -17,7 +17,7 @@ namespace MovieLibrary
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
             //SqlConnection conn = null;
             //bool process = true;
             //do
@@ -36,7 +36,7 @@ namespace MovieLibrary
             //    }
             //    catch (Exception)
             //    {
-                    strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
             //        process = false;
             //    }
             //} while (!process);
@@ -73,6 +73,39 @@ namespace MovieLibrary
             }
             return movieName;
         }
+
+        //This is just for Getting movie Genre
+        public string getGenreName(int genreID)
+        {
+            string genreName = "";
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    string sql = "Select genreName " +
+                        "from Genre " +
+                        "where genreID=@genreID";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@genreID", genreID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        genreName = reader.GetString(0);
+                    }
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return genreName;
+        }
+        //
 
         public bool AddNewMovie(MovieLibrary.MovieDTO dto)
         {
@@ -256,6 +289,60 @@ namespace MovieLibrary
             }
 
             return check;
+        }
+
+        //Only Used at aspx.cs 
+        public List<MovieDTO> getMovieDTO(List<MovieDTO> listMovie, string movieTitle)
+        {
+            List<MovieDTO> dto = new List<MovieDTO>();
+            foreach (var item in listMovie)
+            {
+                if (item.MovieTitle.ToUpper().Equals(movieTitle.ToUpper()))
+                {
+                    dto.Add(item);
+                }
+            }
+            return dto;
+        }
+
+        public List<MovieDTO> getMovieListByGenre(List<MovieDTO> listMovie, int movieGenreID)
+        {
+            List<MovieDTO> movieList = new List<MovieDTO>();
+            foreach (var item in listMovie)
+            {
+                if (item.Genre == movieGenreID)
+                {
+                    movieList.Add(item);
+                }
+            }
+            return movieList;
+        }
+
+        public List<MovieDTO> getMovieListByProducer(List<MovieDTO> listMovie, string movieProducer)
+        {
+            List<MovieDTO> movieList = new List<MovieDTO>();
+            foreach (var item in listMovie)
+            {
+                if (item.Producer.ToUpper().Equals(movieProducer.ToUpper()))
+                {
+                    movieList.Add(item);
+                }
+            }
+            return movieList;
+        }
+
+        public List<MovieDTO> searchByName(List<MovieDTO> listMovie, string searchValue)
+        {
+            List<MovieDTO> resultList = new List<MovieDTO>();
+            foreach (MovieDTO item in listMovie)
+            {
+                if (item.MovieTitle.ToUpper().Contains(searchValue.ToUpper()))
+                {
+                    resultList.Add(item);
+                }
+
+            }
+            return resultList;
         }
     }
 }
