@@ -12,16 +12,17 @@ namespace Project_TouchCinema
     {
         MovieDAO mDAO = new MovieDAO();
         
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 MovieList.DataSource = mDAO.getTopFiveMovie();               
                 MovieList.DataBind();
-                Session["MovieList"] = mDAO.GetMovieList();
-            }
-            
+                if(Session["MovieList"]== null)
+                {
+                    Session["MovieList"] = mDAO.GetMovieList();
+                }                
+            }            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
