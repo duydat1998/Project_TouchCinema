@@ -55,7 +55,7 @@
             </asp:Repeater>
             <asp:Label runat="server" ID="ResultEmpty" Visible="false" CssClass="search_result_mess">
                 <h1 id="empty_label">Sorry! No Movie is Matched!!!!!</h1>
-            </asp:Label> 
+            </asp:Label>             
             <hr />
         </div>        
     </div>        

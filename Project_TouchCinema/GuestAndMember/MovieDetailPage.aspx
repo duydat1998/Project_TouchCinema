@@ -29,7 +29,8 @@
                             <%# Eval("Genre")%> 
                             <br />
                             Rating: <%# Eval("Rating")%>    Length: <%# Eval("Length")%> mins <br />
-                            Producder: <%# Eval("Producer")%>                                
+                            Producder: <%# Eval("Producer")%>
+                            <br />                            
                         </div>
                     </div>                    
                 </ItemTemplate>                
@@ -42,7 +43,7 @@
             <div id="movie_same_genre">
                 <div class="panel_upper">
                     <asp:Label runat="server" ID="MovieSameGenre" Text="Movies also have '' genre"/>
-                </div>
+                </div>                
                 <asp:Repeater runat="server" ID="MovieSameGenreList">
                     <HeaderTemplate>                                         
                         <table class="reference_table">                        
@@ -63,7 +64,9 @@
                             </tr>
                         </table>                    
                     </FooterTemplate>
-                </asp:Repeater>        
+                </asp:Repeater>                        
+                <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
+                <br />
                 <div class="panel_lower">
                         
                 </div>
@@ -94,6 +97,9 @@
                         </table>                    
                     </FooterTemplate>
                 </asp:Repeater>            
+                <br />
+                <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
+                <br />
                 <div class="panel_lower">
                     
                 </div>

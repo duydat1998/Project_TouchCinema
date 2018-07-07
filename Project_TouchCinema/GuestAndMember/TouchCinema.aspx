@@ -43,6 +43,7 @@
         <%-- Phần show promotions --%>
         <div>
             <div class="banner">
+
             </div>
         </div>
     </div>

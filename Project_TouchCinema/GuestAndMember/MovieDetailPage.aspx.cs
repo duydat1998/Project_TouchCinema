@@ -33,11 +33,11 @@ namespace Project_TouchCinema.GuestAndMember
                 MovieDataForm.DataBind();
 
                 MovieSameGenre.Text = "Movies also have " + movieGenreName + " genre";
-                MovieSameGenreList.DataSource = mDAO.getMovieListByGenre((List<MovieDTO>)Session["MovieList"], movieGenreID);
+                MovieSameGenreList.DataSource = mDAO.getFiveMovieReference(mDAO.getMovieListByGenre((List<MovieDTO>)Session["MovieList"], movieGenreID, movieDetal[0]));
                 MovieSameGenreList.DataBind();
 
-                MovieSameProducer.Text = "Movies also have been made from " + movieProducer;
-                MovieSameProducerList.DataSource = mDAO.getMovieListByProducer((List<MovieDTO>)Session["MovieList"], movieProducer);
+                MovieSameProducer.Text = "Movies also have been made from " + movieProducer;                
+                MovieSameProducerList.DataSource = mDAO.getFiveMovieReference(mDAO.getMovieListByProducer((List<MovieDTO>)Session["MovieList"], movieProducer, movieDetal[0]));
                 MovieSameProducerList.DataBind();
             }            
         }

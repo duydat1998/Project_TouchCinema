@@ -364,7 +364,7 @@ table {
 
 .reference_table{
     float: left;
-    width: 80%;
+    width: 100%;
 }
 
 .reference_table tr td{
@@ -375,6 +375,22 @@ table {
 .reference_table tr td img{
     width: 150px;    
 }
+
+.show_more_link {
+    float: right;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+    .show_more_link:hover{
+        color: white;
+        background-color: black;
+        text-decoration: underline;
+        transition-duration: 2s;
+    }
 
 .panel_upper {
     float: left;

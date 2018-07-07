@@ -12,36 +12,29 @@ namespace MovieLibrary
     public class MovieDAO
     {
         private string strConnection;
-
+        private SqlConnection checkConn;
         //Nhớ xóa MayHieuBT để về lại ConnectionString cũ
         //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-            //SqlConnection conn = null;
-            //bool process = true;
-            //do
+            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;            
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            //try
             //{
-            //    try
+            //    checkConn = new SqlConnection(strConnection);
+            //    checkConn.Open();
+            //}
+            //catch(Exception)
+            //{
+            //    strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            //}
+            //finally
+            //{
+            //    if(checkConn.State != ConnectionState.Closed)
             //    {
-            //        conn = new SqlConnection(strConnection);
-            //        if (conn.State == ConnectionState.Closed)
-            //        {
-            //            conn.Open();
-            //        }
-            //        if(conn != null)
-            //        {
-            //            process = true;
-            //        }
+            //        checkConn.Close();
             //    }
-            //    catch (Exception)
-            //    {
-            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
-            //        process = false;
-            //    }
-            //} while (!process);
-            //if (conn.State != ConnectionState.Closed)
-            //    conn.Close();
+            //}
         }
 
         public String GetMovieTitle(string movieID)
@@ -305,12 +298,12 @@ namespace MovieLibrary
             return dto;
         }
 
-        public List<MovieDTO> getMovieListByGenre(List<MovieDTO> listMovie, int movieGenreID)
+        public List<MovieDTO> getMovieListByGenre(List<MovieDTO> listMovie, int movieGenreID, MovieDTO currentMovie)
         {
             List<MovieDTO> movieList = new List<MovieDTO>();
             foreach (var item in listMovie)
             {
-                if (item.Genre == movieGenreID)
+                if (item.Genre == movieGenreID && item!= currentMovie)
                 {
                     movieList.Add(item);
                 }
@@ -318,19 +311,33 @@ namespace MovieLibrary
             return movieList;
         }
 
-        public List<MovieDTO> getMovieListByProducer(List<MovieDTO> listMovie, string movieProducer)
+        public List<MovieDTO> getFiveMovieReference(List<MovieDTO> listMovie)
         {
             List<MovieDTO> movieList = new List<MovieDTO>();
             foreach (var item in listMovie)
             {
-                if (item.Producer.ToUpper().Equals(movieProducer.ToUpper()))
+                movieList.Add(item);
+                if (movieList.Count == 5)
+                {
+                    break;
+                }
+            }
+            return movieList;
+        }
+
+        public List<MovieDTO> getMovieListByProducer(List<MovieDTO> listMovie, string movieProducer, MovieDTO currentMovie)
+        {
+            List<MovieDTO> movieList = new List<MovieDTO>();
+            foreach (var item in listMovie)
+            {
+                if (item.Producer.ToUpper().Equals(movieProducer.ToUpper()) && item != currentMovie)
                 {
                     movieList.Add(item);
                 }
             }
             return movieList;
         }
-
+        
         public List<MovieDTO> searchByName(List<MovieDTO> listMovie, string searchValue)
         {
             List<MovieDTO> resultList = new List<MovieDTO>();
@@ -344,5 +351,6 @@ namespace MovieLibrary
             }
             return resultList;
         }
+        //
     }
 }
