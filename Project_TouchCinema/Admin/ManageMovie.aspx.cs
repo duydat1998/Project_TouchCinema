@@ -125,6 +125,8 @@ namespace Project_TouchCinema
                     gvStaffList.DataSource = list;
                     gvStaffList.DataBind();
                     SetMessageTextAndColor("Successfully added", Color.Green);
+                    btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
                 }
                 else
                 {
@@ -135,8 +137,6 @@ namespace Project_TouchCinema
             {
                 SetMessageTextAndColor("Movie ID is already existed", Color.Red);
             }
-
-            
             
         }
 
@@ -194,6 +194,8 @@ namespace Project_TouchCinema
             }
             txtMovieID.Enabled = false;
             btnNew.Enabled = false;
+            btnUpdate.Enabled = true;
+            btnDelete.Enabled = true;
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)

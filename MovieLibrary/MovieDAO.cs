@@ -18,7 +18,7 @@ namespace MovieLibrary
         public MovieDAO()
         {
             //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;            
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
             //try
             //{
             //    checkConn = new SqlConnection(strConnection);

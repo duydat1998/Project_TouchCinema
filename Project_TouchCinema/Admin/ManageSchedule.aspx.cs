@@ -8,6 +8,7 @@ using System.Drawing;
 using MovieLibrary;
 using RoomLibrary;
 using ScheduleLibrary;
+using System.Globalization;
 
 namespace Project_TouchCinema
 {
@@ -63,7 +64,15 @@ namespace Project_TouchCinema
                 dlHour.Items.Clear();
                 for (int i = 9; i <= 11; i++)
                 {
-                    dlHour.Items.Add(i.ToString());
+                    if (i < 10)
+                    {
+                        dlHour.Items.Add("0"+i.ToString());
+                    }
+                    else
+                    {
+                        dlHour.Items.Add(i.ToString());
+                    }
+                    
                 }
             }
             else if(dlState.SelectedValue.Equals("PM"))
@@ -71,7 +80,14 @@ namespace Project_TouchCinema
                 dlHour.Items.Clear();
                 for (int i = 0; i <= 11; i++)
                 {
-                    dlHour.Items.Add(i.ToString());
+                    if (i < 10)
+                    {
+                        dlHour.Items.Add("0" + i.ToString());
+                    }
+                    else
+                    {
+                        dlHour.Items.Add(i.ToString());
+                    }
                 }
             }
             
@@ -139,24 +155,54 @@ namespace Project_TouchCinema
         protected void btnNew_Click(object sender, EventArgs e)
         {
             string id = txtScheduleID.Text;
-            string date = txtDate.Text;
-            if (!CheckDate(date))
+            string date = ParseExactDateString(txtDate.Text.Trim());
+            string time = ConvertToTime(dlHour.SelectedValue, dlMinute.SelectedValue,dlState.SelectedValue);
+            if (CheckDateTime(date,time))
             {
-                SetMessageTextAndColor("Date is wrong format , format must be MM/dd/yyyy", Color.Red);
+                SetMessageTextAndColor("A", Color.Green);
                 return;
             }
-            string time = ConvertToTime(dlHour.SelectedValue, dlMinute.SelectedValue, dlState.SelectedValue);
-            string movieid = dlMovieID.SelectedValue;
-            int roomID = Convert.ToInt32(dlRoomID.SelectedValue);
+            else
+            {
+                SetMessageTextAndColor("B", Color.Red);
+                return;
+            }
+            
+            //string movieid = dlMovieID.SelectedValue;
+            //int roomID = Convert.ToInt32(dlRoomID.SelectedValue);
 
         }
 
-        public bool CheckDate(string date)
+        public string ParseExactDateString(string date)
         {
-            bool check = true;
+            string result = "";
+
+            int month = 0;
+            string monthText = "";
+            string[] parts;
+
+            parts = date.Split('/');
+            month = Convert.ToInt32(parts.ElementAt(0));
+
+            if (month < 10)
+            {
+                monthText = "0" + month.ToString();
+            }
+            else
+            {
+                monthText = month.ToString();
+            }
+            result = monthText +"/"+ parts.ElementAt(1) +"/"+ parts.ElementAt(2);
+            return result;
+        }
+
+        public bool CheckDateTime(string date,string time)
+        {
+            bool check=true;
+            string format = "MM/dd/yyyy hh:mm:ss tt";
             try
             {
-                DateTime dateConvert = Convert.ToDateTime(date);
+                DateTime dateConvert = DateTime.ParseExact(date+" "+time,format, CultureInfo.CurrentCulture);
             }
             catch
             {
@@ -166,11 +212,11 @@ namespace Project_TouchCinema
             return check;
         }
 
-        public string ConvertToTime(string hour, string min, string state)
+        public string ConvertToTime(string hour, string min,string state)
         {
             string result = "";
-
-            result = hour + ":" + min + ":" + ":00" + " " + state;
+            
+            result =hour + ":" + min + ":" + ":00"+" "+state;
 
             return result;
         }
@@ -195,6 +241,14 @@ namespace Project_TouchCinema
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             string id = txtScheduleID.Text;
+            if (true)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -233,12 +287,30 @@ namespace Project_TouchCinema
         {
             string hour = "";
             string min = "";
+            int hourNo = 0;
+            int minNo = 0;
 
             string[] time;
 
             time = input.Split(':');
-            hour = time.ElementAt(0);
-            min = time.ElementAt(1);
+            hourNo = Convert.ToInt32(time.ElementAt(0));
+            if (hourNo < 10)
+            {
+                hour = "0" + hourNo.ToString();
+            }
+            else
+            {
+                hour = hourNo.ToString();
+            }
+            minNo = Convert.ToInt32(time.ElementAt(1));
+            if (minNo < 10)
+            {
+                min = "0" + hourNo.ToString();
+            }
+            else
+            {
+                min = hourNo.ToString();
+            }
 
             return Tuple.Create(hour, min);
         }
