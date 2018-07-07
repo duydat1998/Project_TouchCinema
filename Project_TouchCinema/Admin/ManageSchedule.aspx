@@ -10,7 +10,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1>Cinema Staff Management</h1>
+    <h1>Cinema Schedule Management</h1>
             <table style="width: 48%;" border="0">
                 <tr>
                     <td class="auto-style1">Schedule ID:</td>
