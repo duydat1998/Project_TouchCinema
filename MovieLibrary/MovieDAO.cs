@@ -108,8 +108,8 @@ namespace MovieLibrary
             con.Open();
             try
             {
-                string sql = "INSERT INTO Movie(movieID,movieTitle,length,rating,startDate,poster,linkTrailer,producer,year)" +
-                    " VALUES(@movieID,@movieTitle,@length,@rating,@startDate,@poster,@linkTrailer,@producer,@year)";
+                string sql = "INSERT INTO Movie(movieID,movieTitle,length,rating,startDate,poster,linkTrailer,producer,year,genreID)" +
+                    " VALUES(@movieID,@movieTitle,@length,@rating,@startDate,@poster,@linkTrailer,@producer,@year,@genreID)";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@movieID", dto.MovieID);
                 cmd.Parameters.AddWithValue("@movieTitle", dto.MovieTitle);
@@ -120,6 +120,7 @@ namespace MovieLibrary
                 cmd.Parameters.AddWithValue("@linkTrailer", dto.LinkTrailer);
                 cmd.Parameters.AddWithValue("@producer", dto.Producer);
                 cmd.Parameters.AddWithValue("@year", dto.Year);
+                cmd.Parameters.AddWithValue("@genreID", dto.Genre);
                 int count = cmd.ExecuteNonQuery();
                 if (count > 0)
                 {
