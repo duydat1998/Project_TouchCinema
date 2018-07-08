@@ -12,35 +12,28 @@ namespace Project_TouchCinema
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.invalidLogin.Visible = false;
+            this.invalidLogin.CssClass = "error_message";
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            
+
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            if (username.Equals("") || password.Equals(""))
+            AdminDTO admin = null;
+            AdminDAO dao = new AdminDAO();
+            admin = dao.CheckLogin(username, password);
+            if (admin != null)
             {
-                this.invalidLogin.Visible = true;
-                this.txtPassword.Text = "";
+                Session["ADMIN_USER"] = admin;
+                Response.Redirect("AdminWorkspace.aspx");
             }
             else
             {
-                AdminDTO admin = null;
-                AdminDAO dao = new AdminDAO();
-                admin = dao.CheckLogin(username, password);
-                if (admin != null)
-                {
-                    Session["ADMIN_USER"] = admin;
-                    Response.Redirect("AdminWorkspace.aspx");
-                }
-                else
-                {
-                    this.invalidLogin.Visible = true;
-                    this.txtPassword.Text = "";
-                }
+                this.invalidLogin.CssClass = "error_message_show";
+                this.txtPassword.Text = "";
             }
+
         }
     }
 }

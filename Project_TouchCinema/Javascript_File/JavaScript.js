@@ -14,9 +14,9 @@ function CloseLoginForm() {
     form.style.opacity = "1";
 }
 function HideInvalidMessage() {
-    var t = document.getElementsByClassName("error_message");
+    var t = document.getElementsByClassName("error_message_show");
     for (var i = 0; i < t.length; i++) {
-        t[i].style.visibility = "hidden";
+        t[i].className = "error_message";
     }
 }
 
@@ -193,4 +193,15 @@ function isValidDate(day, month, year) {
 function ChangeColor() {
     var t = document.getElementById("txtUsername");
     t.style.color = "black";
+}
+
+function CheckLoginInput() {
+    for (var i = 0; i < arguments.length; i++) {
+        var t = document.getElementById(arguments[i]).value;
+        if (t == '') {
+            document.getElementById("invalidLogin").className = "error_message_show";
+            return false;
+        }
+    }
+    return true;
 }

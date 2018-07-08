@@ -11,6 +11,7 @@ namespace Project_TouchCinema
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["MEMBER_USER"] == null)
             {
                 this.avatar.Visible = false;
@@ -18,13 +19,13 @@ namespace Project_TouchCinema
                 this.btnLogout.Visible = false;
                 this.btnLoadLogin.Visible = true;
                 this.btnRegister.Visible = true;
-                this.invalidLogin.Visible = false;
+                this.invalidLogin.CssClass = "error_message";
             }
             else
             {
                 MemberDTO member = (MemberDTO)Session["MEMBER_USER"];
                 this.avatar.ImageUrl = member.ImageLink;
-                this.myAccount.Text = member.FirstName+" "+member.LastName;
+                this.myAccount.Text = member.FirstName + " " + member.LastName;
                 this.btnLoadLogin.Visible = false;
                 this.btnRegister.Visible = false;
                 this.btnLogout.Visible = true;
@@ -44,39 +45,25 @@ namespace Project_TouchCinema
         {
             string username = txtUsernameLogin.Text.Trim();
             string password = txtPasswordLogin.Text.Trim();
-            if (username.Equals("") || password.Equals(""))
+            MemberDTO member = null;
+            MemberDAO dao = new MemberDAO();
+            member = dao.CheckLoginMember(username, password);
+            if (member != null)
             {
-                this.invalidLogin.Visible = true;
-                this.txtPasswordLogin.Text = "";
+                    Session["MEMBER_USER"] = member;
+                    Response.Redirect("TouchCinema.aspx");
             }
             else
             {
-                MemberDTO member = null;
-                MemberDAO dao = new MemberDAO();
-                member = dao.CheckLoginMember(username, password);
-                if (member != null)
-                {
-                    if (member.IsActive)
-                    {
-                        Session["MEMBER_USER"] = member;
-                        Response.Redirect("TouchCinema.aspx");
-                    }
-                    else
-                    {
-                        Response.Redirect("ErrorPage.aspx");
-                    }
-                }
-                else
-                {
-                    this.invalidLogin.Visible = true;
-                    this.txtPasswordLogin.Text = "";
-                }
+                this.invalidLogin.CssClass = "error_message_show";
+                this.txtPasswordLogin.Text = "";
             }
+
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            Session["SearchValue"] = "";            
+            Session["SearchValue"] = "";
             Response.Redirect("MemberRegister.aspx");
         }
     }

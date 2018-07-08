@@ -208,6 +208,10 @@ table {
     color:red;
     visibility:hidden;
 }
+
+.error_message_show {
+    color: red;
+}
 #login_form{
     background-color:white;
     color:black;
@@ -280,9 +284,6 @@ table {
 
 /*CCS for Term and Condition*/
 #term_and_condition {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     background-color: black;
     color: white;
 }
@@ -418,19 +419,3 @@ table {
     border-bottom-left-radius: 25px;
     margin-bottom: 20px;
 }
-
-=======
-background-color: white;
-color: black;
-}
->>>>>>> 33e9118ef1433aa8bc615e1110992a49c741da4e
-=======
-    background-color: white;
-    color: black;
-}
->>>>>>> 33e9118ef1433aa8bc615e1110992a49c741da4e
-=======
-    background-color: white;
-    color: black;
-}
->>>>>>> 33e9118ef1433aa8bc615e1110992a49c741da4e

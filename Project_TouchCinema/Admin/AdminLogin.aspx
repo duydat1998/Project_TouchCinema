@@ -7,20 +7,20 @@
         <tr>
             <td>Admin ID</td>
             <td colspan="2">
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox>
+                <asp:TextBox ID="txtUsername" runat="server" ClientIDMode="Static" CssClass="textbox" Width="273px" onkeypress="HideInvalidMessage()"></asp:TextBox>
 
             </td>
         </tr>
         <tr>
             <td>Password</td>
             <td colspan="2">
-                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="textbox" Width="273px"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" ClientIDMode="Static" TextMode="Password" CssClass="textbox" Width="273px"></asp:TextBox>
 
             </td>
         </tr>
         <tr>
             <td></td>
-            <td><asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" Width="96px" CssClass="button" /></td>
+            <td><asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" OnClientClick="return CheckLoginInput('txtUsername','txtPassword')" Width="96px" CssClass="button" /></td>
             <td>
                 <input id="Reset1" type="reset" value="Reset" class="button"/>
 
@@ -29,7 +29,7 @@
         <tr>
             <td></td>
             <td colspan="2">
-                <asp:Label ID="invalidLogin" runat="server" Text="Invalid username or password!" CssClass="error_message"></asp:Label>
+                <asp:Label ID="invalidLogin" runat="server" ClientIDMode="Static" Text="Invalid username or password!" CssClass="error_message"></asp:Label><br />
             </td>
         </tr>
     </table>
