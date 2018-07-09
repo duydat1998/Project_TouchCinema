@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="ErrorPages\ErrorPage.aspx" />
     <Content Include="GuestAndMember\MemberInformation.aspx" />
+    <Content Include="GuestAndMember\MemberRegisterSuccess.aspx" />
     <Content Include="GuestAndMember\MovieDetailPage.aspx" />
     <Content Include="GuestAndMember\PromotionPage.aspx" />
     <Content Include="GuestAndMember\SearchResultPage.aspx" />
@@ -115,6 +116,13 @@
     </Compile>
     <Compile Include="GuestAndMember\MemberInformation.aspx.designer.cs">
       <DependentUpon>MemberInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\MemberRegisterSuccess.aspx.cs">
+      <DependentUpon>MemberRegisterSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\MemberRegisterSuccess.aspx.designer.cs">
+      <DependentUpon>MemberRegisterSuccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAndMember\MovieDetailPage.aspx.cs">
       <DependentUpon>MovieDetailPage.aspx</DependentUpon>

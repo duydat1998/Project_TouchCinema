@@ -5,12 +5,16 @@
             width: 147px;
         }
         .auto-style2 {
-            width: 826px;
-            height: 875px;
+            width: 1064px;
+            height: 749px;
+        }
+        .auto-style4 {
+            width: 331px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
+    <h1 class="title">Member Information</h1>
     <table class="auto-style2">
         <tr>
             <td class="auto-style1">Avatar:</td>
@@ -30,7 +34,7 @@
             <td class="auto-style1">Username:</td>
             <td><asp:Label ID="txtUsername" runat="server" Text="Label"></asp:Label></td>
             <td></td>
-            <td></td>
+            <td class="auto-style4"></td>
         </tr>
         <tr>
             <td class="auto-style1">First name:</td>
@@ -40,7 +44,7 @@
         <tr>
             <td colspan="3">
                 <asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('firtnameRequire','invalidInput')" ID="txtFirstName" runat="server"  BackColor="White" Width="249px"></asp:TextBox></td>
-            <td>
+            <td class="auto-style4">
                 <span id="firtnameRequire" class="error_message">First name is required. </span>
             </td>
         </tr>
@@ -52,7 +56,7 @@
         <tr>
             <td colspan="3">
                 <asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('latnameRequire','invalidInput')" ID="txtLastName" runat="server" BackColor="White" Width="249px"></asp:TextBox></td>
-            <td>
+            <td class="auto-style4">
                 <span id="latnameRequire" class="error_message">Last name is required. </span>
             </td>
         </tr>
@@ -64,7 +68,7 @@
         <tr>
             <td colspan="3">
                 <asp:TextBox ClientIDMode="Static" placeholder="The phone number to contact to you" onkeypress="HideErrorMessage('phoneRequire','phoneFormat','invalidInput')" ID="txtPhone" runat="server" TextMode="Phone" BackColor="White" Width="244px"></asp:TextBox></td>
-            <td>
+            <td class="auto-style4">
                 <span id="phoneRequire" class="error_message">Phone number is required. </span>
                 <br />
                 <span id="phoneFormat" class="error_message">Phone number is NOT in corect format. </span>
@@ -78,7 +82,7 @@
         <tr>
             <td colspan="3">
                 <asp:TextBox ClientIDMode="Static" placeholder="Email address to contact to you" onkeypress="HideErrorMessage('emailRequire','emailFormat','invalidInput')" ID="txtEmail" runat="server" BackColor="White" Width="240px"></asp:TextBox></td>
-            <td>
+            <td class="auto-style4">
                 <span id="emailRequire" class="error_message">Email is required. </span>
                 <br />
                 <span id="emailFormat" class="error_message">Email is NOT in corect format. </span>
@@ -100,13 +104,13 @@
         </tr>
         <tr>
             <td class="auto-style1">
-                <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button"  OnClick="btnRegister_Click" OnClientClick="return CheckBeforeRegister()" />
+                <asp:Button ID="btnUpdate" runat="server" Text="Update profile" CssClass="button"  OnClick="btnUpdate_Click" OnClientClick="return CheckBeforeUpdate()" />
             </td>
             <td>
-
+                <asp:Button ID="btnChangePass" runat="server" Text="Change Password" CssClass="button" OnClick="btnChangePass_Click" />
             </td>
             <td>
-                <span id="invalidInput" class="error_message">You must fill in all fields in correct format before register.</span>
+                <span id="invalidInput" class="error_message">You must fill in all fields in correct format before updating.</span>
             </td>
         </tr>
     </table>

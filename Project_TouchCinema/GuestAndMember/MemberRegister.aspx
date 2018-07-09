@@ -37,7 +37,7 @@
 
         </tr>
         <tr>
-            <td class="auto-style2">Username:</td>
+            <td class="auto-style2">Username*:</td>
             <td class="auto-style3"></td>
             <td></td>
             <td class="auto-style4"></td>
@@ -55,7 +55,7 @@
 
         </tr>
         <tr>
-            <td class="auto-style2">Password:</td>
+            <td class="auto-style2">Password*:</td>
             <td class="auto-style3"></td>
             <td></td>
         </tr>
@@ -71,7 +71,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">Confirm password:</td>
+            <td class="auto-style2">Confirm password*:</td>
             <td class="auto-style3"></td>
             <td></td>
         </tr>
@@ -85,7 +85,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">First name:</td>
+            <td class="auto-style2">First name*:</td>
             <td class="auto-style3"></td>
             <td></td>
         </tr>
@@ -97,7 +97,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">Last name:</td>
+            <td class="auto-style2">Last name*:</td>
             <td class="auto-style3"></td>
             <td></td>
         </tr>
@@ -109,7 +109,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">Phone number:</td>
+            <td class="auto-style2">Phone number*:</td>
             <td class="auto-style3"></td>
             <td></td>
         </tr>
@@ -123,7 +123,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">Email:</td>
+            <td class="auto-style2">Email*:</td>
             <td class="auto-style3"></td>
             <td></td>
         </tr>
@@ -137,7 +137,7 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style2">Day of Birth:</td>
+            <td class="auto-style2">Day of Birth*:</td>
             <td class="auto-style3"></td>
             <td></td>
         </tr>
@@ -171,7 +171,7 @@
             <td class="auto-style3" colspan="3">
                 <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button" Width="538px" OnClick="btnRegister_Click" OnClientClick="return CheckBeforeRegister()" /></td>
             <td>
-                <span id="invalidInput" class="error_message">You must fill in all fields in correct format before register.</span>
+                <span id="invalidInput" class="error_message">You must fill in all fields in correct format before registering.</span>
             </td>
         </tr>
     </table>

@@ -82,10 +82,6 @@ namespace MemberLibrary
                     };
                 }
             }
-            catch (Exception)
-            {
-                member = null;
-            }
             finally
             {
                 CloseConnect();
@@ -129,10 +125,6 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@Username", Username);
                 checker = cmd.ExecuteNonQuery() > 0;
             }
-            catch (Exception)
-            {
-                point = 0;
-            }
             finally
             {
                 CloseConnect();
@@ -161,10 +153,6 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@Username", dto.Username);
                 checker = cmd.ExecuteNonQuery() > 0;
 
-            }
-            catch (Exception)
-            {
-                checker = false;
             }
             finally
             {

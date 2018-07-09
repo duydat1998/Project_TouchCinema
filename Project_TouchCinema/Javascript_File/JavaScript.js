@@ -204,3 +204,7 @@ function CheckLoginInput() {
     }
     return true;
 }
+
+function CheckBeforeUpdate() {
+
+}
