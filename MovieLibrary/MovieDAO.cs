@@ -18,8 +18,8 @@ namespace MovieLibrary
         //Trước khi push nhớ comment all cho ai cần làm
         public MovieDAO()
         {
-            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;            
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;            
+            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
             //try
             //{
             //    checkConn = new SqlConnection(strConnection);

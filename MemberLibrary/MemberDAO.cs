@@ -235,10 +235,14 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@Avatar", dto.ImageLink);
                 cmd.Parameters.AddWithValue("@isActive", dto.IsActive);
                 checker = cmd.ExecuteNonQuery() > 0;
-            }
-            catch
-            {
-                throw new Exception();
+                if (checker)
+                {
+                    SetUpConnect("Insert into Point Values(@username, @point)");
+                    cmd = new SqlCommand(cmdLine, conn);
+                    cmd.Parameters.AddWithValue("@username", dto.Username);
+                    cmd.Parameters.AddWithValue("@point", 0);
+                    checker = cmd.ExecuteNonQuery() > 0;
+                }
             }
             finally
             {
@@ -345,6 +349,7 @@ namespace MemberLibrary
             }
             return result;
         }
+
         public List<MemberDTO> GetMemberList()
         {
             List<MemberDTO> listMember = null;
@@ -387,7 +392,6 @@ namespace MemberLibrary
             }
             return listMember;
         }
-
 
     }
 }

@@ -23,6 +23,10 @@
     <h1 class="title">Register to be a member for attractive promotions</h1>
     <table>
         <tr>
+            <td class="auto-style2">Avatar:</td>
+            <td class="auto-style3"></td>
+        </tr>
+        <tr>
             <td>
                 <asp:Image ID="imageAvatar" runat="server" CssClass="avatar" /></td>
             <td colspan="2">
@@ -73,7 +77,7 @@
         </tr>
         <tr>
             <td class="auto-style1" colspan="3">
-                <asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('confirmPassRequire','confirmPassMatch','invalidInput')" ID="txtConfirmPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
+                <asp:TextBox ClientIDMode="Static" placeholder="Confirm password" onkeypress="HideErrorMessage('confirmPassRequire','confirmPassMatch','invalidInput')" ID="txtConfirmPass" runat="server" Width="533px" TextMode="Password" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
                 <span id="confirmPassRequire" class="error_message">Confirm Password is required. </span>
                 <br />
@@ -111,7 +115,7 @@
         </tr>
         <tr>
             <td class="auto-style1" colspan="3">
-                <asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('phoneRequire','phoneFormat','invalidInput')" ID="txtPhone" runat="server" Width="533px" TextMode="Phone" BackColor="White"></asp:TextBox></td>
+                <asp:TextBox ClientIDMode="Static" placeholder="The phone number to contact to you" onkeypress="HideErrorMessage('phoneRequire','phoneFormat','invalidInput')" ID="txtPhone" runat="server" Width="533px" TextMode="Phone" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
                 <span id="phoneRequire" class="error_message">Phone number is required. </span>
                 <br />
@@ -125,7 +129,7 @@
         </tr>
         <tr>
             <td class="auto-style1" colspan="3">
-                <asp:TextBox ClientIDMode="Static" onkeypress="HideErrorMessage('emailRequire','emailFormat','invalidInput')" ID="txtEmail" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
+                <asp:TextBox ClientIDMode="Static" placeholder="Email address to contact to you" onkeypress="HideErrorMessage('emailRequire','emailFormat','invalidInput')" ID="txtEmail" runat="server" Width="533px" BackColor="White"></asp:TextBox></td>
             <td class="auto-style4">
                 <span id="emailRequire" class="error_message">Email is required. </span>
                 <br />
@@ -146,10 +150,7 @@
                 <asp:DropDownList ID="dlYear" runat="server" ClientIDMode="Static" Width="130px" BackColor="White" onchange="HideErrorMessage('dateInvalid','invalidInput')"></asp:DropDownList></td>
             <td class="auto-style4"><span id="dateInvalid" class="error_message">Date is not valid. </span></td>
         </tr>
-        <tr>
-            <td class="auto-style2">Avatar:</td>
-            <td class="auto-style3"></td>
-        </tr>
+
 
         <tr>
 
