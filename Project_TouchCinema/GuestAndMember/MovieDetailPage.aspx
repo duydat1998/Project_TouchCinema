@@ -43,28 +43,25 @@
             <div id="movie_same_genre">
                 <div class="panel_upper">
                     <asp:Label runat="server" ID="MovieSameGenre" Text="Movies also have '' genre"/>
-                </div>                
-                <asp:Repeater runat="server" ID="MovieSameGenreList">
-                    <HeaderTemplate>                                         
-                        <table class="reference_table">                        
-                            <tr>                        
-                    </HeaderTemplate>
-                    <ItemTemplate>                    
-                                <td>
-                                    <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("movieTitle")%>">
-                                        <img src="<%# Eval("poster")%>"/>
-                                    </a>
-                                    <br />
-                                    <asp:Label runat="server" style="text-align:center;">
-                                        <b><%# Eval("movieTitle") %></b>
-                                    </asp:Label>
-                                </td>
-                    </ItemTemplate>                
-                    <FooterTemplate>
-                            </tr>
-                        </table>                    
-                    </FooterTemplate>
-                </asp:Repeater>                        
+                </div>     
+                <div class="movie_reference_content">
+                    <asp:Repeater runat="server" ID="MovieSameGenreList">
+                        <HeaderTemplate>                                                                     
+                        </HeaderTemplate>
+                        <ItemTemplate>                    
+                            <div class="movie_panel">
+                                <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("MovieTitle")%>">
+                                    <img src="<%# Eval("poster")%>" style="width: 100%;"/>
+                                </a>
+                                <br /><%# Eval("MovieTitle") %>
+                                <br /><%# Eval("Length") + " phút" %>                                                               
+                            </div>
+                        </ItemTemplate>                
+                        <FooterTemplate>                                               
+                        </FooterTemplate>
+                    </asp:Repeater>                        
+                </div>  
+                <br />
                 <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
                 <br />
                 <div class="panel_lower">
@@ -76,27 +73,23 @@
                 <div class="panel_upper">
                     <asp:Label runat="server" ID="MovieSameProducer" Text="Movies also have been made form ''"/>
                 </div>
-                <asp:Repeater runat="server" ID="MovieSameProducerList" >
-                    <HeaderTemplate>                    
-                        <table class="reference_table">                        
-                            <tr>                        
-                    </HeaderTemplate>
-                    <ItemTemplate>                    
-                                <td>
-                                    <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("movieTitle")%>">
-                                        <img src="<%# Eval("poster")%>"/>
-                                    </a>
-                                    <br />
-                                    <asp:Label runat="server" style="text-align:center;">
-                                        <b><%# Eval("movieTitle") %></b>
-                                    </asp:Label>
-                                </td>
-                    </ItemTemplate>                
-                    <FooterTemplate>
-                            </tr>
-                        </table>                    
-                    </FooterTemplate>
-                </asp:Repeater>            
+                <div class="movie_reference_content">
+                    <asp:Repeater runat="server" ID="MovieSameProducerList" >
+                        <HeaderTemplate>                                            
+                        </HeaderTemplate>
+                        <ItemTemplate>                    
+                            <div class="movie_panel">
+                                <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("MovieTitle")%>">
+                                    <img src="<%# Eval("poster")%>" style="width: 100%;"/>
+                                </a>
+                                <br /><%# Eval("MovieTitle") %>
+                                <br /><%# Eval("Length") + " phút" %>                                                               
+                            </div>
+                        </ItemTemplate>                
+                        <FooterTemplate>                            
+                        </FooterTemplate>
+                    </asp:Repeater>            
+                </div>                
                 <br />
                 <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
                 <br />

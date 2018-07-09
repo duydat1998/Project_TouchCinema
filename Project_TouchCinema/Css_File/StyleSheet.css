@@ -243,24 +243,19 @@ table {
     margin-right: 20px;
 }
 
-.movie_info {
+.movie_lastest_info {
     float: left;
     margin-left: 10px; margin-right: 10px;
     width: 100%;
     box-sizing: border-box;
 }
 
-    .movie_info b {        
-        float: left;
-        width: 100%;
-        text-align: center;
-    }
-    .movie_info table {
-        float: left;
-        width: 100%;
-        text-align: center; 
-        margin-left: -0.2%;
-    }
+.movie_rating_info {
+    float: left;
+    margin-left: 10px; margin-right: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}    
 
 .movie_label {
     float: left;
@@ -278,8 +273,33 @@ table {
     text-decoration-line:underline;
 }
 
-#incorrectCode{
-    visibility:hidden;
+.banner {
+    float: left;
+    margin-left: 10px; margin-right: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.promotion_section{
+    float: left; 
+    width: 100%;
+}
+
+.promotion_banner {
+    float: left;
+    margin: 20px;
+    width: 40%;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+    .promotion_banner img{
+        float: left;
+        width:100%;
+    }
+
+#incorrectCode {
+    visibility: hidden;
 }
 
 /*CCS for Term and Condition*/
@@ -292,6 +312,7 @@ table {
 #search_bar{
     float: left;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .search_result_mess {
@@ -313,7 +334,15 @@ table {
         text-align: center;
     }
 
-#empty_label{
+.movie_panel{
+    float:left;
+    width: 15%;
+    text-align: center;
+    margin: 20px;
+    font-weight: 900;
+}
+
+#empty_label {
     color: red;
 }
 
@@ -363,25 +392,15 @@ table {
     width: 100%;
 }
 
-.reference_table{
+.movie_reference_content{
     float: left;
     width: 100%;
-}
-
-.reference_table tr td{
-    width: 20%;
-    text-align: center;
-}
-
-.reference_table tr td img{
-    width: 150px;    
 }
 
 .show_more_link {
     float: right;
     color: black;
-    margin: 5px;
-    padding: 5px;
+    margin: 5px;    
     text-align: center;
     border-radius: 10px;
 }
