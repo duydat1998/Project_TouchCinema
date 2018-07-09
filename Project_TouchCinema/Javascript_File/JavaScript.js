@@ -64,7 +64,6 @@ function ValidateMemberRegisterInfo() {
     }
     t = document.getElementById("txtPass");
     var password = t.value;
-    alert("Pass:" + password);
     if (t.value == '') {
         document.getElementById("passRequire").style.visibility = "visible";
         t.focus();
@@ -78,7 +77,6 @@ function ValidateMemberRegisterInfo() {
     }
 
     t = document.getElementById("txtConfirmPass");
-    alert("confirm:" + t.value);
     if (t.value == '') {
         document.getElementById("confirmPassRequire").style.visibility = "visible";
         t.focus();
