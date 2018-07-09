@@ -31,12 +31,21 @@ namespace Project_TouchCinema {
         protected global::System.Web.UI.WebControls.Button btnSeacrh;
         
         /// <summary>
-        /// MovieList control.
+        /// LastestMovieList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MovieList;
+        protected global::System.Web.UI.WebControls.Repeater LastestMovieList;
+        
+        /// <summary>
+        /// MostRatingMovieList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater MostRatingMovieList;
     }
 }
