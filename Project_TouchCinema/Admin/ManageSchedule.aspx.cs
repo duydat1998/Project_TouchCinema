@@ -20,6 +20,7 @@ namespace Project_TouchCinema
         RoomDAO RoomDaos = new RoomDAO();
         ScheduleDTO ScheduleDtos = new ScheduleDTO();
         ScheduleDAO ScheduleDaos = new ScheduleDAO();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,7 +30,7 @@ namespace Project_TouchCinema
                 List<ScheduleDTO> ListSchedule = new List<ScheduleDTO>();
                 ListMovie = MovieDaos.GetMovieList();
                 Session.Add("AdminMovieList", ListMovie);
-                ListRoom = RoomDaos.GetRoomList();
+                ListRoom = RoomDaos.GetRoomListForSchedule();
                 Session.Add("AdminRoomList", ListRoom);
                 ListSchedule = ScheduleDaos.GetScheduleList();
                 Session.Add("AdminScheduleList", ListSchedule);
@@ -156,21 +157,44 @@ namespace Project_TouchCinema
         {
             string id = txtScheduleID.Text;
             string date = ParseExactDateString(txtDate.Text.Trim());
-            string time = ConvertToTime(dlHour.SelectedValue, dlMinute.SelectedValue,dlState.SelectedValue);
-            if (CheckDateTime(date,time))
-            {
-                SetMessageTextAndColor("A", Color.Green);
-                return;
-            }
-            else
-            {
-                SetMessageTextAndColor("B", Color.Red);
-                return;
-            }
+            string time = ConvertToTime(dlHour.SelectedValue, dlMinute.SelectedValue,dlState.SelectedValue.ToUpper());
             
-            //string movieid = dlMovieID.SelectedValue;
-            //int roomID = Convert.ToInt32(dlRoomID.SelectedValue);
+            if (!CheckDateTime(date, time))
+            {
+                SetMessageTextAndColor("Date Format is invalid, format: MM/dd/yyyy.", Color.Red);
+                return;
+            }
+            string datetime = date + " " + time;
+            string movieid = dlMovieID.SelectedValue;
+            int roomID = Convert.ToInt32(dlRoomID.SelectedValue);
+            List<ScheduleDTO> list = (List<ScheduleDTO>)Session["AdminScheduleList"];
+            foreach(ScheduleDTO item in list)
+            {
+                if (movieid.Equals(item.MovieID) && roomID == item.RoomID && datetime.Equals(ConvertScheduleDateInListToCompare(item.ScheduleDate.ToString())))
+                {
+                    SetMessageTextAndColor("This time: " + datetime + " with Room: " + roomID + " and MovieID: " + movieid + " has already been added, please try again!", Color.Red);
+                    return;
+                }else if (datetime.Equals(ConvertScheduleDateInListToCompare(item.ScheduleDate.ToString())) && roomID == item.RoomID)
+                {
+                    SetMessageTextAndColor("This time: " + datetime + ", at Room: "+roomID+" has already been set up. Please try again.",Color.Red);
+                    return;
+                }
+            }
 
+
+
+            SetMessageTextAndColor("Successfully added!", Color.Green);
+        }
+
+        public string ConvertScheduleDateInListToCompare(string date)
+        {
+            string result = "";
+            Tuple<string, string, string> DateTimeState = SplitDateTime(date);
+            string dateToCompare = ParseExactDateString(DateTimeState.Item1);
+            Tuple<string, string> Time = SplitTime(DateTimeState.Item2);
+            string timeToCompare = ConvertToTime(Time.Item1, Time.Item2, DateTimeState.Item3);
+            result = dateToCompare + " " + timeToCompare;
+            return result;
         }
 
         public string ParseExactDateString(string date)
@@ -178,11 +202,14 @@ namespace Project_TouchCinema
             string result = "";
 
             int month = 0;
+            int day = 0;
             string monthText = "";
+            string dayText = "";
             string[] parts;
 
             parts = date.Split('/');
             month = Convert.ToInt32(parts.ElementAt(0));
+            day = Convert.ToInt32(parts.ElementAt(1));
 
             if (month < 10)
             {
@@ -192,7 +219,16 @@ namespace Project_TouchCinema
             {
                 monthText = month.ToString();
             }
-            result = monthText +"/"+ parts.ElementAt(1) +"/"+ parts.ElementAt(2);
+
+            if (day < 10)
+            {
+                dayText = "0" + day.ToString();
+            }
+            else
+            {
+                dayText = day.ToString();
+            }
+            result = monthText +"/"+ dayText +"/"+ parts.ElementAt(2);
             return result;
         }
 
@@ -216,7 +252,7 @@ namespace Project_TouchCinema
         {
             string result = "";
             
-            result =hour + ":" + min + ":" + ":00"+" "+state;
+            result =hour + ":" + min + ":" + "00"+" "+state;
 
             return result;
         }

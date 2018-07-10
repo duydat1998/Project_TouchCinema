@@ -101,6 +101,49 @@ namespace ScheduleLibrary
             return result;
         }
 
+        public bool AddSchedule()
+        {
+            bool check = false;
+            
+            return check;
+        }
 
+        public List<ScheduleDTO> GetScheduleFromNowOn()
+        {
+            List<ScheduleDTO> result = new List<ScheduleDTO>();
+
+            SqlConnection con = new SqlConnection(strConnection);
+            if(con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                string sql = "SELECT scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE date >= CURRENT_TIMESTAMP";
+                SqlCommand cmd = new SqlCommand(sql,con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ScheduleDTO dto = new ScheduleDTO
+                        {
+                            ScheduleID = reader.GetString(0),
+                            ScheduleDate = reader.GetDateTime(1),
+                            MovieID = reader.GetString(2),
+                            RoomID = reader.GetInt32(3),
+                            PriceOfTicket = (float) reader.GetDouble(4)
+                        };
+                        result.Add(dto);
+                    }
+                } 
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return result;
+        }
     }
 }
