@@ -97,14 +97,15 @@ namespace Project_TouchCinema
                 if (!fileName.Equals("default-avatar.jpg"))
                 {
                     string tempFilename = fileName;
-                    bool check = System.IO.File.Exists(Server.MapPath(Server.MapPath("~/Image/Avatar/") + fileName));
+                    bool check = System.IO.File.Exists(Server.MapPath("~/Image/Avatar/") + fileName);
                     if (check)
                     {
                         int i = 1;
                         do
                         {
-                            fileName = tempFilename + "" + i + "";
-                            check = System.IO.File.Exists(Server.MapPath(Server.MapPath("~/Image/Avatar/") + fileName));
+                            int index = tempFilename.IndexOf(".");
+                            fileName = tempFilename.Insert(index,i+"");
+                            check = System.IO.File.Exists(Server.MapPath("~/Image/Avatar/") + fileName);
                             i++;
                         } while (check);
                     }

@@ -82,10 +82,6 @@ namespace MemberLibrary
                     };
                 }
             }
-            catch (Exception)
-            {
-                member = null;
-            }
             finally
             {
                 CloseConnect();
@@ -129,10 +125,6 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@Username", Username);
                 checker = cmd.ExecuteNonQuery() > 0;
             }
-            catch (Exception)
-            {
-                point = 0;
-            }
             finally
             {
                 CloseConnect();
@@ -140,31 +132,25 @@ namespace MemberLibrary
             return checker;
         }
 
-        public bool UpdateProfileMember(MemberDTO dto)
+
+        public bool UpdateProfile(MemberDTO dto)
         {
             bool checker = false;
             try
             {
                 SetUpConnect("Update Member " +
-                            "Set password = @Password, firstName = @First, lastName = @Last, phone = @Phone," +
-                                " email = @Email, birthDate = @Birth, avatar = @Avatar, isActive = @IsActive" +
-                            "Where username = @Username");
+                            "Set firstName = @First, lastName = @Last, phone = @Phone," +
+                                " email = @Email, birthDate = @Birth, avatar = @Avatar" +
+                            " Where username = @Username");
                 cmd = new SqlCommand(cmdLine, conn);
-                cmd.Parameters.AddWithValue("@Password", dto.Password);
                 cmd.Parameters.AddWithValue("@First", dto.FirstName);
                 cmd.Parameters.AddWithValue("@Last", dto.LastName);
                 cmd.Parameters.AddWithValue("@Phone", dto.PhoneNum);
                 cmd.Parameters.AddWithValue("@Email", dto.Email);
                 cmd.Parameters.AddWithValue("@Birth", dto.Birthdate);
                 cmd.Parameters.AddWithValue("@Avatar", dto.ImageLink);
-                cmd.Parameters.AddWithValue("@IsActive", dto.IsActive);
                 cmd.Parameters.AddWithValue("@Username", dto.Username);
                 checker = cmd.ExecuteNonQuery() > 0;
-
-            }
-            catch (Exception)
-            {
-                checker = false;
             }
             finally
             {
@@ -173,7 +159,55 @@ namespace MemberLibrary
             return checker;
         }
 
+        public bool ChangePass(string username, string password)
+        {
+            bool checker = false;
+            try
+            {
+                SetUpConnect("Update Member " +
+                            "Set password = @pass" +
+                            " Where username = @Username");
+                cmd = new SqlCommand(cmdLine, conn);
+                cmd.Parameters.AddWithValue("@pass", password);
+                cmd.Parameters.AddWithValue("@Username", username);
+                checker = cmd.ExecuteNonQuery() > 0;
+            }
+            finally
+            {
+                CloseConnect();
+            }
+            return checker;
+        }
 
+        public bool CheckPassword(string username, string password)
+        {
+            bool checker = false;
+            try
+            {
+                SetUpConnect("Select password from Member " +
+                            " Where username = @Username");
+                cmd = new SqlCommand(cmdLine, conn);
+                cmd.Parameters.AddWithValue("@Username", username);
+                dReader = cmd.ExecuteReader();
+                string passToCompare = "";
+                if (dReader.HasRows)
+                {
+                    if (dReader.Read())
+                    {
+                        passToCompare = dReader.GetString(0);
+                    }
+                    if (password.Equals(passToCompare))
+                    {
+                        checker = true;
+                    }
+                }
+            }
+            finally
+            {
+                CloseConnect();
+            }
+            return checker;
+        }
 
         public List<MemberDTO> SearchMemberByUsername(string username)
         {
@@ -235,10 +269,14 @@ namespace MemberLibrary
                 cmd.Parameters.AddWithValue("@Avatar", dto.ImageLink);
                 cmd.Parameters.AddWithValue("@isActive", dto.IsActive);
                 checker = cmd.ExecuteNonQuery() > 0;
-            }
-            catch
-            {
-                throw new Exception();
+                if (checker)
+                {
+                    SetUpConnect("Insert into Point Values(@username, @point)");
+                    cmd = new SqlCommand(cmdLine, conn);
+                    cmd.Parameters.AddWithValue("@username", dto.Username);
+                    cmd.Parameters.AddWithValue("@point", 0);
+                    checker = cmd.ExecuteNonQuery() > 0;
+                }
             }
             finally
             {
@@ -345,6 +383,7 @@ namespace MemberLibrary
             }
             return result;
         }
+
         public List<MemberDTO> GetMemberList()
         {
             List<MemberDTO> listMember = null;
@@ -387,7 +426,6 @@ namespace MemberLibrary
             }
             return listMember;
         }
-
 
     }
 }

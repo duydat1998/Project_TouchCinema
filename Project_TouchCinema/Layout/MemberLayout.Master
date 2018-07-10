@@ -61,7 +61,7 @@
          
          <div id="member_info">
              <asp:Image ID="avatar" runat="server" CssClass="avatar" />
-             <asp:HyperLink ID="myAccount" runat="server" CssClass="profile" />
+             <asp:HyperLink ID="myAccount" runat="server" CssClass="profile" NavigateUrl="~/GuestAndMember/MemberInformation.aspx" />
              <br />
              <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
              <input type="button" value="Login" onclick="LoadLoginForm()" class="button" id="btnLoadLogin" runat="server"/>
