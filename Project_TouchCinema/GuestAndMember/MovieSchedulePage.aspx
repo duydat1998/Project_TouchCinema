@@ -15,7 +15,8 @@
                             <img src="<%# Eval("Poster")%>"/>
                         </div>
                     </div>
-                    <div>                        
+                    <div class="movie_schedule_detail">
+                        
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
