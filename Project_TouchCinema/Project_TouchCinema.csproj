@@ -71,6 +71,7 @@
     <Content Include="GuestAndMember\PromotionPage.aspx" />
     <Content Include="GuestAndMember\SearchResultPage.aspx" />
     <Content Include="GuestAndMember\TermAndCondition.aspx" />
+    <Content Include="GuestAndMember\UnderConstructionsPage.aspx" />
     <Content Include="Layout\AdminLayout.Master" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AdminWorkspace.aspx" />
@@ -135,6 +136,13 @@
     </Compile>
     <Compile Include="GuestAndMember\TermAndCondition.aspx.designer.cs">
       <DependentUpon>TermAndCondition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\UnderConstructionsPage.aspx.cs">
+      <DependentUpon>UnderConstructionsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\UnderConstructionsPage.aspx.designer.cs">
+      <DependentUpon>UnderConstructionsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\AdminLayout.Master.cs">
       <DependentUpon>AdminLayout.Master</DependentUpon>

@@ -56,7 +56,6 @@
                 <FooterTemplate>                        
                 </FooterTemplate>
             </asp:Repeater>            
-            <hr />
         </div>
         <hr />
         <%-- Phần show promotions --%>
@@ -67,22 +66,22 @@
                 </div>
                 <div class="promotion_section">
                     <div class="promotion_banner">
-                        <a href="">
+                        <a href="UnderConstructionsPage.aspx">
                             <img src="../Image/Promotion/DongGia20k.jpg" />
                         </a>
                     </div>
                     <div class="promotion_banner">
-                        <a href="">
+                        <a href="UnderConstructionsPage.aspx">
                             <img src="../Image/Promotion/PhongPhiTieuSanQuaNhieu.jpg" />
                         </a>
                     </div>
                     <div class="promotion_banner">
-                        <a href="">
+                        <a href="UnderConstructionsPage.aspx">
                             <img src="../Image/Promotion/TickAndGetTiclet.jpg" />
                         </a>
                     </div>
                     <div class="promotion_banner">
-                        <a href="">
+                        <a href="UnderConstructionsPage.aspx">
                             <img src="../Image/Promotion/TuSachChoEm.jpg" />
                         </a>
                     </div>
