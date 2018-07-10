@@ -40,8 +40,6 @@ function ModifyBesideDiv() {
 }
 
 function HideErrorMessage() {
-    var t = document.getElementById("invalidInput");
-    t.style.visibility = "hidden";
     for (var i = 0; i < arguments.length; i++) {
         t = document.getElementById(arguments[i]);
         t.style.visibility = "hidden";

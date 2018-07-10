@@ -15,7 +15,7 @@
         <tr>
             <td class="auto-style2">Old password*:</td>
             <td>
-                <asp:TextBox ID="txtOldPass" runat="server" ClientIDMode="Static" Width="260px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('passRequire','invalidInput')"></asp:TextBox>
+                <asp:TextBox ID="txtOldPass" runat="server" ClientIDMode="Static" Width="260px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('oldpassRequire')"></asp:TextBox>
             </td>
             <td class="auto-style1">
                 <span id="oldpassRequire" class="error_message">Password is required. </span>
@@ -24,7 +24,7 @@
         <tr>
             <td class="auto-style2">New Password*:</td>
             <td>
-                <asp:TextBox ID="txtNewPass" runat="server" ClientIDMode="Static" Width="260px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('passRequire','passLength','invalidInput')" placeholder="Password is no more than 10 characters"></asp:TextBox>
+                <asp:TextBox ID="txtNewPass" runat="server" ClientIDMode="Static" Width="260px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('newpassRequire','newpassLength')" placeholder="Password is no more than 10 characters"></asp:TextBox>
             </td>
             <td class="auto-style1">
                 <span id="newpassRequire" class="error_message">Password is required. </span>
@@ -35,7 +35,7 @@
         <tr>
             <td class="auto-style2">Confirm new password*:</td>
             <td>
-                <asp:TextBox ID="txtConfirmPass" runat="server" ClientIDMode="Static" Width="260px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('passRequire','passLength','invalidInput')" placeholder="Confirm password"></asp:TextBox>
+                <asp:TextBox ID="txtConfirmPass" runat="server" ClientIDMode="Static" Width="260px" TextMode="Password" BackColor="White" onkeypress="HideErrorMessage('confirmPassRequire','confirmPassMatch')" placeholder="Confirm password"></asp:TextBox>
             </td>
             <td class="auto-style1">
                 <span id="confirmPassRequire" class="error_message">Confirm Password is required. </span>
@@ -45,7 +45,7 @@
         </tr>
         <tr>
             <td class="auto-style2"></td>
-            <td><asp:Button ID="btnChange" runat="server" Text="Change" CssClass="button" OnClick="btnChange_Click" OnClientClick="return "/></td>
+            <td><asp:Button ID="btnChange" runat="server" Text="Change" CssClass="button" OnClick="btnChange_Click" OnClientClick="return ValidateChangePass()"/></td>
             <td class="auto-style1"><input id="Reset1" type="reset" value="Reset" class="button" /></td>
         </tr>
     </table>
