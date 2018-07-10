@@ -12,38 +12,76 @@
                 <asp:Button runat="server" ID="btnSeacrh" Text="Search" CssClass="button" OnClick="btnSeacrh_Click"/>                
             </div>
         </div>
-               
+        <hr />      
         <%-- Phần show một chút thông tin phim mới ra --%>
-        <div class="movie_info" runat="server">        
-            <hr />
-            <asp:Repeater runat="server" ID="MovieList" >
+        <div class="movie_lastest_info" runat="server">                    
+            <asp:Repeater runat="server" ID="LastestMovieList" >
                 <HeaderTemplate>
-                    <b>Newest Movies</b>                      
-                    <table>                        
-                        <tr>                        
+                    <div class="panel_upper">
+                        Lastest Added Movies
+                    </div>                                          
                 </HeaderTemplate>
-                <ItemTemplate>                    
-                            <td>
-                                <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("movieTitle")%>">
-                                    <img src="<%# Eval("poster")%>" style="width: 100%;"/>
-                                </a>
-                                <asp:Label runat="server" style="text-align:center;">
-                                    <b><%# Eval("movieTitle") %></b>
-                                </asp:Label>
-                            </td>
-                </ItemTemplate>                
-                <FooterTemplate>
-                        </tr>
-                    </table>                    
-                </FooterTemplate>
+                <ItemTemplate>                                                
+                    <div class="movie_panel">
+                        <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("MovieTitle")%>">
+                            <img src="<%# Eval("poster")%>" style="width: 100%;"/>
+                        </a>
+                        <br /><%# Eval("MovieTitle") %>
+                        <br /><%# Eval("Length") + " phút" %>    
+                        <br />Added on <%# Eval("StartDate") %>
+                    </div>
+                </ItemTemplate>                                
+            </asp:Repeater>                        
+        </div>
+        <hr />
+        <div class="movie_rating_info" runat="server">                    
+            <asp:Repeater runat="server" ID="MostRatingMovieList" >
+                <HeaderTemplate>
+                    <div class="panel_upper">
+                        Most Rating Movies
+                    </div>                                          
+                </HeaderTemplate>
+                <ItemTemplate>                                                
+                    <div class="movie_panel">
+                        <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("MovieTitle")%>">
+                            <img src="<%# Eval("poster")%>" style="width: 100%;"/>
+                        </a>
+                        <br /><%# Eval("MovieTitle") %>
+                        <br /><%# Eval("Length") + " phút" %>                                                               
+                        <br />Rate: <%# Eval("Rating") %>
+                    </div>
+                </ItemTemplate>                                
             </asp:Repeater>            
-            <hr />
-        </div>        
-
+        </div>
+        <hr />
         <%-- Phần show promotions --%>
         <div>
             <div class="banner">
-
+                <div class="panel_upper">
+                        Currently Promotion
+                </div>
+                <div class="promotion_section">
+                    <div class="promotion_banner">
+                        <a href="UnderConstructionsPage.aspx">
+                            <img src="../Image/Promotion/DongGia20k.jpg" />
+                        </a>
+                    </div>
+                    <div class="promotion_banner">
+                        <a href="UnderConstructionsPage.aspx">
+                            <img src="../Image/Promotion/PhongPhiTieuSanQuaNhieu.jpg" />
+                        </a>
+                    </div>
+                    <div class="promotion_banner">
+                        <a href="UnderConstructionsPage.aspx">
+                            <img src="../Image/Promotion/TickAndGetTiclet.jpg" />
+                        </a>
+                    </div>
+                    <div class="promotion_banner">
+                        <a href="UnderConstructionsPage.aspx">
+                            <img src="../Image/Promotion/TuSachChoEm.jpg" />
+                        </a>
+                    </div>
+                </div>                
             </div>
         </div>
     </div>

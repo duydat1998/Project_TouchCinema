@@ -67,10 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ErrorPages\ErrorPage.aspx" />
+    <Content Include="GuestAndMember\MemberChangePassword.aspx" />
+    <Content Include="GuestAndMember\MemberInformation.aspx" />
     <Content Include="GuestAndMember\MovieDetailPage.aspx" />
+    <Content Include="GuestAndMember\MovieSchedulePage.aspx" />
     <Content Include="GuestAndMember\PromotionPage.aspx" />
     <Content Include="GuestAndMember\SearchResultPage.aspx" />
     <Content Include="GuestAndMember\TermAndCondition.aspx" />
+    <Content Include="GuestAndMember\UnderConstructionsPage.aspx" />
     <Content Include="Layout\AdminLayout.Master" />
     <Content Include="Admin\AdminLogin.aspx" />
     <Content Include="Admin\AdminWorkspace.aspx" />
@@ -108,12 +112,33 @@
     <Compile Include="ErrorPages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GuestAndMember\MemberChangePassword.aspx.cs">
+      <DependentUpon>MemberChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\MemberChangePassword.aspx.designer.cs">
+      <DependentUpon>MemberChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\MemberInformation.aspx.cs">
+      <DependentUpon>MemberInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\MemberInformation.aspx.designer.cs">
+      <DependentUpon>MemberInformation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GuestAndMember\MovieDetailPage.aspx.cs">
       <DependentUpon>MovieDetailPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="GuestAndMember\MovieDetailPage.aspx.designer.cs">
       <DependentUpon>MovieDetailPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\MovieSchedulePage.aspx.cs">
+      <DependentUpon>MovieSchedulePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\MovieSchedulePage.aspx.designer.cs">
+      <DependentUpon>MovieSchedulePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAndMember\PromotionPage.aspx.cs">
       <DependentUpon>PromotionPage.aspx</DependentUpon>
@@ -135,6 +160,13 @@
     </Compile>
     <Compile Include="GuestAndMember\TermAndCondition.aspx.designer.cs">
       <DependentUpon>TermAndCondition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\UnderConstructionsPage.aspx.cs">
+      <DependentUpon>UnderConstructionsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\UnderConstructionsPage.aspx.designer.cs">
+      <DependentUpon>UnderConstructionsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Layout\AdminLayout.Master.cs">
       <DependentUpon>AdminLayout.Master</DependentUpon>

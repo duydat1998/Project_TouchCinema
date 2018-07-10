@@ -14,9 +14,9 @@ function CloseLoginForm() {
     form.style.opacity = "1";
 }
 function HideInvalidMessage() {
-    var t = document.getElementsByClassName("error_message");
+    var t = document.getElementsByClassName("error_message_show");
     for (var i = 0; i < t.length; i++) {
-        t[i].style.visibility = "hidden";
+        t[i].className = "error_message";
     }
 }
 
@@ -63,8 +63,7 @@ function ValidateMemberRegisterInfo() {
         }
     }
     t = document.getElementById("txtPass");
-    var password = t;
-
+    var password = t.value;
     if (t.value == '') {
         document.getElementById("passRequire").style.visibility = "visible";
         t.focus();
@@ -193,4 +192,140 @@ function isValidDate(day, month, year) {
 function ChangeColor() {
     var t = document.getElementById("txtUsername");
     t.style.color = "black";
+}
+
+function CheckLoginInput() {
+    for (var i = 0; i < arguments.length; i++) {
+        var t = document.getElementById(arguments[i]).value;
+        if (t == '') {
+            document.getElementById("invalidLogin").className = "error_message_show";
+            return false;
+        }
+    }
+    return true;
+}
+
+function CheckBeforeUpdate() {
+    var result = ValidateMemberUpdateInfo();
+    if (!result) {
+        document.getElementById("invalidInput").style.visibility = "visible";
+    }
+    return result;
+}
+
+
+function ValidateMemberUpdateInfo() {
+
+    var t = document.getElementById("txtFirstName");
+    if (t.value == '') {
+        document.getElementById("firtnameRequire").style.visibility = "visible";
+        t.focus();
+        return false;
+    }
+
+    t = document.getElementById("txtLastName");
+    if (t.value == '') {
+        document.getElementById("latnameRequire").style.visibility = "visible";
+        t.focus();
+        return false;
+    }
+
+    t = document.getElementById("txtPhone");
+    var phoneFormat = /^0[1-9][0-9]+$/;
+    if (t.value == '') {
+        document.getElementById("phoneRequire").style.visibility = "visible";
+        t.focus();
+        return false;
+    } else {
+        if (t.value.length < 10 || t.value.length > 11) {
+            document.getElementById("phoneFormat").style.visibility = "visible";
+            t.focus();
+            return false;
+        } else
+            if (!phoneFormat.test(t.value)) {
+                document.getElementById("phoneFormat").style.visibility = "visible";
+                t.focus();
+                return false;
+            }
+    }
+
+    t = document.getElementById("txtEmail");
+    var emailFormat = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (t.value.toLowerCase() == '') {
+        document.getElementById("emailRequire").style.visibility = "visible";
+        t.focus();
+        return false;
+    } else {
+        if (!emailFormat.test(t.value)) {
+            document.getElementById("emailFormat").style.visibility = "visible";
+            t.focus();
+            return false;
+        }
+    }
+
+    var day = document.getElementById("dlDay");
+    if (day.value == 'Day') {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        t.focus();
+        return false;
+    }
+
+    var month = document.getElementById("dlMonth");
+    if (month.value == 'Month') {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        t.focus();
+        return false;
+    }
+
+    var year = document.getElementById("dlYear");
+    if (year.value == 'Year') {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        t.focus();
+        return false;
+    }
+
+    if (!isValidDate(day.value, month.value, year.value)) {
+        document.getElementById("dateInvalid").style.visibility = "visible";
+        return false;
+    }
+
+    return true;
+}
+
+function ValidateChangePass() {
+    var t = document.getElementById("txtOldPass");
+    if (t.value == '') {
+        document.getElementById("oldpassRequire").style.visibility = "visible";
+        t.focus();
+        return false;
+    } 
+
+    t = document.getElementById("txtNewPass");
+    var password = t.value;
+    if (t.value == '') {
+        document.getElementById("newpassRequire").style.visibility = "visible";
+        t.focus();
+        return false;
+    } else {
+        if (t.value.length > 10) {
+            document.getElementById("newpassLength").style.visibility = "visible";
+            t.focus();
+            return false;
+        }
+    }
+
+    t = document.getElementById("txtConfirmPass");
+    if (t.value == '') {
+        document.getElementById("confirmPassRequire").style.visibility = "visible";
+        t.focus();
+        return false;
+    } else {
+        if (t.value != password) {
+            document.getElementById("confirmPassMatch").style.visibility = "visible";
+            t.focus();
+            return false;
+        }
+    }
+
+    return true;
 }

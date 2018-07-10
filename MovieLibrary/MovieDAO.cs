@@ -6,35 +6,18 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using UltilitiesLibrary;
 
 namespace MovieLibrary
 {
     public class MovieDAO
     {
-        private string strConnection;
-        private SqlConnection checkConn;
-        //Nhớ xóa MayHieuBT để về lại ConnectionString cũ
-        //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
+        private string strConnection;        
+        
         public MovieDAO()
         {
-            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;            
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-            //try
-            //{
-            //    checkConn = new SqlConnection(strConnection);
-            //    checkConn.Open();
-            //}
-            //catch(Exception)
-            //{
-            //    strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
-            //}
-            //finally
-            //{
-            //    if(checkConn.State != ConnectionState.Closed)
-            //    {
-            //        checkConn.Close();
-            //    }
-            //}
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();                        
         }
 
         public String GetMovieTitle(string movieID)
@@ -170,9 +153,9 @@ namespace MovieLibrary
             return check;
         }
         
-        public DataSet getTopFiveMovie()
+        public List<MovieDTO> getTopFiveLastestMovie()
         {
-            DataSet ds = null;
+            List<MovieDTO> listMovie = null;
             SqlConnection con = new SqlConnection(strConnection);
             if (con.State != ConnectionState.Open)
             {
@@ -181,23 +164,127 @@ namespace MovieLibrary
             }
             try
             {
-                string sql = "Select top(5) movieTitle, length, rating, startDate, poster, linkTrailer, producer, year " +
+                string sql = "SELECT TOP(5) movieID,movieTitle,[length],rating,startDate,poster,linkTrailer,producer,[year],genreID  " +
                             "From Movie " +
                             "Order by startDate desc ";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                ds = new DataSet();
-                da.Fill(ds);                
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listMovie = new List<MovieDTO>();
+                    while (reader.Read())
+                    {
+                        string id = reader.GetString(0);
+                        string title = reader.GetString(1);
+                        int length = reader.GetInt32(2);
+                        float rating = (float)reader.GetDouble(3);
+                        DateTime dateTime = reader.GetDateTime(4);
+                        string poster = "../Image/Poster/PosterNotAvailable(Default).jpg";
+                        if (!reader.IsDBNull(5))
+                        {
+                            poster = reader.GetString(5);
+                        }
+                        string trailer = "";
+                        if (!reader.IsDBNull(6))
+                        {
+                            trailer = (string)reader.GetString(6);
+                        }
+                        string producer = reader.GetString(7);
+                        int year = reader.GetInt32(8);
+                        int genre = reader.GetInt32(9);
+                        MovieDTO dto = new MovieDTO
+                        {
+                            MovieID = id,
+                            MovieTitle = title,
+                            Length = length,
+                            Rating = rating,
+                            StartDate = dateTime,
+                            Poster = poster,
+                            LinkTrailer = trailer,
+                            Producer = producer,
+                            Year = year,
+                            Genre = genre
+                        };
+                        listMovie.Add(dto);
+                    }
+                }
             }
             catch (Exception)
             {
-                ds = null;
+                listMovie = null;
             }
             finally
             {
                 con.Close();
             }
-            return ds;
+            return listMovie;
+        }
+
+        public List<MovieDTO> getTopFiveRatingMovie()
+        {
+            List<MovieDTO> listMovie = null;
+            SqlConnection con = new SqlConnection(strConnection);
+            if (con.State != ConnectionState.Open)
+            {
+                con.Open();
+
+            }
+            try
+            {
+                string sql = "SELECT TOP(5) movieID,movieTitle,[length],rating,startDate,poster,linkTrailer,producer,[year],genreID  " +
+                            "From Movie " +
+                            "Order by rating desc ";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listMovie = new List<MovieDTO>();
+                    while (reader.Read())
+                    {
+                        string id = reader.GetString(0);
+                        string title = reader.GetString(1);
+                        int length = reader.GetInt32(2);
+                        float rating = (float)reader.GetDouble(3);
+                        DateTime dateTime = reader.GetDateTime(4);
+                        string poster = "../Image/Poster/PosterNotAvailable(Default).jpg";
+                        if (!reader.IsDBNull(5))
+                        {
+                            poster = reader.GetString(5);
+                        }
+                        string trailer = "";
+                        if (!reader.IsDBNull(6))
+                        {
+                            trailer = (string)reader.GetString(6);
+                        }
+                        string producer = reader.GetString(7);
+                        int year = reader.GetInt32(8);
+                        int genre = reader.GetInt32(9);
+                        MovieDTO dto = new MovieDTO
+                        {
+                            MovieID = id,
+                            MovieTitle = title,
+                            Length = length,
+                            Rating = rating,
+                            StartDate = dateTime,
+                            Poster = poster,
+                            LinkTrailer = trailer,
+                            Producer = producer,
+                            Year = year,
+                            Genre = genre
+                        };
+                        listMovie.Add(dto);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                listMovie = null;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return listMovie;
         }
 
         public List<MovieDTO> GetMovieList()
@@ -301,15 +388,15 @@ namespace MovieLibrary
 
         public List<MovieDTO> getMovieListByGenre(List<MovieDTO> listMovie, int movieGenreID, MovieDTO currentMovie)
         {
-            List<MovieDTO> movieList = new List<MovieDTO>();
+            List<MovieDTO> movieRefList = new List<MovieDTO>();
             foreach (var item in listMovie)
             {
                 if (item.Genre == movieGenreID && item!= currentMovie)
                 {
-                    movieList.Add(item);
+                    movieRefList.Add(item);
                 }
             }
-            return movieList;
+            return movieRefList;
         }
 
         public List<MovieDTO> getFiveMovieReference(List<MovieDTO> listMovie)

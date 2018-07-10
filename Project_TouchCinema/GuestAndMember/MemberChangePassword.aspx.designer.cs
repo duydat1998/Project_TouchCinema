@@ -7,45 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_TouchCinema {
+namespace Project_TouchCinema.GuestAndMember {
     
     
-    public partial class MemberWorkspace {
+    public partial class MemberChangePassword {
         
         /// <summary>
-        /// txtSearchValue control.
+        /// txtOldPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchValue;
+        protected global::System.Web.UI.WebControls.TextBox txtOldPass;
         
         /// <summary>
-        /// btnSeacrh control.
+        /// txtNewPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSeacrh;
+        protected global::System.Web.UI.WebControls.TextBox txtNewPass;
         
         /// <summary>
-        /// LastestMovieList control.
+        /// txtConfirmPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater LastestMovieList;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPass;
         
         /// <summary>
-        /// MostRatingMovieList control.
+        /// btnChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater MostRatingMovieList;
+        protected global::System.Web.UI.WebControls.Button btnChange;
     }
 }

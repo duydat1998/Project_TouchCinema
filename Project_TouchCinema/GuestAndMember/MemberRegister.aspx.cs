@@ -93,10 +93,27 @@ namespace Project_TouchCinema
             if (FileUpload.HasFile)
             {
                 string fileName = Path.GetFileName(FileUpload.PostedFile.FileName);
-                //save avatar into image folder 
-                FileUpload.PostedFile.SaveAs(Server.MapPath("~/Image/Avatar/") + fileName);
+                //only save picture when user import new picture
+                if (!fileName.Equals("default-avatar.jpg"))
+                {
+                    string tempFilename = fileName;
+                    bool check = System.IO.File.Exists(Server.MapPath("~/Image/Avatar/") + fileName);
+                    if (check)
+                    {
+                        int i = 1;
+                        do
+                        {
+                            int index = tempFilename.IndexOf(".");
+                            fileName = tempFilename.Insert(index,i+"");
+                            check = System.IO.File.Exists(Server.MapPath("~/Image/Avatar/") + fileName);
+                            i++;
+                        } while (check);
+                    }
+                    //save avatar into image folder 
+                    FileUpload.PostedFile.SaveAs(Server.MapPath("~/Image/Avatar/") + fileName);
+                }
                 imageAvatar.ImageUrl = "~/Image/Avatar/" + fileName;
-                txtPicture.Value= "~/Image/Avatar/" + fileName;
+                txtPicture.Value = "~/Image/Avatar/" + fileName;
             }
         }
     }

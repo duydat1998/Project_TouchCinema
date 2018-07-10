@@ -14,7 +14,8 @@ namespace OrderLibary
 
         public OrderDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();
         }
 
         public OrderDTO CheckOrder(string orderID)

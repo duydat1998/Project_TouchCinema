@@ -19,18 +19,18 @@
         <tr>
             <td>Member ID</td>
             <td colspan="2">
-                <asp:TextBox ID="txtUsernameLogin" runat="server" CssClass="textbox" Width="273px"></asp:TextBox>
+                <asp:TextBox ID="txtUsernameLogin" runat="server" ClientIDMode="Static" CssClass="textbox" Width="273px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>Password</td>
             <td colspan="2">
-                <asp:TextBox ID="txtPasswordLogin" runat="server" TextMode="Password" CssClass="textbox" Width="273px"></asp:TextBox>
+                <asp:TextBox ID="txtPasswordLogin" runat="server" ClientIDMode="Static" TextMode="Password" CssClass="textbox" Width="273px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td></td>
-            <td><asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" Width="96px" CssClass="button" /></td>
+            <td><asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" OnClientClick="return CheckLoginInput('txtUsernameLogin','txtPasswordLogin')" Width="96px" CssClass="button" /></td>
             <td>
                 <input id="Reset1" type="reset" value="Reset" class="button"/>
             </td>
@@ -38,7 +38,7 @@
         <tr>
             <td></td>
             <td colspan="2">
-                <asp:Label ID="invalidLogin" runat="server" Text="Invalid username or password!" CssClass="error_message"></asp:Label>
+                <asp:Label ID="invalidLogin" runat="server" Text="Invalid username or password!"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -61,7 +61,7 @@
          
          <div id="member_info">
              <asp:Image ID="avatar" runat="server" CssClass="avatar" />
-             <asp:HyperLink ID="myAccount" runat="server" CssClass="profile" />
+             <asp:HyperLink ID="myAccount" runat="server" CssClass="profile" NavigateUrl="~/GuestAndMember/MemberInformation.aspx" />
              <br />
              <asp:Button ID="btnLogout" OnClick="btnLogout_Click" runat="server" Text="Logout" CssClass="button"/>
              <input type="button" value="Login" onclick="LoadLoginForm()" class="button" id="btnLoadLogin" runat="server"/>
@@ -74,10 +74,10 @@
         <asp:Menu ID="menuMember" runat="server" CssClass="menu">
                 <Items>
                     <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="../Image/movie-icon.ico" NavigateUrl="~/GuestAndMember/TouchCinema.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="../Image/calendar-icon.png" NavigateUrl="a"></asp:MenuItem>
-                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="../Image/calendar-icon.png" NavigateUrl="~/GuestAndMember/MovieSchedulePage.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png" NavigateUrl="~/GuestAndMember/UnderConstructionsPage.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="../Image/promotion-icon.png" NavigateUrl="~/GuestAndMember/PromotionPage.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="../Image/feedback-icon.png" NavigateUrl="a"></asp:MenuItem>
+                    <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="../Image/feedback-icon.png" NavigateUrl="~/GuestAndMember/UnderConstructionsPage.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Term & Condition" Value="Term" ImageUrl="../Image/term-condition.png" NavigateUrl="../GuestAndMember/TermAndCondition.aspx"></asp:MenuItem>
                 </Items>
         </asp:Menu>

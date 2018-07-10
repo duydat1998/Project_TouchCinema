@@ -45,5 +45,11 @@
     <Compile Include="StaffDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UltilitiesLibrary\UltilitiesLibrary.csproj">
+      <Project>{efad23d9-62cb-43dc-9281-1bc28268441b}</Project>
+      <Name>UltilitiesLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

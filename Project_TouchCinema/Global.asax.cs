@@ -21,5 +21,7 @@ namespace Project_TouchCinema
         CdnDebugPath = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.4.1.js"
     });
         }
+
+        
     }
 }

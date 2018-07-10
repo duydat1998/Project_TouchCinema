@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_TouchCinema {
+namespace Project_TouchCinema.GuestAndMember {
     
     
-    public partial class MemberRegister {
+    public partial class MemberInformation {
         
         /// <summary>
         /// imageAvatar control.
@@ -55,25 +55,7 @@ namespace Project_TouchCinema {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
-        
-        /// <summary>
-        /// txtPass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPass;
-        
-        /// <summary>
-        /// txtConfirmPass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmPass;
+        protected global::System.Web.UI.WebControls.Label txtUsername;
         
         /// <summary>
         /// txtFirstName control.
@@ -139,30 +121,21 @@ namespace Project_TouchCinema {
         protected global::System.Web.UI.WebControls.DropDownList dlYear;
         
         /// <summary>
-        /// chkGetNotify control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkGetNotify;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// chkAgree control.
+        /// btnChangePass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkAgree;
-        
-        /// <summary>
-        /// btnRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegister;
+        protected global::System.Web.UI.WebControls.Button btnChangePass;
     }
 }

@@ -16,8 +16,10 @@ namespace Project_TouchCinema
         {
             if (!IsPostBack)
             {
-                MovieList.DataSource = mDAO.getTopFiveMovie();               
-                MovieList.DataBind();
+                LastestMovieList.DataSource = mDAO.getTopFiveLastestMovie();               
+                LastestMovieList.DataBind();
+                MostRatingMovieList.DataSource = mDAO.getTopFiveRatingMovie();
+                MostRatingMovieList.DataBind();
                 if(Session["MovieList"]== null)
                 {
                     Session["MovieList"] = mDAO.GetMovieList();

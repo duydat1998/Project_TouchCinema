@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using UltilitiesLibrary;
 
 namespace ScheduleLibrary
 {
@@ -14,8 +15,8 @@ namespace ScheduleLibrary
 
         public ScheduleDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();
         }
 
         public ScheduleDTO GetScheduleByID(string scheduleID)
