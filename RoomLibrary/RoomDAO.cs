@@ -88,5 +88,44 @@ namespace RoomLibrary
             }
             return result;
         }
+
+        public List<RoomDTO> GetRoomListForSchedule()
+        {
+            List<RoomDTO> listRoom = null;
+            SqlConnection con = new SqlConnection(strConnection);
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                string sql = "Select roomID FROM Room WHERE isAvailable = 1";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listRoom = new List<RoomDTO>();
+                    while (reader.Read())
+                    {
+                        RoomDTO dto = new RoomDTO
+                        {
+                            RoomID = reader.GetInt32(0),
+                            NumberOfSeat = reader.GetInt32(1),
+                            IsActive = reader.GetBoolean(2)
+                        };
+                        listRoom.Add(dto);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                listRoom = null;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return listRoom;
+        }
     }
 }

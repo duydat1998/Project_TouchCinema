@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using UltilitiesLibrary;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 857807debe55373a9293987a3516ac29ec120b24
 namespace OrderLibary
 {
     public class OrderDetailDAO
