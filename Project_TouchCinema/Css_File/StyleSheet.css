@@ -207,6 +207,7 @@ table {
     font-family: Arial;
     font-size: 16px;
     width: 100%;
+    box-sizing:border-box;
 }
 
     .menu ul {

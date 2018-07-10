@@ -44,7 +44,6 @@ function HideErrorMessage() {
         t = document.getElementById(arguments[i]);
         t.style.visibility = "hidden";
     }
-
 }
 
 function ValidateMemberRegisterInfo() {
