@@ -492,3 +492,9 @@ table {
     margin-right: -25px;
     background-color: black;
 }
+
+/*CCS for MovieSchedulePage*/
+#schedule_content{
+    float: left;
+    width: 100%;
+}

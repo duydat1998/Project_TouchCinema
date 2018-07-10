@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using UltilitiesLibrary;
 
 namespace RoomLibrary
 {
@@ -15,7 +16,8 @@ namespace RoomLibrary
 
         public RoomDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();
         }
 
         public List<RoomDTO> GetRoomList()

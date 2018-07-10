@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using UltilitiesLibrary;
 
 namespace StaffLibrary
 {
@@ -14,8 +15,8 @@ namespace StaffLibrary
 
         public StaffDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();
         }
 
         public bool CheckLogin(string username, string password , ref StaffDTO dto)

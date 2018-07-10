@@ -30,9 +30,7 @@
                         <br /><%# Eval("Length") + " phút" %>    
                         <br />Added on <%# Eval("StartDate") %>
                     </div>
-                </ItemTemplate>                
-                <FooterTemplate>                        
-                </FooterTemplate>
+                </ItemTemplate>                                
             </asp:Repeater>                        
         </div>
         <hr />
@@ -52,9 +50,7 @@
                         <br /><%# Eval("Length") + " phút" %>                                                               
                         <br />Rate: <%# Eval("Rating") %>
                     </div>
-                </ItemTemplate>                
-                <FooterTemplate>                        
-                </FooterTemplate>
+                </ItemTemplate>                                
             </asp:Repeater>            
         </div>
         <hr />

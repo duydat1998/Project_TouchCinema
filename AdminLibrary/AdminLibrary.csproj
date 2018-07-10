@@ -57,6 +57,10 @@
       <Project>{de23ab60-adf5-474e-8e90-65a4dea4b93f}</Project>
       <Name>StaffLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UltilitiesLibrary\UltilitiesLibrary.csproj">
+      <Project>{efad23d9-62cb-43dc-9281-1bc28268441b}</Project>
+      <Name>UltilitiesLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

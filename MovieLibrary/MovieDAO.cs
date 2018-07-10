@@ -6,36 +6,18 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using UltilitiesLibrary;
 
 namespace MovieLibrary
 {
     public class MovieDAO
     {
-        private string strConnection;
-        //private SqlConnection checkConn;
-        //Nhớ xóa MayHieuBT để về lại ConnectionString cũ
-        //ai dùng máy HieuBTSE62797 nhớ để thêm MayHieuBT
-        //Trước khi push nhớ comment all cho ai cần làm
+        private string strConnection;        
+        
         public MovieDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;            
-            //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
-            //try
-            //{
-            //    checkConn = new SqlConnection(strConnection);
-            //    checkConn.Open();
-            //}
-            //catch(Exception)
-            //{
-            //    strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
-            //}
-            //finally
-            //{
-            //    if(checkConn.State != ConnectionState.Closed)
-            //    {
-            //        checkConn.Close();
-            //    }
-            //}
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();                        
         }
 
         public String GetMovieTitle(string movieID)

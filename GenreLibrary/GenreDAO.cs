@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using UltilitiesLibrary;
 
 namespace GenreLibrary
 {
@@ -14,7 +15,8 @@ namespace GenreLibrary
 
         public GenreDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();
         }
 
         public List<GenreDTO> GetGenreList()

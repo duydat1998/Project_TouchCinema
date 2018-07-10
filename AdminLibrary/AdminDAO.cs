@@ -5,16 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using UltilitiesLibrary;
 
 namespace AdminLibrary
 {
     public class AdminDAO
     {
-        private string strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+        private string strConnection;
+
+        public AdminDAO()
+        {
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();
+        }
 
         public AdminDTO CheckLogin(string username, string password)
         {
             AdminDTO result = null;
+
             SqlConnection con = new SqlConnection(strConnection);
             con.Open();
             try

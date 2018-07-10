@@ -14,8 +14,8 @@ namespace OrderLibary
 
         public OrderDetailDAO()
         {
-            strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-
+            DatabaseConnection dc = new DatabaseConnection();
+            strConnection = dc.GetConnection();
         }
 
         public List<string> GetAllSeats(string orderID)

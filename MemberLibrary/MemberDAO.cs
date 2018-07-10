@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using UltilitiesLibrary;
+
 namespace MemberLibrary
 {
     public class MemberDAO
@@ -14,8 +16,7 @@ namespace MemberLibrary
         private SqlDataAdapter dAdapter;
         private SqlDataReader dReader;
         private SqlCommand cmd;
-        private string cmdLine;
-        private readonly string DATABASENAME = "TouchCinemaDB";
+        private string cmdLine;        
 
         public MemberDAO()
         {
@@ -40,7 +41,8 @@ namespace MemberLibrary
 
         private string GetConnection()
         {
-            return ConfigurationManager.ConnectionStrings[DATABASENAME].ConnectionString;
+            DatabaseConnection dc = new DatabaseConnection();
+            return dc.GetConnection();
         }
 
         private void SetUpConnect(string commandLine)
