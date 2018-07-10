@@ -12,8 +12,7 @@ namespace MemberLibrary
 {
     public class MemberDAO
     {
-        private SqlConnection conn;
-        private SqlDataAdapter dAdapter;
+        private SqlConnection conn;        
         private SqlDataReader dReader;
         private SqlCommand cmd;
         private string cmdLine;        

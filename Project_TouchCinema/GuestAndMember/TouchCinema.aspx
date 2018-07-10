@@ -12,7 +12,7 @@
                 <asp:Button runat="server" ID="btnSeacrh" Text="Search" CssClass="button" OnClick="btnSeacrh_Click"/>                
             </div>
         </div>
-        <hr />      
+        <hr />              
         <%-- Phần show một chút thông tin phim mới ra --%>
         <div class="movie_lastest_info" runat="server">                    
             <asp:Repeater runat="server" ID="LastestMovieList" >

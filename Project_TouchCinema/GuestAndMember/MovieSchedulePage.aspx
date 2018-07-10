@@ -13,12 +13,15 @@
                     <div class="movie_schedule_info">
                         <div class="movie_schedule_img">
                             <img src="<%# Eval("Poster")%>"/>
+                            <br />
+                            <%# Eval("MovieTitle") %>
                         </div>
                     </div>
-                    <div>                        
+                    <div class="movie_schedule_detail">
+                        
                     </div>
                 </ItemTemplate>
-            </asp:Repeater>
-        </div>
+            </asp:Repeater>               
+        </div>        
     </div>                    
 </asp:Content>

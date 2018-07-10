@@ -349,6 +349,7 @@ table {
 
 /*CCS for Term and Condition*/
 #term_and_condition {
+    float: left;
 }    
 
 /*CCS for Search Result Page*/
@@ -465,8 +466,7 @@ table {
     color: ghostwhite;
     font-size: 25px;
     font-weight: 900;
-    border-top-left-radius: 25px;
-    border-top-left-radius: 25px;
+    border-top-left-radius: 25px;    
     margin-top: 20px;
 }
 
@@ -477,19 +477,15 @@ table {
     padding-top: 25px;
     padding-left: 25px;
     background-color: black;
-    border-bottom-left-radius: 25px;
-    border-bottom-left-radius: 25px;
+    border-bottom-left-radius: 25px;    
     margin-bottom: 20px;
 }
 
 /*CCS for UnderConstructionPage*/
 #under_construction {
     float: left;
-    padding: 50px;
-    margin-top: -25px;
-    margin-left: -30px;
-    margin-bottom: -25px;
-    margin-right: -25px;
+    padding: 50px;    
+    margin: -25px -25px -25px -30px;
     background-color: black;
 }
 
@@ -497,4 +493,30 @@ table {
 #schedule_content{
     float: left;
     width: 100%;
+}
+
+#movie_schedule_content{
+    float: left;
+    width: 100%;
+}
+
+.movie_schedule_info {
+    float: left;
+    width: 100%;
+}
+
+.movie_schedule_img{
+    float: left;
+    width: 30%;
+    border: 2px solid black;
+}
+
+.movie_schedule_img img{
+    float: left;
+    width: 100%;
+}
+
+.movie_schedule_detail {
+    float: left;
+    width: 70%;
 }
