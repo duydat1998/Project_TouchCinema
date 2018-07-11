@@ -19,8 +19,8 @@ namespace UltilitiesLibrary
         //Trước khi push nhớ comment all cho ai cần làm
         public string GetConnection()
         {
-            return ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
-            ///return ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
+            //return ConfigurationManager.ConnectionStrings["TouchCinemaDB"].ConnectionString;
+            return ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
             //private SqlConnection checkConn;
             //strConnection = ConfigurationManager.ConnectionStrings["TouchCinemaDBMayHieuBT"].ConnectionString;
             //try
