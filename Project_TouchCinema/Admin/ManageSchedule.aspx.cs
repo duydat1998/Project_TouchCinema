@@ -296,30 +296,7 @@ namespace Project_TouchCinema
         {
             Clear();
         }
-        //sua lai list
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-            string id = txtScheduleID.Text;
-            if (ScheduleDaos.DeleteSchedule(id))
-            {
-                List<ScheduleDTO> ListforDelete = (List<ScheduleDTO>)Session["AdminSearchList"];
-                foreach (ScheduleDTO item in ListforDelete.ToList())
-                {
-                    if (item.ScheduleID.Equals(id))
-                    {
-                        ListforDelete.Remove(item);
-                    }
-                }
-                gvStaffList.DataSource = ListforDelete;
-                gvStaffList.DataBind();
-                Clear();
-                SetMessageTextAndColor("Successfully deleted!", Color.Green);
-            }
-            else
-            {
-                SetMessageTextAndColor("Failed to delete!", Color.Red);
-            }
-        }
+        
         //update lai list
         protected void btnUpdate_Click(object sender, EventArgs e)
         {

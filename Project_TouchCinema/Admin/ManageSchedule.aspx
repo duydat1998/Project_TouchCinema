@@ -79,8 +79,6 @@
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear" CssClass="button" />
         &nbsp;&nbsp;&nbsp;
-    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="button" OnClick="btnDelete_Click"/>
-        &nbsp;&nbsp;&nbsp;
     <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="button" OnClick="btnUpdate_Click"/>
         <br />
     <asp:Label ID="lblMessage" runat="server" Text=" "></asp:Label>

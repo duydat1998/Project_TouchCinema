@@ -64,7 +64,7 @@ namespace ScheduleLibrary
                 }
                 try
                 {
-                    string sql = "Select scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE movieID = @movieID";
+                    string sql = "Select scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE (movieID = @movieID) AND (date >= CURRENT_TIMESTAMP Order by date asc)";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@movieID", movieID);
                     SqlDataReader reader = cmd.ExecuteReader();
