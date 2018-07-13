@@ -94,13 +94,13 @@ namespace Project_TouchCinema {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// txtSearch control.
+        /// dlSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.DropDownList dlSearch;
         
         /// <summary>
         /// btnSearch control.
@@ -110,15 +110,6 @@ namespace Project_TouchCinema {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
-        
-        /// <summary>
-        /// btnShowAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowAll;
         
         /// <summary>
         /// btnNew control.
