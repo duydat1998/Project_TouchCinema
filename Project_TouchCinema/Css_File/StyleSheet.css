@@ -496,28 +496,24 @@ table {
     width: 100%;
 }
 
-#movie_schedule_content{
+#movie_schedule_content {
     float: left;
     width: 100%;
+    text-align: center;
 }
 
 .movie_schedule_info {
     float: left;
     width: 100%;
+    height: 300px;            
 }
 
 .movie_schedule_img{
     float: left;
     width: 30%;
-    border: 2px solid black;
+    border: 2px solid black;    
 }
 
 .movie_schedule_img img{
-    float: left;
-    width: 100%;
-}
-
-.movie_schedule_detail {
-    float: left;
-    width: 70%;
+    float: left;    
 }

@@ -22,9 +22,38 @@ namespace Project_TouchCinema.GuestAndMember
                 {
                     Session["MovieList"] = mDAO.GetMovieList();
                 }
-                MovieList.DataSource = (List<MovieDTO>) Session["MovieList"];
+                Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
+                MovieList.DataSource = getMovieHaveSchedule((List<MovieDTO>)Session["MovieList"], (List<ScheduleDTO>)Session["ScheduleList"]);
                 MovieList.DataBind();                
             }
+        }
+
+        protected void MovieSchedule_DataBinding(object sender, EventArgs e)
+        {
+            Repeater MovieSchedule = (Repeater)sender;
+            if (Session["ScheduleList"] == null)
+            {
+                Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
+            }
+            string movieID = (string)(Eval("MovieID"));
+            MovieSchedule.DataSource = sDAO.getSpecificMovieSchedule((List<ScheduleDTO>) Session["ScheduleList"],movieID);            
+        }
+
+        private List<MovieDTO> getMovieHaveSchedule(List<MovieDTO> movieList, List<ScheduleDTO> scheduleList)
+        {
+            List<MovieDTO> result = new List<MovieDTO>();
+            foreach (var movie in movieList)
+            {
+                foreach (var schedule in scheduleList)
+                {
+                    if (movie.MovieID.ToUpper().Equals(schedule.MovieID.ToUpper()))
+                    {
+                        result.Add(movie);
+                        break;
+                    }
+                }
+            }
+            return result;
         }
     }
 }
