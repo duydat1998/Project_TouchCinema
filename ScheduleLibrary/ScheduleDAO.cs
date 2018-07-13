@@ -146,5 +146,19 @@ namespace ScheduleLibrary
 
             return result;
         }
+
+        //For webpages only
+        public List<ScheduleDTO> getSpecificMovieSchedule(List<ScheduleDTO> FullScheduleList, string movieID)
+        {
+            List<ScheduleDTO> result = new List<ScheduleDTO>();
+            foreach (var item in FullScheduleList)
+            {
+                if (item.MovieID.ToUpper().Equals(movieID.ToUpper()))
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
     }
 }
