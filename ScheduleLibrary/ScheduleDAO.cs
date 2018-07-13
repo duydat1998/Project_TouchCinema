@@ -120,7 +120,7 @@ namespace ScheduleLibrary
             }
             try
             {
-                string sql = "SELECT scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE date >= CURRENT_TIMESTAMP";
+                string sql = "SELECT scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE date >= CURRENT_TIMESTAMP Order by date asc";
                 SqlCommand cmd = new SqlCommand(sql,con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -156,6 +156,10 @@ namespace ScheduleLibrary
                 if (item.MovieID.ToUpper().Equals(movieID.ToUpper()))
                 {
                     result.Add(item);
+                    if(result.Count == 8)
+                    {
+                        break;
+                    }
                 }
             }
             return result;

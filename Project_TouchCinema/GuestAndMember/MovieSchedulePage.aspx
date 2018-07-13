@@ -11,7 +11,7 @@
             <asp:Repeater runat="server" ID="MovieList">
                 <ItemTemplate>
                     <div class="movie_schedule_info">
-                        <div class="movie_schedule_img" style="text-align: center; font-weight: 900">
+                        <div class="movie_schedule_img">
                             <img src="<%# Eval("Poster")%>" style="width: 100%;height: 90%;"/>
                             <br />
                             <%# Eval("MovieTitle") %>
@@ -19,14 +19,13 @@
                         <div class="movie_schedule_list">
                             <asp:Repeater runat="server" ID="MovieSchedule" OnDataBinding="MovieSchedule_DataBinding">
                                 <ItemTemplate>
-                                    <div class="movie_schedule_details">
-                                        <%# Eval("ScheduleDate") %> at Room <%# Eval("RoomID") %>
-                                    </div>                                    
+                                    <a href="UnderConstructionsPage.aspx">
+                                        <div class="movie_schedule_details">
+                                            <%# Eval("ScheduleDate") %> at Room <%# Eval("RoomID") %>
+                                        </div>
+                                    </a>                                                                        
                                 </ItemTemplate>
-                     </asp:Repeater>
-
-
-
+                            </asp:Repeater>
                         </div>
                     </div>                    
                 </ItemTemplate>
