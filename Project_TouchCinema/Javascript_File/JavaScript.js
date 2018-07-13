@@ -1,10 +1,13 @@
 ﻿function LoadLoginForm() {
+    var form = document.getElementById("form1");
+    form.style.opacity = "0.2";
+    form.style.zIndex = "1";
     var t = document.getElementById("login_form");
     t.style.transition = "all 2s";
     t.style.top = "150px";
-    var form = document.getElementById("form1");
-    form.style.opacity = "0.2";
     t.style.opacity = "1";
+    t.style.zIndex = "3";
+    
 }
 function CloseLoginForm() {
     var t = document.getElementById("login_form");
@@ -40,13 +43,10 @@ function ModifyBesideDiv() {
 }
 
 function HideErrorMessage() {
-    var t = document.getElementById("invalidInput");
-    t.style.visibility = "hidden";
     for (var i = 0; i < arguments.length; i++) {
         t = document.getElementById(arguments[i]);
         t.style.visibility = "hidden";
     }
-
 }
 
 function ValidateMemberRegisterInfo() {

@@ -159,7 +159,7 @@ namespace ScheduleLibrary
             }
             try
             {
-                string sql = "SELECT scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE date >= CURRENT_TIMESTAMP";
+                string sql = "SELECT scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE date >= CURRENT_TIMESTAMP Order by date asc";
                 SqlCommand cmd = new SqlCommand(sql,con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -186,6 +186,7 @@ namespace ScheduleLibrary
             return result;
         }
 
+<<<<<<< HEAD
         public bool AddSchedule(ScheduleDTO dto)
         {
             bool check = false;
@@ -272,6 +273,24 @@ namespace ScheduleLibrary
                 con.Close();
             }
             return check;
+=======
+        //For webpages only
+        public List<ScheduleDTO> getSpecificMovieSchedule(List<ScheduleDTO> FullScheduleList, string movieID)
+        {
+            List<ScheduleDTO> result = new List<ScheduleDTO>();
+            foreach (var item in FullScheduleList)
+            {
+                if (item.MovieID.ToUpper().Equals(movieID.ToUpper()))
+                {
+                    result.Add(item);
+                    if(result.Count == 8)
+                    {
+                        break;
+                    }
+                }
+            }
+            return result;
+>>>>>>> 6ca3dbe423ec5d1cd7dc160b0919a153bec29235
         }
     }
 }

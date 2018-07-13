@@ -207,6 +207,7 @@ table {
     font-family: Arial;
     font-size: 16px;
     width: 100%;
+    box-sizing:border-box;
 }
 
     .menu ul {
@@ -493,30 +494,55 @@ table {
 #schedule_content{
     float: left;
     width: 100%;
+    margin-left: 25px;
 }
 
-#movie_schedule_content{
+#movie_schedule_content {
     float: left;
-    width: 100%;
+    width: 100%;  
+    box-sizing: border-box;
 }
 
 .movie_schedule_info {
     float: left;
     width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;    
 }
 
-.movie_schedule_img{
+.movie_schedule_img {
     float: left;
-    width: 30%;
+    width: 30%;    
     border: 2px solid black;
+    text-align: center;
+    font-weight: 900;
+    background-color: black;
+    color: whitesmoke;
 }
 
-.movie_schedule_img img{
+.movie_schedule_list {
     float: left;
+    width: 65%;
+    margin-left: 30px;
+}
+
+.movie_schedule_details {
+    padding-left: 25px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border: 1px solid white;
+    background-color: black;
+    color: whitesmoke;
+    font-weight: 900;
+    height: 25px;
     width: 100%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
-.movie_schedule_detail {
-    float: left;
-    width: 70%;
-}
+    .movie_schedule_details:hover {
+        background: linear-gradient(black, white, white, white ,black);
+        color: black;
+        transition: all 1s;
+    }
