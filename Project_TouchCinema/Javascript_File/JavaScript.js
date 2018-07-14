@@ -335,16 +335,22 @@ function CheckFeedbackInformation() {
         return false;
     }
     t = document.getElementById("txtEmail");
-    if (!emailFormat.test(t.value)) {
-        document.getElementById("emailFormat").style.visibility = "visible";
-        t.focus();
-        return false;
+    if (t.value != '') {
+        if (!emailFormat.test(t.value)) {
+            document.getElementById("emailFormat").style.visibility = "visible";
+            t.focus();
+            return false;
+        }
     }
+    
     t = document.getElementById("txtPhone");
-    if (!phoneFormat.test(t.value)) {
-        document.getElementById("phoneFormat").style.visibility = "visible";
-        t.focus();
-        return false;
+    if (t.value != '') {
+        if (!phoneFormat.test(t.value)) {
+            document.getElementById("phoneFormat").style.visibility = "visible";
+            t.focus();
+            return false;
+        }
     }
+    
     return true;
 }
