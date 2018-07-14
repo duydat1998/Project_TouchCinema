@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ErrorPages\ErrorPage.aspx" />
+    <Content Include="GuestAndMember\FeedbackPage.aspx" />
     <Content Include="GuestAndMember\MemberChangePassword.aspx" />
     <Content Include="GuestAndMember\MemberInformation.aspx" />
     <Content Include="GuestAndMember\MovieDetailPage.aspx" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="ErrorPages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\FeedbackPage.aspx.cs">
+      <DependentUpon>FeedbackPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\FeedbackPage.aspx.designer.cs">
+      <DependentUpon>FeedbackPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAndMember\MemberChangePassword.aspx.cs">
       <DependentUpon>MemberChangePassword.aspx</DependentUpon>

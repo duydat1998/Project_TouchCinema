@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MemberLayout.Master" AutoEventWireup="true" CodeBehind="MovieSchedulePage.aspx.cs" Inherits="Project_TouchCinema.GuestAndMember.MovieSchedulePage" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
@@ -12,7 +13,7 @@
                 <ItemTemplate>
                     <div class="movie_schedule_info">
                         <div class="movie_schedule_img">
-                            <img src="<%# Eval("Poster")%>" style="width: 100%;height: 90%;"/>
+                            <img src="<%# Eval("Poster")%>" style="width: 100%; height: 90%;" />
                             <br />
                             <%# Eval("MovieTitle") %>
                         </div>
@@ -23,13 +24,13 @@
                                         <div class="movie_schedule_details">
                                             <%# Eval("ScheduleDate") %> at Room <%# Eval("RoomID") %>
                                         </div>
-                                    </a>                                                                        
+                                    </a>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </div>
-                    </div>                    
+                    </div>
                 </ItemTemplate>
-            </asp:Repeater>                   
-        </div>        
-    </div>                    
+            </asp:Repeater>
+        </div>
+    </div>
 </asp:Content>
