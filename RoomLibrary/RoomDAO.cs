@@ -109,9 +109,7 @@ namespace RoomLibrary
                     {
                         RoomDTO dto = new RoomDTO
                         {
-                            RoomID = reader.GetInt32(0),
-                            NumberOfSeat = reader.GetInt32(1),
-                            IsActive = reader.GetBoolean(2)
+                            RoomID = reader.GetInt32(0)
                         };
                         listRoom.Add(dto);
                     }

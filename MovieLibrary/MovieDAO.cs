@@ -345,6 +345,39 @@ namespace MovieLibrary
             return listMovie;
         }
 
+        public List<MovieDTO> GetMovieListForSchedule()
+        {
+            List<MovieDTO> listMovie = new List<MovieDTO>();
+            SqlConnection con = new SqlConnection(strConnection);
+            con.Open();
+            try
+            {
+                string sql = "SELECT movieID " +
+                            "FROM Movie";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listMovie = new List<MovieDTO>();
+                    while (reader.Read())
+                    {
+                        string id = reader.GetString(0);
+                        
+                        MovieDTO dto = new MovieDTO
+                        {
+                            MovieID = id
+                        };
+                        listMovie.Add(dto);
+                    }
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return listMovie;
+        }
+
         public bool DeleteMovie(string movieID)
         {
             bool check = false;

@@ -52,6 +52,54 @@ namespace ScheduleLibrary
             return output;
         }
 
+        public List<ScheduleDTO> GetScheduleListByMovieID(string movieID)
+        {
+            List<ScheduleDTO> result = new List<ScheduleDTO>();
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    string sql = "Select scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE (movieID = @movieID) AND (date >= CURRENT_TIMESTAMP Order by date asc)";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@movieID", movieID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        result = new List<ScheduleDTO>();
+                        while (reader.Read())
+                        {
+                            string id = reader.GetString(0);
+                            DateTime date = reader.GetDateTime(1);
+                            string mID = reader.GetString(2);
+                            int roomID = reader.GetInt32(3);
+                            float price = (float)reader.GetDouble(4);
+
+                            ScheduleDTO dto = new ScheduleDTO()
+                            {
+                                ScheduleID = id,
+                                ScheduleDate = date,
+                                MovieID = mID,
+                                RoomID = roomID,
+                                PriceOfTicket = price
+                            };
+                            result.Add(dto);
+                        }
+                    }
+                    
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
         public List<ScheduleDTO> GetScheduleList()
         {
             List<ScheduleDTO> result = null;
@@ -64,7 +112,7 @@ namespace ScheduleLibrary
                 }
                 try
                 {
-                    string sql = "Select scheduleID, date, movieID, roomID, priceOfTicket from Schedule";
+                    string sql = "Select scheduleID, date, movieID, roomID from Schedule";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)
@@ -74,17 +122,15 @@ namespace ScheduleLibrary
                         {
                             string id = reader.GetString(0);
                             DateTime date = reader.GetDateTime(1);
-                            string movieID = reader.GetString(2);
+                            string mID = reader.GetString(2);
                             int roomID = reader.GetInt32(3);
-                            float price = (float)reader.GetDouble(4);
 
                             ScheduleDTO dto = new ScheduleDTO()
                             {
                                 ScheduleID = id,
                                 ScheduleDate = date,
-                                MovieID = movieID,
-                                RoomID = roomID,
-                                PriceOfTicket = price
+                                MovieID = mID,
+                                RoomID = roomID
                             };
                             result.Add(dto);
                         }
@@ -102,13 +148,6 @@ namespace ScheduleLibrary
             return result;
         }
 
-        public bool AddSchedule()
-        {
-            bool check = false;
-            
-            return check;
-        }
-
         public List<ScheduleDTO> GetScheduleFromNowOn()
         {
             List<ScheduleDTO> result = new List<ScheduleDTO>();
@@ -120,7 +159,7 @@ namespace ScheduleLibrary
             }
             try
             {
-                string sql = "SELECT scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE date >= CURRENT_TIMESTAMP";
+                string sql = "SELECT scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE date >= CURRENT_TIMESTAMP Order by date asc";
                 SqlCommand cmd = new SqlCommand(sql,con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -146,7 +185,70 @@ namespace ScheduleLibrary
 
             return result;
         }
+        
+        public bool AddSchedule(ScheduleDTO dto)
+        {
+            bool check = false;
+            SqlConnection con = new SqlConnection(strConnection);
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                string sql = "INSERT INTO Schedule(scheduleID,date,movieID,roomID,priceOfTicket) VALUES(@ID,@date,@movieID,@roomID,@price)";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@ID", dto.ScheduleID);
+                cmd.Parameters.AddWithValue("@date", dto.ScheduleDate);
+                cmd.Parameters.AddWithValue("@movieID", dto.MovieID);
+                cmd.Parameters.AddWithValue("@roomID", dto.RoomID);
+                cmd.Parameters.AddWithValue("@price", dto.PriceOfTicket);
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    check = true;
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
 
+
+            return check;
+        }
+
+        public bool UpdateSchedule(ScheduleDTO dto)
+        {
+            bool check = false;
+            SqlConnection con = new SqlConnection(strConnection);
+            if (con.State == System.Data.ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            try
+            {
+                string sql = "UPDATE Schedule SET date=@date, movieID = @movieID,roomID = @roomID, priceOfTicket=@price WHERE scheduleID = @scheduleID";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@date", dto.ScheduleDate);
+                cmd.Parameters.AddWithValue("@movieID", dto.MovieID);
+                cmd.Parameters.AddWithValue("@roomID", dto.RoomID);
+                cmd.Parameters.AddWithValue("@price", dto.PriceOfTicket);
+                cmd.Parameters.AddWithValue("@scheduleID", dto.ScheduleID);
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    check = true;
+                }
+            }
+            finally
+            {
+                con.Close();
+            }
+            return check;
+        }
+
+        
         //For webpages only
         public List<ScheduleDTO> getSpecificMovieSchedule(List<ScheduleDTO> FullScheduleList, string movieID)
         {
@@ -156,6 +258,10 @@ namespace ScheduleLibrary
                 if (item.MovieID.ToUpper().Equals(movieID.ToUpper()))
                 {
                     result.Add(item);
+                    if(result.Count == 8)
+                    {
+                        break;
+                    }
                 }
             }
             return result;
