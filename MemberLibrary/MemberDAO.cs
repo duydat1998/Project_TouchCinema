@@ -385,9 +385,9 @@ namespace MemberLibrary
             return result;
         }
 
-        public List<MemberDTO> GetMemberList()
+        public List<MemberDTO> AdminSearchMemberByUsername(string username)
         {
-            List<MemberDTO> listMember = null;
+            List<MemberDTO> listMember = new List<MemberDTO>();
             SqlConnection conn = new SqlConnection(GetConnection());
             if (conn.State == System.Data.ConnectionState.Closed)
             {
@@ -395,8 +395,9 @@ namespace MemberLibrary
             }
             try
             {
-                string sql = "Select username, firstName, lastName, phone, email,birthDate, isActive FROM Member";
+                string sql = "Select username, firstName, lastName, phone, email,birthDate, isActive FROM Member WHERE username LIKE @username";
                 SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@username", "%" + username + "%");
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -416,10 +417,6 @@ namespace MemberLibrary
                         listMember.Add(dto);
                     }
                 }
-            }
-            catch (Exception)
-            {
-                listMember = null;
             }
             finally
             {

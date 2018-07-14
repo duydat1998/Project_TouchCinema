@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.Net.Mail;
 
 namespace Project_TouchCinema
 {
@@ -13,21 +14,17 @@ namespace Project_TouchCinema
     {
         List<MemberDTO> AdminMemberList = new List<MemberDTO>();
         MemberDAO dao = new MemberDAO();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-                AdminMemberList = dao.GetMemberList();
-                Session.Add("AdminMemberList", AdminMemberList);
-                gvStaffList.DataSource = AdminMemberList;
-                gvStaffList.DataBind();
-
             }
         }
 
         protected void btnUpdateActive_Click(object sender, EventArgs e)
         {
-            List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberList"];
+            List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberSearch"];
             foreach (GridViewRow row in gvStaffList.Rows)
             {
                 CheckBox status = (row.Cells[6].FindControl("isActive") as CheckBox);
@@ -77,9 +74,23 @@ namespace Project_TouchCinema
             txtUsername.Enabled = true;
         }
 
+        public bool IsEmailValid(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         protected void btnNew_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
+            //check null username
             if (username.Equals(""))
             {
                 lblMessage.Text = "Username cannot be null!";
@@ -87,11 +98,39 @@ namespace Project_TouchCinema
                 return;
             }
             string password = txtPassword.Text.Trim();
+            //check null password
+            if (password.Equals(""))
+            {
+                lblMessage.Text = "Password cannot be null!";
+                lblMessage.ForeColor = Color.Red;
+                return;
+            }
             string firstname = txtFirstname.Text.Trim();
             string lastname = txtLastname.Text.Trim();
             string phone = txtPhone.Text.Trim();
+            double phoneNum = 0;
+            //try phone number
+            try
+            {
+                phoneNum = double.Parse(phone);
+            }
+            catch
+            {
+                lblMessage.Text = "Phone number must be numbers";
+                lblMessage.ForeColor = Color.Red;
+                return;
+            }
             string email = txtEmail.Text.Trim();
+            // check email
+            if (!IsEmailValid(email))
+            {
+                lblMessage.Text = "Email is not valid.";
+                lblMessage.ForeColor = Color.Red;
+                return;
+            }
+
             DateTime birth = new DateTime();
+            // check birthdate
             try
             {
                 birth =Convert.ToDateTime(txtBirth.Text.Trim());
@@ -101,28 +140,12 @@ namespace Project_TouchCinema
                 lblMessage.Text = "Wrong format for Date of Birth, must be MM/dd/yyyy";
                 return;
             }
-            bool isActive = true;
-
-            MemberDTO dto = new MemberDTO(username, password, firstname, lastname, phone, email, birth, "", isActive);
-            //{
-            //    Username = username,
-            //    Password = password,
-            //    FirstName = firstname,
-            //    LastName = lastname,
-            //    PhoneNum = phone,
-            //    Email = email,
-            //    Birthdate = birth,
-            //    IsActive = isActive
-            //};
+            
+            MemberDTO dto = new MemberDTO(username, password, firstname, lastname, phone, email, birth, "", true);
             try
             {
                 if (dao.AddNewMemberAdmin(dto))
                 {
-                    List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberList"];
-                    list.Add(dto);
-                    gvStaffList.DataSource = list;
-                    gvStaffList.DataBind();
-                    Session.Add("AdminMemberList", list);
                     lblMessage.Text = "Successfully added";
                     lblMessage.ForeColor = Color.Green;
                 }
@@ -137,8 +160,7 @@ namespace Project_TouchCinema
                 lblMessage.Text = "Username is already existed, please choose another one";
                 lblMessage.ForeColor = Color.Red;
             }
-
-
+            
         }
 
         protected void lnkView_Click(object sender, EventArgs e)
@@ -146,7 +168,7 @@ namespace Project_TouchCinema
             lblMessage.Text = "";
             txtPassword.Text = "";
             string username = (sender as LinkButton).CommandArgument;
-            List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberList"];
+            List<MemberDTO> list = (List<MemberDTO>)Session["AdminMovieSearch"];
             for (int i = 0; i <= list.Count - 1; i++)
             {
                 if (list[i].Username == username)
@@ -168,8 +190,10 @@ namespace Project_TouchCinema
             string searchValue = txtSearch.Text;
             if (!searchValue.Equals(""))
             {
-                List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberList"];
-                List<MemberDTO> searchResult = SearchInListByUsername(list,searchValue);
+                List<MemberDTO> searchResult = new List<MemberDTO>();
+                searchResult = dao.AdminSearchMemberByUsername(searchValue);
+                Session.Add("AdminMemberSearch", searchResult);
+                
                 if (searchResult.Count() > 0)
                 {
                     lblMessage.Text = "";
@@ -187,29 +211,6 @@ namespace Project_TouchCinema
                 }
             }
         }
-
-        protected void btnShowAll_Click(object sender, EventArgs e)
-        {
-            lblMessage.Text = "";
-            gvStaffList.Visible = true;
-            List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberList"];
-            gvStaffList.DataSource = list;
-            gvStaffList.DataBind();
-        }
-
-        public List<MemberDTO> SearchInListByUsername(List<MemberDTO> list, string username)
-        {
-            List<MemberDTO> result = new List<MemberDTO>();
-            foreach (MemberDTO item in list)
-            {
-                if (item.Username.IndexOf(username) >= 0)
-                {
-                    result.Add(item);
-                }
-
-            }
-
-            return result;
-        }
+        
     }
 }

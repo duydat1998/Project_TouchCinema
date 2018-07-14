@@ -54,8 +54,6 @@
     <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;
     <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="button" OnClick="btnSearch_Click"/>
-&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="btnShowAll" runat="server" Text="Show All Records" CssClass="button" OnClick="btnShowAll_Click"/>
     <br />
     <asp:Button ID="btnNew" runat="server" Text="Add" CssClass="button" OnClick="btnNew_Click" />
 &nbsp;&nbsp;&nbsp;

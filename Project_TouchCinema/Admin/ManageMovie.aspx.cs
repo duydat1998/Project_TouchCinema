@@ -22,10 +22,10 @@ namespace Project_TouchCinema
             {
                 listGenre = GenreDao.GetGenreList();
                 Session.Add("AdminGenreList", listGenre);
-                listMovie = MovieDao.GetMovieList();
-                Session.Add("MovieList", listMovie);
-                gvStaffList.DataSource = listMovie;
-                gvStaffList.DataBind();
+                //listMovie = MovieDao.GetMovieList();
+                //Session.Add("MovieList", listMovie);
+                //gvStaffList.DataSource = listMovie;
+                //gvStaffList.DataBind();
                 DropdownListAdd(listGenre);
                 btnDelete.Enabled = false;
                 btnUpdate.Enabled = false;
@@ -63,13 +63,29 @@ namespace Project_TouchCinema
         protected void btnNew_Click(object sender, EventArgs e)
         {
             string id = txtMovieID.Text.Trim();
+            //check id null
+            if (id.Equals(""))
+            {
+                SetMessageTextAndColor("MovieID cannot be null", Color.Red);
+                return;
+            }
             string title = txtMovieTitle.Text.Trim();
+            if (title.Equals(""))
+            {
+                SetMessageTextAndColor("Movie Title cannot be null", Color.Red);
+                return;
+            }
             int year = 0, length = 0;
             float rating = 0;
             
             try
             {
                 length = Convert.ToInt32(txtLength.Text);
+                if (length < 0)
+                {
+                    SetMessageTextAndColor("Movie length cannot be negative", Color.Red);
+                    return;
+                }
             }
             catch
             {
@@ -78,12 +94,23 @@ namespace Project_TouchCinema
             try
             {
                 year = Convert.ToInt32(txtYear.Text);
-            }catch{
+                if (year < 0)
+                {
+                    SetMessageTextAndColor("Year cannot be negative", Color.Red);
+                    return;
+                }
+            }
+            catch{
                 SetMessageTextAndColor("Year must be a number", Color.Red);
             }
             try
             {
                 rating = float.Parse(txtRating.Text);
+                if (rating < 0)
+                {
+                    SetMessageTextAndColor("Rating cannot be negative", Color.Red);
+                    return;
+                }
             }
             catch
             {
@@ -203,7 +230,7 @@ namespace Project_TouchCinema
             string movieID = txtMovieID.Text;
             if (MovieDao.DeleteMovie(movieID))
             {
-                List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
+                List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieSearch"];
                 foreach(MovieDTO item in list)
                 {
                     if (item.MovieID.Equals(movieID))
@@ -225,13 +252,29 @@ namespace Project_TouchCinema
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             string id = txtMovieID.Text.Trim();
+            //check id null
+            if (id.Equals(""))
+            {
+                SetMessageTextAndColor("MovieID cannot be null", Color.Red);
+                return;
+            }
             string title = txtMovieTitle.Text.Trim();
+            if (title.Equals(""))
+            {
+                SetMessageTextAndColor("Movie Title cannot be null", Color.Red);
+                return;
+            }
             int year = 0, length = 0;
             float rating = 0;
 
             try
             {
                 length = Convert.ToInt32(txtLength.Text);
+                if (length < 0)
+                {
+                    SetMessageTextAndColor("Movie length cannot be negative", Color.Red);
+                    return;
+                }
             }
             catch
             {
@@ -240,6 +283,11 @@ namespace Project_TouchCinema
             try
             {
                 year = Convert.ToInt32(txtYear.Text);
+                if (year < 0)
+                {
+                    SetMessageTextAndColor("Year cannot be negative", Color.Red);
+                    return;
+                }
             }
             catch
             {
@@ -248,6 +296,11 @@ namespace Project_TouchCinema
             try
             {
                 rating = float.Parse(txtRating.Text);
+                if (rating < 0)
+                {
+                    SetMessageTextAndColor("Rating cannot be negative", Color.Red);
+                    return;
+                }
             }
             catch
             {
@@ -285,7 +338,7 @@ namespace Project_TouchCinema
             {
                 if (MovieDao.UpdateMovie(dto))
                 {
-                    List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
+                    List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieSearch"];
                     foreach(MovieDTO item in list)
                     {
                         if (item.MovieID.Equals(id))
@@ -315,28 +368,15 @@ namespace Project_TouchCinema
                 SetMessageTextAndColor("Server encounter a fatal error please try again later.", Color.Red);
             }
         }
-
-        public List<MovieDTO> SearchInListByMovieName(List<MovieDTO> list, string searchValue)
-        {
-            List<MovieDTO> result = new List<MovieDTO>();
-            foreach (MovieDTO item in list)
-            {
-                if (item.MovieTitle.ToUpper().IndexOf(searchValue.ToUpper()) >= 0)
-                {
-                    result.Add(item);
-                }
-            }
-            return result;
-        }
-
+        
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             Clear();
             string searchValue = txtSearch.Text;
-            List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
             if (!searchValue.Equals(""))
             {
-                List<MovieDTO> result = SearchInListByMovieName(list, searchValue);
+                List<MovieDTO> result = MovieDao.AdminSearchMovie(searchValue);
+                Session.Add("AdminMovieSearch", result);
                 if (result.Count > 0)
                 {
                     lblMessage.Text = "";
@@ -356,14 +396,6 @@ namespace Project_TouchCinema
             
             
         }
-
-        protected void btnShowAll_Click(object sender, EventArgs e)
-        {
-            Clear();
-            List<MovieDTO> list = (List<MovieDTO>)Session["MovieList"];
-            gvStaffList.Visible = true;
-            gvStaffList.DataSource = list;
-            gvStaffList.DataBind();
-        }
+        
     }
 }

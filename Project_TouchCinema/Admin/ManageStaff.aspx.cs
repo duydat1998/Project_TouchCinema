@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using StaffLibrary;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace Project_TouchCinema
 {
@@ -14,19 +15,14 @@ namespace Project_TouchCinema
     {
         List<StaffDTO> AdminStaffList = new List<StaffDTO>();
         StaffDAO dao = new StaffDAO();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                AdminStaffList = dao.GetStaffList();
-                Session.Add("AdminStaffList", AdminStaffList);
-                gvStaffList.DataSource = AdminStaffList;
-                gvStaffList.DataBind();
-                
             }
         }
-        
+
         public void Clear()
         {
             txtEmail.Text = "";
@@ -37,12 +33,26 @@ namespace Project_TouchCinema
             btnNew.Enabled = true;
             txtUsername.Enabled = true;
         }
+
         protected void btnClear_Click(object sender, EventArgs e)
         {
 
             Clear();
         }
-        
+
+        public bool IsEmailValid(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         protected void btnNew_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
@@ -53,30 +63,47 @@ namespace Project_TouchCinema
                 return;
             }
             string password = txtPassword.Text.Trim();
+            if (password.Equals(""))
+            {
+                lblMessage.Text = "Password cannot be null!";
+                lblMessage.ForeColor = Color.Red;
+                return;
+            }
             string firstname = txtFirstname.Text.Trim();
             string lastname = txtLastname.Text.Trim();
             string phone = txtPhone.Text.Trim();
+            double phoneNum = 0;
+            try
+            {
+                phoneNum = double.Parse(phone);
+            }
+            catch
+            {
+                lblMessage.Text = "Phone number cannot be null!";
+                lblMessage.ForeColor = Color.Red;
+            }
             string email = txtEmail.Text.Trim();
-            bool isActive = true;
-
-            StaffDTO dto = new StaffDTO {
+            
+            if (!IsEmailValid(email))
+            {
+                lblMessage.Text = "Email is not valid!";
+                lblMessage.ForeColor = Color.Red;
+                return;
+            }
+            StaffDTO dto = new StaffDTO
+            {
                 Username = username,
                 Password = password,
                 FirstName = firstname,
                 LastName = lastname,
                 Phone = phone,
                 Email = email,
-                IsActive = isActive
+                IsActive = true
             };
             try
             {
-                if (dao.AddNewStaff(username, password, firstname, lastname, phone, email, isActive))
+                if (dao.AddNewStaff(username, password, firstname, lastname, phone, email, true))
                 {
-                    List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
-                    list.Add(dto);
-                    gvStaffList.DataSource = list;
-                    gvStaffList.DataBind();
-                    Session.Add("AdminStaffList", list);
                     lblMessage.Text = "Successfully added";
                     lblMessage.ForeColor = Color.Green;
                 }
@@ -85,18 +112,19 @@ namespace Project_TouchCinema
                     lblMessage.Text = "Failed to add";
                     lblMessage.ForeColor = Color.Red;
                 }
-            }catch
+            }
+            catch
             {
                 lblMessage.Text = "Username is already existed, please choose another one";
                 lblMessage.ForeColor = Color.Red;
             }
-            
+
 
         }
 
         protected void btnUpdateActive_Click(object sender, EventArgs e)
         {
-            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
+            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffSearch"];
             foreach (GridViewRow row in gvStaffList.Rows)
             {
                 CheckBox status = (row.Cells[5].FindControl("isActive") as CheckBox);
@@ -109,7 +137,7 @@ namespace Project_TouchCinema
                         {
                             if (list[i].Username == username)
                             {
-                                list[i].IsActive=true;
+                                list[i].IsActive = true;
                             }
                         }
                     }
@@ -133,15 +161,13 @@ namespace Project_TouchCinema
             lblMessage.Text = "Successfully updated";
             lblMessage.ForeColor = Color.Green;
         }
-
         
-
         protected void lnkView_Click(object sender, EventArgs e)
         {
             lblMessage.Text = "";
             txtPassword.Text = "";
             string username = (sender as LinkButton).CommandArgument;
-            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
+            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffSearch"];
             for (int i = 0; i <= list.Count - 1; i++)
             {
                 if (list[i].Username == username)
@@ -156,23 +182,14 @@ namespace Project_TouchCinema
             txtUsername.Enabled = false;
             btnNew.Enabled = false;
         }
-
-        protected void btnShowAll_Click(object sender, EventArgs e)
-        {
-            Clear();
-            gvStaffList.Visible = true;
-            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
-            gvStaffList.DataSource = list;
-            gvStaffList.DataBind();
-        }
-
+        
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            List<StaffDTO> list = (List<StaffDTO>)Session["AdminStaffList"];
             string searchValue = txtSearch.Text;
             if (!searchValue.Equals(""))
             {
-                List<StaffDTO> searchResult = SearchInListByUsername(list, searchValue);
+                List<StaffDTO> searchResult = dao.AdminSearchMemberByUsername(searchValue);
+                Session.Add("AdminStaffSearch", searchResult);
                 if (searchResult.Count() > 0)
                 {
                     lblMessage.Text = "";
@@ -189,21 +206,6 @@ namespace Project_TouchCinema
                     lblMessage.ForeColor = Color.Red;
                 }
             }
-        }
-
-        public List<StaffDTO> SearchInListByUsername(List<StaffDTO> list,string username)
-        {
-            List<StaffDTO> result = new List<StaffDTO>();
-            foreach (StaffDTO item in list)
-            {
-                if (item.Username.ToUpper().IndexOf(username.ToUpper()) >= 0)
-                {
-                    result.Add(item);
-                }
-                
-            }
-
-            return result;
         }
     }
 }
