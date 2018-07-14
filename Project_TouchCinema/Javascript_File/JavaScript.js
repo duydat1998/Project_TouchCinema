@@ -25,7 +25,6 @@ function HideInvalidMessage() {
 
 function ValidateBookingCode() {
     var t = document.getElementById("txtBookingCode").value;
-    alert(t);
     if (t.length === 10) {
         return true;
     } else {
