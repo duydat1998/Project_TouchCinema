@@ -542,7 +542,7 @@ table {
 }
 
     .movie_schedule_details:hover {
-        background: linear-gradient(black, white, white, white ,black);
+        background: linear-gradient(black, white, white, white ,black);        
         color: black;
         transition: all 1s;
     }

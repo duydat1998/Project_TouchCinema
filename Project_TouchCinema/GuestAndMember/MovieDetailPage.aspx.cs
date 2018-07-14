@@ -17,6 +17,10 @@ namespace Project_TouchCinema.GuestAndMember
             if (!IsPostBack)
             {
                 string movieTitle = Request.QueryString["movieTitle"];
+                if (Session["MovieList"] == null)
+                {
+                    Session["MovieList"] = mDAO.GetMovieList();
+                }
                 List<MovieDTO> movieDetal = mDAO.getMovieDTO((List<MovieDTO>)Session["MovieList"], movieTitle);                
                 if(movieDetal.Count == 0 || movieDetal == null)
                 {
@@ -35,10 +39,12 @@ namespace Project_TouchCinema.GuestAndMember
                 MovieSameGenre.Text = "Movies also have " + movieGenreName + " genre";
                 MovieSameGenreList.DataSource = mDAO.getFiveMovieReference(mDAO.getMovieListByGenre((List<MovieDTO>)Session["MovieList"], movieGenreID, movieDetal[0]));
                 MovieSameGenreList.DataBind();
+                Session["MovieGenre"] = movieGenreID;
 
                 MovieSameProducer.Text = "Movies also have been made from " + movieProducer;                
                 MovieSameProducerList.DataSource = mDAO.getFiveMovieReference(mDAO.getMovieListByProducer((List<MovieDTO>)Session["MovieList"], movieProducer, movieDetal[0]));
                 MovieSameProducerList.DataBind();
+                Session["MovieProducer"] = movieProducer;
             }            
         }
         

@@ -62,7 +62,7 @@
                     </asp:Repeater>                        
                 </div>  
                 <br />
-                <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
+                <a href="MovieListWithTag.aspx?tag1=" class="show_more_link">Show more </a>
                 <br />
                 <div class="panel_lower">
                         
@@ -86,12 +86,12 @@
                                 <br /><%# Eval("Length") + " phút" %>                                                               
                             </div>
                         </ItemTemplate>                
-                        <FooterTemplate>                            
+                        <FooterTemplate>                                                        
                         </FooterTemplate>
-                    </asp:Repeater>            
-                </div>                
+                    </asp:Repeater>                                
+                </div>                         
                 <br />
-                <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
+                <a href="MovieListWithTag.aspx?tag1=" class="show_more_link">Show more </a>
                 <br />
                 <div class="panel_lower">
                     

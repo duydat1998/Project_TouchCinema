@@ -186,7 +186,6 @@ namespace ScheduleLibrary
             return result;
         }
 
-<<<<<<< HEAD
         public bool AddSchedule(ScheduleDTO dto)
         {
             bool check = false;
@@ -273,7 +272,8 @@ namespace ScheduleLibrary
                 con.Close();
             }
             return check;
-=======
+        }
+
         //For webpages only
         public List<ScheduleDTO> getSpecificMovieSchedule(List<ScheduleDTO> FullScheduleList, string movieID)
         {
@@ -290,7 +290,6 @@ namespace ScheduleLibrary
                 }
             }
             return result;
->>>>>>> 6ca3dbe423ec5d1cd7dc160b0919a153bec29235
         }
     }
 }
