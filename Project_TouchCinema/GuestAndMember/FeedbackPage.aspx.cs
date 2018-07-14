@@ -13,5 +13,12 @@ namespace Project_TouchCinema.GuestAndMember
         {
 
         }
+
+        protected void btnFeedback_Click(object sender, EventArgs e)
+        {
+            string message = "Your feedback is sent to Touch Cinema Manager Team\\n " +
+                "Thank you for your supporting!";
+            ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+        }
     }
 }

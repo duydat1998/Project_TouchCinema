@@ -1,4 +1,8 @@
-﻿function LoadLoginForm() {
+﻿
+var emailFormat = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+var phoneFormat = /^0[1-9][0-9]+$/;
+
+function LoadLoginForm() {
     var form = document.getElementById("form1");
     form.style.opacity = "0.2";
     form.style.zIndex = "1";
@@ -103,7 +107,6 @@ function ValidateMemberRegisterInfo() {
     }
 
     t = document.getElementById("txtPhone");
-    var phoneFormat = /^0[1-9][0-9]+$/;
     if (t.value == '') {
         document.getElementById("phoneRequire").style.visibility = "visible";
         t.focus();
@@ -122,7 +125,6 @@ function ValidateMemberRegisterInfo() {
     }
 
     t = document.getElementById("txtEmail");
-    var emailFormat = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (t.value.toLowerCase() == '') {
         document.getElementById("emailRequire").style.visibility = "visible";
         t.focus();
@@ -230,7 +232,6 @@ function ValidateMemberUpdateInfo() {
     }
 
     t = document.getElementById("txtPhone");
-    var phoneFormat = /^0[1-9][0-9]+$/;
     if (t.value == '') {
         document.getElementById("phoneRequire").style.visibility = "visible";
         t.focus();
@@ -249,7 +250,6 @@ function ValidateMemberUpdateInfo() {
     }
 
     t = document.getElementById("txtEmail");
-    var emailFormat = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (t.value.toLowerCase() == '') {
         document.getElementById("emailRequire").style.visibility = "visible";
         t.focus();
@@ -326,5 +326,25 @@ function ValidateChangePass() {
         }
     }
 
+    return true;
+}
+
+function CheckFeedbackInformation() {
+    var t = document.getElementById("txtFeedback");
+    if (t.value == '') {
+        return false;
+    }
+    t = document.getElementById("txtEmail");
+    if (!emailFormat.test(t.value)) {
+        document.getElementById("emailFormat").style.visibility = "visible";
+        t.focus();
+        return false;
+    }
+    t = document.getElementById("txtPhone");
+    if (!phoneFormat.test(t.value)) {
+        document.getElementById("phoneFormat").style.visibility = "visible";
+        t.focus();
+        return false;
+    }
     return true;
 }
