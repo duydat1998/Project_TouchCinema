@@ -185,8 +185,7 @@ namespace ScheduleLibrary
 
             return result;
         }
-
-<<<<<<< HEAD
+        
         public bool AddSchedule(ScheduleDTO dto)
         {
             bool check = false;
@@ -249,31 +248,7 @@ namespace ScheduleLibrary
             return check;
         }
 
-        public bool DeleteSchedule(string scheduleID)
-        {
-            bool check = false;
-            SqlConnection con = new SqlConnection(strConnection);
-            if (con.State == System.Data.ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            try
-            {
-                string sql = "DELETE FROM Schedule WHERE scheduleID = @scheduleID";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@scheduleID", scheduleID);
-                int count = cmd.ExecuteNonQuery();
-                if (count > 0)
-                {
-                    check = true;
-                }
-            }
-            finally
-            {
-                con.Close();
-            }
-            return check;
-=======
+        
         //For webpages only
         public List<ScheduleDTO> getSpecificMovieSchedule(List<ScheduleDTO> FullScheduleList, string movieID)
         {
@@ -290,7 +265,6 @@ namespace ScheduleLibrary
                 }
             }
             return result;
->>>>>>> 6ca3dbe423ec5d1cd7dc160b0919a153bec29235
         }
     }
 }
