@@ -23,7 +23,7 @@
                 <ItemTemplate>                              
                     <div class="movie_panel">
                         <a href="MovieDetailPage.aspx?movieTitle=<%# Eval("MovieTitle")%>">
-                            <img src="<%# Eval("poster")%>" style="width: 100%;"/>
+                            <img src="<%# Eval("poster")%>" style="width: 100%;  height: 200px;"/>
                         </a>
                         <br /><%# Eval("MovieTitle") %>
                         <br /><%# Eval("Length") + " phút" %>                                                               

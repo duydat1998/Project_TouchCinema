@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenreLibrary\GenreLibrary.csproj">
+      <Project>{78b1ab91-d259-4535-9b1d-6d21173e8474}</Project>
+      <Name>GenreLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UltilitiesLibrary\UltilitiesLibrary.csproj">
       <Project>{efad23d9-62cb-43dc-9281-1bc28268441b}</Project>
       <Name>UltilitiesLibrary</Name>
