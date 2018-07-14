@@ -71,6 +71,7 @@
     <Content Include="GuestAndMember\MemberChangePassword.aspx" />
     <Content Include="GuestAndMember\MemberInformation.aspx" />
     <Content Include="GuestAndMember\MovieDetailPage.aspx" />
+    <Content Include="GuestAndMember\MovieListWithTag.aspx" />
     <Content Include="GuestAndMember\MovieSchedulePage.aspx" />
     <Content Include="GuestAndMember\PromotionPage.aspx" />
     <Content Include="GuestAndMember\SearchResultPage.aspx" />
@@ -140,6 +141,13 @@
     </Compile>
     <Compile Include="GuestAndMember\MovieDetailPage.aspx.designer.cs">
       <DependentUpon>MovieDetailPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAndMember\MovieListWithTag.aspx.cs">
+      <DependentUpon>MovieListWithTag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAndMember\MovieListWithTag.aspx.designer.cs">
+      <DependentUpon>MovieListWithTag.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAndMember\MovieSchedulePage.aspx.cs">
       <DependentUpon>MovieSchedulePage.aspx</DependentUpon>

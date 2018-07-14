@@ -26,10 +26,19 @@
                         </div>
                         <div id="movie_detail">                            
                             Genre: <br />
-                            <%# Eval("Genre")%> 
+                            <a href="MovieListWithTag.aspx?tag=<%# Eval("Genre")%>&type=genre">
+                                <div class="hyperlink_panel"> 
+                                    <%# Eval("GenreName")%>
+                                </div>                                
+                            </a>                             
                             <br />
                             Rating: <%# Eval("Rating")%>    Length: <%# Eval("Length")%> mins <br />
-                            Producder: <%# Eval("Producer")%>
+                            Producder: 
+                            <a href="MovieListWithTag.aspx?tag=<%# Eval("Producer")%>&type=producer">
+                                <div class="hyperlink_panel"> 
+                                    <%# Eval("Producer")%>
+                                </div>                                
+                            </a>
                             <br />                            
                         </div>
                     </div>                    
@@ -62,7 +71,7 @@
                     </asp:Repeater>                        
                 </div>  
                 <br />
-                <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
+                <asp:HyperLink runat="server" CssClass="show_more_link" ID="GenreTagLink" Text="Show more"/>
                 <br />
                 <div class="panel_lower">
                         
@@ -86,12 +95,12 @@
                                 <br /><%# Eval("Length") + " phút" %>                                                               
                             </div>
                         </ItemTemplate>                
-                        <FooterTemplate>                            
+                        <FooterTemplate>                                                        
                         </FooterTemplate>
-                    </asp:Repeater>            
-                </div>                
+                    </asp:Repeater>                                
+                </div>                         
                 <br />
-                <a href="MemberRegister.aspx" class="show_more_link">Show more </a>
+                <asp:HyperLink runat="server" CssClass="show_more_link" ID="ProducerTagLink" Text="Show more"/>
                 <br />
                 <div class="panel_lower">
                     

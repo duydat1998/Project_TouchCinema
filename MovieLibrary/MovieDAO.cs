@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using UltilitiesLibrary;
+using GenreLibrary;
 
 namespace MovieLibrary
 {
@@ -49,40 +50,7 @@ namespace MovieLibrary
             }
             return movieName;
         }
-
-        //This is just for Getting movie Genre
-        public string getGenreName(int genreID)
-        {
-            string genreName = "";
-            SqlConnection conn = new SqlConnection(strConnection);
-            if (conn != null)
-            {
-                if (conn.State == System.Data.ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-                try
-                {
-                    string sql = "Select genreName " +
-                        "from Genre " +
-                        "where genreID=@genreID";
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@genreID", genreID);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        genreName = reader.GetString(0);
-                    }
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return genreName;
-        }
-        //
-
+            
         public bool AddNewMovie(MovieLibrary.MovieDTO dto)
         {
             bool check = false;
@@ -469,6 +437,24 @@ namespace MovieLibrary
                     resultList.Add(item);
                 }
 
+            }
+            return resultList;
+        }
+
+        public List<MovieDTO> getGenreName(List<MovieDTO> movieDetail, List<GenreDTO> genreList)
+        {
+            List<MovieDTO> resultList = new List<MovieDTO>();
+            foreach (var movie in movieDetail)
+            {
+                foreach (var genre in genreList)
+                {
+                    if(genre.GenreID == movie.Genre)
+                    {
+                        movie.GenreName = genre.GenreName;
+                        resultList.Add(movie);
+                        break;
+                    }
+                }
             }
             return resultList;
         }
