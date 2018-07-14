@@ -184,12 +184,12 @@ function isValidDate(day, month, year) {
     var date = new Date();
     date.setFullYear(year, month - 1, day);
     // month - 1 since the month index is 0-based (0 = January)
-
-    if ((date.getFullYear() == year) && (date.getMonth() == month - 1) && (date.getDate() == day))
+    if ((date.getFullYear() == year) && (date.getMonth() == month - 1) && (date.getDate() == day)) {
         return true;
-
+    }
     return false;
 }
+
 function ChangeColor() {
     var t = document.getElementById("txtUsername");
     t.style.color = "black";
