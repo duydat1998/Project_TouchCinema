@@ -427,6 +427,17 @@ table {
     padding-left: 10px;
 }
 
+.hyperlink_panel{
+    height: auto;    
+    box-sizing:border-box;
+    display: inline-block;
+    border-radius: 5px 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: black;
+    color: whitesmoke;
+}
+
 #movie_same_genre {
     float: left;
     width: 100%;
@@ -521,9 +532,9 @@ table {
 }
 
 .movie_schedule_list {
-    float: left;
-    width: 65%;
-    margin-left: 30px;
+    float: right;
+    width: 65%;  
+    margin-right: 19.9px;
 }
 
 .movie_schedule_details {
@@ -541,7 +552,13 @@ table {
 }
 
     .movie_schedule_details:hover {
-        background: linear-gradient(black, white, white, white ,black);
+        background: linear-gradient(black, white, white, white ,black);                
         color: black;
         transition: all 1s;
     }
+/*CSS for MovieTag*/
+#movie_tag_content {
+    float: left;
+    width: 100%;
+    margin-left: 30px;
+}

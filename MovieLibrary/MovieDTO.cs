@@ -18,5 +18,6 @@ namespace MovieLibrary
         public string Producer { get; set; }
         public int Year { get; set; }
         public int Genre { get; set; }
+        public string GenreName { get; set; }
     }
 }

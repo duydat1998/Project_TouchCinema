@@ -67,6 +67,15 @@ namespace Project_TouchCinema.GuestAndMember {
         protected global::System.Web.UI.WebControls.Repeater MovieSameGenreList;
         
         /// <summary>
+        /// GenreTagLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink GenreTagLink;
+        
+        /// <summary>
         /// MovieSameProducer control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,14 @@ namespace Project_TouchCinema.GuestAndMember {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater MovieSameProducerList;
+        
+        /// <summary>
+        /// ProducerTagLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ProducerTagLink;
     }
 }

@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MovieLibrary;
+using GenreLibrary;
 
 namespace Project_TouchCinema
 {
     public partial class MemberWorkspace : System.Web.UI.Page
     {
         MovieDAO mDAO = new MovieDAO();
+        GenreDAO gDAO = new GenreDAO();
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +25,11 @@ namespace Project_TouchCinema
                 if(Session["MovieList"]== null)
                 {
                     Session["MovieList"] = mDAO.GetMovieList();
-                }                
+                }
+                if (Session["GenreList"] == null)
+                {
+                    Session["GenreList"] = gDAO.GetGenreList();
+                }
             }            
         }
 
