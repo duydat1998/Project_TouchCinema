@@ -163,6 +163,44 @@ namespace StaffLibrary
             return listStaff;
         }
 
-        
+        public List<StaffDTO> AdminSearchMemberByUsername(string username)
+        {
+            List<StaffDTO> listMember = new List<StaffDTO>();
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "Select username, firstName, lastName, phone, email, isActive FROM Member WHERE username LIKE @username";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@username", "%" + username + "%");
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    listMember = new List<StaffDTO>();
+                    while (reader.Read())
+                    {
+                        StaffDTO dto = new StaffDTO
+                        {
+                            Username = reader.GetString(0),
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            Phone = reader.GetString(3),
+                            Email = reader.GetString(4),
+                            IsActive = reader.GetBoolean(5)
+                        };
+                        listMember.Add(dto);
+                    }
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return listMember;
+        }
+
     }
 }
