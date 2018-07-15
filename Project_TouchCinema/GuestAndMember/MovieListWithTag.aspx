@@ -4,6 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
     <div id="movie_tag_content">
+        <div id="search_bar">
+            <div id="search_mess">Do you want to find a movie?</div>            
+            <div id="search_form">
+                <asp:TextBox runat="server" ID="txtSearchValue" Width="300px" placeholder="Type the movie you want to search" CssClass="textbox"/>
+                <asp:Button runat="server" ID="btnSeacrh" Text="Search" CssClass="button" OnClick="btnSeacrh_Click"/>                
+            </div>
+        </div>        
+        <hr />
         <div class="panel_upper">
             <asp:Label runat="server" ID="MoviesTag" Text="Movies also have '' genre"/>
         </div>

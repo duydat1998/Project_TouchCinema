@@ -19,7 +19,7 @@ namespace OrderLibary
             strConnection = dc.GetConnection();
         }
 
-        public List<string> GetAllSeats(string orderID)
+        public List<string> GetAllSeats(string scheduleID)
         {
             List<string> listSeat = null;
             SqlConnection conn = new SqlConnection(strConnection);
@@ -31,9 +31,11 @@ namespace OrderLibary
                 }
                 try
                 {
-                    string sql = "Select seat from OrderDetail where orderID=@orderID";
+                    string sql = "Select seat " +
+                                "from OrderDetail Join Orders on Orders.orderID = OrderDetail.orderID " +
+                                "Where scheduleID = @scheduleID";
                     SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@orderID", orderID);
+                    cmd.Parameters.AddWithValue("@scheduleID", scheduleID);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {

@@ -76,5 +76,14 @@ namespace Project_TouchCinema.GuestAndMember
             }
             return result;
         }
+
+        protected void btnSeacrh_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearchValue.Text;
+            List<MovieDTO> resultList = mDAO.searchByName((List<MovieDTO>)Session["MovieList"], searchValue);
+            Session["SearchResult"] = resultList;
+            Session["SearchValue"] = searchValue;
+            Response.Redirect("SearchResultPage.aspx");
+        }
     }
 }

@@ -20,7 +20,7 @@
                         <div class="movie_schedule_list">
                             <asp:Repeater runat="server" ID="MovieSchedule" OnDataBinding="MovieSchedule_DataBinding">
                                 <ItemTemplate>
-                                    <a href="UnderConstructionsPage.aspx" class="movie_schedule_details_link">
+                                    <a href="BookTicketPage.aspx?schedule=<%# Eval("ScheduleID") %>&room=<%# Eval("RoomID") %>" class="movie_schedule_details_link">
                                         <div class="movie_schedule_details">
                                             <%# Eval("ScheduleDate") %> at Room <%# Eval("RoomID") %>
                                         </div>

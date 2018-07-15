@@ -13,6 +13,24 @@ namespace Project_TouchCinema.GuestAndMember {
     public partial class MovieListWithTag {
         
         /// <summary>
+        /// txtSearchValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearchValue;
+        
+        /// <summary>
+        /// btnSeacrh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSeacrh;
+        
+        /// <summary>
         /// MoviesTag control.
         /// </summary>
         /// <remarks>
