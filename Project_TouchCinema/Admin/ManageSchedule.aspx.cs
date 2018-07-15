@@ -284,10 +284,7 @@ namespace Project_TouchCinema
         {
             btnNew.Enabled = true;
             btnUpdate.Enabled = false;
-<<<<<<< HEAD
-=======
             //btnDelete.Enabled = false;
->>>>>>> 57e44a8e1e8e566cac8f73389a457b3485762a67
             txtScheduleID.Enabled = true;
             txtDate.Text = "";
             txtScheduleID.Text = "";
@@ -397,10 +394,7 @@ namespace Project_TouchCinema
             }
             txtScheduleID.Enabled = false;
             btnNew.Enabled = false;
-<<<<<<< HEAD
-=======
             //btnDelete.Enabled = true;
->>>>>>> 57e44a8e1e8e566cac8f73389a457b3485762a67
         }
 
         public Tuple<string, string> SplitTime(string input)
