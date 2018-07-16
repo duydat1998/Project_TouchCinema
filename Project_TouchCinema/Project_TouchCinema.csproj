@@ -100,6 +100,7 @@
     <Content Include="Admin\ManageRoom.aspx" />
     <Content Include="Admin\ManageMovie.aspx" />
     <Content Include="Admin\ManageSchedule.aspx" />
+    <Content Include="Admin\ManagePromotion.aspx" />
     <Content Include="Staff\CheckPoint.aspx" />
     <Content Include="Admin\ManageMember.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
@@ -264,6 +265,13 @@
     <Compile Include="Admin\ManageSchedule.aspx.designer.cs">
       <DependentUpon>ManageSchedule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ManagePromotion.aspx.cs">
+      <DependentUpon>ManagePromotion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManagePromotion.aspx.designer.cs">
+      <DependentUpon>ManagePromotion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Layout\StaffLayout.Master.cs">
       <DependentUpon>StaffLayout.Master</DependentUpon>
@@ -320,6 +328,10 @@
     <ProjectReference Include="..\OrderLibary\OrderLibary.csproj">
       <Project>{b06bd3e9-3cd9-4b48-823d-c458c0a85eae}</Project>
       <Name>OrderLibary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PromotionLibrary\PromotionLibrary.csproj">
+      <Project>{422400f1-da1c-49a1-af85-119424c566b0}</Project>
+      <Name>PromotionLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\RoomLibrary\RoomLibrary.csproj">
       <Project>{3bc0e9fd-0ebd-4bbe-ae11-e859f6479df1}</Project>

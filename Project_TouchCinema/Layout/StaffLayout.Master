@@ -12,7 +12,7 @@
     <script src="../Javascript_File/JavaScript.js"></script>
 </head>
 <body onload="ModifyBesideDiv();">
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" method="post">
      <div id="header">
          <div id="header_logo">
              <img src="../Image/logo.png" style="height: 147px; width: 226px" />

@@ -163,7 +163,7 @@ namespace StaffLibrary
             return listStaff;
         }
 
-        public List<StaffDTO> AdminSearchMemberByUsername(string username)
+        public List<StaffDTO> AdminSearchStaffByUsername(string username)
         {
             List<StaffDTO> listMember = new List<StaffDTO>();
             SqlConnection conn = new SqlConnection(strConnection);
@@ -173,7 +173,7 @@ namespace StaffLibrary
             }
             try
             {
-                string sql = "Select username, firstName, lastName, phone, email, isActive FROM Member WHERE username LIKE @username";
+                string sql = "Select username, firstName, lastName, phone, email, isActive FROM Staff WHERE username LIKE @username";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@username", "%" + username + "%");
                 SqlDataReader reader = cmd.ExecuteReader();
