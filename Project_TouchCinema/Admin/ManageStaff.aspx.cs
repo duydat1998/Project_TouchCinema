@@ -58,14 +58,14 @@ namespace Project_TouchCinema
             string username = txtUsername.Text.Trim();
             if (username.Equals(""))
             {
-                lblMessage.Text = "Username cannot be null!";
+                lblMessage.Text = "Username cannot be empty!";
                 lblMessage.ForeColor = Color.Red;
                 return;
             }
             string password = txtPassword.Text.Trim();
             if (password.Equals(""))
             {
-                lblMessage.Text = "Password cannot be null!";
+                lblMessage.Text = "Password cannot be empty!";
                 lblMessage.ForeColor = Color.Red;
                 return;
             }
@@ -79,7 +79,7 @@ namespace Project_TouchCinema
             }
             catch
             {
-                lblMessage.Text = "Phone number cannot be null!";
+                lblMessage.Text = "Phone number not valid!";
                 lblMessage.ForeColor = Color.Red;
             }
             string email = txtEmail.Text.Trim();
@@ -188,13 +188,13 @@ namespace Project_TouchCinema
             string searchValue = txtSearch.Text;
             if (!searchValue.Equals(""))
             {
-                List<StaffDTO> searchResult = dao.AdminSearchMemberByUsername(searchValue);
+                List<StaffDTO> searchResult = new List<StaffDTO>();
+                searchResult = dao.AdminSearchStaffByUsername(searchValue);
                 Session.Add("AdminStaffSearch", searchResult);
                 if (searchResult.Count() > 0)
                 {
                     lblMessage.Text = "";
                     gvStaffList.Visible = true;
-                    gvStaffList.DataSource = null;
                     gvStaffList.DataSource = searchResult;
                     gvStaffList.DataBind();
                 }

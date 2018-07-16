@@ -168,7 +168,7 @@ namespace Project_TouchCinema
             lblMessage.Text = "";
             txtPassword.Text = "";
             string username = (sender as LinkButton).CommandArgument;
-            List<MemberDTO> list = (List<MemberDTO>)Session["AdminMovieSearch"];
+            List<MemberDTO> list = (List<MemberDTO>)Session["AdminMemberSearch"];
             for (int i = 0; i <= list.Count - 1; i++)
             {
                 if (list[i].Username == username)

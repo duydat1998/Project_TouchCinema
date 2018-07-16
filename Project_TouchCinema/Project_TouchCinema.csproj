@@ -101,6 +101,7 @@
     <Content Include="Admin\ManageRoom.aspx" />
     <Content Include="Admin\ManageMovie.aspx" />
     <Content Include="Admin\ManageSchedule.aspx" />
+    <Content Include="Admin\ManagePromotion.aspx" />
     <Content Include="Staff\CheckPoint.aspx" />
     <Content Include="Admin\ManageMember.aspx" />
     <Content Include="Staff\StaffLogin.aspx" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="Admin\ManageSchedule.aspx.designer.cs">
       <DependentUpon>ManageSchedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManagePromotion.aspx.cs">
+      <DependentUpon>ManagePromotion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManagePromotion.aspx.designer.cs">
+      <DependentUpon>ManagePromotion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Layout\StaffLayout.Master.cs">
