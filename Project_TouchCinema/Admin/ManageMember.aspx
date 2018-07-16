@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1>Cinema Member Management</h1>
+    <h1 class="title">Cinema Member Management</h1>
             <table style="width: 48%;" border="0">
                 <tr>
                     <td class="auto-style1">Username:</td>

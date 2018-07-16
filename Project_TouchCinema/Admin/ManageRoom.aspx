@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1>Cinema Room Management</h1>
+    <h1 class="title">Cinema Room Management</h1>
             
         &nbsp;<asp:Label ID="Label1" runat="server" Text="Search by RoomID:"></asp:Label>
     <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
