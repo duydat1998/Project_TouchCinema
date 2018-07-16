@@ -462,7 +462,7 @@ namespace MovieLibrary
 
         public List<MovieDTO> AdminSearchMovie(string movietitle)
         {
-            List<MovieDTO> result = new List<MovieDTO>();
+            List<MovieDTO> result = null ;
 
             SqlConnection conn = new SqlConnection(strConnection);
             if (conn.State == System.Data.ConnectionState.Closed)

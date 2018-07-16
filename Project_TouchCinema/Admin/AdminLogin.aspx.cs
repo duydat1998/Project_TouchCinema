@@ -26,7 +26,7 @@ namespace Project_TouchCinema
             if (admin != null)
             {
                 Session["ADMIN_USER"] = admin;
-                Response.Redirect("AdminWorkspace.aspx");
+                Response.Redirect("ManageMovie.aspx");
             }
             else
             {

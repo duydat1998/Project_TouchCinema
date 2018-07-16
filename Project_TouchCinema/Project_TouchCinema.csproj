@@ -80,7 +80,6 @@
     <Content Include="GuestAndMember\UnderConstructionsPage.aspx" />
     <Content Include="Layout\AdminLayout.Master" />
     <Content Include="Admin\AdminLogin.aspx" />
-    <Content Include="Admin\AdminWorkspace.aspx" />
     <Content Include="Javascript_File\JavaScript.js" />
     <Content Include="Layout\MemberLayout.Master" />
     <None Include="packages.config" />
@@ -206,13 +205,6 @@
     </Compile>
     <Compile Include="Admin\AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\AdminWorkspace.aspx.cs">
-      <DependentUpon>AdminWorkspace.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\AdminWorkspace.aspx.designer.cs">
-      <DependentUpon>AdminWorkspace.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
