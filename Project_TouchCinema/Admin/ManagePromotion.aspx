@@ -16,10 +16,16 @@
     <asp:TextBox ID="txtName" runat="server" Width="227px"></asp:TextBox>
     <br />
     <br />
-    <asp:Button ID="btnAdd" runat="server" Text="Add promotion" CssClass="button" />
+    <asp:Button ID="btnAdd" runat="server" Text="Add promotion" CssClass="button" OnClick="btnAdd_Click" />
     <br />
     <br />
     <asp:Label ID="lblMessage" runat="server" Text=" "></asp:Label>
+        <br />
+        <asp:Label ID="Label2" runat="server" Text="Search Promotion By Name:"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="txtSearch" runat="server" Width="236px"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="button" OnClick="btnSearch_Click" />
         <br />
     <asp:Button ID="btnUpdateActive" runat="server" Text="Update Activation" CssClass="button" Width="200px" OnClick="btnUpdateActive_Click" />
         <br />
@@ -27,15 +33,15 @@
         <asp:GridView ID="gvStaffList" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
             <AlternatingRowStyle BackColor="#F7F7F7" />
             <Columns>
-                <asp:BoundField DataField="RoomID" HeaderText="RoomID" >
+                <asp:BoundField DataField="Code" HeaderText="Code" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="NumberOfSeat" HeaderText="NumberOfSeat" >
+                <asp:BoundField DataField="Name" HeaderText="Name" >
                 <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:TemplateField HeaderText="IsAvailable">
+                <asp:TemplateField HeaderText="IsActive">
                     <ItemTemplate>
-                        <asp:CheckBox ID="isActive" runat="server" Checked='<%# Eval("IsActive").ToString().Equals("True")  %>'/>
+                        <asp:CheckBox ID="isActive" runat="server" Checked='<%# Eval("Active").ToString().Equals("True")  %>'/>
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>

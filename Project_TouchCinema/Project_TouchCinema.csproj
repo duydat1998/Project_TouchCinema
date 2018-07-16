@@ -329,6 +329,10 @@
       <Project>{b06bd3e9-3cd9-4b48-823d-c458c0a85eae}</Project>
       <Name>OrderLibary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PromotionLibrary\PromotionLibrary.csproj">
+      <Project>{422400f1-da1c-49a1-af85-119424c566b0}</Project>
+      <Name>PromotionLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RoomLibrary\RoomLibrary.csproj">
       <Project>{3bc0e9fd-0ebd-4bbe-ae11-e859f6479df1}</Project>
       <Name>RoomLibrary</Name>

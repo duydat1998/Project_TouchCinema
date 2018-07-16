@@ -29,7 +29,7 @@ namespace PromotionLibrary
             }
             try
             {
-                string sql = "INSERT INTO Schedule(code,name,active) VALUES(@code,@name,@active)";
+                string sql = "INSERT INTO Promotion(code,name,active) VALUES(@code,@name,@active)";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@code", dto.Code);
                 cmd.Parameters.AddWithValue("@name", dto.Name);
@@ -81,7 +81,35 @@ namespace PromotionLibrary
         {
             List<PromotionDTO> result = new List<PromotionDTO>();
 
-
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "Select code,name,active FROM Promotion WHERE name LIKE @name";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@name", "%" + name + "%");
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        PromotionDTO dto = new PromotionDTO
+                        {
+                            Code = reader.GetString(0),
+                            Name = reader.GetString(1),
+                            Active = reader.GetBoolean(2)
+                        };
+                        result.Add(dto);
+                    }
+                }
+            }
+            finally
+            {
+                conn.Close();
+            }
 
             return result;
         }

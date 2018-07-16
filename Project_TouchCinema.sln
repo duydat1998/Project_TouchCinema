@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenreLibrary", "GenreLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltilitiesLibrary", "UltilitiesLibrary\UltilitiesLibrary.csproj", "{EFAD23D9-62CB-43DC-9281-1BC28268441B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionLibrary", "PromotionLibrary\PromotionLibrary.csproj", "{422400F1-DA1C-49A1-AF85-119424C566B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{EFAD23D9-62CB-43DC-9281-1BC28268441B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFAD23D9-62CB-43DC-9281-1BC28268441B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFAD23D9-62CB-43DC-9281-1BC28268441B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{422400F1-DA1C-49A1-AF85-119424C566B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{422400F1-DA1C-49A1-AF85-119424C566B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{422400F1-DA1C-49A1-AF85-119424C566B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{422400F1-DA1C-49A1-AF85-119424C566B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
