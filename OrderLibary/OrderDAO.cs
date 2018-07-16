@@ -42,7 +42,7 @@ namespace OrderLibary
                         string phone = reader["phone"].ToString();
                         string email = reader["email"].ToString();
                         OrderDetailDAO dao = new OrderDetailDAO();
-                        List<string> listSeat = dao.GetAllSeats(orderID);
+                        List<string> listSeat = dao.GetAllSeatsInOrder(orderID);
                         output = new OrderDTO { OrderID = orderID, Email = email, IsCheckOut = false, ListOfSeat = listSeat, Phone = phone, ScheduleID = scheduleID };
                     }
                 }

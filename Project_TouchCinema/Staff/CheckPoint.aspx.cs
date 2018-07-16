@@ -15,7 +15,7 @@ namespace Project_TouchCinema.Staff
             {
                 Response.Redirect("StaffLogin.aspx");
             }
-            this.invalidMember.Visible = false;
+            this.invalidMember.CssClass = "error_message";
             this.memberInfo.Visible = false;
         }
 
@@ -35,7 +35,7 @@ namespace Project_TouchCinema.Staff
             }
             else
             {
-                this.invalidMember.Visible = true;
+                this.invalidMember.CssClass = "error_message_show";
             }
         }
     }

@@ -54,5 +54,41 @@ namespace OrderLibary
             }
             return listSeat;
         }
+
+        public List<string> GetAllSeatsInOrder(string orderID)
+        {
+            List<string> listSeat = null;
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    string sql = "Select seat " +
+                                "from OrderDetail  " +
+                                "Where orderID = @or";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@or", orderID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string seat = reader["seat"].ToString();
+                        if (listSeat == null)
+                        {
+                            listSeat = new List<string>();
+                        }
+                        listSeat.Add(seat);
+                    }
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return listSeat;
+        }
     }
 }
