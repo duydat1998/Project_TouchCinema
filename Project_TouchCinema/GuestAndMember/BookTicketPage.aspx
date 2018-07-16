@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
+    <h1 class="title">Booking Ticket</h1>
     <div id="book_ticket_content">
         <div id="detail">
             <table>
