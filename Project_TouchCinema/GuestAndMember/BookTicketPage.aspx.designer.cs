@@ -13,12 +13,48 @@ namespace Project_TouchCinema.GuestAndMember {
     public partial class BookTicketPage {
         
         /// <summary>
-        /// RoomList control.
+        /// dlMovieList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RoomList;
+        protected global::System.Web.UI.WebControls.DropDownList dlMovieList;
+        
+        /// <summary>
+        /// dlScheduleList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlScheduleList;
+        
+        /// <summary>
+        /// dlTicketNum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlTicketNum;
+        
+        /// <summary>
+        /// dlScheduleID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlScheduleID;
+        
+        /// <summary>
+        /// dlRoomList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlRoomList;
     }
 }

@@ -125,5 +125,20 @@ namespace RoomLibrary
             }
             return listRoom;
         }
+
+        //Only use at aspx
+        public RoomDTO getRoom(List<RoomDTO> roomList, int roomID)
+        {
+            RoomDTO dto = null;
+            foreach (var room in roomList)
+            {
+                if (room.RoomID == roomID)
+                {
+                    dto = room;
+                    break;
+                }
+            }
+            return dto;
+        }
     }
 }
