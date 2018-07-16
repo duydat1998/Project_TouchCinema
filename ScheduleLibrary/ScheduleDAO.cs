@@ -291,5 +291,19 @@ namespace ScheduleLibrary
             }
             return result;
         }
+
+        public ScheduleDTO GetScheduleDTO(List<ScheduleDTO> ScheduleList, string scheduleID)
+        {
+            ScheduleDTO dto = null;
+            foreach (var item in ScheduleList)
+            {
+                if (item.ScheduleID.ToUpper().Equals(scheduleID.ToUpper()))
+                {
+                    dto = item;
+                    break;
+                }
+            }
+            return dto;
+        }
     }
 }

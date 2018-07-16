@@ -387,6 +387,20 @@ namespace MovieLibrary
             return dto;
         }
 
+        public MovieDTO getMovieDTOByMovieID(List<MovieDTO> listMovie, string movieID)
+        {
+            MovieDTO dto = new MovieDTO();
+            foreach (var item in listMovie)
+            {
+                if (item.MovieID.ToUpper().Equals(movieID.ToUpper()))
+                {
+                    dto = item;
+                    break;
+                }
+            }
+            return dto;
+        }
+
         public List<MovieDTO> getMovieListByGenre(List<MovieDTO> listMovie, int movieGenreID, MovieDTO currentMovie)
         {
             List<MovieDTO> movieRefList = new List<MovieDTO>();

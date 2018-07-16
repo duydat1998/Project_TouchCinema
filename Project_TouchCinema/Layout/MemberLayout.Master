@@ -75,7 +75,7 @@
                 <Items>
                     <asp:MenuItem Text="Movies" Value="Movies" ImageUrl="../Image/movie-icon.ico" NavigateUrl="~/GuestAndMember/TouchCinema.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Schedule" Value="Schedule" ImageUrl="../Image/calendar-icon.png" NavigateUrl="~/GuestAndMember/MovieSchedulePage.aspx"></asp:MenuItem>
-                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png" NavigateUrl="~/GuestAndMember/UnderConstructionsPage.aspx"></asp:MenuItem>
+                    <asp:MenuItem Text="Book Ticket" Value="Book Ticket" ImageUrl="../Image/ticket-icon.png" NavigateUrl="~/GuestAndMember/BookTicketPage.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Promotion" Value="Promotion" ImageUrl="../Image/promotion-icon.png" NavigateUrl="~/GuestAndMember/PromotionPage.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Feedback" Value="Feedback" ImageUrl="../Image/feedback-icon.png" NavigateUrl="~/GuestAndMember/FeedbackPage.aspx"></asp:MenuItem>
                     <asp:MenuItem Text="Term & Condition" Value="Term" ImageUrl="../Image/term-condition.png" NavigateUrl="../GuestAndMember/TermAndCondition.aspx"></asp:MenuItem>

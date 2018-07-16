@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MovieLibrary;
 using GenreLibrary;
+using RoomLibrary;
+using ScheduleLibrary;
 
 namespace Project_TouchCinema.GuestAndMember
 {
@@ -13,20 +15,16 @@ namespace Project_TouchCinema.GuestAndMember
     {
         MovieDAO mDAO = new MovieDAO();
         GenreDAO gDAO = new GenreDAO();
+        ScheduleDAO sDAO = new ScheduleDAO();
+        RoomDAO rDAO = new RoomDAO();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 string movieTitle = Request.QueryString["movieTitle"];
-                if (Session["MovieList"] == null)
-                {
-                    Session["MovieList"] = mDAO.GetMovieList();
-                }
-                if (Session["GenreList"] == null)
-                {
-                    Session["GenreList"] = gDAO.GetGenreList();
-                }
+                LoadAllLists();
+
                 List<MovieDTO> movieDetal = mDAO.getMovieDTO((List<MovieDTO>)Session["MovieList"], movieTitle);                
                 if(movieDetal.Count == 0 || movieDetal == null)
                 {
@@ -63,6 +61,14 @@ namespace Project_TouchCinema.GuestAndMember
             Session["SearchResult"] = resultList;
             Session["SearchValue"] = searchValue;
             Response.Redirect("SearchResultPage.aspx");
-        }                
+        }
+
+        private void LoadAllLists()
+        {
+            Session["MovieList"] = mDAO.GetMovieList();
+            Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
+            Session["RoomList"] = rDAO.GetRoomList();
+            Session["GenreList"] = gDAO.GetGenreList();
+        }
     }
 }

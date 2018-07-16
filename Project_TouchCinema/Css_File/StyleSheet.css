@@ -566,8 +566,7 @@ table {
 /*CSS for Book Ticket Page*/
 #book_ticket_content {
     float: left;
-    width: 100%;
-    margin-left: 30px;
+    width: 100%;    
 }
 
 #detail {
@@ -581,5 +580,110 @@ table {
 
 .book_ticket_drop_list{
     width:auto;
+    max-height: 200px;
+    overflow-y: scroll;
+    position: relative;
+}
+
+#room{
+    float:left;
+    width: 100%;
+    height: auto;
+}
+
+#screen {
+    float: right;
+    width: 92%;
+    height: 20px;
+    background-color: black;
+    padding-top: 10px;
+    padding-bottom: 5px;
     text-align: center;
+    color: whitesmoke;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.seat_line_name {
+    float: left;
+    width: 8%;
+    padding-top: -30px;
+}
+
+.seat_line {
+    float: left;
+    width: 92%;
+    padding-top: 10px;
+}
+
+.line {
+    float: left;
+    width: 100%;
+}
+
+.seat_avail {
+    height: 30px;
+    width: 70px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: silver;
+}
+
+.seat_avail:hover{
+    border: 1px solid blue;
+}
+
+.seat_booked {
+    height: 30px;
+    width: 70px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color:red;
+}
+
+#seat_description{
+    float: left;    
+    width: 100%;
+}
+
+#seat_description table{
+    width: 100%;
+}
+
+.seat_description_name {
+    float: left;
+    width: 50%;
+    text-align: right;
+    padding-top: -30px;
+}
+
+.seat_description_line {
+    float: left;
+    width: 50%;
+    text-align: left;
+    padding-top: 10px;
+}
+
+.seat_avail_description {
+    height: 30px;
+    width: 70px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: silver;
+}
+
+.seat_booked_description {
+    height: 30px;
+    width: 70px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: deeppink;
+}
+
+.seat_select_description {
+    height: 30px;
+    width: 70px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: lightgreen;
 }

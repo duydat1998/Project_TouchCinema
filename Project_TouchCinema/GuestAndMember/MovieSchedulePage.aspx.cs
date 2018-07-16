@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MovieLibrary;
 using ScheduleLibrary;
+using RoomLibrary;
 
 namespace Project_TouchCinema.GuestAndMember
 {
@@ -13,15 +14,13 @@ namespace Project_TouchCinema.GuestAndMember
     {
         MovieDAO mDAO = new MovieDAO();
         ScheduleDAO sDAO = new ScheduleDAO();
+        RoomDAO rDAO = new RoomDAO();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if(Session["MovieList"] == null)
-                {
-                    Session["MovieList"] = mDAO.GetMovieList();
-                }
+                LoadAllLists();
                 Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
                 MovieList.DataSource = getMovieHaveSchedule((List<MovieDTO>)Session["MovieList"], (List<ScheduleDTO>)Session["ScheduleList"]);
                 MovieList.DataBind();                
@@ -30,11 +29,7 @@ namespace Project_TouchCinema.GuestAndMember
 
         protected void MovieSchedule_DataBinding(object sender, EventArgs e)
         {
-            Repeater MovieSchedule = (Repeater)sender;
-            if (Session["ScheduleList"] == null)
-            {
-                Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
-            }
+            Repeater MovieSchedule = (Repeater)sender;            
             string movieID = (string)(Eval("MovieID"));
             MovieSchedule.DataSource = sDAO.getSpecificMovieSchedule((List<ScheduleDTO>) Session["ScheduleList"],movieID);            
         }
@@ -54,6 +49,13 @@ namespace Project_TouchCinema.GuestAndMember
                 }
             }
             return result;
+        }
+
+        private void LoadAllLists()
+        {
+            Session["MovieList"] = mDAO.GetMovieList();
+            Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
+            Session["RoomList"] = rDAO.GetRoomList();
         }
     }
 }

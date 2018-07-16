@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MovieLibrary;
 using GenreLibrary;
+using RoomLibrary;
+using ScheduleLibrary;
 
 namespace Project_TouchCinema
 {
@@ -13,6 +15,8 @@ namespace Project_TouchCinema
     {
         MovieDAO mDAO = new MovieDAO();
         GenreDAO gDAO = new GenreDAO();
+        ScheduleDAO sDAO = new ScheduleDAO();
+        RoomDAO rDAO = new RoomDAO();
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,14 +26,7 @@ namespace Project_TouchCinema
                 LastestMovieList.DataBind();
                 MostRatingMovieList.DataSource = mDAO.getTopFiveRatingMovie();
                 MostRatingMovieList.DataBind();
-                if(Session["MovieList"]== null)
-                {
-                    Session["MovieList"] = mDAO.GetMovieList();
-                }
-                if (Session["GenreList"] == null)
-                {
-                    Session["GenreList"] = gDAO.GetGenreList();
-                }
+                LoadAllLists();
             }            
         }
 
@@ -51,6 +48,13 @@ namespace Project_TouchCinema
             Session["SearchValue"] = searchValue;
             Response.Redirect("SearchResultPage.aspx");
         }
-        
+
+        private void LoadAllLists()
+        {
+            Session["MovieList"] = mDAO.GetMovieList();
+            Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
+            Session["RoomList"] = rDAO.GetRoomList();
+            Session["GenreList"] = gDAO.GetGenreList();
+        }
     }
 }
