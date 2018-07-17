@@ -57,6 +57,7 @@ namespace Project_TouchCinema
             {
                 this.invalidLogin.CssClass = "error_message_show";
                 this.txtPasswordLogin.Text = "";
+                return;
             }
 
         }
