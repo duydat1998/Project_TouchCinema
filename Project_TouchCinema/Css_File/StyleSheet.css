@@ -621,6 +621,10 @@ table {
     width: 100%;
 }
 
+.seat_avail:hover{
+    border: 1px solid blue;
+}
+
 .seat_avail {
     height: 30px;
     width: 70px;
@@ -629,16 +633,20 @@ table {
     background-color: silver;
 }
 
-.seat_avail:hover{
-    border: 1px solid blue;
-}
-
 .seat_booked {
     height: 30px;
     width: 70px;
     margin-left: 16px;
     margin-right: 16px;
-    background-color:red;
+    background-color: red;
+}
+
+.seat_select {
+    height: 30px;
+    width: 70px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: lawngreen;
 }
 
 #seat_description{
@@ -677,7 +685,7 @@ table {
     width: 70px;
     margin-left: 16px;
     margin-right: 16px;
-    background-color: deeppink;
+    background-color: red;
 }
 
 .seat_select_description {
@@ -685,5 +693,5 @@ table {
     width: 70px;
     margin-left: 16px;
     margin-right: 16px;
-    background-color: lightgreen;
+    background-color: lawngreen;
 }

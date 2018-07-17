@@ -19,8 +19,7 @@ namespace Project_TouchCinema.GuestAndMember
         MovieDAO mDAO = new MovieDAO();
         ScheduleDAO sDAO = new ScheduleDAO();
         RoomDAO rDAO = new RoomDAO();
-        GenreDAO gDAO = new GenreDAO();
-        List<Button> buttonList = new List<Button>();
+        GenreDAO gDAO = new GenreDAO();        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,11 +45,13 @@ namespace Project_TouchCinema.GuestAndMember
                 dlScheduleList.Enabled = false;
                 dlTicketNum.Items.Add("--");
                 dlTicketNum.Enabled = false;
-                lblTicketNoti.Visible = false;
+                lblTicketNoti.Visible = false;                
+
                 if (scheduleID.Length != 0 && roomID.Length != 0)
                 {
                     LoadDataFromQueryRequest(scheduleID, int.Parse(roomID));
-                }                
+                }
+                
             }
         }
 
@@ -124,7 +125,10 @@ namespace Project_TouchCinema.GuestAndMember
                 LoadAvailableSeat(remainingSeat);
             }
             dlTicketNum.Enabled = true;
-            lblTicketNoti.Visible = true;            
+            lblTicketNoti.Visible = true;
+
+            List<Button> seaList = loadSeatList();
+            MarkBookedSeats(bookedSeatList, seaList);
         }
 
         protected void dlMovieList_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,9 +204,12 @@ namespace Project_TouchCinema.GuestAndMember
                 else
                 {
                     LoadAvailableSeat(remainingSeat);
-                }                
+                }
                 dlTicketNum.Enabled = true;
                 lblTicketNoti.Visible = true;
+
+                List<Button> seatList = loadSeatList();
+                MarkBookedSeats(bookedSeatList, seatList);
             }
         }
 
@@ -211,52 +218,76 @@ namespace Project_TouchCinema.GuestAndMember
 
         }
 
-        private void loadSeatList()
+        private List<Button> loadSeatList()
         {
-            buttonList.Add(btnA1);
-            buttonList.Add(btnA2);
-            buttonList.Add(btnA3);
-            buttonList.Add(btnA4);
-            buttonList.Add(btnA5);
-            buttonList.Add(btnA6);
-            buttonList.Add(btnA7);
-            buttonList.Add(btnA8);
+            List<Button> seatList = new List<Button>();
 
-            buttonList.Add(btnB1);
-            buttonList.Add(btnB2);
-            buttonList.Add(btnB3);
-            buttonList.Add(btnB4);
-            buttonList.Add(btnB5);
-            buttonList.Add(btnB6);
-            buttonList.Add(btnB7);
-            buttonList.Add(btnB8);
+            seatList.Add(btnA1);
+            seatList.Add(btnA2);
+            seatList.Add(btnA3);
+            seatList.Add(btnA4);
+            seatList.Add(btnA5);
+            seatList.Add(btnA6);
+            seatList.Add(btnA7);
+            seatList.Add(btnA8);
 
-            buttonList.Add(btnC1);
-            buttonList.Add(btnC2);
-            buttonList.Add(btnC3);
-            buttonList.Add(btnC4);
-            buttonList.Add(btnC5);
-            buttonList.Add(btnC6);
-            buttonList.Add(btnC7);
-            buttonList.Add(btnC8);
+            seatList.Add(btnB1);
+            seatList.Add(btnB2);
+            seatList.Add(btnB3);
+            seatList.Add(btnB4);
+            seatList.Add(btnB5);
+            seatList.Add(btnB6);
+            seatList.Add(btnB7);
+            seatList.Add(btnB8);
 
-            buttonList.Add(btnD1);
-            buttonList.Add(btnD2);
-            buttonList.Add(btnD3);
-            buttonList.Add(btnD4);
-            buttonList.Add(btnD5);
-            buttonList.Add(btnD6);
-            buttonList.Add(btnD7);
-            buttonList.Add(btnD8);
+            seatList.Add(btnC1);
+            seatList.Add(btnC2);
+            seatList.Add(btnC3);
+            seatList.Add(btnC4);
+            seatList.Add(btnC5);
+            seatList.Add(btnC6);
+            seatList.Add(btnC7);
+            seatList.Add(btnC8);
 
-            buttonList.Add(btnE1);
-            buttonList.Add(btnE2);
-            buttonList.Add(btnE3);
-            buttonList.Add(btnE4);
-            buttonList.Add(btnE5);
-            buttonList.Add(btnE6);
-            buttonList.Add(btnE7);
-            buttonList.Add(btnE8);
+            seatList.Add(btnD1);
+            seatList.Add(btnD2);
+            seatList.Add(btnD3);
+            seatList.Add(btnD4);
+            seatList.Add(btnD5);
+            seatList.Add(btnD6);
+            seatList.Add(btnD7);
+            seatList.Add(btnD8);
+
+            seatList.Add(btnE1);
+            seatList.Add(btnE2);
+            seatList.Add(btnE3);
+            seatList.Add(btnE4);
+            seatList.Add(btnE5);
+            seatList.Add(btnE6);
+            seatList.Add(btnE7);
+            seatList.Add(btnE8);
+
+            return seatList;
+        }
+
+        private List<Button> MarkBookedSeats(List<string> bookedSeatList , List<Button> seatList)
+        {
+            List<Button> currentSeatList = seatList;
+            if (bookedSeatList != null)
+            {
+                foreach (var seat in currentSeatList)
+                {
+                    foreach (var bookedseat in bookedSeatList)
+                    {
+                        if (seat.Text.ToUpper().Equals(bookedseat.ToUpper()))
+                        {
+                            seat.CssClass = "seat_booked";
+                            break;
+                        }
+                    }
+                }
+            }
+            return currentSeatList;
         }
     }
 }
