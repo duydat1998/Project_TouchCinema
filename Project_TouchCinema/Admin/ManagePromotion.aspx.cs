@@ -49,14 +49,23 @@ namespace Project_TouchCinema
                     Name = txtName.Text.Trim(),
                     Active = true
                 };
-                if (dao.AddPromotion(dto))
+                try
                 {
-                    SetMessageTextAndColor("Successfully Added", Color.Green);
+                    if (dao.AddPromotion(dto))
+                    {
+                        SetMessageTextAndColor("Successfully Added", Color.Green);
+                    }
+                    else
+                    {
+                        SetMessageTextAndColor("Failed to add", Color.Red);
+                    }
                 }
-                else
+                catch
                 {
-                    SetMessageTextAndColor("Failed to add", Color.Red);
+                    SetMessageTextAndColor("Code has already been added please generate a different one.", Color.Red);
+                    
                 }
+                
             }
         }
 
