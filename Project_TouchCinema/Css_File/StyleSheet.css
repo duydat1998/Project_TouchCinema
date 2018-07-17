@@ -566,7 +566,8 @@ table {
 /*CSS for Book Ticket Page*/
 #book_ticket_content {
     float: left;
-    width: 100%;    
+    width: 100%;   
+    margin-left: 10px;
 }
 
 #detail {
@@ -585,10 +586,34 @@ table {
     position: relative;
 }
 
-#room{
-    float:left;
+.ticket_mess {
+    float: left;
+    font-weight: 900;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.ticket_mess_error {
+    float: left;
+    font-weight: 900;
+    color: red;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+#room {
+    float: left;
     width: 100%;
     height: auto;
+}
+
+.room_title {
+    float: left;
+    width: 8%;    
+    margin-top: 10px;
+    font-weight: 900;
 }
 
 #screen {
@@ -619,10 +644,6 @@ table {
 .line {
     float: left;
     width: 100%;
-}
-
-.seat_avail:hover{
-    border: 1px solid blue;
 }
 
 .seat_avail {
