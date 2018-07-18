@@ -85,6 +85,89 @@ namespace OrderLibary
         }
 
 
+        public string GenerateCode()
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, 10)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        public bool IsOrderIDExist(string id)
+        {
+            bool result = false;
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    string sql = "Select * from Orders where orderID=@orderID";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@orderID", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        result = true;
+                    }
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
+        }
+
+        public string InsertOrder(OrderDTO order, string username)
+        {
+            string orderID = "";
+            do
+            {
+                orderID = GenerateCode();
+            } while (IsOrderIDExist(orderID));
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    DateTime currentDate = DateTime.Now;
+                    string sql = "Insert into Orders values(@orderID, @scheduleID, @orderDate, @username, @phone, @email, @isCheckOut)";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@orderID", orderID);
+                    cmd.Parameters.AddWithValue("@scheduleID", order.ScheduleID);
+                    cmd.Parameters.AddWithValue("@orderDate", currentDate);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@phone", order.Phone);
+                    cmd.Parameters.AddWithValue("@email", order.Email);
+                    cmd.Parameters.AddWithValue("@isCheckOut", false);
+                    bool result = (cmd.ExecuteNonQuery() > 0);
+
+                    if (result)
+                    {
+                        OrderDetailDAO detailDAO = new OrderDetailDAO();
+                        foreach (string seat in order.ListOfSeat)
+                        {
+                            result = detailDAO.InsertOrderDetail(orderID, seat);
+                        }
+                    }
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return orderID;
+
+        }
+
 
     }
 }

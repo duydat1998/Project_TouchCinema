@@ -90,5 +90,32 @@ namespace OrderLibary
             }
             return listSeat;
         }
+
+        public bool InsertOrderDetail(string orderID, string seat)
+        {
+            bool result = false;
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn != null)
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                try
+                {
+                    DateTime currentDate = DateTime.Now;
+                    string sql = "Insert into Orders values(@orderID, @seat)";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@orderID", orderID);
+                    cmd.Parameters.AddWithValue("@seat", seat);
+                    result = (cmd.ExecuteNonQuery() > 0);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            return result;
+        }
     }
 }
