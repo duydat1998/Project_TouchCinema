@@ -716,3 +716,15 @@ table {
     margin-right: 16px;
     background-color: lawngreen;
 }
+
+.book_ticket_checkout {
+    float: left;
+    width: 100%;
+    text-align: right;
+    margin-bottom:30px;
+}
+
+.no_user_mess {
+    color: red;
+    font-weight: 900;
+}

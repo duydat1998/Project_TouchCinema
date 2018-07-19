@@ -22,6 +22,15 @@ namespace Project_TouchCinema.GuestAndMember {
         protected global::System.Web.UI.WebControls.DropDownList dlMovieList;
         
         /// <summary>
+        /// lblNotLoggedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNotLoggedIn;
+        
+        /// <summary>
         /// dlScheduleList control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace Project_TouchCinema.GuestAndMember {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTicketNoti;
+        
+        /// <summary>
+        /// lblPriceTicket control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPriceTicket;
         
         /// <summary>
         /// TicketAmount control.
@@ -434,5 +452,23 @@ namespace Project_TouchCinema.GuestAndMember {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnE8;
+        
+        /// <summary>
+        /// lblNoBookSession control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoBookSession;
+        
+        /// <summary>
+        /// btnCheckOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCheckOut;
     }
 }

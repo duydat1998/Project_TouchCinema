@@ -13,9 +13,13 @@
                     <td>Movie:</td>
                     <td><asp:DropDownList runat="server" ID="dlMovieList" OnSelectedIndexChanged="dlMovieList_SelectedIndexChanged"
                         AutoPostBack="true" CssClass="book_ticket_drop_list" ></asp:DropDownList></td>
+                    <td>
+                        <asp:Label runat="server" ID="lblNotLoggedIn"
+                            CssClass="no_user_mess" Visible="false">You need to log in first to make check out</asp:Label>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Schedule(Day & Hour):</td>
+                    <td>Schedule(DayHour & Room):</td>
                     <td><asp:DropDownList runat="server" ID="dlScheduleList" OnSelectedIndexChanged="dlScheduleList_SelectedIndexChanged"
                         AutoPostBack="true" CssClass="book_ticket_drop_list"></asp:DropDownList>
                         <asp:DropDownList runat="server" ID="dlScheduleID" Visible="false"></asp:DropDownList>
@@ -26,6 +30,9 @@
                     <td><asp:DropDownList runat="server" ID="dlTicketNum" OnSelectedIndexChanged="dlTicketNum_SelectedIndexChanged"
                         AutoPostBack="true" CssClass="book_ticket_drop_list"></asp:DropDownList>
                         <asp:Label runat="server" ID="lblTicketNoti" Text="Can only choose from 1-10"/>
+                    </td>
+                    <td>
+                        <asp:Label runat="server" ID="lblPriceTicket" Text="Price per ticket : -- "/>
                     </td>
                 </tr>
             </table> 
@@ -128,8 +135,13 @@
                 </tr>                
             </table>
         </div>
+        <div class="book_ticket_checkout">            
+            <asp:Label runat="server" ID="lblNoBookSession"
+                CssClass="no_user_mess" Visible="false">Please choose a seat first</asp:Label>
+            <asp:Button runat="server" ID="btnCheckOut" Text="Check Out"/>             
+        </div>        
         <div class="panel_lower">
-                    
+            
         </div>
     </div>
 </asp:Content>

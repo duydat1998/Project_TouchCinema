@@ -11,7 +11,7 @@ namespace Project_TouchCinema.GuestAndMember
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["CurrentPage"] = "PromotionPage.aspx";
         }
     }
 }

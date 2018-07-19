@@ -51,6 +51,8 @@ namespace Project_TouchCinema.GuestAndMember
                 MovieSameProducerList.DataBind();
                 Session["MovieProducer"] = movieProducer;
                 ProducerTagLink.NavigateUrl = "MovieListWithTag.aspx?tag=" + movieProducer + "&type=producer";
+
+                Session["CurrentPage"] = "MovieDetailPage.aspx";
             }            
         }
         

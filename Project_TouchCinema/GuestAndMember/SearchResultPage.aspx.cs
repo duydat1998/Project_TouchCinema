@@ -41,6 +41,7 @@ namespace Project_TouchCinema.GuestAndMember
                     ResultDetail.DataSource = resultList;
                     ResultDetail.DataBind();
                 }
+                Session["CurrentPage"] = "SearchResultPage.aspx";
             }                        
         }
 

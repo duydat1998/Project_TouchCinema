@@ -23,7 +23,8 @@ namespace Project_TouchCinema.GuestAndMember
                 LoadAllLists();
                 Session["ScheduleList"] = sDAO.GetScheduleFromNowOn();
                 MovieList.DataSource = getMovieHaveSchedule((List<MovieDTO>)Session["MovieList"], (List<ScheduleDTO>)Session["ScheduleList"]);
-                MovieList.DataBind();                
+                MovieList.DataBind();
+                Session["CurrentPage"] = "MovieSchedulePage.aspx";
             }
         }
 

@@ -41,6 +41,7 @@ namespace Project_TouchCinema.GuestAndMember
                     TaggedMovieList.DataSource = new List<MovieDTO>();
                 }
                 TaggedMovieList.DataBind();
+                Session["CurrentPage"] = "MovieListWithTag.aspx";
             }
         }
         

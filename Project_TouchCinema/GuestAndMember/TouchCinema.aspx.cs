@@ -27,6 +27,7 @@ namespace Project_TouchCinema
                 MostRatingMovieList.DataSource = mDAO.getTopFiveRatingMovie();
                 MostRatingMovieList.DataBind();
                 LoadAllLists();
+                Session["CurrentPage"] = "TouchCinema.aspx";
             }            
         }
 

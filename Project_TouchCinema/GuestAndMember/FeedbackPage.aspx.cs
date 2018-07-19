@@ -11,7 +11,10 @@ namespace Project_TouchCinema.GuestAndMember
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Session["CurrentPage"] = "FeedbackPage.aspx";
+            }
         }
 
         protected void btnFeedback_Click(object sender, EventArgs e)

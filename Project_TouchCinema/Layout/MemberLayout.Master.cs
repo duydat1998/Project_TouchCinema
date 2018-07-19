@@ -51,13 +51,12 @@ namespace Project_TouchCinema
             if (member != null)
             {
                     Session["MEMBER_USER"] = member;
-                    Response.Redirect("TouchCinema.aspx");
+                    Response.Redirect(Session["CurrentPage"].ToString());
             }
             else
             {
                 this.invalidLogin.CssClass = "error_message_show";
-                this.txtPasswordLogin.Text = "";
-                return;
+                this.txtPasswordLogin.Text = "";                
             }
 
         }
