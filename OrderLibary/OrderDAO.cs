@@ -93,7 +93,7 @@ namespace OrderLibary
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        public bool IsOrderIDExist(string id)
+        private bool IsOrderIDExist(string id)
         {
             bool result = false;
             SqlConnection conn = new SqlConnection(strConnection);

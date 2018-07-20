@@ -104,7 +104,7 @@ namespace OrderLibary
                 try
                 {
                     DateTime currentDate = DateTime.Now;
-                    string sql = "Insert into Orders values(@orderID, @seat)";
+                    string sql = "Insert into OrderDetail values(@orderID, @seat)";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@orderID", orderID);
                     cmd.Parameters.AddWithValue("@seat", seat);

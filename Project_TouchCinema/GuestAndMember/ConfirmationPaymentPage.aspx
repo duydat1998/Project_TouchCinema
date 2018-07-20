@@ -46,8 +46,14 @@
                     <td>Total Price:</td>
                     <td><asp:Label runat="server" ID="lblTotalPrice" /></td>
                 </tr>
-            </table>
-            <div></div>
+            </table>            
+            <asp:Button runat="server" ID="btnBack" CssClass="confirm_back_book" Text="Back to Ticket Book"
+                OnClick="btnBack_Click"/>                        
+            <asp:Button runat="server" ID="btnSubmit" CssClass="confirm_decide" Text="Submit payment"
+                OnClick="btnSubmit_Click"/>            
         </div>        
+        <div class="panel_lower">
+            
+        </div>
     </div>
 </asp:Content>

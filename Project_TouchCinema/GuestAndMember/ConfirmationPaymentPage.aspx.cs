@@ -13,6 +13,8 @@ namespace Project_TouchCinema.GuestAndMember
     public partial class ConfirmationPaymentPage : System.Web.UI.Page
     {
         ScheduleDAO sDAO = new ScheduleDAO();
+        OrderDAO oDAO = new OrderDAO();
+        OrderDetailDAO odDAO = new OrderDetailDAO();        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -64,6 +66,45 @@ namespace Project_TouchCinema.GuestAndMember
                 }                
             }
             return stringBookedSeatList;
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("BookTicketPage.aspx");
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            MemberDTO mDTO = (MemberDTO)Session["MEMBER_USER"];
+            string selectedSchedule = Session["CurrentSelectdlSchedule"].ToString();
+            List<string> bookedSeatList = (List<string>)Session["SelectedSeats"];
+            OrderDTO oDTO = new OrderDTO
+            {
+                Email = mDTO.Email,
+                Phone = mDTO.PhoneNum,
+                ScheduleID = selectedSchedule,                
+                ListOfSeat = bookedSeatList
+            };
+
+            string orderID = oDAO.InsertOrder(oDTO,mDTO.Username);
+
+            if(orderID.Length == 0)
+            {
+                string message = "ORDER FAILED.\\nWe are sorry for this inconvinience";
+                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+            }
+            else
+            {
+                string message = "ORDER SUCCESSFULLY.\\nPress Ok to return to Book Ticket Page";
+                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+            }
+
+            Session["CurrentSelectdlMovie"] = null;
+            Session["CurrentSelectdlSchedule"] = null;
+            Session["SelectionAvailable"] = null;
+            Session["SelectedSeats"] = new List<string>();
+
+            Response.Redirect("BookTicketPage.aspx");
         }
     }
 }

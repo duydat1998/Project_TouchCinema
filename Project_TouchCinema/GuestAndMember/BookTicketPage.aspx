@@ -140,7 +140,8 @@
         <div class="book_ticket_checkout">            
             <asp:Label runat="server" ID="lblNoBookSession"
                 CssClass="no_user_mess" Visible="false">Please choose a seat first</asp:Label>
-            <asp:Button runat="server" ID="btnCheckOut" Text="Check Out" OnClick="btnCheckOut_Click"/>             
+            <asp:Button runat="server" ID="btnCheckOut" Text="Check Out" OnClick="btnCheckOut_Click"
+                CssClass="confirm_decide"/>             
         </div>        
         <div class="panel_lower">
             

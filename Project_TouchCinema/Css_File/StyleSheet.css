@@ -749,3 +749,44 @@ table {
     box-sizing: border-box;
     width: auto;
 }
+
+.confirm_back_book {
+    float: left;
+    width: 40%;
+    background-color: black;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: whitesmoke;
+    border: 1px solid black;
+}
+
+.confirm_back_book:hover{
+    background-color: darkcyan;
+    border-color: darkcyan;
+    color: black;
+    transition: all 1s;
+}
+
+.confirm_decide {
+    float: right;
+    width: 40%;
+    background-color: black;
+    border-radius: 20px 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: whitesmoke;
+    border: 1px solid black;
+}
+
+    .confirm_decide:hover {
+        background-color: darkblue;
+        border-color: darkblue;
+        color: white;
+        transition: all 1s;
+    }
