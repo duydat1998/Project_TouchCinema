@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MemberLayout.Master" AutoEventWireup="true" CodeBehind="BookTicketPage.aspx.cs" Inherits="Project_TouchCinema.GuestAndMember.BookTicketPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout/MemberLayout.Master" AutoEventWireup="true" 
+    CodeBehind="BookTicketPage.aspx.cs" Inherits="Project_TouchCinema.GuestAndMember.BookTicketPage" 
+    MaintainScrollPositionOnPostback="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
@@ -138,7 +140,7 @@
         <div class="book_ticket_checkout">            
             <asp:Label runat="server" ID="lblNoBookSession"
                 CssClass="no_user_mess" Visible="false">Please choose a seat first</asp:Label>
-            <asp:Button runat="server" ID="btnCheckOut" Text="Check Out"/>             
+            <asp:Button runat="server" ID="btnCheckOut" Text="Check Out" OnClick="btnCheckOut_Click"/>             
         </div>        
         <div class="panel_lower">
             

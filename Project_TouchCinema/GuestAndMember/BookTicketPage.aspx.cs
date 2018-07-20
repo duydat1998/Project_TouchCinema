@@ -49,6 +49,10 @@ namespace Project_TouchCinema.GuestAndMember
                 roomTitle.Text = "Room --";
                 DisableSelect();
                 Session["CurrentPage"] = "BookTicketPage.aspx";
+                if (Session["CurrentSelectdlMovie"] == null)
+                {
+                    Session["CurrentSelectdlMovie"] = "--Select a movie--";
+                }                
                 lblPriceTicket.Visible = false;
 
                 if (scheduleID.Length != 0 && roomID.Length != 0)
@@ -144,11 +148,14 @@ namespace Project_TouchCinema.GuestAndMember
                 LoadAvailableSeat(remainingSeat);
             }
             dlTicketNum.Enabled = true;
+            lblPriceTicket.Text = "Per Ticket costs " + sDTO.PriceOfTicket + " $";
+            lblPriceTicket.Visible = true;
             lblTicketNoti.Visible = true;
             Session["SelectionAvailable"] = 1;
+            Session["SelectedSeats"] = new List<string>();
             Session["CurrentPage"] = "BookTicketPage.aspx";            
             Session["CurrentSelectdlMovie"] = dlMovieList.SelectedValue;
-            Session["CurrentSelectdlSchedule"] = dlScheduleList.SelectedValue;
+            Session["CurrentSelectdlSchedule"] = sDTO.ScheduleID;
             UpdateTicketMessage();
 
             List<Button> seaList = loadSeatList();
@@ -177,10 +184,20 @@ namespace Project_TouchCinema.GuestAndMember
             lblTicketNoti.Visible = false;                        
             lblPriceTicket.Visible = false;
 
+            if (Session["MEMBER_USER"] != null)
+            {
+                lblNoBookSession.Visible = true;
+                btnCheckOut.Enabled = false;
+            }
+
             if (selectedStr.Equals("--Select a movie--"))
             {                
                 dlScheduleList.Items.Add("--Select a movie first--");
-                dlScheduleList.Enabled = false;                
+                dlScheduleList.Enabled = false;
+                if (Session["MEMBER_USER"] != null)
+                {                    
+                    lblNoBookSession.Text = "Please select a movie first";                    
+                }                                
             }
             else
             {                                
@@ -197,7 +214,11 @@ namespace Project_TouchCinema.GuestAndMember
                 LoadScheduleToDropDownList(scheduleList);
                 dlScheduleList.Enabled = true;                
                 Session["CurrentSelectdlSchedule"] = dlScheduleList.SelectedValue;
-            }
+                if(Session["MEMBER_USER"] != null)
+                {
+                    lblNoBookSession.Text = "Please select a schedule first";
+                }                
+            }            
         }
 
         protected void dlScheduleList_SelectedIndexChanged(object sender, EventArgs e)
@@ -208,7 +229,13 @@ namespace Project_TouchCinema.GuestAndMember
 
             dlTicketNum.Items.Clear();
             ResetStatusSeats(seatList);
-            Session["SelectedSeats"] = new List<string>();            
+            Session["SelectedSeats"] = new List<string>();
+
+            if (Session["MEMBER_USER"] != null)
+            {
+                lblNoBookSession.Visible = true;
+                btnCheckOut.Enabled = false;
+            }                
 
             if (selectedStr.Equals("--Select a schedule--"))
             {                
@@ -221,6 +248,10 @@ namespace Project_TouchCinema.GuestAndMember
                 DisableSelect();
                 Session["SelectionAvailable"] = null;
                 Session["CurrentSelectdlSchedule"] = selectedStr;
+                if (Session["MEMBER_USER"] != null)
+                {
+                    lblNoBookSession.Text = "Please select a schedule first";
+                }                    
             }
             else
             {
@@ -260,6 +291,11 @@ namespace Project_TouchCinema.GuestAndMember
                 Session["CurrentSelectdlSchedule"] = scheduleID;
 
                 MarkBookedSeats(bookedSeatList, seatList);
+
+                if (Session["MEMBER_USER"] != null)
+                {
+                    lblNoBookSession.Text = "Please choose a seat first";
+                }                    
             }            
             UpdateTicketMessage();
         }
@@ -370,8 +406,7 @@ namespace Project_TouchCinema.GuestAndMember
                             if (!seat.CssClass.Equals("seat_booked"))
                             {
                                 seat.CssClass = "seat_avail";
-                                seat.Enabled = true;
-                                break;
+                                seat.Enabled = true;                                
                             }                            
                         }
                     }
@@ -462,81 +497,96 @@ namespace Project_TouchCinema.GuestAndMember
             if (Session["CurrentSelectdlMovie"]!= null)
             {
                 string dlMovieListSelected = Session["CurrentSelectdlMovie"].ToString();
-                dlMovieList.SelectedValue = dlMovieListSelected;
-                MovieDTO mDTO = mDAO.getMovieDTO((List<MovieDTO>)Session["MovieList"], dlMovieListSelected)[0];
+                dlMovieList.SelectedValue = dlMovieListSelected;                
 
-                if(Session["CurrentSelectdlSchedule"] != null)
-                {                    
-                    dlScheduleList.Items.Clear();
-                    List<ScheduleDTO> scheduleList = sDAO.getSpecificMovieSchedule((List<ScheduleDTO>)Session["ScheduleList"], mDTO.MovieID);
-                    if (scheduleList.Count != 0)
+                if (dlMovieListSelected.Equals("--Select a movie--"))
+                {
+                    lblNoBookSession.Visible = true;
+                    lblNoBookSession.Text = "Please select a movie first";
+                    btnCheckOut.Enabled = false;
+                }
+                else
+                {
+                    MovieDTO mDTO = mDAO.getMovieDTO((List<MovieDTO>)Session["MovieList"], dlMovieListSelected)[0];
+                    if (Session["CurrentSelectdlSchedule"] != null)
                     {
-                        dlScheduleList.Items.Add("--Select a schedule--");
-                    }
-                    else
-                    {
-                        dlScheduleList.Items.Add("--Currently There is no schedule for this movie--");
-                    }
-                    LoadScheduleToDropDownList(scheduleList);
-                    dlScheduleList.Enabled = true;
-                    string dlScheduleSelected = Session["CurrentSelectdlSchedule"].ToString();
-                    if (dlScheduleSelected.Equals("--Select a schedule--") || dlScheduleSelected.Equals("--Currently There is no schedule for this movie--"))
-                    {
-                        dlScheduleList.SelectedValue = dlScheduleSelected;
-                    }
-                    else
-                    {
-                        ScheduleDTO sDTO = sDAO.GetScheduleDTO((List<ScheduleDTO>)Session["ScheduleList"], dlScheduleSelected);
-                        dlScheduleList.SelectedValue = sDTO.ScheduleDate + " at Room No. " + sDTO.RoomID;
-
-                        dlTicketNum.Items.Clear();
-                        List<string> bookedSeatList = odDAO.GetAllSeats(sDTO.ScheduleID);
-                        int bookedSeat;
-                        if (bookedSeatList == null)
+                        dlScheduleList.Items.Clear();
+                        List<ScheduleDTO> scheduleList = sDAO.getSpecificMovieSchedule((List<ScheduleDTO>)Session["ScheduleList"], mDTO.MovieID);
+                        if (scheduleList.Count != 0)
                         {
-                            bookedSeat = 0;
+                            dlScheduleList.Items.Add("--Select a schedule--");
                         }
                         else
                         {
-                            bookedSeat = bookedSeatList.Count;
+                            dlScheduleList.Items.Add("--Currently There is no schedule for this movie--");
                         }
-                        int remainingSeat = rDAO.getRoom((List<RoomDTO>)Session["RoomList"], sDTO.RoomID).NumberOfSeat - bookedSeat;
-                        if (remainingSeat >= 10)
+                        LoadScheduleToDropDownList(scheduleList);
+                        dlScheduleList.Enabled = true;
+                        string dlScheduleSelected = Session["CurrentSelectdlSchedule"].ToString();
+                        if (dlScheduleSelected.Equals("--Select a schedule--") || dlScheduleSelected.Equals("--Currently There is no schedule for this movie--"))
                         {
-                            LoadAvailableSeat(10);
+                            dlScheduleList.SelectedValue = dlScheduleSelected;
+                            lblNoBookSession.Visible = true;
+                            lblNoBookSession.Text = "Please select a schedule first";
+                            btnCheckOut.Enabled = false;
                         }
                         else
                         {
-                            LoadAvailableSeat(remainingSeat);
-                        }
-                        dlTicketNum.Enabled = true;
-                        lblTicketNoti.Visible = true;
-                        lblPriceTicket.Text = "Per Ticket costs " + sDTO.PriceOfTicket + " $";
-                        lblPriceTicket.Visible = true;
-                        roomTitle.Text = "Room " + sDTO.RoomID;
+                            ScheduleDTO sDTO = sDAO.GetScheduleDTO((List<ScheduleDTO>)Session["ScheduleList"], dlScheduleSelected);
+                            dlScheduleList.SelectedValue = sDTO.ScheduleDate + " at Room No. " + sDTO.RoomID;
 
-                        EnableSelect();
-                        MarkBookedSeats(bookedSeatList, loadSeatList());
-
-                        if (Session["SelectionAvailable"] != null)
-                        {
-                            dlTicketNum.SelectedValue = Session["SelectionAvailable"].ToString();
-                            if (Session["SelectedSeats"] != null)
+                            dlTicketNum.Items.Clear();
+                            List<string> bookedSeatList = odDAO.GetAllSeats(sDTO.ScheduleID);
+                            int bookedSeat;
+                            if (bookedSeatList == null)
                             {
-                                List<string> selectedSeatsList = (List<string>)Session["SelectedSeats"];
-                                MarkSelectedSeats(selectedSeatsList, loadSeatList());
-                                if (selectedSeatsList.Count == 0)
+                                bookedSeat = 0;
+                            }
+                            else
+                            {
+                                bookedSeat = bookedSeatList.Count;
+                            }
+                            int remainingSeat = rDAO.getRoom((List<RoomDTO>)Session["RoomList"], sDTO.RoomID).NumberOfSeat - bookedSeat;
+                            if (remainingSeat >= 10)
+                            {
+                                LoadAvailableSeat(10);
+                            }
+                            else
+                            {
+                                LoadAvailableSeat(remainingSeat);
+                            }
+                            dlTicketNum.Enabled = true;
+                            lblTicketNoti.Visible = true;
+                            lblPriceTicket.Text = "Per Ticket costs " + sDTO.PriceOfTicket + " $";
+                            lblPriceTicket.Visible = true;
+                            roomTitle.Text = "Room " + sDTO.RoomID;
+
+                            EnableSelect();
+                            MarkBookedSeats(bookedSeatList, loadSeatList());
+
+                            if (Session["SelectionAvailable"] != null)
+                            {
+                                dlTicketNum.SelectedValue = Session["SelectionAvailable"].ToString();
+                                if (Session["SelectedSeats"] != null)
                                 {
-                                    lblNoBookSession.Visible = true;
-                                }
-                                else
-                                {
-                                    lblNoBookSession.Visible = false;
+                                    List<string> selectedSeatsList = (List<string>)Session["SelectedSeats"];
+                                    MarkSelectedSeats(selectedSeatsList, loadSeatList());
+                                    if (selectedSeatsList.Count == 0)
+                                    {
+                                        lblNoBookSession.Text = "Please choose a seat first";
+                                        lblNoBookSession.Visible = true;
+                                        btnCheckOut.Enabled = false;
+                                    }
+                                    else
+                                    {
+                                        lblNoBookSession.Visible = false;
+                                        btnCheckOut.Enabled = true;
+                                    }
                                 }
                             }
                         }
-                    }                                        
-                }
+                    }
+                }                
             }
             UpdateTicketMessage();
         }
@@ -556,15 +606,27 @@ namespace Project_TouchCinema.GuestAndMember
                 currentSelectedList.Remove(thisSeat.Text);                
             }            
             Session["SelectedSeats"] = currentSelectedList;            
-            if (currentSelectedList.Count == 0)
+            
+            if(Session["MEMBER_USER"] != null)
             {
-                lblNoBookSession.Visible = true;
-            }
-            else
-            {
-                lblNoBookSession.Visible = false;
-            }
+                if (currentSelectedList.Count == 0)
+                {
+                    lblNoBookSession.Text = "Please choose a seat first";
+                    lblNoBookSession.Visible = true;
+                    btnCheckOut.Enabled = false;
+                }
+                else
+                {
+                    lblNoBookSession.Visible = false;
+                    btnCheckOut.Enabled = true;
+                }
+            }            
             UpdateTicketMessage();
+        }
+
+        protected void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ConfirmationPaymentPage.aspx");
         }
     }
 }

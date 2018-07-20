@@ -728,3 +728,24 @@ table {
     color: red;
     font-weight: 900;
 }
+
+/*CSS for ConfirmationPaymentPage*/
+.confirm_payment_content {
+    float: left;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.confirm_detail {
+    float: left;
+    width: 100%;
+}
+
+.confirm_detail table{
+    width: 100%;
+}
+
+.confirm_detail table tr td{    
+    box-sizing: border-box;
+    width: auto;
+}
