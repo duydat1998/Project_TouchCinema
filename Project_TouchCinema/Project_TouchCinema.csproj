@@ -66,7 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ErrorPage.aspx" />
+    <Content Include="ErrorPages\ErrorPage.aspx" />
     <Content Include="GuestAndMember\BookTicketPage.aspx" />
     <Content Include="GuestAndMember\ConfirmationPaymentPage.aspx" />
     <Content Include="GuestAndMember\FeedbackPage.aspx" />
@@ -109,11 +109,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ErrorPage.aspx.cs">
+    <Compile Include="ErrorPages\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ErrorPage.aspx.designer.cs">
+    <Compile Include="ErrorPages\ErrorPage.aspx.designer.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAndMember\BookTicketPage.aspx.cs">
@@ -313,7 +313,6 @@
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
-    <Folder Include="ErrorPages\" />
     <Folder Include="Fonts\" />
     <Folder Include="Models\" />
   </ItemGroup>

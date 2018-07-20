@@ -46,9 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\UltilitiesLibrary\UltilitiesLibrary.csproj">
       <Project>{efad23d9-62cb-43dc-9281-1bc28268441b}</Project>
       <Name>UltilitiesLibrary</Name>
