@@ -67,9 +67,10 @@ namespace OrderLibary
                 }
                 try
                 {
-                    string sql = "Update Orders set isCheckOut= @check";
+                    string sql = "Update Orders set isCheckOut= @check where orderID=@id";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@check", true);
+                    cmd.Parameters.AddWithValue("@id", orderID);
                     int count = cmd.ExecuteNonQuery();
                     if(count > 0)
                     {
@@ -83,7 +84,6 @@ namespace OrderLibary
             }
             return result;
         }
-
 
         public string GenerateCode()
         {
