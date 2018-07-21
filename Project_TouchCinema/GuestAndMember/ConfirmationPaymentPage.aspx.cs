@@ -95,16 +95,14 @@ namespace Project_TouchCinema.GuestAndMember
             }
             else
             {
-                string message = "ORDER SUCCESSFULLY.\\nPress Ok to return to Book Ticket Page";
+                string message = "ORDER SUCCESSFULLY.\\nPress Back to Ticket Book to return to Book Ticket Page";
+                Session["CurrentSelectdlMovie"] = null;
+                Session["CurrentSelectdlSchedule"] = null;
+                Session["SelectionAvailable"] = null;
+                Session["SelectedSeats"] = new List<string>();
                 ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
-            }
-
-            Session["CurrentSelectdlMovie"] = null;
-            Session["CurrentSelectdlSchedule"] = null;
-            Session["SelectionAvailable"] = null;
-            Session["SelectedSeats"] = new List<string>();
-
-            Response.Redirect("BookTicketPage.aspx");
+                btnSubmit.Visible = false;
+            }                        
         }
     }
 }
