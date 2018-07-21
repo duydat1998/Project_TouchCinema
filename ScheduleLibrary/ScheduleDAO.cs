@@ -64,7 +64,7 @@ namespace ScheduleLibrary
                 }
                 try
                 {
-                    string sql = "Select scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE (movieID = @movieID) AND (date >= CURRENT_TIMESTAMP Order by date asc)";
+                    string sql = "Select scheduleID, date, movieID, roomID, priceOfTicket from Schedule WHERE movieID = @movieID order by date asc";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@movieID", movieID);
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -304,6 +304,28 @@ namespace ScheduleLibrary
                 }
             }
             return dto;
+        }
+
+
+        public void AdminScheduleDelete(string movieID)
+        {
+            
+            SqlConnection conn = new SqlConnection(strConnection);
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            try
+            {
+                string sql = "DELETE FROM Schedule WHERE movieID=@movieID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@movieID", movieID);
+                int i = cmd.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

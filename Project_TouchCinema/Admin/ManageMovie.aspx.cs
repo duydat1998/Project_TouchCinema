@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using GenreLibrary;
 using MovieLibrary;
 using System.Drawing;
+using ScheduleLibrary;
 
 namespace Project_TouchCinema
 {
@@ -228,6 +229,8 @@ namespace Project_TouchCinema
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             string movieID = txtMovieID.Text;
+            ScheduleDAO scheDao = new ScheduleDAO();
+            scheDao.AdminScheduleDelete(movieID);
             if (MovieDao.DeleteMovie(movieID))
             {
                 List<MovieDTO> list = (List<MovieDTO>)Session["AdminMovieSearch"];

@@ -85,7 +85,7 @@ namespace Project_TouchCinema
             else if(dlState.SelectedValue.Equals("PM"))
             {
                 dlHour.Items.Clear();
-                for (int i = 0; i <= 11; i++)
+                for (int i = 1; i <= 12; i++)
                 {
                     if (i < 10)
                     {
@@ -379,16 +379,24 @@ namespace Project_TouchCinema
             {
                 if(searchResultList[i].ScheduleID.Equals(id))
                 {
-                    txtScheduleID.Text = searchResultList[i].ScheduleID;
-                    string datetime = searchResultList[i].ScheduleDate.ToString().Trim();
-                    Tuple<string, string, string> dateTextAndState = SplitDateTime(datetime);
-                    Tuple<string, string> time = SplitTime(dateTextAndState.Item2.Trim());
-                    txtDate.Text = dateTextAndState.Item1.Trim();
-                    dlState.Text = dateTextAndState.Item3.Trim();
-                    dlState_SelectedIndexChanged(sender, e);
-                    dlHour.Text = time.Item1;
-                    dlMinute.Text = time.Item2;
-                    txtPrice.Text = searchResultList[i].PriceOfTicket.ToString();
+                    try
+                    {
+                        txtScheduleID.Text = searchResultList[i].ScheduleID;
+                        string datetime = searchResultList[i].ScheduleDate.ToString().Trim();
+                        Tuple<string, string, string> dateTextAndState = SplitDateTime(datetime);
+                        Tuple<string, string> time = SplitTime(dateTextAndState.Item2.Trim());
+                        txtDate.Text = dateTextAndState.Item1.Trim();
+                        dlState.Text = dateTextAndState.Item3.Trim();
+                        dlState_SelectedIndexChanged(sender, e);
+                        dlHour.Text = time.Item1;
+                        dlMinute.Text = time.Item2;
+                        txtPrice.Text = searchResultList[i].PriceOfTicket.ToString();
+                    }
+                    catch
+                    {
+                        SetMessageTextAndColor("Something wrong with data, maybe the datetime is not match, or the room is currently disabled. Please update data.", Color.Red);
+                    }
+                    
                 }
                 
             }
