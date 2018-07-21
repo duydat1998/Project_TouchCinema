@@ -36,7 +36,7 @@ namespace Project_TouchCinema.GuestAndMember
                 else
                 {
                     ResultEmpty.Visible = false;
-                    ResultFor.Text = resultList.Count + " matches for " + SearchValue;
+                    ResultFor.Text = resultList.Count + " matches for \'" + SearchValue+"\'";
                     ResultFor.Visible = true;
                     ResultDetail.DataSource = resultList;
                     ResultDetail.DataBind();

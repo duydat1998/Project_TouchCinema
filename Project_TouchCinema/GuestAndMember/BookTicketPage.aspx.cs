@@ -63,7 +63,6 @@ namespace Project_TouchCinema.GuestAndMember
                 if (Session["MEMBER_USER"] == null)
                 {
                     lblNotLoggedIn.Visible = true;
-                    btnCheckOut.Enabled = false;
                 }
                 else
                 {
@@ -187,7 +186,6 @@ namespace Project_TouchCinema.GuestAndMember
             if (Session["MEMBER_USER"] != null)
             {
                 lblNoBookSession.Visible = true;
-                btnCheckOut.Enabled = false;
             }
 
             if (selectedStr.Equals("--Select a movie--"))
@@ -234,7 +232,6 @@ namespace Project_TouchCinema.GuestAndMember
             if (Session["MEMBER_USER"] != null)
             {
                 lblNoBookSession.Visible = true;
-                btnCheckOut.Enabled = false;
             }                
 
             if (selectedStr.Equals("--Select a schedule--"))
@@ -518,7 +515,6 @@ namespace Project_TouchCinema.GuestAndMember
                 {
                     lblNoBookSession.Visible = true;
                     lblNoBookSession.Text = "Please select a movie first";
-                    btnCheckOut.Enabled = false;
                 }
                 else
                 {
@@ -543,7 +539,6 @@ namespace Project_TouchCinema.GuestAndMember
                             dlScheduleList.SelectedValue = dlScheduleSelected;
                             lblNoBookSession.Visible = true;
                             lblNoBookSession.Text = "Please select a schedule first";
-                            btnCheckOut.Enabled = false;
                         }
                         else
                         {
@@ -590,12 +585,10 @@ namespace Project_TouchCinema.GuestAndMember
                                     {
                                         lblNoBookSession.Text = "Please choose a seat first";
                                         lblNoBookSession.Visible = true;
-                                        btnCheckOut.Enabled = false;
                                     }
                                     else
                                     {
                                         lblNoBookSession.Visible = false;
-                                        btnCheckOut.Enabled = true;
                                     }
                                 }
                             }
@@ -631,12 +624,10 @@ namespace Project_TouchCinema.GuestAndMember
                 {
                     lblNoBookSession.Text = "Please choose a seat first";
                     lblNoBookSession.Visible = true;
-                    btnCheckOut.Enabled = false;
                 }
                 else
                 {
                     lblNoBookSession.Visible = false;
-                    btnCheckOut.Enabled = true;
                 }
             }            
             UpdateTicketMessage();
@@ -644,7 +635,6 @@ namespace Project_TouchCinema.GuestAndMember
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-            
             if (Session["MEMBER_USER"] == null )
             {
                 string message = "Please login to continue booking ticket!";
