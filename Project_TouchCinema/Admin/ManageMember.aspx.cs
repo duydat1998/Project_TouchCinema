@@ -14,7 +14,7 @@ namespace Project_TouchCinema
     {
         List<MemberDTO> AdminMemberList = new List<MemberDTO>();
         MemberDAO dao = new MemberDAO();
-
+         
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
