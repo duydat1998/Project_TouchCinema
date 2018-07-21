@@ -5,7 +5,7 @@
     <link href="../Css_File/StyleSheet.css" rel="stylesheet" />
     <div class="banner">
         <div class="panel_upper">
-                Currently Promotion
+                Currently Promotions
         </div>
         <div class="promotion_section">
             <div class="promotion_banner">

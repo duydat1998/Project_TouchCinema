@@ -27,7 +27,7 @@
                             <img src="<%# Eval("poster")%>" style="width: 100%;  height: 200px;"/>
                         </a>
                         <br /><%# Eval("MovieTitle") %>
-                        <br /><%# Eval("Length") + " phút" %>    
+                        <br /><%# Eval("Length") + " minutes" %>    
                         <br />Added on <%# Eval("StartDate") %>
                     </div>
                 </ItemTemplate>                                
@@ -47,7 +47,7 @@
                             <img src="<%# Eval("poster")%>" style="width: 100%;  height: 200px;"/>
                         </a>
                         <br /><%# Eval("MovieTitle") %>
-                        <br /><%# Eval("Length") + " phút" %>                                                               
+                        <br /><%# Eval("Length") + " minutes" %>                                                               
                         <br />Rate: <%# Eval("Rating") %>
                     </div>
                 </ItemTemplate>                                

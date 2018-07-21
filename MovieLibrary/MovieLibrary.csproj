@@ -47,9 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\GenreLibrary\GenreLibrary.csproj">
       <Project>{78b1ab91-d259-4535-9b1d-6d21173e8474}</Project>
       <Name>GenreLibrary</Name>

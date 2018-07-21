@@ -26,7 +26,7 @@
                             <img src="<%# Eval("poster")%>" style="width: 100%;  height: 200px;"/>
                         </a>
                         <br /><%# Eval("MovieTitle") %>
-                        <br /><%# Eval("Length") + " phút" %>                                                               
+                        <br /><%# Eval("Length") + " minutes" %>                                                               
                     </div>                    
                 </ItemTemplate>
                 <FooterTemplate>                        

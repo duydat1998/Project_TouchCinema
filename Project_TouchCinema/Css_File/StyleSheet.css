@@ -791,3 +791,8 @@ table {
         color: white;
         transition: all 1s;
     }
+
+    .orderID{
+        font-size:32px; color:blue;
+        margin-top:20px; margin-bottom:20px;
+    }

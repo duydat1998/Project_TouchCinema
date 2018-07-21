@@ -644,7 +644,27 @@ namespace Project_TouchCinema.GuestAndMember
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ConfirmationPaymentPage.aspx");
+            
+            if (Session["MEMBER_USER"] == null )
+            {
+                string message = "Please login to continue booking ticket!";
+                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+            }
+            else
+            {
+                bool nullCheck = Session["CurrentSelectdlMovie"] == null ||
+                                Session["CurrentSelectdlSchedule"] == null ||
+                                Session["SelectedSeats"] == null;
+                if (nullCheck)
+                {
+                    string message = "Please choose movie, schedule and seats before check out!";
+                    ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
+                }
+                else
+                {
+                    Response.Redirect("ConfirmationPaymentPage.aspx");
+                }
+            }
         }
     }
 }

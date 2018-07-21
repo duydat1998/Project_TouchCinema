@@ -10,7 +10,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
-    <h1>Change password</h1>
+    <h1 class="title">Change password</h1>
     <table>
         <tr>
             <td class="auto-style2">Old password*:</td>

@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPage" runat="server">
+    <h1 class="title">Promotion Management</h1>
     <br />
     <asp:Label ID="lblCode" runat="server" Font-Size="X-Large" Text="Promotion code will appear here!"></asp:Label>
     <br />

@@ -32,7 +32,7 @@
                                 </div>                                
                             </a>                             
                             <br />
-                            Rating: <%# Eval("Rating")%>    Length: <%# Eval("Length")%> mins <br />
+                            Rating: <%# Eval("Rating")%>    Length: <%# Eval("Length")%> minutes <br />
                             Producder: 
                             <a href="MovieListWithTag.aspx?tag=<%# Eval("Producer")%>&type=producer">
                                 <div class="hyperlink_panel"> 
