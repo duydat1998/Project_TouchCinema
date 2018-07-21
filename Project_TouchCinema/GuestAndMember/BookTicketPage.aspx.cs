@@ -434,26 +434,41 @@ namespace Project_TouchCinema.GuestAndMember
             }
             else
             {
-                List<string> currentSeats = (List<string>)Session["SelectedSeats"];
-                int remainingSelect = int.Parse(Session["SelectionAvailable"].ToString()) - currentSeats.Count;
-                if (remainingSelect > 0)
+                string scheduleID=Session["CurrentSelectdlSchedule"].ToString();
+                if(!scheduleID.Equals("--Select a schedule--"))
                 {
-                    TicketAmount.Text = "Remaining selectable seats: " + remainingSelect + ".";
-                    TicketAmount.CssClass = "ticket_mess";
-                }
-                else if(remainingSelect == 0)
-                {
-                    TicketAmount.Text = "You have reached the limit of your seat selection";
-                    TicketAmount.CssClass = "ticket_mess_error";
-                }
-                else
-                {
-                    TicketAmount.Text = "You are limiting the seat selection.Please uncheck your selected seats\n" +
-                                        "Overlimited seats: " + (-remainingSelect)+".";
-                    TicketAmount.CssClass = "ticket_mess_error";
-                }
-                TicketAmount.Visible = true;
-                ReachLimitSelect(remainingSelect);
+                    ScheduleDTO sDTO = sDAO.GetScheduleDTO((List<ScheduleDTO>)Session["ScheduleList"], scheduleID);
+                    List<string> bookedSeatList = odDAO.GetAllSeats(scheduleID);
+                    List<string> currentSeats = (List<string>)Session["SelectedSeats"];
+                    int remainingSelect = int.Parse(Session["SelectionAvailable"].ToString()) - currentSeats.Count;
+
+                    if (bookedSeatList.Count == 40)
+                    {
+                        TicketAmount.Text = "All seats of this room have been booked";
+                        TicketAmount.CssClass = "ticket_mess_error";
+                    }
+                    else
+                    {                        
+                        if (remainingSelect > 0)
+                        {
+                            TicketAmount.Text = "Remaining selectable seats: " + remainingSelect + ".";
+                            TicketAmount.CssClass = "ticket_mess";
+                        }
+                        else if (remainingSelect == 0)
+                        {
+                            TicketAmount.Text = "You have reached the limit of your seat selection";
+                            TicketAmount.CssClass = "ticket_mess_error";
+                        }
+                        else
+                        {
+                            TicketAmount.Text = "You are limiting the seat selection.Please uncheck your selected seats\n" +
+                                                "Overlimited seats: " + (-remainingSelect) + ".";
+                            TicketAmount.CssClass = "ticket_mess_error";
+                        }
+                    }                    
+                    TicketAmount.Visible = true;
+                    ReachLimitSelect(remainingSelect);
+                }                
             }
         }
 
@@ -602,8 +617,11 @@ namespace Project_TouchCinema.GuestAndMember
             }
             else
             {
-                thisSeat.CssClass = "seat_avail";
-                currentSelectedList.Remove(thisSeat.Text);                
+                if (!thisSeat.CssClass.Equals("seat_booked"))
+                {
+                    thisSeat.CssClass = "seat_avail";
+                    currentSelectedList.Remove(thisSeat.Text);
+                }                
             }            
             Session["SelectedSeats"] = currentSelectedList;            
             

@@ -727,6 +727,7 @@ table {
 .no_user_mess {
     color: red;
     font-weight: 900;
+    margin-top: 10px
 }
 
 /*CSS for ConfirmationPaymentPage*/

@@ -21,7 +21,7 @@ namespace OrderLibary
 
         public List<string> GetAllSeats(string scheduleID)
         {
-            List<string> listSeat = null;
+            List<string> listSeat = new List<string>();
             SqlConnection conn = new SqlConnection(strConnection);
             if (conn != null)
             {
@@ -39,11 +39,7 @@ namespace OrderLibary
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        string seat = reader["seat"].ToString();
-                        if(listSeat== null)
-                        {
-                            listSeat = new List<string>();
-                        }
+                        string seat = reader["seat"].ToString();                        
                         listSeat.Add(seat);
                     }
                 }

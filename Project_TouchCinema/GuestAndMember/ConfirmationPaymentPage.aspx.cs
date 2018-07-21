@@ -87,17 +87,15 @@ namespace Project_TouchCinema.GuestAndMember
             }
             else
             {
-                string message = "ORDER SUCCESSFULLY.\\nPress Ok to continue";
+                string message = "ORDER SUCCESSFULLY.\\nPress Back to Ticket Book to return to Book Ticket Page";
+                Session["CurrentSelectdlMovie"] = null;
+                Session["CurrentSelectdlSchedule"] = null;
+                Session["SelectionAvailable"] = null;
+                Session["SelectedSeats"] = new List<string>();
                 ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
                 this.txtOrderID.Text = "Your booking code is " + orderID + " . We have send SMS message and email to your phone and email address! Thank you for choosing us!";
-            }
-
-            Session["CurrentSelectdlMovie"] = null;
-            Session["CurrentSelectdlSchedule"] = null;
-            Session["SelectionAvailable"] = null;
-            Session["SelectedSeats"] = new List<string>();
-
-
+                btnSubmit.Visible = false;
+            }                        
         }
     }
 }
