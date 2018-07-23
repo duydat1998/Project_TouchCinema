@@ -15,7 +15,7 @@ namespace Project_TouchCinema.GuestAndMember
         ScheduleDAO sDAO = new ScheduleDAO();
         OrderDAO oDAO = new OrderDAO();
         OrderDetailDAO odDAO = new OrderDetailDAO();
-
+        float total = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -35,7 +35,7 @@ namespace Project_TouchCinema.GuestAndMember
                 lblBookedSeatList.Text = ToStringBookedSeatList(bookedSeatList);
 
                 lblTicketPrice.Text = sDTO.PriceOfTicket + " $";
-                float total = bookedSeatList.Count * sDTO.PriceOfTicket;
+                total = bookedSeatList.Count * sDTO.PriceOfTicket;
                 lblTotalPrice.Text = total + " $";
 
             }
@@ -94,6 +94,10 @@ namespace Project_TouchCinema.GuestAndMember
                 Session["SelectedSeats"] = new List<string>();
                 ClientScript.RegisterStartupScript(GetType(), "alert", "alert('" + message + "');", true);
                 this.txtOrderID.Text = "Your booking code is " + orderID + " . We have send SMS message and email to your phone and email address! Thank you for choosing us!";
+                MemberDAO dao = new MemberDAO();
+                int point = dao.CheckPointMember(mDTO.Username);
+                point += (int) total;
+                dao.UpdatePointMember(mDTO.Username, point);
                 btnSubmit.Visible = false;
             }                        
         }

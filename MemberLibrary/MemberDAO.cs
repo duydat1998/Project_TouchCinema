@@ -113,7 +113,7 @@ namespace MemberLibrary
             return point;
         }
 
-        private bool UpdatePointMember(string Username, int point)
+        public bool UpdatePointMember(string Username, int point)
         {
             bool checker = false;
             try
