@@ -15,7 +15,7 @@ namespace Project_TouchCinema.GuestAndMember
         ScheduleDAO sDAO = new ScheduleDAO();
         OrderDAO oDAO = new OrderDAO();
         OrderDetailDAO odDAO = new OrderDetailDAO();
-        float total = 0;
+        float total;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -96,7 +96,7 @@ namespace Project_TouchCinema.GuestAndMember
                 this.txtOrderID.Text = "Your booking code is " + orderID + " . We have send SMS message and email to your phone and email address! Thank you for choosing us!";
                 MemberDAO dao = new MemberDAO();
                 int point = dao.CheckPointMember(mDTO.Username);
-                point += (int) total;
+                point = point + int.Parse(lblTotalPrice.Text.Substring(0, lblTotalPrice.Text.Length - 1));
                 dao.UpdatePointMember(mDTO.Username, point);
                 btnSubmit.Visible = false;
             }                        
